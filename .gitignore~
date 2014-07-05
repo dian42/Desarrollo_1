@@ -1,4 +1,3 @@
 /cache/*
 /vendor/
 /composer.phar
-/lib/conexion_bd.php
