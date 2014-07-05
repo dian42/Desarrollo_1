@@ -1,8 +1,8 @@
 <?php
 $nombre_bd = 'GCadmin';
 $host = 'localhost';
-$usuario = 'diego';
-$password = 'rodrigo';
+$usuario = 'Cheli';
+$password = 'pepin123';
 
 try {
     $conexion_bd = new PDO("pgsql:dbname={$nombre_bd};host={$host}",
