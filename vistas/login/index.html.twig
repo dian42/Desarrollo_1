@@ -6,7 +6,7 @@
     <script src="lib/backbone/underscore-min.js"></script>
     <script src="js/settings.js"> </script>
 {% endblock %}
-
+{% block title %}Login{% endblock %} 
 {% block content %}
 	<div class="single-widget-container">
 	    <section class="widget login-widget">
@@ -15,7 +15,7 @@
 	        </header>
 	        <div class="body">
 	            <form class="no-margin"
-	                  action="index.html" method="get">
+	                  action="login.php" method="POST">
 	                <fieldset>
 	                    <div class="form-group no-margin">
 	                        <label for="text" >Usuario</label>
@@ -24,8 +24,8 @@
 	                                <span class="input-group-addon">
 	                                    <i class="eicon-user"></i>
 	                                </span>
-	                            <input id="text" type="text" class="form-control input-lg"
-	                                   placeholder="Usuario">
+	                            <input id="text" type="text" name="user" class="form-control input-lg"
+	                                   placeholder="Usuario" required pattern="[0-9]+" maxlength="8" required="true" autofocus >
 	                        </div>
        
 	                    </div>
@@ -37,8 +37,8 @@
 	                                <span class="input-group-addon">
 	                                    <i class="fa fa-lock"></i>
 	                                </span>
-	                            <input id="password" type="password" class="form-control input-lg"
-	                                   placeholder="Contraseña">
+	                            <input id="password" type="password" name="pass" class="form-control input-lg"
+	                                   placeholder="Contraseña" required maxlength="10" required="true" >
 	                        </div>
 
 	                    </div>
