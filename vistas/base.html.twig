@@ -1,12 +1,25 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <meta charset="utf-8">
-        <title>Herramientas de Software</title>
+        {% block head %}
+            <title>{% block title %}{% endblock %} - GCadmin</title>
+            {% block init %}
+                <link href="vistas/bootstrap/css/application.min.css" rel="stylesheet">
+                <link rel="shortcut icon" href="vistas/bootstrap/img/favicon.png">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta name="description" content="">
+                <meta name="author" content="">
+                <meta charset="utf-8">
+            {% endblock %}
+        {% endblock %}
     </head>
     <body>
-        <div class="content">
-            {% block contenido %}
+        {% block content %}{% endblock %}
+        <div id="footer">
+            {% block footer %}
+                &copy; Copyright 2011 by <a href="http://dominio.invalido/">
+                                             tú
+                                         </a>.
             {% endblock %}
         </div>
     </body>
