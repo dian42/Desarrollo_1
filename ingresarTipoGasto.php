@@ -1,7 +1,8 @@
 <?php
-include_once 'lib/render.php';
-include_once 'lib/Conexion_BD.php';
-render('header.html');
+//include_once 'lib/render.php';
+require_once 'lib/twigLoad.php';
+include_once 'lib/conexion_bd.php';
+//render('header.html');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if(isset($_POST['Id'],$_POST['Nombre'])) {
@@ -14,6 +15,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	}
 }
 else 
-	render('MantenedorTablasBasicas.html');
-render('footer.html');
+	render('basicos/update.html.twig', array('ingresar' => "ejemplo", 'caca' => "ejemplo2"));
+//render('footer.html');
 ?>

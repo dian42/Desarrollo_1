@@ -1,5 +1,22 @@
 {% extends "base.html.twig" %}
 
+
+
+{% block title %}
+tydghgyg
+{% endblock %} 
+
 {% block content %}
-<p>sslkdakvsdfo</p>
+<div id = "content" >
+<form action="ingresarTipoGasto.php" method="POST">
+    <label for="Id"> Identificador
+        <input type="text" name="Id" value = "{{ingresar}}" id="Id" maxlength="1">
+    </label>
+     <label for="Nombre"> Nombre
+        <input type="text" name="Nombre" value = "{{caca}}" id="Nombre" maxlength="15" >
+    </label>
+</form>
+</div>
+{% endblock %}
+{% block footer %}
 {% endblock %}
