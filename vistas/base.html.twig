@@ -1,13 +1,118 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <meta charset="utf-8">
-        <title>Herramientas de Software</title>
+        {% block head %}
+            <title>{% block title %}{% endblock %} - GCadmin</title>
+            {% block init %}
+                <link href="vistas/bootstrap/css/application.min.css" rel="stylesheet">
+                <link rel="shortcut icon" href="vistas/bootstrap/img/favicon.png">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta name="description" content="">
+                <meta name="author" content="">
+                <meta charset="utf-8">
+            {% endblock %}
+        {% endblock %}
     </head>
-    <body>
-        <div class="content">
-            {% block contenido %}
+    <body {% block landing%}{% endblock %}>
+        {% block content %}{% endblock %}
+        <div id="footer">
+            {% block footer %}
+                &copy; Copyright 2011 by <a href="http://dominio.invalido/">
+                                             tú
+                                         </a>.
             {% endblock %}
         </div>
     </body>
+    {% block scriptis%}
+
+    <!-- jquery and friends -->
+    <script src="vistas/bootstrap/lib/jquery/jquery-2.0.3.min.js"> </script>
+    <script src="vistas/bootstrap/lib/jquery-pjax/jquery.pjax.js"></script>
+
+
+    <!-- jquery plugins -->
+    <script src="vistas/bootstrap/lib/jquery-maskedinput/jquery.maskedinput.js"></script>
+    <script src="vistas/bootstrap/lib/parsley/parsley.js"> </script>
+    <script src="vistas/bootstrap/lib/icheck.js/jquery.icheck.js"></script>
+    <script src="vistas/bootstrap/lib/select2.js"></script>
+    <script src="vistas/bootstrap/lib/jquery.autogrow-textarea.js"></script>
+
+
+    <!--backbone and friends -->
+    <script src="vistas/bootstrap/lib/backbone/underscore-min.js"></script>
+
+    <!-- bootstrap default plugins -->
+    <script src="vistas/bootstrap/lib/bootstrap/transition.js"></script>
+    <script src="vistas/bootstrap/lib/bootstrap/collapse.js"></script>
+    <script src="vistas/bootstrap/lib/bootstrap/alert.js"></script>
+    <script src="vistas/bootstrap/lib/bootstrap/tooltip.js"></script>
+    <script src="vistas/bootstrap/lib/bootstrap/popover.js"></script>
+    <script src="vistas/bootstrap/lib/bootstrap/button.js"></script>
+    <script src="vistas/bootstrap/lib/bootstrap/dropdown.js"></script>
+    <script src="vistas/bootstrap/lib/bootstrap/modal.js"></script>
+
+    <!-- bootstrap custom plugins -->
+    <script src="vistas/bootstrap/lib/bootstrap-datepicker.js"></script>
+    <script src="vistas/bootstrap/lib/bootstrap-select/bootstrap-select.js"></script>
+    <script src="vistas/bootstrap/lib/wysihtml5/wysihtml5-0.3.0_rc2.js"></script>
+    <script src="vistas/bootstrap/lib/bootstrap-wysihtml5/bootstrap-wysihtml5.js"></script>
+    <script src="vistas/bootstrap/lib/bootstrap-switch.js"></script>
+    <script src="vistas/bootstrap/lib/bootstrap-colorpicker.js"></script>
+
+    <!-- basic application js-->
+    <script src="vistas/bootstrap/js/app.js"></script>
+    <script src="vistas/bootstrap/js/settings.js"></script>
+
+    <!-- page specific -->
+    <script src="vistas/bootstrap/js/forms-elemets.js"></script>
+
+    <script type="text/template" id="settings-template">
+        <div class="setting clearfix">
+            <div>Background</div>
+            <div id="background-toggle" class="pull-left btn-group" data-toggle="buttons-radio">
+                <% dark = background == 'dark'; light = background == 'light';%>
+                <button type="button" data-value="dark" class="btn btn-sm btn-transparent <%= dark? 'active' : '' %>">Dark</button>
+                <button type="button" data-value="light" class="btn btn-sm btn-transparent <%= light? 'active' : '' %>">Light</button>
+            </div>
+        </div>
+        <div class="setting clearfix">
+            <div>Sidebar on the</div>
+            <div id="sidebar-toggle" class="pull-left btn-group" data-toggle="buttons-radio">
+                <% onRight = sidebar == 'right'%>
+                <button type="button" data-value="left" class="btn btn-sm btn-transparent <%= onRight? '' : 'active' %>">Left</button>
+                <button type="button" data-value="right" class="btn btn-sm btn-transparent <%= onRight? 'active' : '' %>">Right</button>
+            </div>
+        </div>
+        <div class="setting clearfix">
+            <div>Sidebar</div>
+            <div id="display-sidebar-toggle" class="pull-left btn-group" data-toggle="buttons-radio">
+                <% display = displaySidebar%>
+                <button type="button" data-value="true" class="btn btn-sm btn-transparent <%= display? 'active' : '' %>">Show</button>
+                <button type="button" data-value="false" class="btn btn-sm btn-transparent <%= display? '' : 'active' %>">Hide</button>
+            </div>
+        </div>
+        <div class="setting clearfix">
+            <div>White Version</div>
+            <div>
+                <a href="white/" class="btn btn-sm btn-transparent">&nbsp; Switch &nbsp;   <i class="fa fa-angle-right"></i></a>
+            </div>
+        </div>
+    </script>
+
+    <script type="text/template" id="sidebar-settings-template">
+            <% auto = sidebarState == 'auto'%>
+            <% if (auto) { %>
+                <button type="button"
+                        data-value="icons"
+                        class="btn-icons btn btn-transparent btn-sm">Icons</button>
+        <button type="button"
+                data-value="auto"
+                class="btn-auto btn btn-transparent btn-sm">Auto</button>
+            <% } else { %>
+                <button type="button"
+                        data-value="auto"
+                        class="btn btn-transparent btn-sm">Auto</button>
+            <% } %>
+    </script>
+    {% endblock %}
 </html>
