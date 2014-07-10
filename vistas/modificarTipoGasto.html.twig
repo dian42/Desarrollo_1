@@ -7,7 +7,7 @@ Mantenedor tipo gastos
 	<form action="modificaTipoGasto.php" method="POST">
 
 	    <label for="Id"> Nueva descripción
-	        <input type="text" name="Descripcion" value="tucarita" id="Descripcion" maxlength="15"> <!--usar twig pa poner en tucarita la descripcion a modificar-->
+	        <input type="text" name="Descripcion" value="{{tGasto.descripcion}}" id="Descripcion" placeholder="{{tGasto.descripcion}}"> <!--usar twig pa poner en tucarita la descripcion a modificar-->
 	    </label>
 
 	    <input type="submit" value="modificar">
