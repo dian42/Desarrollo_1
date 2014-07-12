@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+{% block title %}
+Mantenedor tipo gastos
+{% endblock %}
+{% block content %}
+<div>
+	<form action="modificaTipoGasto.php" method="POST">
+
+	    <label for="Id"> Nueva descripción
+	        <input type="text" name="Descripcion" value="{{tGasto.descripcion}}" id="Descripcion" placeholder="{{tGasto.descripcion}}"> <!--usar twig pa poner en tucarita la descripcion a modificar-->
+	    </label>
+
+	    <input type="submit" value="modificar">
+	</form>
+
+</div>
+{% endblock %}
+{% block footer %}
+{% endblock %}
