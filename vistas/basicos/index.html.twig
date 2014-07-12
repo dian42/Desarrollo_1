@@ -38,14 +38,14 @@
 				                {{dato['tga_nombre']}}
 				            </td>
 				            <td>
-				            {#    <button class="btn btn-sm btn-primary" onClick='location.href="eliminarTipoGasto.php?button1={{dato['tga_id']}}"'>
+				                <button class="btn btn-sm btn-primary" onClick='location.href="eliminarTipoGasto.php?button1={{dato['tga_id']}}"'>
 				                    Eliminar
 				                </button>
-				                #}
+				               
 				                <button class="btn btn-sm btn-warning" data-toggle="button" onClick='location.href="modificaTipoGasto.php?button2={{dato['tga_id']}}"'>
 				                    Modificar
 				                </button>
-				                <button class="btn btn-sm btn-info" data-toggle="button" onClick='location.href="?button3={{dato['tga_id']}}"'>
+				                <button class="btn btn-sm btn-info" data-toggle="button" onClick='location.href="verTipoGasto.php?button3={{dato['tga_id']}}"'>
 				                    Ver
 				                </button>
 				            </td>
@@ -55,7 +55,7 @@
 					</table>
                     <div class="clearfix">
                         <div class="pull-left">
-                            <button class="btn btn-default btn-sm" data-toggle="button" onClick='location.href="?button4={{dato['tga_id']}}"'>
+                            <button class="btn btn-default btn-sm" data-toggle="button" onClick='location.href="ingresarTipoGasto.php"'>
                                 Crear
                             </button>
 
