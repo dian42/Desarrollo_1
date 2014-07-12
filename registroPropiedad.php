@@ -20,15 +20,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	    $repeat->execute();
 		$insert = $repeat -> fetchAll(PDO::FETCH_ASSOC);
 		$largo = count($insert);
-		if ($largo)
-			echo "PROPIEDAD INGRESADA ANTERIORMENTE";
+		if ($largo){
+			$con = $conexion_bd->prepare("SELECT * FROM conjunto");
+			$con -> execute();
+			$consult_propiedad = $con -> fetchAll(PDO::FETCH_ASSOC); //Saca el todas las propiedades asociadas a un conjunto
+			render('Rpropiedad/registroPropiedad.html.twig', array('conjunto' => $consult_propiedad));
+			print '<script language="JavaScript">';
+			print 'alert("asdasd");';
+			print '</script>';
+		}
+	}
 		else {
 			$consulta_cop = $conexion_bd -> exec (" INSERT INTO propiedad
 													values (default, '$numero', $m2, $alicuota, $conjunto)"); //Definimos la consulta a la base de datos.
 			echo "PROPIEDAD INGRESADA SATISFACTORIAMENTE";
 		}
 
-	}
 }
 else {
 	$con = $conexion_bd->prepare("SELECT * FROM conjunto");
