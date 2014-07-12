@@ -6,11 +6,11 @@ Nuevo tipo de gasto común
 {% block content %}
 <div id = "content" >
 <form action="ingresarTipoGasto.php" method="POST">
-    <label for="Id"> Identificador
-        <input type="text" name="Id" value = "{{ingresar}}" id="Id" maxlength="1">
+    <label for="id"> Identificador:
+        <input type="text" name="id" id="Id" pattern = "[A-Z]" maxlength="1">
     </label>
-     <label for="Nombre"> Nombre
-        <input type="text" name="Nombre" value = "{{caca}}" id="Nombre" maxlength="15" >
+     <label for="nombre"> Nombre:
+        <input type="text" name="nombre" id="Nombre" pattern = "^[a-zA-Z]{1,15}$" smaxlength="15" >
     </label>
     <input type="submit" value="Aceptar">
 </form>
