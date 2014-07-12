@@ -11,15 +11,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$conexion_bd = NULL;
 		print_r($insert_bd);
 	}
-}
-else{
-	$consulta = $conexion_bd->prepare(
-		"SELECT * 
-		FROM tipo_gasto"); //Definimos la consulta a la base de datos.
+}else{
+    if(isset($_GET['propiedad'])){
+    	$propiedad = $_GET['propiedad'];
+    	render('default/index.html.twig',array());
+    }
+    if(isset($_GET['button1'])) {
+    	render('default/index.html.twig',array());
+	}elseif (isset($_GET['button2'])) {
+		print_r($_GET['button2']);
+    	render('default/index.html.twig',array());
+	}
+	$consulta = $conexion_bd->prepare("SELECT * FROM tipo_gasto"); //Definimos la consulta a la base de datos.
 	$consulta->execute();
 	$tGasto = $consulta->fetchALL(PDO::FETCH_ASSOC); //Ejecutamos la consulta
 	$conexion_bd = NULL; // se cierra la conexión a la BD
-	print_r($tGasto);
-	//render('basicos/index.html.twig',array('gasto' => $tGasto[0][tga_id]));
+	//print_r($tGasto);
+	render('basicos/index.html.twig',array('tGasto' => $tGasto));
 }
 ?>
