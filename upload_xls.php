@@ -1,7 +1,13 @@
 <?php
 include_once 'vistas/subida_xls/header.html';
 include_once 'vistas/subida_xls/subida.html';
-include ("lib/reader.php"); 
+include_once 'lib/conexion_bd.php';
+include_once 'validacion.php';
+include ("lib/leerxls/reader.php"); 
+
+$flag =1;
+
+
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	if($_FILES["archivo"]["type"] == "application/vnd.ms-excel" && $_FILES["archivo"]["size"] < 20000000){
@@ -13,7 +19,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 			}
 			else{
 				move_uploaded_file($_FILES["archivo"]["tmp_name"],"xls/" . $_FILES["archivo"]["name"]);
-				echo "Archivo Subido ";
 				$nombre=$_FILES["archivo"]["name"];
 			}
 		}
@@ -29,23 +34,73 @@ if(isset($nombre)){
 	$celdas = $datos->sheets[0]['cells'];  
 	echo "";  
 	/* Luego, mediante un ciclo, seguiremos armando nuestra tabla y concatenamos con el contenido de las celdas. Estos valores se almacenan en la variable en una forma de array de 2 dimensiones. La primera corresponde a la fila y la segunda a la columna, siempre empezando de 1 , poniendo como condición que cuando lea una celda vacía se detenga */  
-	$filas=3 ;
-	$columnas=1;
-	do{
-		do{
-			echo " ".$celdas[$filas][$columnas]." ";//imprime dato de columna
-			$columnas++;
-		}while(isset($celdas[$filas][$columnas]));
-		echo "<br>";
-		$filas++;
-		$columnas=1;
-	}while(isset($celdas[$filas][$columnas]));
+	
+	$flag = datos_xls($flag,$celdas,$conexion_bd); //verifica q los datos esten bien 
+	if($flag==1)// guarda los datos en la base de datos 
+		$flag = datos_xls($flag,$celdas,$conexion_bd);
+	if($flag==1)
+		echo "Archivo subido con exito. <br>";
+	if($flag==0){ //borra el archivo siesq los datos no estaban bien definidos
+		unlink("xls/".$nombre);
+		echo "Archivo el archivo no esta bien rellenado.";
+	}
+
 	/* Cerramos la tabla */  
 	// echo "<table width="300" align="center"><tbody><tr><td width="150" align="center">".$celdas[$i][1]."</td><td width="150" align="center">".$celdas[$i][2]."</td></tr></tbody></table>";  
-	include_once 'vistas/footer.html';
+	include_once 'vistas/subida_xls/footer.html';
 
 }
 
+function datos_xls($flag,$celdas,$conexion_bd){
+	$filas=3 ;
+	$letra= array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','X','Y','Z');
+	$columnas=1;
+	do{
+		do{
+			if($columnas==1){
+				$fecha = $celdas[$filas][$columnas];
+				if(!vfecha($fecha) && $flag == 0){
+					echo "La fecha esta mal redactada en la posición ".$letra[$columnas-1]."".$filas."<br>";
+					$flag=0;
+				}
+			}
+			if($columnas==2){
+				$costo = $celdas[$filas][$columnas];
+				if(!vcosto($costo) && $flag == 0){
+					echo "El costo esta mal redactado en la posición ".$letra[$columnas-1]."".$filas."<br>";
+					$flag=0;
+				}
+			}
+			if($columnas==3){
+				$tipo = $celdas[$filas][$columnas];
+				if(!vtipo($tipo, $conexion_bd) && $flag == 0){
+					echo "El tipo del gasto es invalido en la posición ".$letra[$columnas-1]."".$filas."<br>";
+					$flag=0;
+				}
+			}
+			if($columnas==4){
+				$descripcion = $celdas[$filas][$columnas];
+				if(!vdecripcion($descripcion) && $flag == 0){
+					echo "La descripcion esta mal redactada en la posición ".$letra[$columnas-1]."".$filas."<br>";
+					$flag=0;
+				}
+			}
+			$columnas++;
+		}while(isset($celdas[$filas][$columnas]));
+		// echo " ".$fecha." ".$costo." ".$tipo." ".$descripcion. " ";
+		// echo "<br>";
+		if(isset($fecha,$costo,$tipo,$descripcion)&& $flag==1)
+			$tucaita = $conexion_bd -> exec("INSERT INTO gasto VALUES (DEFAULT, '$descripcion' , '$fecha', $costo, 1 , '$tipo')");//ingresa en la tabla
+		$filas++;
+		$columnas=1;
+	}while(isset($celdas[$filas][$columnas]));
+	$conexion_bd = NULL;
+	if ($flag == 1) {
+		return 1;
+	}
+	else
+		return 0;
+}
 
 
 
