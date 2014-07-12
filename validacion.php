@@ -2,9 +2,11 @@
 include_once 'lib/conexion_bd.php';
 
 function vfecha($date){
-if(preg_match('/^\d{1,2}\/\d{1,2}\/\d{4}$/',$date)) 
-		return true;
-	return false;
+if(preg_match('/^\d{1,2}\/\d{1,2}\/\d{2,4}$/',$date)) 
+	return true;
+if(preg_match('/^\d{1,2}-\d{1,2}-\d{2,4}$/',$date)) 
+	return true;
+return false;
 }
 
 function vtipo($tipo,$conexion_bd){

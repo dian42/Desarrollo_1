@@ -55,28 +55,28 @@ function datos_xls($flag,$celdas,$conexion_bd){
 		do{
 			if($columnas==1){
 				$fecha = $celdas[$filas][$columnas];
-				if(!vfecha($fecha) && $flag == 2){
+				if(!vfecha($fecha) && ($flag == 2||$flag == 0)){
 					echo "La fecha esta mal redactada en la posición ".$letra[$columnas-1]."".$filas."<br>";
 					$flag=0;
 				}
 			}
 			if($columnas==2){
 				$costo = $celdas[$filas][$columnas];
-				if(!vcosto($costo) && $flag == 2){
+				if(!vcosto($costo) && ($flag == 2||$flag == 0)){
 					echo "El costo esta mal redactado en la posición ".$letra[$columnas-1]."".$filas."<br>";
 					$flag=0;
 				}
 			}
 			if($columnas==3){
 				$tipo = $celdas[$filas][$columnas];
-				if(!vtipo($tipo, $conexion_bd) && $flag == 2){
+				if(!vtipo($tipo, $conexion_bd) && ($flag == 2||$flag == 0)){
 					echo "El tipo del gasto es invalido en la posición ".$letra[$columnas-1]."".$filas."<br>";
 					$flag=0;
 				}
 			}
 			if($columnas==4){
 				$descripcion = $celdas[$filas][$columnas];
-				if(!vdecripcion($descripcion) && $flag == 2){
+				if(!vdecripcion($descripcion) && ($flag == 2||$flag == 0)){
 					echo "La descripcion esta mal redactada en la posición ".$letra[$columnas-1]."".$filas."<br>";
 					$flag=0;
 				}

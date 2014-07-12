@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set("America/Santiago");  
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 
 /**
