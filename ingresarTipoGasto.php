@@ -9,12 +9,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$tga_id = $_POST['Id'];
 		$tga_nombre = $_POST['Nombre'];
 		
-		$insert_bd = $Conexion_BD -> exec("INSERT INTO tipo_gasto VALUES ('$tga_id', '$tga_nombre')");
+		$insert_bd = $conexion_bd -> exec("INSERT INTO tipo_gasto VALUES ('$tga_id', '$tga_nombre')");
 		$conexion_bd = NULL;
 		print_r($insert_bd);
 	}
 }
 else 
-	render('basicos/update.html.twig', array('ingresar' => "ejemplo", 'caca' => "ejemplo2"));
+	render('basicos/create.html.twig', array('ingresar' => "ejemplo", 'caca' => "ejemplo2"));
 //render('footer.html');
 ?>

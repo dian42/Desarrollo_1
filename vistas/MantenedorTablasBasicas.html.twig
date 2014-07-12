@@ -3,27 +3,24 @@
 Mantenedor de tipos gastos comunes
 {% endblock %} 
 
-{% block holi%}
+{% block content %}
 <table>
 {% for id in tipos %}
 	<tr>
-		{% for dato in tipos %}
+		{% for dato in id %}
 			<td> {{dato}} </td>
 		{% endfor %}
 	</tr>
 {% endfor %}
 </table>
-{% endblock %}
 
-
-{% block content %}
-<form action="vistas/ingresaTipoGasto.html" method="POST">
+<form action="vistas/basicos/create.html.twig" method="POST">
     <input type="submit" value="Crear">
 </form>
 <form action="vistas/modificarTipoGasto.html" method="POST">
     <input type="submit" value="Modificar">
 </form>
-<form action="vistas/modificarTipoGasto.php" method="POST">
+<form action="vistas/modificaTipoGasto.php" method="POST">
     <input type="submit" value="Eliminar">
 </form>
 {% endblock %}

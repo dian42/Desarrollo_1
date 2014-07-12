@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+{% block content %}
+
+
+<table>
+
+{% for id in tipos %}
+	<tr>
+		{% for dato in id %}
+			
+			<td> {{dato}} </td>
+
+		{% endfor %}
+	</tr>
+{% endfor %}
+
+</table>
+
+{% endblock %}
