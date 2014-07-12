@@ -3,10 +3,7 @@ include_once 'vistas/subida_xls/header.html';
 include_once 'vistas/subida_xls/subida.html';
 include_once 'lib/conexion_bd.php';
 include_once 'validacion.php';
-include ("lib/leerxls/reader.php"); 
-
-$flag =1;
-
+include_once 'lib/leerxls/reader.php'; 
 
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -34,7 +31,7 @@ if(isset($nombre)){
 	$celdas = $datos->sheets[0]['cells'];  
 	echo "";  
 	/* Luego, mediante un ciclo, seguiremos armando nuestra tabla y concatenamos con el contenido de las celdas. Estos valores se almacenan en la variable en una forma de array de 2 dimensiones. La primera corresponde a la fila y la segunda a la columna, siempre empezando de 1 , poniendo como condición que cuando lea una celda vacía se detenga */  
-	
+	$flag = 2;
 	$flag = datos_xls($flag,$celdas,$conexion_bd); //verifica q los datos esten bien 
 	if($flag==1)// guarda los datos en la base de datos 
 		$flag = datos_xls($flag,$celdas,$conexion_bd);
@@ -59,47 +56,45 @@ function datos_xls($flag,$celdas,$conexion_bd){
 		do{
 			if($columnas==1){
 				$fecha = $celdas[$filas][$columnas];
-				if(!vfecha($fecha) && $flag == 0){
+				if(!vfecha($fecha) && $flag == 2){
 					echo "La fecha esta mal redactada en la posición ".$letra[$columnas-1]."".$filas."<br>";
 					$flag=0;
 				}
 			}
 			if($columnas==2){
 				$costo = $celdas[$filas][$columnas];
-				if(!vcosto($costo) && $flag == 0){
+				if(!vcosto($costo) && $flag == 2){
 					echo "El costo esta mal redactado en la posición ".$letra[$columnas-1]."".$filas."<br>";
 					$flag=0;
 				}
 			}
 			if($columnas==3){
 				$tipo = $celdas[$filas][$columnas];
-				if(!vtipo($tipo, $conexion_bd) && $flag == 0){
+				if(!vtipo($tipo, $conexion_bd) && $flag == 2){
 					echo "El tipo del gasto es invalido en la posición ".$letra[$columnas-1]."".$filas."<br>";
 					$flag=0;
 				}
 			}
 			if($columnas==4){
 				$descripcion = $celdas[$filas][$columnas];
-				if(!vdecripcion($descripcion) && $flag == 0){
+				if(!vdecripcion($descripcion) && $flag == 2){
 					echo "La descripcion esta mal redactada en la posición ".$letra[$columnas-1]."".$filas."<br>";
 					$flag=0;
 				}
 			}
 			$columnas++;
 		}while(isset($celdas[$filas][$columnas]));
-		// echo " ".$fecha." ".$costo." ".$tipo." ".$descripcion. " ";
-		// echo "<br>";
-		if(isset($fecha,$costo,$tipo,$descripcion)&& $flag==1)
+		if($flag ==1 && isset($fecha,$costo,$tipo,$descripcion))
 			$tucaita = $conexion_bd -> exec("INSERT INTO gasto VALUES (DEFAULT, '$descripcion' , '$fecha', $costo, 1 , '$tipo')");//ingresa en la tabla
 		$filas++;
 		$columnas=1;
 	}while(isset($celdas[$filas][$columnas]));
 	$conexion_bd = NULL;
-	if ($flag == 1) {
+	if ($flag == 2 || $flag == 1) 
 		return 1;
-	}
-	else
+	if($flag == 0) 
 		return 0;
+	
 }
 
 
