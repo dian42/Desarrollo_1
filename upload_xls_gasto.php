@@ -1,6 +1,6 @@
 <?php
 include_once 'vistas/subida_xls/header.html';
-include_once 'vistas/subida_xls/subida.html';
+include_once 'vistas/subida_xls/subida_gasto.html';
 include_once 'lib/conexion_bd.php';
 include_once 'validacion.php';
 include_once 'lib/leerxls/reader.php'; 
@@ -35,13 +35,14 @@ if(isset($nombre)){
 	$flag = datos_xls($flag,$celdas,$conexion_bd); //verifica q los datos esten bien 
 	if($flag==1)// guarda los datos en la base de datos 
 		$flag = datos_xls($flag,$celdas,$conexion_bd);
-	if($flag==1)
+	if($flag==1){
 		echo "Archivo subido con exito. <br>";
+		unlink("xls/".$nombre);
+	}
 	if($flag==0){ //borra el archivo siesq los datos no estaban bien definidos
 		unlink("xls/".$nombre);
 		echo "Archivo el archivo no esta bien rellenado.";
 	}
-
 	/* Cerramos la tabla */  
 	// echo "<table width="300" align="center"><tbody><tr><td width="150" align="center">".$celdas[$i][1]."</td><td width="150" align="center">".$celdas[$i][2]."</td></tr></tbody></table>";  
 	include_once 'vistas/subida_xls/footer.html';
