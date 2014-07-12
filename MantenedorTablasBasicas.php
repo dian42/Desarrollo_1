@@ -10,10 +10,10 @@ $consulta_bd -> execute();
 
 /* Se obtiene el primer registro del conjunto de resultados
  * como un arreglo asociativo */
-$result = $consulta_bd->fetchAll(PDO::FETCH_ASSOC);
+$tGasto = $consulta_bd->fetchAll(PDO::FETCH_ASSOC);
 
 // Se cierra la conexión con la BD.
 $conexion_bd = NULL;
 
-render('MantenedorTablasBasicas.html.twig', array('tipos' => $result));
+render('basicos/index.html.twig',array('tGasto' => $tGasto));
 ?>

@@ -7,8 +7,11 @@ Modificar tipo de gasto común
 <div>
 <form action="modificaTipoGasto.php" method="POST">
 
-    <label for="Id"> Nueva descripción
-        <input type="text" name="Descripcion" value="{{tGasto.descripcion}}" id="Descripcion" placeholder="{{tGasto.descripcion}}"> 
+    <label for="id"> Id:
+        <input type="text" name="id" value="{{tGasto['tga_id']}}" id="id" readonly="readonly"  > 
+    </label>
+    <label for="descripcion"> Descripción
+        <input type="text" name="descripcion" value="{{tGasto['tga_nombre']}}" id="descripcion" > 
     </label>
 
     <input type="submit" value="Aceptar">
