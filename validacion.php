@@ -2,12 +2,12 @@
 include_once 'lib/conexion_bd.php';
 
 function vfecha($date){
-if(preg_match('/^\d{1,2}\/\d{1,2}\/\d{2,4}$/',$date)) 
-	return true;
-if(preg_match('/^\d{1,2}-\d{1,2}-\d{2,4}$/',$date)) 
-	return true;
-return false;
-}
+	if(preg_match('/^\d{1,2}\/\d{1,2}\/\d{4}$/',$date)) 
+		return true;
+	if(preg_match('/^\d{1,2}-\d{1,2}-\d{4}$/',$date)) 
+		return true;	
+	return false;
+}	
 
 function vtipo($tipo,$conexion_bd){
 	if(strlen ($tipo) == 1){
@@ -39,7 +39,7 @@ function vdecripcion($texto){
 }
 
 function vcosto($costo){
-	if(strlen ($costo)){
+	if(strlen ($costo)<=7){
 		$permitidos = "1234567890.,";
 		for ($i=0; $i<strlen($costo); $i++){ 
 	      if (strpos($permitidos, substr($costo,$i,1))===false){ 
@@ -52,8 +52,8 @@ function vcosto($costo){
 }
 
 
-function vpropiedad($prop){
-	if(strlen ($costo)){
+function vpropiedad($prop) {
+	if(strlen ($prop)<= 8){
 		$permitidos = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890:-.";
 		for ($i=0; $i<strlen($prop); $i++){ 
 	      if (strpos($permitidos, substr($prop,$i,1))===false){ 
