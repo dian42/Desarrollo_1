@@ -38,10 +38,11 @@
 				                {{dato['tga_nombre']}}
 				            </td>
 				            <td>
-				                <button class="btn btn-sm btn-primary" onClick='location.href="inde.php?button1={{dato['tga_id']}}"'>
+				            {#    <button class="btn btn-sm btn-primary" onClick='location.href="eliminarTipoGasto.php?button1={{dato['tga_id']}}"'>
 				                    Eliminar
 				                </button>
-				                <button class="btn btn-sm btn-warning" data-toggle="button" onClick='location.href="?button2={{dato['tga_id']}}"'>
+				                #}
+				                <button class="btn btn-sm btn-warning" data-toggle="button" onClick='location.href="modificaTipoGasto.php?button2={{dato['tga_id']}}"'>
 				                    Modificar
 				                </button>
 				                <button class="btn btn-sm btn-info" data-toggle="button" onClick='location.href="?button3={{dato['tga_id']}}"'>
