@@ -2,7 +2,7 @@
 require_once 'lib/twigLoad.php';
 include_once 'lib/conexion_bd.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if(isset($_POST['descripcion'],$_POST['id'])) {
+    if(isset($_POST['id'], $_POST['descripcion'])) {
 		$tga_nombre = $_POST['descripcion'];
 		$tga_id = $_POST['id'];
 		$insert_bd = $conexion_bd -> exec("UPDATE tipo_gasto SET tga_nombre = '$tga_nombre' WHERE tga_id = '$tga_id'");

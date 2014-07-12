@@ -3,9 +3,9 @@ require_once 'lib/twigLoad.php';
 include_once 'lib/conexion_bd.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if(isset($_POST['id'],$_POST['nombre'])) {
+    if(isset($_POST['id'],$_POST['descripcion'])) {
 		$tga_id = $_POST['id'];
-		$tga_nombre = $_POST['nombre'];
+		$tga_nombre = $_POST['descripcion'];
 		
 		$insert_bd = $conexion_bd -> exec("INSERT INTO tipo_gasto VALUES ('$tga_id', '$tga_nombre')");
 		//$conexion_bd = NULL;

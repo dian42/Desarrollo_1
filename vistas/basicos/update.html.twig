@@ -1,23 +1,70 @@
 {% extends "base.html.twig" %}
-{% block title %}
-Modificar tipo de gasto común
-{% endblock %}
+
+
+                    {#% block varOption %}
+                    {% endblock varOption %#}
 
 {% block content %}
-<div>
-<form action="modificaTipoGasto.php" method="POST">
 
-    <label for="id"> Id:
-        <input type="text" name="id" value="{{tGasto['tga_id']}}" id="id" pattern = "[A-Z]" maxlenght = "1" readonly="readonly"  > 
-    </label>
-    <label for="descripcion"> Descripción:
-        <input type="text" name="descripcion" value="{{tGasto['tga_nombre']}}" id="descripcion" pattern = "[a-zA-Z]" maxlenght = "15" > 
-    </label>
+<div class="content container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="page-title">Modificar tipo de gasto común <small>Inputs, controls and more</small></h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <section class="widget">
+                <header>
+                    <h4>
+                        <i class="fa fa-align-left"></i>
+                        Inputs
+                    </h4>
+                </header>
+                <div class="body">
+                    <form class="form-horizontal" action="modificaTipoGasto.php" method="POST">
+                        <fieldset>
+                            <legend class="section">Horizontal form</legend>
 
-    <input type="submit" value="Aceptar">
-</form>
+                        <div class="control-group">
+                            <label class="control-label " for="disabled-input">Identificador </label>
+                            <div class="controls form-group">
+                                <div class="col-sm-8">
+                                    <input type="text" id="disabled-input" name="id" class="form-control"
+                                         value="{{tGasto['tga_id']}}" readonly="readonly" >
+                                </div>
+                            </div>
+                        </div>
+                        
 
+                        <div class="control-group">
+                            <label class="control-label " for="tooltip-enabled">Descripción</label>
+                            <div class="controls form-group">
+                                <div class="col-sm-8">
+                                    <input type="text" id="tooltip-enabled" name="descripcion" class="form-control"
+                                       data-placement="top" data-original-title="Some explanation text here"
+                                       value="{{tGasto['tga_nombre']}}" pattern = "[a-zA-ZáéíóúÁÉÍÓÚ]*" maxlenght = "15" ></div>
+                            </div>
+                        </div>
+                        </fieldset>
+                        <div class="form-actions">
+                            <div>
+                                <button type="submit" name="subit" class="btn btn-primary" value="Aceptar" >Aceptar</button>
+                                <button type="button" class="btn btn-default">Cancelar</button>
+                            </div>
+                        </div>
+                        
+                    </form>
+                </div>
+            </section>
+        </div>
+
+    </div>
+    
+    
+    
 </div>
-{% endblock %}
-{% block footer %}
-{% endblock %}
+
+{{ parent() }}
+{% endblock content %}
+{% block footer %}{% endblock %}
