@@ -2,4 +2,3 @@
 /vendor/
 /composer.phar
 /lib/conexion_bd.php
-/lib/Conexion_BD.php
