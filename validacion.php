@@ -43,4 +43,16 @@ $permitidos = "1234567890.,";
       return true;
 }
 
+
+function vpropiedad($prop){
+	$permitidos = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890:-.";
+	for ($i=0; $i<strlen($prop); $i++){ 
+      if (strpos($permitidos, substr($prop,$i,1))===false){ 
+             return false; 
+      }
+    } 
+      return true;
+}
+
+
 ?> 
