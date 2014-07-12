@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set("America/Santiago");
 /* vim: set expandtab tabstop=4 shiftwidth=4: */
 // +----------------------------------------------------------------------+
 // | PHP Version 4                                                        |
@@ -461,6 +462,7 @@ class PHPExcel_Shared_OLE
 	* @param integer $date A timestamp
 	* @return string The string for the OLE container
 	*/
+
 	public static function LocalDate2OLE($date = null)
 	{
 		if (!isset($date)) {

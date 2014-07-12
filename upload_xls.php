@@ -6,9 +6,6 @@ include_once 'validacion.php';
 include ("lib/leerxls/reader.php"); 
 
 $flag =1;
-
-
-
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	if($_FILES["archivo"]["type"] == "application/vnd.ms-excel" && $_FILES["archivo"]["size"] < 20000000){
 		if($_FILES["archivo"]["error"] > 0){
@@ -89,14 +86,14 @@ function datos_xls($flag,$celdas,$conexion_bd){
 		}while(isset($celdas[$filas][$columnas]));
 		// echo " ".$fecha." ".$costo." ".$tipo." ".$descripcion. " ";
 		// echo "<br>";
-		if(isset($fecha,$costo,$tipo,$descripcion)&& $flag==1)
+		if(isset($fecha,$costo,$tipo,$descripcion)&& $flag==2)
 			$tucaita = $conexion_bd -> exec("INSERT INTO gasto VALUES (DEFAULT, '$descripcion' , '$fecha', $costo, 1 , '$tipo')");//ingresa en la tabla
 		$filas++;
 		$columnas=1;
 	}while(isset($celdas[$filas][$columnas]));
 	$conexion_bd = NULL;
 	if ($flag == 1) {
-		return 1;
+		return 2;
 	}
 	else
 		return 0;
