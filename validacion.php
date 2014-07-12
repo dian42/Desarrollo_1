@@ -26,34 +26,43 @@ function vtipo($tipo,$conexion_bd){
 }
 
 function vdecripcion($texto){
-	$permitidos = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZáéíóúÁÉÍÓÚñÑ1234567890 ():;,.-+%*$@	";
-	for ($i=0; $i<strlen($texto); $i++){ 
-      if (strpos($permitidos, substr($texto,$i,1))===false){ 
-             return false; 
-      }
-    } 
-      return true;
+	if(strlen ($texto) <= 100){
+		$permitidos = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZáéíóúÁÉÍÓÚñÑ1234567890 ():;,.-+%*$@	";
+		for ($i=0; $i<strlen($texto); $i++){ 
+	      if (strpos($permitidos, substr($texto,$i,1))===false){ 
+	             return false; 
+	      }
+	    } 
+    return true;
+  }
+  return false;
 }
 
 function vcosto($costo){
-$permitidos = "1234567890.,";
-	for ($i=0; $i<strlen($costo); $i++){ 
-      if (strpos($permitidos, substr($costo,$i,1))===false){ 
-             return false; 
-      }
-    } 
-      return true;
+	if(strlen ($costo)){
+		$permitidos = "1234567890.,";
+		for ($i=0; $i<strlen($costo); $i++){ 
+	      if (strpos($permitidos, substr($costo,$i,1))===false){ 
+	             return false; 
+	      }
+	    } 
+	      return true;
+  }
+  return false;
 }
 
 
 function vpropiedad($prop){
-	$permitidos = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890:-.";
-	for ($i=0; $i<strlen($prop); $i++){ 
-      if (strpos($permitidos, substr($prop,$i,1))===false){ 
-             return false; 
-      }
-    } 
-      return true;
+	if(strlen ($costo)){
+		$permitidos = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890:-.";
+		for ($i=0; $i<strlen($prop); $i++){ 
+	      if (strpos($permitidos, substr($prop,$i,1))===false){ 
+	             return false; 
+	      }
+	    } 
+	      return true;
+  }
+  return false;
 }
 
 
