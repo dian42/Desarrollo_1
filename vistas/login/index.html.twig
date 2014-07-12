@@ -1,12 +1,18 @@
 {% extends "base.html.twig" %}
-{% block init %}
+{% block title %}Login{% endblock title %}
+{% block invar %}
+{% endblock invar %}
+{% block pageHeader %}
+{% endblock pageHeader %}
+{% block logo %}
+{% endblock logo %}
+{% block head %}
     {{ parent() }}
     <script src="lib/jquery/jquery-2.0.3.min.js"> </script>
 	<script src="lib/jquery-pjax/jquery.pjax.js"></script>
     <script src="lib/backbone/underscore-min.js"></script>
     <script src="js/settings.js"> </script>
-{% endblock %}
-{% block title %}Login{% endblock %} 
+{% endblock head %}
 {% block content %}
 	<div class="single-widget-container">
 	    <section class="widget login-widget">
@@ -44,15 +50,22 @@
 	                    </div>
 	                </fieldset>
 	                <div class="form-actions">
-	                    <button type="submit" class="btn btn-block btn-lg btn-danger">
+	                    <button type="submit" value"administrador" class="btn btn-block btn-lg btn-danger">
 	                        <span class="small-circle"><i class="fa fa-caret-right"></i></span>
-	                        <small>Ingresar</small>
+	                        <small>Ingresar Administrador</small>
+	                    </button>
+	                    <button type="submit" value"copropietario" class="btn btn-block btn-lg btn-warning margin-bottom">
+	                        <span class="small-circle"><i class="fa fa-caret-right"></i></span>
+	                        <small>Ingresar Copropietario</small>
 	                    </button>
 	                    <!--
-	                    <div class="forgot"><a class="forgot" href="login.html#">Forgot Username or Password?</a></div>
-	                </div> -->
+	                    <div class="forgot"><a class="forgot" href="login.html#">Forgot Username or Password?</a></div>-->
+	                </div> 
+
 	            </form>
-	        </div><!--
+	        </div>
+	        <footer>
+	        </footer><!--
 	        <footer>
 	            <div class="facebook-login">
 	                <a href="index.html"><span><i class="fa fa-facebook-square fa-lg"></i> LogIn with Facebook</span></a>
@@ -60,6 +73,6 @@
 	        </footer> -->
 	    </section>
 	</div>
-{% endblock %}
+{% endblock content %}
             {% block footer %}
             {% endblock %}

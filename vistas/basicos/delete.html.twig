@@ -1,5 +1,19 @@
 {% extends "base.html.twig" %}
+{% block title %}
+Eliminar tipo de gasto común
+{% endblock %}
 
 {% block content %}
-<p>sslkdakvsdfo</p>
+<div>
+<form action="eliminarTipoGasto.php" method="POST">
+
+    <label for="Id"> Tipo de gasto a eliminar
+        <input type="text" name="Descripcion" value="{{tGasto.descripcion}}" id="Descripcion" placeholder="{{tGasto.descripcion}}"> 
+    </label>
+
+    <input type="submit" value="Aceptar">
+</form>
+</div>
+{% endblock %}
+{% block footer %}
 {% endblock %}

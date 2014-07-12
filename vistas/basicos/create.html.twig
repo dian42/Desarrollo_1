@@ -1,5 +1,20 @@
 {% extends "base.html.twig" %}
+{% block title %}
+Nuevo tipo de gasto común
+{% endblock %} 
 
 {% block content %}
-<p>sslkdakvsdfo</p>
+<div id = "content" >
+<form action="ingresarTipoGasto.php" method="POST">
+    <label for="id"> Identificador:
+        <input type="text" name="id" id="Id" pattern = "[A-Z]" maxlength="1">
+    </label>
+     <label for="nombre"> Nombre:
+        <input type="text" name="nombre" id="Nombre" pattern = "^[a-zA-Z]{1,15}$" smaxlength="15" >
+    </label>
+    <input type="submit" value="Aceptar">
+</form>
+</div>
+{% endblock %}
+{% block footer %}
 {% endblock %}
