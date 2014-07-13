@@ -2,8 +2,9 @@
 include_once 'vistas/subida_xls/header.html';
 include_once 'vistas/subida_xls/subida_gasto.html';
 include_once 'lib/conexion_bd.php';
-include_once 'validacion.php';
+include_once 'lib/validacion.php';
 include_once 'lib/leerxls/reader.php'; 
+
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	if($_FILES["archivo"]["type"] == "application/vnd.ms-excel" && $_FILES["archivo"]["size"] < 20000000){
 		if($_FILES["archivo"]["error"] > 0){
