@@ -69,7 +69,7 @@ function datos_xls($flag,$celdas,$conexion_bd){
 			}
 			if($columnas==3){
 				$tipo = $celdas[$filas][$columnas];
-				if(!vtipo($tipo, $conexion_bd) && ($flag == 2||$flag == 0)){
+				if(!vtipoC($tipo, $conexion_bd) && ($flag == 2||$flag == 0)){
 					echo "El tipo del gasto es invalido en la posición ".$letra[$columnas-1]."".$filas."<br>";
 					$flag=0;
 				}
