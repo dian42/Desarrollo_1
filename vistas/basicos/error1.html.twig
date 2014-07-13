@@ -1,0 +1,81 @@
+{% extends "base.html.twig" %}
+
+
+                    {#% block varOption %}
+                    {% endblock varOption %#}
+
+{% block content %}
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="page-title">Mantenedor de Tablas Básicas <small> Mantenedor de tipo de gasto común </small></h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <section class="widget">
+                    <header>
+                        <h4>
+                            <i class="fa fa-list-ol"></i>
+                            Tipos de gastos comunes
+                        </h4>
+                    </header>
+                    <div class="body">
+
+				    <table class="table table-striped table-images">
+				        <thead>
+				        <tr>
+				            <th class="hidden-xs-portrait">#</th>
+				            <th>Nombre</th>
+				            <th></th>
+				        </tr>
+				        </thead>
+				        <tbody>
+					{% for dato in tGasto %}
+				        <tr>
+				            <td class="hidden-xs-portrait">{{dato['tga_id']}}</td>
+				            <td>
+				                {{dato['tga_nombre']}}
+				            </td>
+				            <td>
+				                <button class="btn btn-sm btn-primary" onClick='location.href="eliminarTipoGasto.php?button1={{dato['tga_id']}}"'>
+				                    Eliminar
+				                </button>
+				               
+				                <button class="btn btn-sm btn-warning" data-toggle="button" onClick='location.href="modificaTipoGasto.php?button2={{dato['tga_id']}}"'>
+				                    Modificar
+				                </button>
+				                <button class="btn btn-sm btn-info" data-toggle="button" onClick='location.href="verTipoGasto.php?button3={{dato['tga_id']}}"'>
+				                    Ver
+				                </button>
+				            </td>
+				        </tr>
+					{% endfor %}
+				        </tbody>
+					</table>
+                    <div class="clearfix">
+                        <div class="pull-left">
+                            <button class="btn btn-default btn-sm" data-toggle="button" onClick='location.href="ingresarTipoGasto.php"'>
+                                Crear
+                            </button>
+                            
+                        </div>
+                        <div id="external-events">
+	                        <div class="pull-right external-event ui-draggable" style="position: relative;">
+
+							    <i class="fa  fa-exclamation-triangle"></i>
+
+							     La operación no se pudo realizar debido a que el tipo de gasto está actualmente en uso por uno o más gastos comunes.
+
+							</div>
+						</div>
+                    </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+    </div>
+{{ parent() }}
+{% endblock content %}
+{% block footer %}{% endblock %}
