@@ -57,7 +57,7 @@ if (count($_SESSION) != 0  && $_SESSION['tipo'] == false  ) {
 			render('basicos/create.html.twig', array('valido' => $_SESSION['valido']));
 	}
 } else {
-	if ($_SESSION['tipo'] == true ) {
+	if (count($_SESSION) != 0 && $_SESSION['tipo'] == true ) {
 		render('default/index.html.twig', array('valido' => $_SESSION['valido']));
 	}else
 		render('login/index.html.twig', array());
