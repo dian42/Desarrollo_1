@@ -1,5 +1,8 @@
 {% extends "base.html.twig" %}
-
 {% block contenido %}
-    Funciona tu huea!
+	{% if type == 0 %}
+   		Bienvenid@ {{usuario}} </br>
+   	{% else %}
+   		Bienvenid@ Sr. {{usuario}} </br>
+   	{% endif %}
 {% endblock %}

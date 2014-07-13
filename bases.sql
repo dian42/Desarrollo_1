@@ -103,7 +103,7 @@ CREATE TABLE COP_PRO (
  	cpr_pro_id numeric(5) references PROPIEDAD(pro_id),
  	cpr_fecha date not null,
  	cpr_eco_id varchar(1) references ESTADO_COPROPIETARIO(eco_id),
- 	primary key(cpr_cop_id,cpr_eco_id)
+ 	primary key(cpr_cop_id,cpr_pro_id)
 );
 
 CREATE SEQUENCE ESPACIO_esp_id_seq;
