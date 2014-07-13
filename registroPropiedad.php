@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$consult_propiedad = $con -> fetchAll(PDO::FETCH_ASSOC); //Saca el todas las propiedades asociadas a un conjunto
 			render('Rpropiedad/registroPropiedad.html.twig', array('conjunto' => $consult_propiedad));
 			print '<script language="JavaScript">';
-			print 'alert("asdasd");';
+			print 'alert("Propiedad actualmente existente, reintente");';
 			print '</script>';
 		}
 	}
