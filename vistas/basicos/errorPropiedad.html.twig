@@ -7,22 +7,22 @@
                     <option value={{conjuntos['con_id']}}>{{conjuntos['con_nombre']}}</option>
             {% endfor %}
         </select><br/>
-    </label>
+    </label></br>
     <label for="numero">Numero de propiedad:
         <input type="text" name="numero" id="numero" required pattern="[a-zA-Z]+[0-9]+" maxlength="8" placeholder="Ej: c23" required /><br />
-    </label>
+    </label></br>
     <label for="propietario">Run del propietario:
         <input type="text" name="propietario" id="propietario" pattern="[0-9]+" maxlength="8" placeholder="Ej: 17679644" required /><br />
-    </label>
+    </label></br>
     <label for="m2">Metros cuadrados:
         <input type="text" name="m2" id="m2" pattern="[0-9]+" placeholder="Ej: 89" maxlength="3" required /><br /><!-- hay que validar para que solo acepte 0.231-->
-    </label>
+    </label></br>
     <label for="alicuota">Alicuota:
         <input type="text" name="alicuota" id="alicuota" pattern="\d*(\.\d*)?"  placeholder="Ej: 0.0032" required /><br />
-    </label>
+    </label></br>
     <label for="fecha_compra">Fecha de compra:
         <input type="date" name="fecha_compra" id="date" placeholder="Ej: 2103/1990" pattern="(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[/](19|20)\d\d" required="true"/><br />
-    </label>
+    </label></br>
     <input type="submit" value="Enviar">
 </form> 
 
