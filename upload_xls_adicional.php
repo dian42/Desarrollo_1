@@ -2,9 +2,8 @@
 include_once 'vistas/subida_xls/header.html';
 include_once 'vistas/subida_xls/subida_adicional.html';
 include_once 'lib/conexion_bd.php';
-include_once 'validacion.php';
+include_once 'lib/validacion_xls.php';
 include_once 'lib/leerxls/reader.php'; 
-
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	if($_FILES["archivo"]["type"] == "application/vnd.ms-excel" && $_FILES["archivo"]["size"] < 20000000){
@@ -78,7 +77,7 @@ function datos_xls($flag,$celdas,$conexion_bd){
 			}
 			if($columnas==4){
 				$tipo = $celdas[$filas][$columnas];
-				if(!vtipo($tipo, $conexion_bd) &&($flag == 2 || $flag == 0)){
+				if(!vtipoA($tipo, $conexion_bd) &&($flag == 2 || $flag == 0)){
 					echo "El tipo del gasto es invalido en la posición ".$letra[$columnas-1]."".$filas."<br>";
 					$flag=0;
 				}
@@ -92,8 +91,14 @@ function datos_xls($flag,$celdas,$conexion_bd){
 			}
 			$columnas++;
 		}while(isset($celdas[$filas][$columnas]));
-		if($flag ==1 && isset($fecha,$costo,$tipo,$descripcion))
-			$tucaita = $conexion_bd -> exec("INSERT INTO gasto VALUES (DEFAULT, '$descripcion' , '$fecha', $costo, 1 , '$tipo')");//ingresa en la tabla
+		if($flag ==1 && isset($fecha,$costo,$tipo,$descripcion,$propiedad)){
+			$tipos  = $conexion_bd -> prepare("SELECT pro_id FROM  propiedad WHERE pro_numero='$propiedad' AND pro_con_id =1");
+			$tipos -> execute();
+			$tipos = $tipos->fetchAll(PDO::FETCH_ASSOC);
+			foreach ($tipos as $ids) 
+				foreach ($ids as $id) 	
+					$tucaita = $conexion_bd -> exec("INSERT INTO adicional VALUES (DEFAULT ,'$descripcion' ,$costo , '$fecha', $id, '$tipo')");//ingresa en la tabla
+		}
 		$filas++;
 		$columnas=1;
 	}while(isset($celdas[$filas][$columnas]));

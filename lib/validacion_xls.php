@@ -9,7 +9,7 @@ function vfecha($date){
 	return false;
 }	
 
-function vtipo($tipo,$conexion_bd){
+function vtipoC($tipo,$conexion_bd){
 	if(strlen ($tipo) == 1){
 		$tipos 	= $conexion_bd -> prepare("SELECT tga_id FROM tipo_gasto ");
 		$tipos -> execute();
@@ -17,6 +17,21 @@ function vtipo($tipo,$conexion_bd){
 		foreach ($tipos as $ids ) 
 			foreach ($ids as $id ) 
 				if($tipo==$id){
+					return true;
+					$conexion_bd =NULL;
+				}
+	}
+	$conexion_bd =NULL;
+	return false; 
+}
+function vtipoA($tipo,$conexion_bd){
+	if(strlen ($tipo) == 1){
+		$tipos 	= $conexion_bd -> prepare("SELECT tad_id FROM tipo_adicional ");
+		$tipos -> execute();
+		$tipos = $tipos->fetchAll(PDO::FETCH_ASSOC);
+		foreach ($tipos as $ids ) 
+			foreach ($ids as $id ) 
+				if($tipo == $id){
 					return true;
 					$conexion_bd =NULL;
 				}

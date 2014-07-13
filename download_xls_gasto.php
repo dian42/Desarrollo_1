@@ -41,9 +41,11 @@ $columna = array('A','B','C','D');
 foreach ($columna as $col) 
 	$objPHPExcel->getActiveSheet()->getColumnDimension($col)->setAutoSize(true);
 
-for($j=3;$j<1000;$j++){ //genero un array desde el B3 al B1000
+$objPHPExcel->getActiveSheet()->getStyle('A3:A1000')->getNumberFormat() ->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_TEXT); // da formato de texto a la columna de las fechas
+
+for($j=3;$j<1000;$j++) //genero un array desde el B3 al B1000
 	$a[$j]='C'.$j;
-}
+
 foreach ($a as $b) { //hago q tega un menu desplegable
 	$objValidation = $objPHPExcel->getActiveSheet()->getCell($b)->getDataValidation();
 	$objValidation->setFormula1('Datos!$A$1:$A$'.$i);
