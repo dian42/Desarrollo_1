@@ -2,14 +2,14 @@
 include_once 'lib/conexion_bd.php';
 
 function vfecha($date){
-if(preg_match('/^\d{1,2}\/\d{1,2}\/\d{2,4}$/',$date)) 
-	return true;
-if(preg_match('/^\d{1,2}-\d{1,2}-\d{2,4}$/',$date)) 
-	return true;
-return false;
-}
+	if(preg_match('/^\d{1,2}\/\d{1,2}\/\d{4}$/',$date)) 
+		return true;
+	if(preg_match('/^\d{1,2}-\d{1,2}-\d{4}$/',$date)) 
+		return true;	
+	return false;
+}	
 
-function vtipo($tipo,$conexion_bd){
+function vtipoC($tipo,$conexion_bd){
 	if(strlen ($tipo) == 1){
 		$tipos 	= $conexion_bd -> prepare("SELECT tga_id FROM tipo_gasto ");
 		$tipos -> execute();
@@ -17,6 +17,21 @@ function vtipo($tipo,$conexion_bd){
 		foreach ($tipos as $ids ) 
 			foreach ($ids as $id ) 
 				if($tipo==$id){
+					return true;
+					$conexion_bd =NULL;
+				}
+	}
+	$conexion_bd =NULL;
+	return false; 
+}
+function vtipoA($tipo,$conexion_bd){
+	if(strlen ($tipo) == 1){
+		$tipos 	= $conexion_bd -> prepare("SELECT tad_id FROM tipo_adicional ");
+		$tipos -> execute();
+		$tipos = $tipos->fetchAll(PDO::FETCH_ASSOC);
+		foreach ($tipos as $ids ) 
+			foreach ($ids as $id ) 
+				if($tipo == $id){
 					return true;
 					$conexion_bd =NULL;
 				}
@@ -39,7 +54,7 @@ function vdecripcion($texto){
 }
 
 function vcosto($costo){
-	if(strlen ($costo)){
+	if(strlen ($costo)<=7){
 		$permitidos = "1234567890.,";
 		for ($i=0; $i<strlen($costo); $i++){ 
 	      if (strpos($permitidos, substr($costo,$i,1))===false){ 
@@ -52,8 +67,8 @@ function vcosto($costo){
 }
 
 
-function vpropiedad($prop){
-	if(strlen ($costo)){
+function vpropiedad($prop) {
+	if(strlen ($prop)<= 8){
 		$permitidos = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890:-.";
 		for ($i=0; $i<strlen($prop); $i++){ 
 	      if (strpos($permitidos, substr($prop,$i,1))===false){ 

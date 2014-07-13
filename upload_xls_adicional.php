@@ -57,43 +57,49 @@ function datos_xls($flag,$celdas,$conexion_bd){
 		do{
 			if($columnas==1){
 				$propiedad = $celdas[$filas][$columnas];
-				if(!vpropiedad($propiedad) && $flag == 2){
+				if(!vpropiedad($propiedad) && ($flag == 2 ||$flag == 0)){
 					echo "La propiedad esta mal redactada en la posición ".$letra[$columnas-1]."".$filas."<br>";
 					$flag=0;
 				}
 			}
 			if($columnas==2){
 				$fecha = $celdas[$filas][$columnas];
-				if(!vfecha($fecha) && $flag == 2){
+				if(!vfecha($fecha) && ($flag == 2 || $flag == 0)){
 					echo "La fecha esta mal redactada en la posición ".$letra[$columnas-1]."".$filas."<br>";
 					$flag=0;
 				}
 			}
 			if($columnas==3){
 				$costo = $celdas[$filas][$columnas];
-				if(!vcosto($costo) && $flag == 2){
+				if(!vcosto($costo) && ($flag == 2 || $flag == 0)){
 					echo "El costo esta mal redactado en la posición ".$letra[$columnas-1]."".$filas."<br>";
 					$flag=0;
 				}
 			}
 			if($columnas==4){
 				$tipo = $celdas[$filas][$columnas];
-				if(!vtipo($tipo, $conexion_bd) && $flag == 2){
+				if(!vtipoA($tipo, $conexion_bd) &&($flag == 2 || $flag == 0)){
 					echo "El tipo del gasto es invalido en la posición ".$letra[$columnas-1]."".$filas."<br>";
 					$flag=0;
 				}
 			}
 			if($columnas==5){
 				$descripcion = $celdas[$filas][$columnas];
-				if(!vdecripcion($descripcion) && $flag == 2){
+				if(!vdecripcion($descripcion) && ($flag == 2 || $flag == 0)){
 					echo "La descripcion esta mal redactada en la posición ".$letra[$columnas-1]."".$filas."<br>";
 					$flag=0;
 				}
 			}
 			$columnas++;
 		}while(isset($celdas[$filas][$columnas]));
-		if($flag ==1 && isset($fecha,$costo,$tipo,$descripcion))
-			$tucaita = $conexion_bd -> exec("INSERT INTO gasto VALUES (DEFAULT, '$descripcion' , '$fecha', $costo, 1 , '$tipo')");//ingresa en la tabla
+		if($flag ==1 && isset($fecha,$costo,$tipo,$descripcion,$propiedad)){
+			$tipos  = $conexion_bd -> prepare("SELECT pro_id FROM  propiedad WHERE pro_numero='$propiedad' AND pro_con_id =1");
+			$tipos -> execute();
+			$tipos = $tipos->fetchAll(PDO::FETCH_ASSOC);
+			foreach ($tipos as $ids) 
+				foreach ($ids as $id) 	
+					$tucaita = $conexion_bd -> exec("INSERT INTO adicional VALUES (DEFAULT ,'$descripcion' ,$costo , '$fecha', $id, '$tipo')");//ingresa en la tabla
+		}
 		$filas++;
 		$columnas=1;
 	}while(isset($celdas[$filas][$columnas]));
