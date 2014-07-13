@@ -1,8 +1,6 @@
 {% extends "base.html.twig" %}
 
-
-                    {#% block varOption %}
-                    {% endblock varOption %#}
+{% block title %}Ingresar Tipo Gasto - {% endblock title %}
 
 {% block content %}
 
@@ -31,7 +29,7 @@
                             <div class="controls form-group">
                                 <div class="col-sm-8">
                                 	<input type="text" id="tooltip-enabled" name="id" class="form-control"
-                                   		data-original-title="Identificador del tipo de gasto común (máximo 1 caracter)" value="{{tGasto['tga_id']}}" pattern = "[A-Z]" >
+                                   		data-original-title="Identificador del tipo de gasto común (máximo 1 caracter)" value="{{tGasto['tga_id']}}" pattern = "[A-Z]" required>
                                 </div>
                             </div>
                         </div>
@@ -43,7 +41,7 @@
                                 <div class="col-sm-8">
                                     <input type="text" id="tooltip-enabled" name="descripcion" class="form-control"
                                        data-original-title="Nombre del tipo de gasto común (máximo 15 caracteres)"
-                                       value="{{tGasto['tga_nombre']}}" pattern = "[a-zA-ZáéíóúÁÉÍÓÚ]*" maxlenght = "15" ></div>
+                                       value="{{tGasto['tga_nombre']}}" pattern = "[a-zA-ZáéíóúÁÉÍÓÚ]*" maxlenght = "15" required></div>
                             </div>
                         </div>
 
