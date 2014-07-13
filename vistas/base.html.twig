@@ -24,36 +24,87 @@
                         <a href="inde.php"><i class="fa fa-home"></i> <span class="name">Inicio</span></a>
                     </li>
                     {% block varOption %}
+    {% if valido is defined %}
+        {% if valido.tipo == true %}
+            <li class="panel">
+                <a class="accordion-toggle collapsed" data-toggle="collapse"
+                   data-parent="#side-nav" href="#Reportes"><i class="fa fa-edit"></i> <span class="name">Reportes</span></a>
+                <ul id="Reportes" class="panel-collapse collapse">
+                        {% set foo = -1 %}
+                    {% for key,condominio in valido.datos if key != foo %}
+                        {% set foo = key %}
+                        <li class="panel">
+                            <a class="accordion-toggle collapsed" data-toggle="collapse"
+                               data-parent="#menu-levels-collapse" href="#sub-menu-1-collapse">{{condominio['con_nombre']}}</a>
+                            <ul id="sub-menu-1-collapse" class="panel-collapse collapse">
+                                {% for koy,condom in valido['datos'][key] if koy == 'pro_numero' %}
+                                    <li><a href="ingresarTipoGasto.php?propiedad={{valido['datos'][key]['pro_id']}}">{{condom}}</a></li>
+                                 {% endfor %}
+                            </ul>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </li>
+            <li class="panel">
+                <a class="accordion-toggle collapsed" data-toggle="collapse"
+                 data-parent="#side-nav" href="#Estadisticas"><i class="fa fa-bar-chart-o"></i> <span class="name">Estadisticas</span></a>
+                <ul id="Estadisticas" class="panel-collapse collapse">
+                        {% set foo = -1 %}
+                    {% for key,condominio in valido.datos if key != foo %}
+                        {% set foo = key %}
                     <li class="panel">
                         <a class="accordion-toggle collapsed" data-toggle="collapse"
-                           data-parent="#side-nav" href="#forms-collapse"><i class="fa fa-edit"></i> <span class="name">Reportes</span></a>
-                        <ul id="forms-collapse" class="panel-collapse collapse">
-                            <li class="panel">
-                                <a class="accordion-toggle collapsed" data-toggle="collapse"
-                                   data-parent="#menu-levels-collapse" href="#sub-menu-1-collapse">Condominio</a>
-                                <ul id="sub-menu-1-collapse" class="panel-collapse collapse">
-                                    <li><a href="ingresarTipoGasto.php?propiedad=1">Propiedad.1</a></li>
-                                    <li><a href="#">Propiedad.2</a></li>
-                                </ul>
-                            </li>
+                           data-parent="#menu-levels-collapse" href="#sub-menu-2-collapse">{{condominio['con_nombre']}}</a>
+                        <ul id="sub-menu-2-collapse" class="panel-collapse collapse">
+                                {% for koy,condom in valido['datos'][key] if koy == 'pro_numero' %}
+                                    <li><a href="ingresarTipoGasto.php?propiedad={{valido['datos'][key]['pro_id']}}">{{condom}}</a></li>
+                                {% endfor %}
                         </ul>
                     </li>
-                    <li class="panel">
-                        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#side-nav" href="#stats-collapse"><i class="fa fa-bar-chart-o"></i> <span class="name">Estadisticas</span></a>
-                        <ul id="stats-collapse" class="panel-collapse collapse">
-                            <li><a href="stat_statistics.html">Stats</a></li>
-                            <li><a href="stat_charts.html">Charts</a></li>
-                            <li><a href="stat_realtime.html">Realtime</a></li>
-                            <li class="panel">
-                                <a class="accordion-toggle collapsed" data-toggle="collapse"
-                                   data-parent="#menu-levels-collapse" href="#sub-menu-1-collapse">Condominio</a>
-                                <ul id="sub-menu-1-collapse" class="panel-collapse collapse">
-                                    <li><a href="ingresarTipoGasto.php?propiedad=1">Propiedad.1</a></li>
-                                    <li><a href="#">Propiedad.2</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% else %}{% if valido.tipo == false %}
+            <li class="panel">
+                <a class="accordion-toggle collapsed" data-toggle="collapse"
+                   data-parent="#side-nav" href="#Reportes"><i class="fa fa-edit"></i> <span class="name">Reportes</span></a>
+                <ul id="Reportes" class="panel-collapse collapse">
+                        {% set foo = -1 %}
+                    {% for key,condominio in valido.datos if key != foo %}
+                        {% set foo = key %}
+                        <li><a href="MantenedorTipoGasto.php?condominio={{valido['datos'][key]['con_id']}}">{{condominio['con_nombre']}}</a></li>
+                    {% endfor %}
+                </ul>
+            </li>
+            <li class="panel">
+                <a class="accordion-toggle collapsed" data-toggle="collapse"
+                 data-parent="#side-nav" href="#Estadisticas"><i class="fa fa-bar-chart-o"></i> <span class="name">Estadisticas</span></a>
+                <ul id="Estadisticas" class="panel-collapse collapse">
+                        {% set foo = -1 %}
+                    {% for key,condominio in valido.datos if key != foo %}
+                        {% set foo = key %}
+                        <li><a href="ingresarTipoGasto.php?condominio={{valido['datos'][key]['con_id']}}">{{condominio['con_nombre']}}</a></li>
+                    {% endfor %}
+                </ul>
+            </li>
+            <li class="panel">
+                <a class="accordion-toggle collapsed" data-toggle="collapse"
+                   data-parent="#side-nav" href="#Subir-Gastos"><i class="fa fa-magic"></i> <span class="name">Subir Gastos</span></a>
+                <ul id="Subir-Gastos" class="panel-collapse collapse">
+                    <li><a href="ui_buttons.html">Comunes</a></li>
+                    <li><a href="ui_dialogs.html">Adicionales</a></li>
+                </ul>
+            </li>
+            <li class="panel">
+                <a class="accordion-toggle collapsed" data-toggle="collapse"
+                   data-parent="#side-nav" href="#Mantenedor-Tablas"><i class="fa fa-bookmark-o"></i> <span class="name">Mantenedor Tablas</span></a>
+                <ul id="Mantenedor-Tablas" class="panel-collapse collapse">
+                    <li><a href="component_calendar.html">Tipo Gasto</a></li>
+                </ul>
+            </li>
+        {% endif %}
+        {% endif %}
+    {% endif %}
                     {% endblock varOption %}
 
                     <li class="visible-xs">
@@ -93,25 +144,8 @@
 
                                     <ul id="account-menu" class="dropdown-menu account" role="menu">
                                         <li role="presentation" class="account-picture">
-                                            Philip Daineka
-                                        </li>
-                                        <li role="presentation">
-                                            <a href="form_account.html" class="link">
                                                 <i class="fa fa-user"></i>
-                                                Profile
-                                            </a>
-                                        </li>
-                                        <li role="presentation">
-                                            <a href="component_calendar.html" class="link">
-                                                <i class="fa fa-calendar"></i>
-                                                Calendar
-                                            </a>
-                                        </li>
-                                        <li role="presentation">
-                                            <a href="stat_statistics.html#" class="link">
-                                                <i class="fa fa-inbox"></i>
-                                                Inbox
-                                            </a>
+                                                {{valido['usuario']}}
                                         </li>
                                     </ul>
                                 </li>
@@ -124,7 +158,7 @@
                                         <i class="fa fa-bars"></i>
                                     </a>
                                 </li>
-                                <li class="hidden-xs"><a href="login.html"><i class="fa fa-sign-out"></i></a></li>
+                                <li class="hidden-xs"><a href="logaut.php"><i class="fa fa-sign-out"></i></a></li>
                             </ul>
                     </div>
                 </header>

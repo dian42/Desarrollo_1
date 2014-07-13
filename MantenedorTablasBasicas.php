@@ -2,6 +2,7 @@
 require_once 'lib/twigLoad.php';
 include_once 'lib/conexion_bd.php';
 
+session_start(); //Iniciamos una posible sesión
 
 
 // Se prepara la consulta y luego se ejecuta.
@@ -15,5 +16,11 @@ $tGasto = $consulta_bd->fetchAll(PDO::FETCH_ASSOC);
 // Se cierra la conexión con la BD.
 $conexion_bd = NULL;
 
-render('basicos/index.html.twig',array('tGasto' => $tGasto));
+
+if (count($_SESSION) != 0) {
+	render('basicos/index.html.twig', array('tGasto' => $tGasto, 'valido' => $_SESSION['valido']));
+} else {
+	render('default/index.html.twig', array());
+}
+
 ?>

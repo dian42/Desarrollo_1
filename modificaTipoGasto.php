@@ -1,6 +1,9 @@
 <?php
 require_once 'lib/twigLoad.php';
 include_once 'lib/conexion_bd.php';
+
+session_start(); //Iniciamos una posible sesión
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if(isset($_POST['id'], $_POST['descripcion'])) {
 		$tga_nombre = $_POST['descripcion'];
@@ -11,8 +14,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$consulta->execute();
 		$tGasto = $consulta->fetchALL(PDO::FETCH_ASSOC); //Ejecutamos la consulta
 		$conexion_bd = NULL; // se cierra la conexión a la BD
-		render('basicos/index.html.twig',array('tGasto' => $tGasto));
-		
+		if (count($_SESSION) != 0) {
+			render('basicos/index.html.twig', array('tGasto' => $tGasto, 'valido' => $_SESSION['valido']));
+		} else {
+			render('default/index.html.twig', array());
+		}
+
 	}
 }elseif ($_SERVER['REQUEST_METHOD'] == 'GET') {
     if(isset($_GET['button2'])) {
@@ -22,13 +29,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$tGasto = $consulta->fetch(PDO::FETCH_ASSOC); //Ejecutamos la consulta
 
 		$conexion_bd = NULL; // se cierra la conexión a la BD
-		render('basicos/update.html.twig', array('tGasto' => $tGasto ));
+		//render('basicos/update.html.twig', array('tGasto' => $tGasto ));
+		if (count($_SESSION) != 0) {
+			render('basicos/update.html.twig', array('tGasto' => $tGasto, 'valido' => $_SESSION['valido']));
+		} else {
+			render('default/index.html.twig', array());
+		}
+
 	}else{
 		$consulta = $conexion_bd->prepare("SELECT * FROM tipo_gasto"); //Definimos la consulta a la base de datos.
 		$consulta->execute();
 		$tGasto = $consulta->fetchALL(PDO::FETCH_ASSOC); //Ejecutamos la consulta
 		$conexion_bd = NULL; // se cierra la conexión a la BD
-		render('basicos/index.html.twig',array('tGasto' => $tGasto));
+		if (count($_SESSION) != 0) {
+			render('basicos/index.html.twig', array('tGasto' => $tGasto, 'valido' => $_SESSION['valido']));
+		} else {
+			render('default/index.html.twig', array());
+		}
 	}
 }
 
