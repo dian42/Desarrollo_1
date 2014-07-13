@@ -1,9 +1,9 @@
 <?php
 require_once 'lib/twigLoad.php';
-include_once 'lib/conexion_bd.php';
 
 session_start(); //Iniciamos una posible sesión
-if (count($_SESSION) != 0) {
+if (count($_SESSION) != 0  && $_SESSION['tipo'] == false  ) {
+	include_once 'lib/conexion_bd.php';
 	if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 	    if(isset($_GET['button1'])) {
 			$tga_id = $_GET['button1'];
@@ -37,12 +37,11 @@ if (count($_SESSION) != 0) {
 			$conexion_bd = NULL; // se cierra la conexión a la BD
 			render('basicos/index.html.twig', array('tGasto' => $tGasto, 'valido' => $_SESSION['valido']));
 		}
-
 	}
 } else {
-	$conexion_bd = NULL; // se cierra la conexión a la BD
-	render('login/index.html.twig', array());
+	if ($_SESSION['tipo'] == true ) {
+		render('default/index.html.twig', array('valido' => $_SESSION['valido']));
+	}else
+		render('login/index.html.twig', array());
 }
-//else 
-	//render('basicos/delete.html.twig', array('tGasto' => array('id' => 1, 'descripcion' => "inllegable")));
 ?>
