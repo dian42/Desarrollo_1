@@ -1,5 +1,26 @@
+
 <!DOCTYPE html>
-<meta charset="utf-8">
+<html>
+<meta charset="utf-8"> 
+<head>
+
+</head>
+<body>
+
+  <?php 
+  include_once 'lib/conexion_bd.php';
+  $j=array();
+  $tipos  = $conexion_bd -> prepare("SELECT gas_costo FROM gasto ");
+  $tipos -> execute();
+  $tipos = $tipos->fetchAll(PDO::FETCH_ASSOC);
+  foreach ($tipos as $ids )
+    foreach ($ids as $id){
+     $j[++$q]= $id;
+  } 
+  echo "HOLA";
+  print_r( $j);
+?> 
+
 <style>
 
 body {
@@ -133,7 +154,6 @@ function transitionStacked() {
 
 // Inspired by Lee Byron's test data generator.
 function bumpLayer(n, o) {
-
   function bump(a) {
     var x = 1 / (.1 + Math.random()),
         y = 2 * Math.random() - .5,
@@ -145,9 +165,13 @@ function bumpLayer(n, o) {
   }
 
   var a = [], i;
-  for (i = 0; i < n; ++i) a[i] = o + o * Math.random();
+  for (i = 0; i < n; ++i) a[i] = Math.random();
   for (i = 0; i < 5; ++i) bump(a);
   return a.map(function(d, i) { return {x: i, y: Math.max(0, d)}; });
 }
 
 </script> 
+
+
+</body>
+</html>

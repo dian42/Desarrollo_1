@@ -1,6 +1,5 @@
 <?php 
-dato();
-function dato (){
+
 	include_once 'lib/conexion_bd.php';
 	$j=array();
 	$q=0;
@@ -11,8 +10,7 @@ function dato (){
 		foreach ($ids as $id){
 		$j[++$q]= $id;
 	} 
-	for($q;$q>0;$q--)
-		echo $j[$q]."<br>";
+print_r($j);
 
-}
+
 ?> 
