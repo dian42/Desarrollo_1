@@ -1,7 +1,7 @@
 <?php
 require_once 'lib/twigLoad.php';
 include_once 'lib/conexion_bd.php';
-include_once 'lib/validacion.php';
+include_once 'lib/validacion_xls.php';
 include_once 'lib/leerxls/reader.php'; 
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
