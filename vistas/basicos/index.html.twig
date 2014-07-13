@@ -1,8 +1,8 @@
 {% extends "base.html.twig" %}
 
+{% block title %}Mantenedor Tipo Gasto - {% endblock title %}
 
-                    {#% block varOption %}
-                    {% endblock varOption %#}
+
 
 {% block content %}
     <div class="content container">
@@ -12,7 +12,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-10 col-md-offset-1">
+            <div class="col-md-10">
                 <section class="widget">
                     <header>
                         <h4>
@@ -27,7 +27,7 @@
 				        <tr>
 				            <th class="hidden-xs-portrait">#</th>
 				            <th>Nombre</th>
-				            <th></th>
+				            <th>Acción</th>
 				        </tr>
 				        </thead>
 				        <tbody>
@@ -44,9 +44,6 @@
 				               
 				                <button class="btn btn-sm btn-warning" data-toggle="button" onClick='location.href="modificaTipoGasto.php?button2={{dato['tga_id']}}"'>
 				                    Modificar
-				                </button>
-				                <button class="btn btn-sm btn-info" data-toggle="button" onClick='location.href="verTipoGasto.php?button3={{dato['tga_id']}}"'>
-				                    Ver
 				                </button>
 				            </td>
 				        </tr>

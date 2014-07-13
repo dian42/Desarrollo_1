@@ -42,6 +42,7 @@ $tipos 	= $conexion_bd -> prepare("SELECT pro_numero FROM propiedad WHERE pro_co
 $tipos -> execute();
 $tipos = $tipos->fetchAll(PDO::FETCH_ASSOC);
 $i=3;
+
 foreach ($tipos as $ids ) 
 	foreach ($ids as $id ) {
 		$objPHPExcel->setActiveSheetIndex(0)->setCellValue('A'.$i, $id);
@@ -51,9 +52,12 @@ foreach ($tipos as $ids )
 $columna = array('A','B','C','D','E');
 foreach ($columna as $col) 
 	$objPHPExcel->getActiveSheet()->getColumnDimension($col)->setAutoSize(true); //dimensiono las columnas
-for($j=3;$j<1000;$j++){ //genero un array desde el B3 al B1000
+
+$objPHPExcel->getActiveSheet()->getStyle('B3:B1000')->getNumberFormat() ->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_TEXT); // da formato de texto a la columna de las fechas
+
+for($j=3;$j<1000;$j++) //genero un array desde el B3 al B1000
 	$a[$j]='D'.$j;
-}
+
 foreach ($a as $b) { //hago q tega un menu desplegable
 	$objValidation = $objPHPExcel->getActiveSheet()->getCell($b)->getDataValidation();
 	$objValidation->setFormula1('Datos!$A$1:$A$'.$i);

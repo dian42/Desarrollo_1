@@ -25,4 +25,7 @@
     </label>
     <input type="submit" value="Enviar">
 </form> 
-{% endblock %}
+
+{{ parent() }}
+{% endblock content %}
+{% block footer %}{% endblock %}

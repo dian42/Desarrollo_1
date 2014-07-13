@@ -1,5 +1,93 @@
 {% extends "base.html.twig" %}
 
+
+                    {#% block varOption %}
+                    {% endblock varOption %#}
+
 {% block content %}
-<p>sslkdakvsdfo</p>
-{% endblock %}
+
+<div class="content container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="page-title">Ingresar una Propiedad </h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <section class="widget">
+                <header>
+                    <h4>
+                        <i class="fa fa-align-left"></i>
+                        Nueva Propiedad
+                    </h4>
+                </header>
+                <div class="body">
+                    <form class="form-horizontal" action="registroPropiedad.php" method="POST">
+                        <fieldset>
+                            <legend class="section">Ingrese la propiedad</legend>
+                            <div class="control-group">
+		                        <label class="control-label" for="default-select">Conjunto residencial </label>
+		                        <div class="controls form-group">
+		                            <select name="conjunto"
+		                                    class="chzn-select select-block-level" id="default-select">
+		                                {% for conjuntos in conjunto %}
+						                    <option value={{conjuntos['con_id']}}>{{conjuntos['con_nombre']}}</option>
+							            {% endfor %}
+		                            </select>
+		                        </div>
+	                    	</div>                        
+
+                        <div class="control-group">
+                            <label class="control-label " for="tooltip-enabled">Número</label>
+                            <div class="controls form-group">
+                                <div class="col-sm-8">
+                                    <input type="text" id="tooltip-enabled" name="numero" class="form-control"
+                                       data-placement="top" data-original-title="Número de propiedad (máximo 8 caracteres)"
+                                       value="{{propiedad['pro_numero']}}" pattern = "[a-zA-Z]+[0-9]+" maxlenght = "8"  placeholder = "Ej: a012" required ></div>
+                            </div>
+                        </div>
+
+						<div class="control-group">
+                            <label class="control-label " for="tooltip-enabled">Metros cuadrados</label>
+                            <div class="controls form-group">
+                                <div class="col-sm-8">
+                                    <input type="text" id="tooltip-enabled" name="m2" class="form-control"
+                                       data-placement="top" data-original-title="Superficie de la propiedad (máximo 3 digitos)"
+                                       value="{{propiedad['pro_m2']}}" pattern = "[0-9]+" maxlenght = "3" required placeholder = "Ej: 89" ></div>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label " for="tooltip-enabled">Alicuota</label>
+                            <div class="controls form-group">
+                                <div class="col-sm-8">
+                                    <input type="text" id="tooltip-enabled" name="alicuota" class="form-control"
+                                       data-placement="top" data-original-title="Pocentaje expresado en decimales (Ej: 0.02)"
+                                       value="{{propiedad['pro_alicuota']}}" pattern = "\d*(\.\d*)?" required placeholder = "Ej: 0.012" ></div>
+                            </div>
+                        </div>
+
+                        
+
+	                    <div class="form-actions">
+                            <div>
+                                <button type="submit" name="subit" class="btn btn-primary" value="Aceptar" >Aceptar</button>
+                                <button type="button" class="btn btn-default" onClick='location.href="modificarPropiedad.php"'>Cancelar</button>
+                            </div>
+                        </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </section>
+        </div>
+
+    </div>
+    
+    
+    
+</div>
+
+{{ parent() }}
+{% endblock content %}
+{% block footer %}{% endblock %}
+
