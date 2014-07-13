@@ -9,13 +9,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		
 		$insert_bd = $conexion_bd -> exec("INSERT INTO tipo_gasto VALUES ('$tga_id', '$tga_nombre')");
 		//$conexion_bd = NULL;
-		print_r($insert_bd);
+		//print_r($insert_bd);
+		$operacion = print_r($insert_bd, true);
+		if($operacion){
+			$consulta = $conexion_bd->prepare("SELECT * FROM tipo_gasto"); //Definimos la consulta a la base de datos.
+			$consulta->execute();
+			$tGasto = $consulta->fetchALL(PDO::FETCH_ASSOC); //Ejecutamos la consulta
+			$conexion_bd = NULL; // se cierra la conexión a la BD
+			render('basicos/index.html.twig',array('tGasto' => $tGasto));
+		}
+		else{
+			$consulta_bd = $conexion_bd->prepare("SELECT * FROM tipo_gasto");
+			$consulta_bd -> execute();
 
-		$consulta = $conexion_bd->prepare("SELECT * FROM tipo_gasto"); //Definimos la consulta a la base de datos.
-		$consulta->execute();
-		$tGasto = $consulta->fetchALL(PDO::FETCH_ASSOC); //Ejecutamos la consulta
-		$conexion_bd = NULL; // se cierra la conexión a la BD
-		render('basicos/index.html.twig',array('tGasto' => $tGasto));
+			/* Se obtiene el primer registro del conjunto de resultados
+			 * como un arreglo asociativo */
+			$tGasto = $consulta_bd->fetchAll(PDO::FETCH_ASSOC);
+
+			// Se cierra la conexión con la BD.
+			$conexion_bd = NULL;
+
+			render('basicos/error2.html.twig',array('tGasto' => $tGasto));
+		}
 	}
 
 	//no cacho de aki pa abajo ya cambie el create 
