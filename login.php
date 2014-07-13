@@ -26,7 +26,7 @@ else {
 			if($user == $consult_cp['cop_run'] && $pass == $consult_cp['cop_clave']){
 				$_SESSION['usuario'] = $consult_cp['cop_nombres']; //Guarda el nombre del usuario en la sesión
 				$_SESSION['tipo'] = true; //Guarda el tipo de usuario, en este caso 0 para copropietario.
-				$datos = $conexion_bd->prepare(" SELECT con_nombre, pro_numero
+				$datos = $conexion_bd->prepare(" SELECT con_nombre, pro_numero, pro_id, con_id
 												 FROM cop_pro, propiedad, conjunto
 												 WHERE cpr_cop_id = $user AND
 													   cpr_pro_id = pro_id AND
@@ -40,9 +40,9 @@ else {
 			}
 			else {
 				if ($user == $consult_ad['adm_run'] && $pass == $consult_ad['adm_password']){
-					$_SESSION['usuario'] = $consult_cp['adm_name']; //Guarda el nombre del usuario en la sesión
+					$_SESSION['usuario'] = $consult_ad['adm_name']; //Guarda el nombre del usuario en la sesión
 					$_SESSION['tipo'] = false; //Guarda el tipo de usuario, en este caso 0 para copropietario.
-					$datos = $conexion_bd -> prepare(" SELECT con_nombre FROM conjunto WHERE con_adm_run = $user");
+					$datos = $conexion_bd -> prepare(" SELECT con_nombre, con_id FROM conjunto WHERE con_adm_run = $user");
 					$datos -> execute(); //Ejecutamos la consulta
 					$datos_adm = $datos -> fetchAll(PDO::FETCH_ASSOC); //Saca todos los datos obtenidos
 					$_SESSION['datos'] = $datos_adm; //guardamos en la sesión los datos de conjunto y las propiedades asociadas
@@ -50,8 +50,7 @@ else {
 					render('default/inicio.html.twig', array('valido' =>$_SESSION['valido']));//redireccionamos a la direccion asignada,con 
 				}
 				else {
-					echo "Usuario o contraseña incorrectos"; 
-					include_once 'vistas/login.html';
+					render('login/index.html.twig', array('incorrecto' => "Usuacio o contraseña incorrectos"));
 				}
 			}
 		}
