@@ -1,5 +1,73 @@
 {% extends "base.html.twig" %}
 
+
+                    {#% block varOption %}
+                    {% endblock varOption %#}
+
 {% block content %}
-<p>sslkdakvsdfo</p>
-{% endblock %}
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="page-title">Registro de propiedades</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10">
+                <section class="widget">
+                    <header>
+                        <h4>
+                            <i class="fa fa-list-ol"></i>
+                            Propiedades
+                        </h4>
+                    </header>
+                    <div class="body">
+
+				    <table class="table table-striped table-images">
+				        <thead>
+				        <tr>
+				            <th class="hidden-xs-portrait" >Número</th>
+				            <th >Metros cuadrados</th>
+				            <th >Alicuota</th>
+				            <th >Conjunto</th>
+				            <th >Acción</th>
+				        </tr>
+				        </thead>
+				        <tbody>
+					{% for dato in propiedad %}
+				        <tr>
+				            <td class="hidden-xs-portrait">{{dato['pro_numero']}}</td>
+				            <td>
+				                {{dato['pro_m2']}}
+				            </td>
+				            <td>
+				                {{dato['pro_alicuota']}}
+				            </td>
+				            <td>
+				                {{dato['con_nombre']}}
+				            </td>
+				            <td>
+				               	<button class="btn btn-sm btn-warning" data-toggle="button" onClick='location.href="modificarPropiedad.php?button1={{dato['pro_id']}}"'>
+				                    Modificar
+				                </button>
+				            </td>
+				        </tr>
+					{% endfor %}
+				        </tbody>
+					</table>
+                    <div class="clearfix">
+                        <div class="pull-left">
+                            <button class="btn btn-default btn-sm" data-toggle="button" onClick='location.href="registroPropiedad.php"'>
+                                Crear
+                            </button>
+
+                        </div>
+                    </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+    </div>
+{{ parent() }}
+{% endblock content %}
+{% block footer %}{% endblock %}
