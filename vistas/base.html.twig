@@ -15,8 +15,8 @@
         {% block logo %}
          <div class="logo pull-left" href="inde.php">
                 <a href="inde.php"><img src="vistas/bootstrap/img/logos.png" width="60px" height="60px" ALIGN=bottom  alt="">                
-                <a href="inde.php"><strong>GC</strong>admin</a> 
-                    <Large>Administración y gestión de gastos comunes</Large>
+                <!--a href="inde.php"><strong>GC</strong>admin</a> 
+                    <Large>Administración y gestión de gastos comunes</Large-->
                 </a>
         </div>
         {% endblock logo %}
@@ -50,8 +50,8 @@
             </li>
             <li class="panel">
                 <a class="accordion-toggle collapsed" data-toggle="collapse"
-                 data-parent="#side-nav" href="#Estadisticas"><i class="fa fa-bar-chart-o"></i> <span class="name">Estadisticas</span></a>
-                <ul id="Estadisticas" class="panel-collapse collapse">
+                 data-parent="#side-nav" href="#Gráficos"><i class="fa fa-bar-chart-o"></i> <span class="name">Gráficos</span></a>
+                <ul id="Gráficos" class="panel-collapse collapse">
                         {% set foo = -1 %}
                     {% for key,condominio in valido.datos if key != foo %}
                         {% set foo = key %}
@@ -81,12 +81,19 @@
             </li>
             <li class="panel">
                 <a class="accordion-toggle collapsed" data-toggle="collapse"
-                 data-parent="#side-nav" href="#Estadisticas"><i class="fa fa-bar-chart-o"></i> <span class="name">Estadisticas</span></a>
-                <ul id="Estadisticas" class="panel-collapse collapse">
+                 data-parent="#side-nav" href="#Gráficos"><i class="fa fa-bar-chart-o"></i> <span class="name">Gráficos</span></a>
+                <ul id="Gráficos" class="panel-collapse collapse">
                         {% set foo = -1 %}
                     {% for key,condominio in valido.datos if key != foo %}
                         {% set foo = key %}
-                        <li><a href="ingresarTipoGasto.php?condominio={{valido['datos'][key]['con_id']}}">{{condominio['con_nombre']}}</a></li>
+                    <li class="panel">
+                        <a class="accordion-toggle collapsed" data-toggle="collapse"
+                           data-parent="#menu-levels-collapse" href="#sub-menu-2-collapse">{{condominio['con_nombre']}}</a>
+                        <ul id="sub-menu-2-collapse" class="panel-collapse collapse">
+                                    <li><a href="generarGasto.php?condominio={{condominio['con_nombre']}}">Gasto Adicional</a></li>
+                                    <li><a href="generarGasto.php?condominio={{condominio['con_nombre']}}">Gasto Común</a></li>
+                        </ul>
+                    </li>
                     {% endfor %}
                 </ul>
             </li>
@@ -96,6 +103,17 @@
                 <ul id="Subir-Gastos" class="panel-collapse collapse">
                     <li><a href="ui_buttons.html">Comunes</a></li>
                     <li><a href="ui_dialogs.html">Adicionales</a></li>
+                </ul>
+            </li>
+            <li class="panel">
+                <a class="accordion-toggle collapsed" data-toggle="collapse"
+                   data-parent="#side-nav" href="#Propiedad"><i class="fa fa-edit"></i> <span class="name">Registro Propiedad</span></a>
+                <ul id="Propiedad" class="panel-collapse collapse">
+                        {% set foo = -1 %}
+                    {% for key,condominio in valido.datos if key != foo %}
+                        {% set foo = key %}
+                        <li><a href="modificarPropiedad.php?condominio={{condominio['con_id']}}">{{condominio['con_nombre']}}</a></li>
+                    {% endfor %}
                 </ul>
             </li>
             <li class="panel">
