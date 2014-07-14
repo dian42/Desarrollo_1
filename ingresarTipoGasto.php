@@ -32,7 +32,7 @@ if (count($_SESSION) != 0  && $_SESSION['tipo'] == false  ) {
 
 					// Se cierra la conexión con la BD.
 					$conexion_bd = NULL;
-					render('basicos/error2.html.twig', array('tGasto' => $tGasto, 'valido' => $_SESSION['valido'],'error'=>"La operación no se pudo realizar debido a que el identificador del tipo de gasto ingresado ya existe"));
+					render('basicos/error1.html.twig', array('valido' => $_SESSION['valido'],'error'=>"La operación no se pudo realizar debido a que el identificador del tipo de gasto ingresado ya existe"));
 				}
 			}else{
 					$consulta_bd = $conexion_bd->prepare("SELECT * FROM tipo_gasto");
