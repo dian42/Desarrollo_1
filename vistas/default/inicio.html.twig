@@ -1,40 +1,5 @@
 {% extends "base.html.twig" %}
 
-{% block varOption %}
-	{% if valido.tipo == true %}
-	    <li class="panel">
-	        <a class="accordion-toggle collapsed" data-toggle="collapse"
-	           data-parent="#side-nav" href="#forms-collapse"><i class="fa fa-edit"></i> <span class="name">Reportes</span></a>
-	        <ul id="forms-collapse" class="panel-collapse collapse">
-	            <li class="panel">
-	                <a class="accordion-toggle collapsed" data-toggle="collapse"
-	                   data-parent="#menu-levels-collapse" href="#sub-menu-1-collapse">Condominio</a>
-	                <ul id="sub-menu-1-collapse" class="panel-collapse collapse">
-	                    <li><a href="ingresarTipoGasto.php?propiedad=1">Propiedad.1</a></li>
-	                    <li><a href="#">Propiedad.2</a></li>
-	                </ul>
-	            </li>
-	        </ul>
-	    </li>
-	    <li class="panel">
-	        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#side-nav" href="#stats-collapse"><i class="fa fa-bar-chart-o"></i> <span class="name">Estadisticas</span></a>
-	        <ul id="stats-collapse" class="panel-collapse collapse">
-	            <li><a href="stat_statistics.html">Stats</a></li>
-	            <li><a href="stat_charts.html">Charts</a></li>
-	            <li><a href="stat_realtime.html">Realtime</a></li>
-	            <li class="panel">
-	                <a class="accordion-toggle collapsed" data-toggle="collapse"
-	                   data-parent="#menu-levels-collapse" href="#sub-menu-1-collapse">Condominio</a>
-	                <ul id="sub-menu-1-collapse" class="panel-collapse collapse">
-	                    <li><a href="ingresarTipoGasto.php?propiedad=1">Propiedad.1</a></li>
-	                    <li><a href="#">Propiedad.2</a></li>
-	                </ul>
-	            </li>
-	        </ul>
-	    </li>
-	{% endif %}
-{% endblock varOption %}
-
 {% block content %}
 {% endblock content %}
 {% block footer %}{% endblock %}

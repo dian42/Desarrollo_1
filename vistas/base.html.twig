@@ -75,7 +75,7 @@
                         {% set foo = -1 %}
                     {% for key,condominio in valido.datos if key != foo %}
                         {% set foo = key %}
-                        <li><a href="MantenedorTipoGasto.php?condominio={{valido['datos'][key]['con_id']}}">{{condominio['con_nombre']}}</a></li>
+                        <li><a href="reporteCopPro.php?condomino={{condominio['con_id']}}">{{condominio['con_nombre']}}</a></li>
                     {% endfor %}
                 </ul>
             </li>
@@ -90,8 +90,8 @@
                         <a class="accordion-toggle collapsed" data-toggle="collapse"
                            data-parent="#menu-levels-collapse" href="#sub-menu-2-collapse">{{condominio['con_nombre']}}</a>
                         <ul id="sub-menu-2-collapse" class="panel-collapse collapse">
-                                    <li><a href="generarGasto.php?condominio={{condominio['con_nombre']}}">Gasto Adicional</a></li>
-                                    <li><a href="generarGasto.php?condominio={{condominio['con_nombre']}}">Gasto Común</a></li>
+                                    <li><a href="generarGasto.php?condominio={{condominio['con_id']}}">Gasto Adicional</a></li>
+                                    <li><a href="generarGasto.php?condominio={{condominio['con_id']}}">Gasto Común</a></li>
                         </ul>
                     </li>
                     {% endfor %}
@@ -99,11 +99,22 @@
             </li>
             <li class="panel">
                 <a class="accordion-toggle collapsed" data-toggle="collapse"
-                   data-parent="#side-nav" href="#Subir-Gastos"><i class="fa fa-magic"></i> <span class="name">Subir Gastos</span></a>
-                <ul id="Subir-Gastos" class="panel-collapse collapse">
-                    <li><a href="ui_buttons.html">Comunes</a></li>
-                    <li><a href="ui_dialogs.html">Adicionales</a></li>
+                 data-parent="#side-nav" href="#Subir-gastos"><i class="fa fa-bar-chart-o"></i> <span class="name">Subir Gastos</span></a>
+                <ul id="Subir-gastos" class="panel-collapse collapse">
+                        {% set foo = -1 %}
+                    {% for key,condominio in valido.datos if key != foo %}
+                        {% set foo = key %}
+                    <li class="panel">
+                        <a class="accordion-toggle collapsed" data-toggle="collapse"
+                           data-parent="#menu-levels-collapse" href="#sub-menu-3-collapse">{{condominio['con_nombre']}}</a>
+                        <ul id="sub-menu-3-collapse" class="panel-collapse collapse">
+                                    <li><a href="upload_xls_adicional.php?condominio={{condominio['con_id']}}">Gasto Adicional</a></li>
+                                    <li><a href="upload_xls_gasto.php?condominio={{condominio['con_id']}}">Gasto Común</a></li>
+                        </ul>
+                    </li>
+                    {% endfor %}
                 </ul>
+            </li>
             </li>
             <li class="panel">
                 <a class="accordion-toggle collapsed" data-toggle="collapse"
