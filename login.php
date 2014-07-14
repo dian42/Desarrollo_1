@@ -50,7 +50,7 @@ else {
 					render('default/inicio.html.twig', array('valido' =>$_SESSION['valido']));//redireccionamos a la direccion asignada,con 
 				}
 				else {
-					render('login/index.html.twig', array('incorrecto' => "Usuacio o contraseña incorrectos"));
+					render('login/index.html.twig', array('incorrecto' => "Usuario o contraseña incorrectos"));
 				}
 			}
 		}
