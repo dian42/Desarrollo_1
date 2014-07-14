@@ -1,5 +1,5 @@
 <?php
-include_once 'lib/conexion_bd.php';
+include_once 'conexion_bd.php';
 
 function vfecha($date){
 	if(preg_match('/^\d{1,2}\/\d{1,2}\/\d{4}$/',$date)) 
@@ -69,7 +69,7 @@ function vcosto($costo){
 
 function vpropiedad($prop) {
 	if(strlen ($prop)<= 8){
-		$permitidos = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890:-.";
+		$permitidos = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
 		for ($i=0; $i<strlen($prop); $i++){ 
 	      if (strpos($permitidos, substr($prop,$i,1))===false){ 
 	             return false; 

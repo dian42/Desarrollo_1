@@ -41,13 +41,13 @@
 	$myPicture->drawScale($scaleSettings);
 
 	/* Write the chart legend */
-	$myPicture->drawLegend(580,12,array("Style"=>LEGEND_NOBORDER,"Mode"=>LEGEND_HORIZONTAL));
+	$myPicture->drawLegend(500,12,array("Style"=>LEGEND_NOBORDER,"Mode"=>LEGEND_HORIZONTAL));
 
 	/* Turn on shadow computing */ 
 	$myPicture->setShadow(TRUE,array("X"=>1,"Y"=>1,"R"=>0,"G"=>0,"B"=>0,"Alpha"=>10));
 
 	/* Draw the chart */
-	$myPicture->setShadow(TRUE,array("X"=>1,"Y"=>1,"R"=>0,"G"=>0,"B"=>0,"Alpha"=>10));
+	$myPicture->setShadow(TRUE,array("X"=>1,"Y"=>1,"R"=>0,"G"=>0,"B"=>0,"Alpha"=>20));
 	$settings = array("Surrounding"=>-30,"InnerSurrounding"=>30,"Interleave"=>0);
 	$myPicture->drawBarChart($settings);
 
@@ -59,7 +59,7 @@
 function DatosGastos($conexion_bd){	
 	$i=0;
 	$datos = array();
-	$tipos = $conexion_bd -> prepare("SELECT gas_costo FROM gasto ");
+	$tipos = $conexion_bd -> prepare("SELECT gas_costo FROM gasto  WHERE gas_fecha BETWEEN '2015-08-23' AND '2022-02-26'");
 	$tipos -> execute();
 	$tipos = $tipos->fetchAll(PDO::FETCH_ASSOC);
 	$conexion_bd =NULL;
@@ -69,7 +69,7 @@ function DatosGastos($conexion_bd){
 				$datos[++$i]=$gasto;
 		}
 
-	return $datos;
+	return $datos;	
 }
 function DatosAdicionales($conexion_bd){	
 	$i=0;
@@ -81,7 +81,7 @@ function DatosAdicionales($conexion_bd){
 	foreach ($tipos as $gastos ) 
 		foreach ($gastos as $gasto ) {
 			if($i<9)
-				$datos[++$i]=$gasto;
+				$datos[++$i]=($gasto+1)*rand(100,200);
 		}
 
 	return $datos;
