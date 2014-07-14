@@ -28,7 +28,7 @@ if (count($_SESSION) != 0  && $_SESSION['tipo'] == false  ) {
 				// Se cierra la conexión con la BD.
 				$conexion_bd = NULL;
 
-				render('basicos/error1.html.twig', array('tGasto' => $tGasto, 'valido' => $_SESSION['valido']));
+				render('basicos/error2.html.twig', array('tGasto' => $tGasto, 'valido' => $_SESSION['valido'], 'error' => "La operación no se pudo realizar debido a que el tipo de gasto se encuentra en uso"));
 			}
 		}else{
 			$consulta = $conexion_bd->prepare("SELECT * FROM tipo_gasto"); //Definimos la consulta a la base de datos.

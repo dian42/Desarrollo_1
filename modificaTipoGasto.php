@@ -17,6 +17,7 @@ if (count($_SESSION) != 0  && $_SESSION['tipo'] == false  ) {
 				$conexion_bd = NULL; // se cierra la conexión a la BD
 				render('basicos/index.html.twig', array('tGasto' => $tGasto, 'valido' => $_SESSION['valido']));
 			}else{
+
 			$consulta_bd = $conexion_bd->prepare("SELECT * FROM tipo_gasto");
 			$consulta_bd -> execute();
 			/* Se obtiene el primer registro del conjunto de resultados
