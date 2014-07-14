@@ -29,7 +29,7 @@ else {
 			}
 			else{
 				
-				render('login/errorlogin.html.twig', array('error' => "Usuario o contraseña no válido"));
+				render('login/errorlogin.html.twig', array('error' => "Usuario o contraseña incorrectos"));
 			}
 		}
 		elseif (isset($_POST['user'], $_POST['pass']) && !isset($_POST['checkbox'])){
@@ -58,13 +58,13 @@ else {
 			}
 			else{
 				
-				render('login/errorlogin.html.twig', array('error' => "Usuario o contraseña no válido"));
+				render('login/errorlogin.html.twig', array('error' => "Usuario o contraseña incorrectos"));
 			}
 
 		}	
 			//comprobamos que los datos obtenidos de la consulta, correspondan con los ingresados por usuario.
 		else {
-			render('login/index.html.twig', array('incorrecto' => "Usuacio o contraseña incorrectos"));
+			render('login/errorlogin.html.twig', array('error' => "Usuario o contraseña incorrectos"));
 		}
 		$conexion_bd = NULL; // se cierra la conexión a la BD.
 	}

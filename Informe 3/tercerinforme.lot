@@ -1,0 +1,140 @@
+\select@language {spanish}
+\contentsline {table}{\numberline {1}{\ignorespaces Equipos}}{8}{table.1}
+\contentsline {table}{\numberline {2}{\ignorespaces Software}}{8}{table.2}
+\contentsline {table}{\numberline {3}{\ignorespaces Entrevistas}}{9}{table.3}
+\contentsline {table}{\numberline {4}{\ignorespaces Conjunto}}{15}{table.4}
+\contentsline {table}{\numberline {5}{\ignorespaces Copropietario}}{15}{table.5}
+\contentsline {table}{\numberline {7}{\ignorespaces Propiedad}}{16}{table.7}
+\contentsline {table}{\numberline {8}{\ignorespaces Administrador}}{16}{table.8}
+\contentsline {table}{\numberline {6}{\ignorespaces COP\_PRO}}{16}{table.6}
+\contentsline {table}{\numberline {9}{\ignorespaces Adicional}}{17}{table.9}
+\contentsline {table}{\numberline {10}{\ignorespaces Tipo\_Adicional}}{17}{table.10}
+\contentsline {table}{\numberline {11}{\ignorespaces Gasto}}{17}{table.11}
+\contentsline {table}{\numberline {12}{\ignorespaces Tipo\_Gasto}}{18}{table.12}
+\contentsline {table}{\numberline {13}{\ignorespaces Tipo\_conjunto}}{18}{table.13}
+\contentsline {table}{\numberline {14}{\ignorespaces Tipo\_Copropietario}}{18}{table.14}
+\contentsline {table}{\numberline {15}{\ignorespaces Estado\_Copropietario}}{19}{table.15}
+\contentsline {table}{\numberline {16}{\ignorespaces Reserva}}{19}{table.16}
+\contentsline {table}{\numberline {17}{\ignorespaces Estado\_Reserva}}{19}{table.17}
+\contentsline {table}{\numberline {18}{\ignorespaces Espacio}}{20}{table.18}
+\contentsline {table}{\numberline {19}{\ignorespaces Deuda}}{20}{table.19}
+\contentsline {table}{\numberline {20}{\ignorespaces Estado\_Deuda}}{20}{table.20}
+\contentsline {table}{\numberline {21}{\ignorespaces Imagen}}{21}{table.21}
+\contentsline {table}{\numberline {22}{\ignorespaces Regi\IeC {\'o}n}}{22}{table.22}
+\contentsline {table}{\numberline {23}{\ignorespaces Comuna}}{22}{table.23}
+\contentsline {table}{\numberline {24}{\ignorespaces Gas\_Deu}}{22}{table.24}
+\contentsline {table}{\numberline {25}{\ignorespaces Adi\_Deu}}{23}{table.25}
+\contentsline {table}{\numberline {26}{\ignorespaces Entidad Copropietario }}{34}{table.26}
+\contentsline {table}{\numberline {27}{\ignorespaces Entidad Administrador}}{34}{table.27}
+\contentsline {table}{\numberline {28}{\ignorespaces Flujo de datos Reporte\_gasto\_copropietario}}{35}{table.28}
+\contentsline {table}{\numberline {29}{\ignorespaces Flujo de datos Reporte\_deuda\_copropietario}}{35}{table.29}
+\contentsline {table}{\numberline {30}{\ignorespaces Flujo de datos Reporte\_hist\IeC {\'o}rico\_copropietario}}{35}{table.30}
+\contentsline {table}{\numberline {31}{\ignorespaces Flujo de datos Gr\IeC {\'a}fico\_estad\IeC {\'\i }stico\_copropietario}}{35}{table.31}
+\contentsline {table}{\numberline {32}{\ignorespaces Flujo de datos Espacio\_disponible}}{35}{table.32}
+\contentsline {table}{\numberline {33}{\ignorespaces Flujo de datos Aviso\_pago}}{35}{table.33}
+\contentsline {table}{\numberline {34}{\ignorespaces Flujo de datos Solicitud\_espacio}}{35}{table.34}
+\contentsline {table}{\numberline {35}{\ignorespaces Flujo de datos Aviso\_reserva}}{36}{table.35}
+\contentsline {table}{\numberline {36}{\ignorespaces Flujo de datos Credencial\_acceso\_copropietario }}{36}{table.36}
+\contentsline {table}{\numberline {37}{\ignorespaces Flujo de datos Dato\_copropietario}}{36}{table.37}
+\contentsline {table}{\numberline {38}{\ignorespaces Flujo de datos Reporte\_morosos\_administrador}}{36}{table.38}
+\contentsline {table}{\numberline {39}{\ignorespaces Flujo de datos Reporte\_gastos\_administrador}}{36}{table.39}
+\contentsline {table}{\numberline {40}{\ignorespaces Flujo de datos Reporte\_estad\IeC {\'\i }stico\_administrador}}{36}{table.40}
+\contentsline {table}{\numberline {41}{\ignorespaces Flujo de datos Gr\IeC {\'a}fico\_estad\IeC {\'\i }stico\_administrador}}{36}{table.41}
+\contentsline {table}{\numberline {42}{\ignorespaces Flujo de datos Archivo\_excel\_gasto}}{37}{table.42}
+\contentsline {table}{\numberline {43}{\ignorespaces Flujo de datos Archivo\_excel\_adicionales}}{37}{table.43}
+\contentsline {table}{\numberline {44}{\ignorespaces Flujo de datos Aviso\_solicitud\_reserva}}{37}{table.44}
+\contentsline {table}{\numberline {45}{\ignorespaces Flujo de datos Reporte\_deuda\_administrador}}{37}{table.45}
+\contentsline {table}{\numberline {46}{\ignorespaces Flujo de datos Ubicaci\IeC {\'o}n\_imagen\_pago}}{37}{table.46}
+\contentsline {table}{\numberline {47}{\ignorespaces Flujo de datos Archivo\_excel\_gasto\_com\IeC {\'u}n}}{37}{table.47}
+\contentsline {table}{\numberline {48}{\ignorespaces Flujo de datos Copropietario}}{37}{table.48}
+\contentsline {table}{\numberline {49}{\ignorespaces Flujo de datos Espacio\_com\IeC {\'u}n}}{38}{table.49}
+\contentsline {table}{\numberline {50}{\ignorespaces Flujo de datos Datos\_personales}}{38}{table.50}
+\contentsline {table}{\numberline {51}{\ignorespaces Flujo de datos Archivo\_excel\_gastos\_adicionales}}{38}{table.51}
+\contentsline {table}{\numberline {52}{\ignorespaces Flujo de datos Pago\_copropietario}}{38}{table.52}
+\contentsline {table}{\numberline {53}{\ignorespaces Flujo de datos Conjunto\_residencial}}{38}{table.53}
+\contentsline {table}{\numberline {54}{\ignorespaces Flujo de datos Confirmaci\IeC {\'o}n\_reserva}}{38}{table.54}
+\contentsline {table}{\numberline {55}{\ignorespaces Flujo de datos Credencial\_acceso\_administrador}}{38}{table.55}
+\contentsline {table}{\numberline {56}{\ignorespaces Flujo de datos Tablas\_b\IeC {\'a}sicas}}{39}{table.56}
+\contentsline {table}{\numberline {57}{\ignorespaces Flujo de datos Propiedad}}{39}{table.57}
+\contentsline {table}{\numberline {58}{\ignorespaces Flujo de datos Reporte\_copropietario\_propiedad}}{39}{table.58}
+\contentsline {table}{\numberline {59}{\ignorespaces Proceso GCadmin}}{40}{table.59}
+\contentsline {table}{\numberline {60}{\ignorespaces Almacenamiento Conjunto}}{41}{table.60}
+\contentsline {table}{\numberline {61}{\ignorespaces Almacenamiento Copropietario}}{41}{table.61}
+\contentsline {table}{\numberline {62}{\ignorespaces Almacenamiento Cop\_Pro}}{41}{table.62}
+\contentsline {table}{\numberline {63}{\ignorespaces Almacenamiento Propiedad}}{42}{table.63}
+\contentsline {table}{\numberline {64}{\ignorespaces Almacenamiento Administrador}}{42}{table.64}
+\contentsline {table}{\numberline {65}{\ignorespaces Almacenamiento Adicional }}{42}{table.65}
+\contentsline {table}{\numberline {66}{\ignorespaces Almacenamiento Tipo\_Adicional}}{42}{table.66}
+\contentsline {table}{\numberline {67}{\ignorespaces Almacenamiento Gasto}}{43}{table.67}
+\contentsline {table}{\numberline {68}{\ignorespaces Almacenamiento Tipo\_Gasto }}{43}{table.68}
+\contentsline {table}{\numberline {69}{\ignorespaces Almacenamiento Tipo\_Conjunto }}{43}{table.69}
+\contentsline {table}{\numberline {70}{\ignorespaces Almacenamiento Tipo\_Copropietario}}{43}{table.70}
+\contentsline {table}{\numberline {71}{\ignorespaces Almacenamiento Estado\_Copropietario}}{44}{table.71}
+\contentsline {table}{\numberline {72}{\ignorespaces Almacenamiento Reserva }}{44}{table.72}
+\contentsline {table}{\numberline {73}{\ignorespaces Almacenamiento Estado\_Reserva}}{44}{table.73}
+\contentsline {table}{\numberline {74}{\ignorespaces Almacenamiento Espacio}}{44}{table.74}
+\contentsline {table}{\numberline {75}{\ignorespaces Almacenamiento Deuda}}{44}{table.75}
+\contentsline {table}{\numberline {76}{\ignorespaces Almacenamiento Estado\_Deuda }}{45}{table.76}
+\contentsline {table}{\numberline {77}{\ignorespaces Almacenamiento imagen}}{45}{table.77}
+\contentsline {table}{\numberline {78}{\ignorespaces Almacenamiento Region}}{45}{table.78}
+\contentsline {table}{\numberline {79}{\ignorespaces Almacenamiento Comuna}}{45}{table.79}
+\contentsline {table}{\numberline {80}{\ignorespaces Almacenamiento Gas\_Deu }}{45}{table.80}
+\contentsline {table}{\numberline {81}{\ignorespaces Almacenamiento Adi\_Deu}}{46}{table.81}
+\contentsline {table}{\numberline {82}{\ignorespaces Flujo de datos identificador\_propiedad}}{46}{table.82}
+\contentsline {table}{\numberline {83}{\ignorespaces Proceso Registro de gastos}}{46}{table.83}
+\contentsline {table}{\numberline {84}{\ignorespaces Proceso Administrador de \IeC {\'a}reas comunes}}{47}{table.84}
+\contentsline {table}{\numberline {85}{\ignorespaces Proceso Generaci\IeC {\'o}n de reportes}}{48}{table.85}
+\contentsline {table}{\numberline {86}{\ignorespaces Proceso Validaci\IeC {\'o}n login}}{49}{table.86}
+\contentsline {table}{\numberline {87}{\ignorespaces Proceso Registro conjunto}}{49}{table.87}
+\contentsline {table}{\numberline {88}{\ignorespaces Proceso Registro de administrador}}{49}{table.88}
+\contentsline {table}{\numberline {89}{\ignorespaces Proceso Gesti\IeC {\'o}n de copropietario}}{50}{table.89}
+\contentsline {table}{\numberline {90}{\ignorespaces Proceso Registro de propiedad}}{50}{table.90}
+\contentsline {table}{\numberline {91}{\ignorespaces Proceso Administraci\IeC {\'o}n de deudas}}{51}{table.91}
+\contentsline {table}{\numberline {92}{\ignorespaces Proceso Generaci\IeC {\'o}n de gr\IeC {\'a}ficos}}{52}{table.92}
+\contentsline {table}{\numberline {93}{\ignorespaces Proceso Mantenedor de tablas b\IeC {\'a}sicas}}{53}{table.93}
+\contentsline {table}{\numberline {94}{\ignorespaces Proceso Registro de Gastos Adicionales }}{54}{table.94}
+\contentsline {table}{\numberline {95}{\ignorespaces Proceso Registro de Gastos Comunes }}{55}{table.95}
+\contentsline {table}{\numberline {96}{\ignorespaces Flujo de datos Estado\_deuda}}{55}{table.96}
+\contentsline {table}{\numberline {97}{\ignorespaces Proceso Generador Deuda}}{56}{table.97}
+\contentsline {table}{\numberline {98}{\ignorespaces Poceso Generador Aviso Deuda}}{57}{table.98}
+\contentsline {table}{\numberline {99}{\ignorespaces Proceso Administraci\IeC {\'o}n de pago}}{57}{table.99}
+\contentsline {table}{\numberline {100}{\ignorespaces Descripci\IeC {\'o}n del m\IeC {\'o}dulo GCadmin}}{60}{table.100}
+\contentsline {table}{\numberline {101}{\ignorespaces Descripci\IeC {\'o}n del m\IeC {\'o}dulo GCadmin}}{60}{table.101}
+\contentsline {table}{\numberline {102}{\ignorespaces Descripci\IeC {\'o}n del m\IeC {\'o}dulo Gesti\IeC {\'o}n de espacios}}{60}{table.102}
+\contentsline {table}{\numberline {103}{\ignorespaces Descripci\IeC {\'o}n del m\IeC {\'o}dulo Validaci\IeC {\'o}n de login}}{60}{table.103}
+\contentsline {table}{\numberline {104}{\ignorespaces Descripci\IeC {\'o}n del m\IeC {\'o}dulo Registro de conjunto}}{61}{table.104}
+\contentsline {table}{\numberline {105}{\ignorespaces Descripci\IeC {\'o}n del m\IeC {\'o}dulo Administraci\IeC {\'o}n de deuda}}{61}{table.105}
+\contentsline {table}{\numberline {106}{\ignorespaces Descripci\IeC {\'o}n del Registro de administrador}}{61}{table.106}
+\contentsline {table}{\numberline {107}{\ignorespaces Descripci\IeC {\'o}n del Registro de propiedad}}{61}{table.107}
+\contentsline {table}{\numberline {108}{\ignorespaces Descripc\IeC {\'o}n de Gesti\IeC {\'o}n de copropietario}}{61}{table.108}
+\contentsline {table}{\numberline {109}{\ignorespaces Descripci\IeC {\'o}n de Generaci\IeC {\'o}n de reportes}}{62}{table.109}
+\contentsline {table}{\numberline {110}{\ignorespaces Descripci\IeC {\'o}n de Generaci\IeC {\'o}n de gr\IeC {\'a}ficos}}{62}{table.110}
+\contentsline {table}{\numberline {111}{\ignorespaces Descripci\IeC {\'o}n de Mantenedor de tablas b\IeC {\'a}sicas}}{62}{table.111}
+\contentsline {table}{\numberline {112}{\ignorespaces Descripci\IeC {\'o}n de Registro gastos comunes}}{63}{table.112}
+\contentsline {table}{\numberline {113}{\ignorespaces Descripci\IeC {\'o}n de Registro gastos adicionales}}{63}{table.113}
+\contentsline {table}{\numberline {114}{\ignorespaces Descripci\IeC {\'o}n de Registro de espacios}}{63}{table.114}
+\contentsline {table}{\numberline {115}{\ignorespaces Descripci\IeC {\'o}n de Gesti\IeC {\'o}n de reserva}}{64}{table.115}
+\contentsline {table}{\numberline {116}{\ignorespaces Descripci\IeC {\'o}n de Validaci\IeC {\'o}n administrador}}{64}{table.116}
+\contentsline {table}{\numberline {117}{\ignorespaces Descripci\IeC {\'o}n de Validaci\IeC {\'o}n copropietario}}{64}{table.117}
+\contentsline {table}{\numberline {118}{\ignorespaces Descripci\IeC {\'o}n de Generador aviso deuda}}{64}{table.118}
+\contentsline {table}{\numberline {119}{\ignorespaces Descripci\IeC {\'o}n de Generador deuda}}{65}{table.119}
+\contentsline {table}{\numberline {120}{\ignorespaces Descripci\IeC {\'o}n de Administrador de pago}}{65}{table.120}
+\contentsline {table}{\numberline {121}{\ignorespaces Descripci\IeC {\'o}n de Generaci\IeC {\'o}n reporte de copropietario morosos}}{65}{table.121}
+\contentsline {table}{\numberline {122}{\ignorespaces Descripic\IeC {\'o}n de Generaci\IeC {\'o}n reporte de deuda}}{65}{table.122}
+\contentsline {table}{\numberline {123}{\ignorespaces Descripci\IeC {\'o}n de Generaci\IeC {\'o}n reporte de gastos hist\IeC {\'o}ricos}}{66}{table.123}
+\contentsline {table}{\numberline {124}{\ignorespaces Descripci\IeC {\'o}n de Generaci\IeC {\'o}n reporte estad\IeC {\'\i }stico}}{66}{table.124}
+\contentsline {table}{\numberline {125}{\ignorespaces Descripci\IeC {\'o}n de Generaci\IeC {\'o}n reporte de gastos comunes}}{66}{table.125}
+\contentsline {table}{\numberline {126}{\ignorespaces Descripci\IeC {\'o}n de Generaci\IeC {\'o}n reporte n\IeC {\'o}mina copropietario y propiedades}}{66}{table.126}
+\contentsline {table}{\numberline {127}{\ignorespaces Descripci\IeC {\'o}n de Generaci\IeC {\'o}n de gr\IeC {\'a}fico gastos comunes}}{67}{table.127}
+\contentsline {table}{\numberline {128}{\ignorespaces Descripci\IeC {\'o}n de Generaci\IeC {\'o}n de gr\IeC {\'a}fico gastos adicionales}}{67}{table.128}
+\contentsline {table}{\numberline {129}{\ignorespaces Descripci\IeC {\'o}n de Mantenedor tipo\_conjunto}}{67}{table.129}
+\contentsline {table}{\numberline {130}{\ignorespaces Descripci\IeC {\'o}n de Mantenedor estado\_deuda}}{67}{table.130}
+\contentsline {table}{\numberline {131}{\ignorespaces Descripci\IeC {\'o}n de Mantenedor region}}{68}{table.131}
+\contentsline {table}{\numberline {132}{\ignorespaces Descripci\IeC {\'o}n de Mantenedor comuna}}{68}{table.132}
+\contentsline {table}{\numberline {133}{\ignorespaces Descripci\IeC {\'o}n de Mantenedor tipo\_copropietario}}{68}{table.133}
+\contentsline {table}{\numberline {134}{\ignorespaces Descripci\IeC {\'o}n de Mantenedor estado\_copropietario}}{69}{table.134}
+\contentsline {table}{\numberline {135}{\ignorespaces Descripci\IeC {\'o}n de Mantenedor tipo\_adicional}}{69}{table.135}
+\contentsline {table}{\numberline {136}{\ignorespaces Descripci\IeC {\'o}n de Mantenedor estado\_reserva}}{69}{table.136}
+\contentsline {table}{\numberline {137}{\ignorespaces Descripci\IeC {\'o}n de Mantenedor tipo\_gasto}}{70}{table.137}
+\contentsline {table}{\numberline {138}{\ignorespaces Descripci\IeC {\'o}n de administrador y sus funciones.}}{70}{table.138}
+\contentsline {table}{\numberline {139}{\ignorespaces Descripci\IeC {\'o}n de copropietario y sus funciones.}}{70}{table.139}

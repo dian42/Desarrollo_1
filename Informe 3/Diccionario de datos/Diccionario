@@ -1,0 +1,37 @@
+\begin{itemize}
+	\item Entradas:
+		\begin{itemize}
+			\item Rut = {[ 0 – 9 ]}
+			\item Contraseña = {[A-Z | a-z | 0-9 | _ | - | . | @ ]}
+			\item Solicitud_espacio = res_fecha, res_actividad.
+			\item Confirmación_reserva = ere_id
+			\item Espacios_comunes = esp_lugar, esp_descripcion
+			\item Credencial_acceso_copropietario = Rut + Contraseña
+			\item Credencial_acceso_administrador = Rut + Contraseña
+			\item Ubicación_imagen_pago = ima_path
+			\item Archivo_excel_gasto_común
+			\item Archivo_excel_gasto_adicional
+			\item Conjunto_residencial = con_fono, con_fondo, con_direccion, tcon_id, tcon_descripcion.
+			\item Datos_personales = usu_nombres. usu_ap_pat, usu_ap_mat,
+			\item Datos_copropietario = cop_fono, cop_direccion, cop_mail, cop_clave
+			\item Copropietario = cop_rut, cop_nombres, cop_ap_pat, cop_ap_mat, cop_fono, cop_direccion, cop_contraseña, cop_tipo, cop_comuna
+			\item Propiedad = pro_numero, pro_m2, pro_alicuota.
+			\item pago_copropietario = ede_id (estado_deuda)
+		\end{itemize}
+	item Salidas:
+		\begin{itemize}
+			\item Aviso_reserva = ere_id.
+			\item Espacios_disponibles = esp_lugar, esp_descripcion.
+			\item Aviso_solicitud_reserva = res_fecha, res_actividad, pro_numero, esp_lugar, esp_descripcion
+			\item Archivo_excel_gastos
+			\item Archivo_excel_adicionales
+			\item Aviso_pago = deu_fecha, deu_monto, deu_fecha_limite, deu_fecha_cancel.
+			\item 
+			\item 
+			\item 
+			\item 
+			\item 
+			\item 
+			\item 
+		\end{itemize}
+\end{itemize}
