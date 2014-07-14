@@ -18,14 +18,15 @@ else {
 			$consult_ad = $consulta_adm->fetch(PDO::FETCH_ASSOC); //Saca el primer registro
 
 			if ($user == $consult_ad['adm_run'] && $pass == $consult_ad['adm_password']){
-							$_SESSION['usuario'] = $consult_ad['adm_name']; //Guarda el nombre del usuario en la sesión
-							$_SESSION['tipo'] = false; //Guarda el tipo de usuario, en este caso 0 para copropietario.
-							$datos = $conexion_bd -> prepare(" SELECT con_nombre, con_id FROM conjunto WHERE con_adm_run = $user");
-							$datos -> execute(); //Ejecutamos la consulta
-							$datos_adm = $datos -> fetchAll(PDO::FETCH_ASSOC); //Saca todos los datos obtenidos
-							$_SESSION['datos'] = $datos_adm; //guardamos en la sesión los datos de conjunto y las propiedades asociadas
-							$_SESSION['valido'] = array('usuario' => $_SESSION['usuario'], 'tipo' => $_SESSION['tipo'], 'datos' => $_SESSION['datos']);
-						render('default/inicio.html.twig', array('valido' =>$_SESSION['valido']));//redireccionamos a la direccion asignada,con 
+				$_SESSION['usuario'] = $consult_ad['adm_name']; //Guarda el nombre del usuario en la sesión
+				$_SESSION['tipo'] = false; //Guarda el tipo de usuario, en este caso 0 para copropietario.
+				$datos = $conexion_bd -> prepare(" SELECT con_nombre, con_id FROM conjunto WHERE con_adm_run = $user");
+				$datos -> execute(); //Ejecutamos la consulta
+				$datos_adm = $datos -> fetchAll(PDO::FETCH_ASSOC); //Saca todos los datos obtenidos
+				$_SESSION['datos'] = $datos_adm; //guardamos en la sesión los datos de conjunto y las propiedades asociadas
+				$_SESSION['valido'] = array('usuario' => $_SESSION['usuario'], 'tipo' => $_SESSION['tipo'], 'datos' => $_SESSION['datos']);
+				$_SESSION['rut'] = $user;
+				render('default/inicio.html.twig', array('valido' =>$_SESSION['valido']));//redireccionamos a la direccion asignada,con 
 			}
 			else{
 				
@@ -44,6 +45,7 @@ else {
 			if($user == $consult_cp['cop_run'] && $pass == $consult_cp['cop_clave']){
 				$_SESSION['usuario'] = $consult_cp['cop_nombres']; //Guarda el nombre del usuario en la sesión
 				$_SESSION['tipo'] = true; //Guarda el tipo de usuario, en este caso 0 para copropietario.
+				$_SESSION['rut'] = $user;
 				$datos = $conexion_bd->prepare(" SELECT con_nombre, pro_numero, pro_id, con_id
 												 FROM cop_pro, propiedad, conjunto
 												 WHERE cpr_cop_id = $user AND
@@ -55,6 +57,7 @@ else {
 				$_SESSION['datos'] = $datos_cop; //guardamos en la sesión los datos de conjunto y las propiedades asociadas
 				$_SESSION['valido'] = array('usuario' => $_SESSION['usuario'], 'tipo' => $_SESSION['tipo'], 'datos' => $_SESSION['datos']);
 				render('default/inicio.html.twig', array('valido' =>$_SESSION['valido'])); //redireccionamos a la direccion asignada y se le envia el usuario
+			
 			}
 			else{
 				
