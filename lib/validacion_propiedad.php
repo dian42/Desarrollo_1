@@ -2,16 +2,9 @@
 include_once 'conexion_bd.php';
 
 function Vpropiedad($prop) {
-	if(strlen ($prop)<= 8){
-		$permitidos = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-		for ($i=0; $i<strlen($prop); $i++){ 
-	      if (strpos($permitidos, substr($prop,$i,1))===false){ 
-	             return false; 
-	      }
-	    } 
-	      return true;
-  	}
-  return false;
+	if(preg_match('/^([a-zA-Z]+[0-9]+){1,4}$/',$prop)) 
+		return true;
+	return false;
 }
 
 function Vm2 ($m2){
