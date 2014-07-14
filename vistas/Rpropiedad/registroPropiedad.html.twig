@@ -1,10 +1,10 @@
 {% extends "base.html.twig" %}
 {% block content %}
 	<form action="registroPropiedad.php" method="POST">
-    <label for="conjunto">Conjunto:
-        <select name="conjunto">
-            {% for conjuntos in conjunto %}
-                    <option value={{conjuntos['con_id']}}>{{conjuntos['con_nombre']}}</option>
+    <label for="conjuntoAdm">Conjunto:
+        <select name="conjuntoAdm">
+            {% for conjuntoAdm in conjuntoAdm %}
+                    <option value={{conjuntoAdm['con_id']}}>{{conjuntoAdm['con_nombre']}}</option>
             {% endfor %}
         </select><br/>
     </label>

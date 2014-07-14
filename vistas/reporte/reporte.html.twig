@@ -22,14 +22,13 @@
 	                        <div class="controls form-group">
 	                            <select name="conjunto"
 	                                    class="chzn-select select-block-level" id="default-select">
-	                                {% for conjuntos in conjunto %}
-					                    <option value={{conjuntos['con_id']}}>{{conjuntos['con_nombre']}}</option>
+	                                {% for conjuntoAdm in conjuntoAdm %}
+					                    <option value={{conjuntoAdm['con_id']}}>{{conjuntoAdm['con_nombre']}}</option>
 						            {% endfor %}	                          	
 	                            </select>
 						    	<button type="submit" name="subit" class="btn btn-primary" value="Aceptar" >Ver</button>
 	                        </div>
 	                    </div>
-				    
                         </fieldset>
                     </form>
 
