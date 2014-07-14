@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+<div class="content container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="page-title">Subir archivos <small> Archivo gasto adicional </small></h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10">
+                <section class="widget">
+                    <header>
+                        <h4>
+                            <i class="fa fa-list-ol"></i>
+                            Gasto adicional
+                        </h4>
+                    </header>
+                    <div class="body">
+                        <div class="clearfix">
+
+                            <!--<form enctype="multipart/form-data" action="upload_xls_adicional.php"   method="POST">
+                                <label for="file">Subir archivo Excel de gastos adicionales:</label>
+                                <input type="file" name="archivo" id="archivo" />
+                                <input type="submit" name="boton" value="Subir" />
+                            </form> -->
+
+
+                            <form enctype="multipart/form-data" action="upload_xls_adicional.php"   method="POST">
+                                <label for="file">Subir archivo Excel de gastos adicionales:</label>
+                                <div class="form-actions fileupload-buttonbar no-margin">
+                                    <span class="btn btn-sm btn-default fileinput-button">
+                                        <i class="fa fa-plus"></i>
+                                        <span>Examinar</span>
+                                        <input type="file" name="archivo">
+                                    </span>
+                                    <button class="btn btn-primary btn-sm start" type="submit">
+                                        <i class="fa fa-upload"></i>
+                                        <span>Subir</span>
+                                        <button class="btn btn-inverse btn-sm cancel" type="reset">
+                                            <i class="fa fa-ban"></i>
+                                            <span>Cancel upload</span>
+                                        </button>
+                                </div>
+                                <div class="fileupload-loading">
+                                    <i class="fa fa-spin fa-spinner"></i>
+                                </div>
+                            </form>
+                                    </button>
+                                </div>
+                            </form> 
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+</div>
+    {% endblock content %}
+{% block footer %}{% endblock %}

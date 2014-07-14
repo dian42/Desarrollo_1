@@ -1,5 +1,13 @@
 {% extends "base.html.twig" %}
-
 {% block content %}
-<p>sslkdakvsdfo</p>
+	<form action="reporteCopPro.php" method="POST">
+	    <label for="conjunto">Conjunto:
+	        <select name="conjunto">
+	            {% for conjuntos in conjunto %}
+	                    <option value={{conjuntos['con_id']}}>{{conjuntos['con_nombre']}}</option>
+	            {% endfor %}
+	        </select><br/>
+	    </label>
+	    <input type="submit" value="Ver">
+	</form> 
 {% endblock %}
