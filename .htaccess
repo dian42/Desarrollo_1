@@ -1,0 +1,4 @@
+RewriteBase /
+RewriteEngine on
+Options +FollowSymLinks
+RewriteRule /eliminar/tipo/gasto/(.*)$ eliminarTipoGasto.php?button1=$1 [L]
