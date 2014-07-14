@@ -31,12 +31,11 @@ if (count($_SESSION) != 0 && $_SESSION['tipo'] == false ) {
 					render('Rpropiedad/errorModificaPropiedad.html.twig',array('propiedad' => $propiedad, 'valido' => $_SESSION['valido'], 'error'=>"Número de propiedad duplicada."));
 				}
 			}else{
-					$consulta = $conexion_bd->prepare("SELECT pro_id, pro_numero, pro_m2, pro_alicuota, pro_con_id, con_nombre FROM propiedad, conjunto WHERE pro_con_id=con_id"); //Definimos la consulta a la base de datos.
-					$consulta->execute();
-					$propiedad = $consulta->fetchALL(PDO::FETCH_ASSOC); //Ejecutamos la consulta
-					$conexion_bd = NULL; // se cierra la conexión a la BD
-
-
+				$consulta = $conexion_bd->prepare("SELECT pro_id, pro_numero, pro_m2, pro_alicuota, pro_con_id, con_nombre FROM propiedad, conjunto WHERE pro_con_id=con_id"); //Definimos la consulta a la base de datos.
+				$consulta->execute();
+				$propiedad = $consulta->fetch(PDO::FETCH_ASSOC); //Ejecutamos la consulta
+				print_r($propiedad);
+				$conexion_bd = NULL; // se cierra la conexión a la BD
 				render('Rpropiedad/errorModificaPropiedad.html.twig',array('propiedad' => $propiedad, 'valido' => $_SESSION['valido'], 'error'=>"Datos no válidos"));	
 			}
 		}
@@ -46,10 +45,11 @@ if (count($_SESSION) != 0 && $_SESSION['tipo'] == false ) {
 			$consulta = $conexion_bd->prepare("SELECT * FROM propiedad WHERE pro_id = '$propiedad_id'"); //Definimos la consulta a la base de datos.
 			$consulta->execute();
 			$propiedad = $consulta->fetch(PDO::FETCH_ASSOC); //Ejecutamos la consulta
-
-			$con = $conexion_bd->prepare("SELECT * FROM conjunto");
+			$usuario = $_SESSION['usuario'];
+			$con = $conexion_bd->prepare("SELECT con_id, con_nombre FROM conjunto WHERE con_adm_run = $usuario");
 			$con -> execute();
 			$consult_propiedad = $con -> fetchAll(PDO::FETCH_ASSOC); //Saca el todas las propiedades asociadas a un conjunto
+			print_r($consult_propiedad);
 
 			$conexion_bd = NULL; // se cierra la conexión a la BD
 			render('Rpropiedad/update.html.twig', array('propiedad' => $propiedad ,'conjunto' => $consult_propiedad, 'valido' => $_SESSION['valido'] ));
