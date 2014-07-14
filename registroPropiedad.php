@@ -7,6 +7,7 @@ session_start(); //Iniciamos una posible sesión
 
 
 
+
 if (count($_SESSION) != 0 && $_SESSION['tipo'] == false ) {
 	include_once 'lib/conexion_bd.php';
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -52,6 +53,7 @@ if (count($_SESSION) != 0 && $_SESSION['tipo'] == false ) {
 		render('default/index.html.twig', array('valido' => $_SESSION['valido']));
 	}else
 		render('login/index.html.twig', array());
+
 }
 
 ?>
