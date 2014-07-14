@@ -1,0 +1,115 @@
+\select@language {spanish}
+\contentsline {section}{\numberline {1}CAP\IeC {\'I}TULO 1. PRESENTACI\IeC {\'O}N Y PLANIFICACI\IeC {\'O}N DEL PROYECTO}{5}{section.1}
+\contentsline {subsection}{\numberline {1.1}Introducci\IeC {\'o}n}{5}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Objetivos del Proyecto}{5}{subsection.1.2}
+\contentsline {subsubsection}{\numberline {1.2.1}\bf Objetivo General}{5}{subsubsection.1.2.1}
+\contentsline {subsubsection}{\numberline {1.2.2}\bf Objetivos Espec\IeC {\'\i }ficos}{5}{subsubsection.1.2.2}
+\contentsline {subsection}{\numberline {1.3}\bf Descripci\IeC {\'o}n de la Problem\IeC {\'a}tica}{5}{subsection.1.3}
+\contentsline {subsubsection}{\numberline {1.3.1}\bf Motivaci\IeC {\'o}n}{5}{subsubsection.1.3.1}
+\contentsline {subsubsection}{\numberline {1.3.2}\bf Definici\IeC {\'o}n del Problema}{5}{subsubsection.1.3.2}
+\contentsline {subsubsection}{\numberline {1.3.3}\bf Estado del Arte}{6}{subsubsection.1.3.3}
+\contentsline {subsection}{\numberline {1.4}\bf Descripci\IeC {\'o}n de la Soluci\IeC {\'o}n Propuesta}{6}{subsection.1.4}
+\contentsline {subsubsection}{\numberline {1.4.1}\bf Caracter\IeC {\'\i }sticas de la Soluci\IeC {\'o}n}{6}{subsubsection.1.4.1}
+\contentsline {subsubsection}{\numberline {1.4.2}\bf Prop\IeC {\'o}sitos de la Soluci\IeC {\'o}n}{7}{subsubsection.1.4.2}
+\contentsline {subsubsection}{\numberline {1.4.3}\bf Alcances y Limitaciones de la Soluci\IeC {\'o}n}{7}{subsubsection.1.4.3}
+\contentsline {paragraph}{\numberline {1.4.3.1}Alcances}{7}{paragraph.1.4.3.1}
+\contentsline {paragraph}{\numberline {1.4.3.2}Limitaciones}{7}{paragraph.1.4.3.2}
+\contentsline {subsection}{\numberline {1.5}\bf Metodolog\IeC {\'\i }a, herramientas y ambiente de desarrollo}{7}{subsection.1.5}
+\contentsline {subsubsection}{\numberline {1.5.1}\bf Metodolog\IeC {\'\i }a a usar}{7}{subsubsection.1.5.1}
+\contentsline {paragraph}{\numberline {1.5.1.1}M\IeC {\'e}todo de gesti\IeC {\'o}n de proyecto}{7}{paragraph.1.5.1.1}
+\contentsline {paragraph}{\numberline {1.5.1.2}Metodolog\IeC {\'\i }a de desarrollo}{7}{paragraph.1.5.1.2}
+\contentsline {subsubsection}{\numberline {1.5.2}\bf Herramientas de Desarrollo}{8}{subsubsection.1.5.2}
+\contentsline {subsubsection}{\numberline {1.5.3}Caracter\IeC {\'\i }sticas de los equipos:}{8}{subsubsection.1.5.3}
+\contentsline {paragraph}{\numberline {1.5.3.1}Herramientas de software:}{8}{paragraph.1.5.3.1}
+\contentsline {subsubsection}{\numberline {1.5.4}\bf Ambiente de Desarrollo}{8}{subsubsection.1.5.4}
+\contentsline {paragraph}{\numberline {1.5.4.1}Insumos:}{8}{paragraph.1.5.4.1}
+\contentsline {paragraph}{\numberline {1.5.4.2}Recursos humanos:}{9}{paragraph.1.5.4.2}
+\contentsline {paragraph}{\numberline {1.5.4.3}Dimensi\IeC {\'o}n de Datos Inicial:}{9}{paragraph.1.5.4.3}
+\contentsline {subsection}{\numberline {1.6}\bf Plan de Trabajo}{9}{subsection.1.6}
+\contentsline {subsubsection}{\numberline {1.6.1}\bf Planificaci\IeC {\'o}n de Entrevistas}{9}{subsubsection.1.6.1}
+\contentsline {subsubsection}{\numberline {1.6.2}\bf Plan del Proyecto}{9}{subsubsection.1.6.2}
+\contentsline {subsection}{\numberline {1.7}\bf Conclusiones del cap\IeC {\'\i }tulo}{9}{subsection.1.7}
+\contentsline {section}{\numberline {2}CAP\IeC {\'I}TULO 2. AN\IeC {\'A}LISIS Y DISE\IeC {\~N}O DEL SOFTWARE}{10}{section.2}
+\contentsline {subsection}{\numberline {2.1}Introducci\IeC {\'o}n}{10}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}\bf Estudio de Requerimientos}{10}{subsection.2.2}
+\contentsline {subsubsection}{\numberline {2.2.1}Especificaci\IeC {\'o}n de requerimientos del sistema}{10}{subsubsection.2.2.1}
+\contentsline {paragraph}{\numberline {2.2.1.1}Requerimientos normales:}{10}{paragraph.2.2.1.1}
+\contentsline {paragraph}{\numberline {2.2.1.2}Requerimientos esperados}{12}{paragraph.2.2.1.2}
+\contentsline {paragraph}{\numberline {2.2.1.3}Requerimientos innovadores}{12}{paragraph.2.2.1.3}
+\contentsline {subsubsection}{\numberline {2.2.2}Identificaci\IeC {\'o}n de requerimientos funcionales y no funcionales.}{12}{subsubsection.2.2.2}
+\contentsline {paragraph}{\numberline {2.2.2.1}Requerimientos funcionales:}{13}{paragraph.2.2.2.1}
+\contentsline {paragraph}{\numberline {2.2.2.2}Requerimientos no funcionales:}{13}{paragraph.2.2.2.2}
+\contentsline {subsection}{\numberline {2.3}Modelamiento de datos}{13}{subsection.2.3}
+\contentsline {subsubsection}{\numberline {2.3.1}Diagrama de Estructura de Datos}{13}{subsubsection.2.3.1}
+\contentsline {subsubsection}{\numberline {2.3.2}Especificaci\IeC {\'o}n de atributos}{15}{subsubsection.2.3.2}
+\contentsline {subsubsection}{\numberline {2.3.3}Restricciones y$/$o limitaciones del modelo de datos}{24}{subsubsection.2.3.3}
+\contentsline {subsection}{\numberline {2.4}Modelamiento funcional}{24}{subsection.2.4}
+\contentsline {subsubsection}{\numberline {2.4.1}Diagramas de flujo de datos}{24}{subsubsection.2.4.1}
+\contentsline {paragraph}{\numberline {2.4.1.1}Nivel de contexto}{24}{paragraph.2.4.1.1}
+\contentsline {paragraph}{\numberline {2.4.1.2}Nivel 1 - Descomposici\IeC {\'o}n del nivel de contexto}{25}{paragraph.2.4.1.2}
+\contentsline {paragraph}{\numberline {2.4.1.3}Nivel 2 - Descomposici\IeC {\'o}n del proceso Registro de gastos}{32}{paragraph.2.4.1.3}
+\contentsline {paragraph}{\numberline {2.4.1.4}Nivel 2 - Descomposici\IeC {\'o}n del proceso Administraci\IeC {\'o}n de deuda}{33}{paragraph.2.4.1.4}
+\contentsline {subsubsection}{\numberline {2.4.2}Descripci\IeC {\'o}n de diagramas de flujos de datos}{34}{subsubsection.2.4.2}
+\contentsline {paragraph}{\numberline {2.4.2.1}Nivel de contexto}{34}{paragraph.2.4.2.1}
+\contentsline {subparagraph}{\numberline {2.4.2.1.1}Descripci\IeC {\'o}n entidades externas}{34}{subparagraph.2.4.2.1.1}
+\contentsline {subparagraph}{\numberline {2.4.2.1.2}Descripci\IeC {\'o}n de flujos de datos}{34}{subparagraph.2.4.2.1.2}
+\contentsline {subparagraph}{\numberline {2.4.2.1.3}Descripci\IeC {\'o}n de procesos }{39}{subparagraph.2.4.2.1.3}
+\contentsline {paragraph}{\numberline {2.4.2.2}Nivel 1 - Descomposici\IeC {\'o}n del nivel de contexto}{41}{paragraph.2.4.2.2}
+\contentsline {subparagraph}{\numberline {2.4.2.2.1}Descripci\IeC {\'o}n de almacenamientos}{41}{subparagraph.2.4.2.2.1}
+\contentsline {paragraph}{\numberline {2.4.2.3}Descripci\IeC {\'o}n de flujo de datos}{46}{paragraph.2.4.2.3}
+\contentsline {paragraph}{\numberline {2.4.2.4}Descripci\IeC {\'o}n de procesos}{46}{paragraph.2.4.2.4}
+\contentsline {paragraph}{\numberline {2.4.2.5}Nivel 2 - Descomposici\IeC {\'o}n del proceso Registro de gastos}{54}{paragraph.2.4.2.5}
+\contentsline {subparagraph}{\numberline {2.4.2.5.1}Descripci\IeC {\'o}n de procesos}{54}{subparagraph.2.4.2.5.1}
+\contentsline {subparagraph}{\numberline {2.4.2.5.2}Nivel 2 - Descomposici\IeC {\'o}n del proceso Gesti\IeC {\'o}n de deuda}{55}{subparagraph.2.4.2.5.2}
+\contentsline {paragraph}{\numberline {2.4.2.6}Descripci\IeC {\'o}n de flujos de datos}{55}{paragraph.2.4.2.6}
+\contentsline {subparagraph}{\numberline {2.4.2.6.1}Descripci\IeC {\'o}n de proceso de nivel 2 }{55}{subparagraph.2.4.2.6.1}
+\contentsline {subsubsection}{\numberline {2.4.3}Diccionario de datos}{58}{subsubsection.2.4.3}
+\contentsline {subsection}{\numberline {2.5}Dise\IeC {\~n}o arquitect\IeC {\'o}nico.}{59}{subsection.2.5}
+\contentsline {subsubsection}{\numberline {2.5.1}Diagrama de estructura del sistema.}{59}{subsubsection.2.5.1}
+\contentsline {subsubsection}{\numberline {2.5.2}Especificaci\IeC {\'o}n de m\IeC {\'o}dulos.}{60}{subsubsection.2.5.2}
+\contentsline {paragraph}{\numberline {2.5.2.1}M\IeC {\'o}dulo GCadmin}{60}{paragraph.2.5.2.1}
+\contentsline {paragraph}{\numberline {2.5.2.2}M\IeC {\'o}dulo Registro de gasto}{60}{paragraph.2.5.2.2}
+\contentsline {paragraph}{\numberline {2.5.2.3}M\IeC {\'o}dulo Gesti\IeC {\'o}n de espacios}{60}{paragraph.2.5.2.3}
+\contentsline {paragraph}{\numberline {2.5.2.4}M\IeC {\'o}dulo Validaci\IeC {\'o}n de login}{60}{paragraph.2.5.2.4}
+\contentsline {paragraph}{\numberline {2.5.2.5}M\IeC {\'o}dulo Registro de conjunto}{61}{paragraph.2.5.2.5}
+\contentsline {paragraph}{\numberline {2.5.2.6}M\IeC {\'o}dulo Administraci\IeC {\'o}n de deuda}{61}{paragraph.2.5.2.6}
+\contentsline {paragraph}{\numberline {2.5.2.7}M\IeC {\'o}dulo Registro de administrador}{61}{paragraph.2.5.2.7}
+\contentsline {paragraph}{\numberline {2.5.2.8}M\IeC {\'o}dulo Registro de propiedad}{61}{paragraph.2.5.2.8}
+\contentsline {paragraph}{\numberline {2.5.2.9}M\IeC {\'o}dulo Gesti\IeC {\'o}n de copropietario}{61}{paragraph.2.5.2.9}
+\contentsline {paragraph}{\numberline {2.5.2.10}M\IeC {\'o}dulo Generaci\IeC {\'o}n de reportes}{62}{paragraph.2.5.2.10}
+\contentsline {paragraph}{\numberline {2.5.2.11}M\IeC {\'o}dulo Generaci\IeC {\'o}n de gr\IeC {\'a}ficos}{62}{paragraph.2.5.2.11}
+\contentsline {paragraph}{\numberline {2.5.2.12}M\IeC {\'o}dulo Mantenedor de tablas b\IeC {\'a}sicas}{62}{paragraph.2.5.2.12}
+\contentsline {paragraph}{\numberline {2.5.2.13}M\IeC {\'o}dulo Registro gastos comunes}{62}{paragraph.2.5.2.13}
+\contentsline {paragraph}{\numberline {2.5.2.14}M\IeC {\'o}dulo Registro gastos adicionales}{63}{paragraph.2.5.2.14}
+\contentsline {paragraph}{\numberline {2.5.2.15}M\IeC {\'o}dulo Registro de espacios}{63}{paragraph.2.5.2.15}
+\contentsline {paragraph}{\numberline {2.5.2.16}M\IeC {\'o}dulo Gesti\IeC {\'o}n de reserva}{63}{paragraph.2.5.2.16}
+\contentsline {paragraph}{\numberline {2.5.2.17}M\IeC {\'o}dulo Validaci\IeC {\'o}n administrador}{64}{paragraph.2.5.2.17}
+\contentsline {paragraph}{\numberline {2.5.2.18}M\IeC {\'o}dulo Validaci\IeC {\'o}n copropietario}{64}{paragraph.2.5.2.18}
+\contentsline {paragraph}{\numberline {2.5.2.19}M\IeC {\'o}dulo Generador aviso deuda}{64}{paragraph.2.5.2.19}
+\contentsline {paragraph}{\numberline {2.5.2.20}M\IeC {\'o}dulo Generador deuda}{64}{paragraph.2.5.2.20}
+\contentsline {paragraph}{\numberline {2.5.2.21}M\IeC {\'o}dulo Administrador de pago}{65}{paragraph.2.5.2.21}
+\contentsline {paragraph}{\numberline {2.5.2.22}M\IeC {\'o}dulo Generaci\IeC {\'o}n reporte de copropietario morosos}{65}{paragraph.2.5.2.22}
+\contentsline {paragraph}{\numberline {2.5.2.23}M\IeC {\'o}dulo Generaci\IeC {\'o}n reporte de deuda}{65}{paragraph.2.5.2.23}
+\contentsline {paragraph}{\numberline {2.5.2.24}M\IeC {\'o}dulo Generaci\IeC {\'o}n reporte de gastos hist\IeC {\'o}ricos}{65}{paragraph.2.5.2.24}
+\contentsline {paragraph}{\numberline {2.5.2.25}M\IeC {\'o}dulo Generaci\IeC {\'o}n reporte estad\IeC {\'\i }stico}{66}{paragraph.2.5.2.25}
+\contentsline {paragraph}{\numberline {2.5.2.26}M\IeC {\'o}dulo Generaci\IeC {\'o}n reporte de gastos comunes}{66}{paragraph.2.5.2.26}
+\contentsline {paragraph}{\numberline {2.5.2.27}M\IeC {\'o}dulo Generaci\IeC {\'o}n reporte n\IeC {\'o}mina copropietario y propiedades}{66}{paragraph.2.5.2.27}
+\contentsline {paragraph}{\numberline {2.5.2.28}M\IeC {\'o}dulo Generaci\IeC {\'o}n de gr\IeC {\'a}fico gastos comunes}{67}{paragraph.2.5.2.28}
+\contentsline {paragraph}{\numberline {2.5.2.29}M\IeC {\'o}dulo Generaci\IeC {\'o}n de gr\IeC {\'a}fico gastos adicionales}{67}{paragraph.2.5.2.29}
+\contentsline {paragraph}{\numberline {2.5.2.30}M\IeC {\'o}dulo Mantenedor tipo\_conjunto}{67}{paragraph.2.5.2.30}
+\contentsline {paragraph}{\numberline {2.5.2.31}M\IeC {\'o}dulo Mantenedor estado\_deuda}{67}{paragraph.2.5.2.31}
+\contentsline {paragraph}{\numberline {2.5.2.32}M\IeC {\'o}dulo Mantenedor region}{67}{paragraph.2.5.2.32}
+\contentsline {paragraph}{\numberline {2.5.2.33}M\IeC {\'o}dulo Mantenedor comuna}{68}{paragraph.2.5.2.33}
+\contentsline {paragraph}{\numberline {2.5.2.34}M\IeC {\'o}dulo Mantenedor tipo\_copropietario}{68}{paragraph.2.5.2.34}
+\contentsline {paragraph}{\numberline {2.5.2.35}M\IeC {\'o}dulo Mantenedor estado\_copropietario}{68}{paragraph.2.5.2.35}
+\contentsline {paragraph}{\numberline {2.5.2.36}M\IeC {\'o}dulo Mantenedor tipo\_adicional}{69}{paragraph.2.5.2.36}
+\contentsline {paragraph}{\numberline {2.5.2.37}M\IeC {\'o}dulo Mantenedor estado\_reserva}{69}{paragraph.2.5.2.37}
+\contentsline {paragraph}{\numberline {2.5.2.38}M\IeC {\'o}dulo Mantenedor tipo\_gasto}{69}{paragraph.2.5.2.38}
+\contentsline {subsection}{\numberline {2.6}Dise\IeC {\~n}o de interfaz hombre/m\IeC {\'a}quina (H/M).}{70}{subsection.2.6}
+\contentsline {subsubsection}{\numberline {2.6.1}Dise\IeC {\~n}o de interfaces H/M.}{70}{subsubsection.2.6.1}
+\contentsline {subsubsection}{\numberline {2.6.2}Descripci\IeC {\'o}n de componentes de interfaz H/M.}{70}{subsubsection.2.6.2}
+\contentsline {subsubsection}{\numberline {2.6.3}Dise\IeC {\~n}o de reportes.}{70}{subsubsection.2.6.3}
+\contentsline {subsection}{\numberline {2.7}Roles y funciones.}{70}{subsection.2.7}
+\contentsline {subsection}{\numberline {2.8}Conclusiones del cap\IeC {\'\i }tulo}{70}{subsection.2.8}
+\contentsline {section}{\numberline {3}CAP\IeC {\'I}TULO 3. CONCLUSIONES}{71}{section.3}
+\contentsline {section}{\numberline {4}\bf Referencias bibliogr\IeC {\'a}ficas}{71}{section.4}

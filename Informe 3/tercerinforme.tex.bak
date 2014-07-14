@@ -1,0 +1,3413 @@
+\documentclass[9pt]{article}
+
+\usepackage{amsmath}
+\usepackage{colortbl}
+%\usepackage{color}
+\usepackage[utf8]{inputenc}
+\usepackage{tabularx}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{anysize} % Soporte para el comando \marginsize
+\usepackage[left = 2.5cm, right = 2.5cm, top=2.5cm, bottom=2.5cm]{geometry}
+\usepackage[pdftex]{graphicx} % PDFLaTeX
+\usepackage{float}
+\setcounter{secnumdepth}{6}
+\marginsize{2cm}{2cm}{2cm}{2cm} 
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhead[R]{\thepage}
+\fancyhead[L]{}
+\fancyfoot{} %footer vacio
+\usepackage{appendix}
+%cambia tipo de letra
+\renewcommand{\sfdefault}{phv}
+\usepackage{fullpage}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{graphicx}
+\usepackage{anysize}
+\usepackage{amsmath,amssymb,amsthm,amscd}
+\usepackage{hyperref}
+\usepackage{lscape}
+\usepackage{array}
+\usepackage{epsfig}
+\usepackage{hyperref}
+
+\begin{document}
+%|c|c|p{11 cm}|
+
+\begin{titlepage}
+%
+\begin{center}
+%\begin{center}
+%\end{center}
+\sc Universidad de Santiago de Chile\\
+\sc Facultad de Ciencia \\
+\sc Departamento de Matemática y Ciencia de la Computación \\
+\sc Licenciatura en Ciencia de la Computación\\
+\end{center}
+\bigskip
+%
+\vspace*{2.5 in}
+\begin{center}
+
+\huge{DESARROLLO DE SOFTWARE I} \\ 
+\huge{Informe N$^o$ 3: ``Implementación del Software''}\\
+
+
+\LARGE {\bf Sistema de Administración y Control de Gastos Comunes} \\
+\end{center}
+%
+
+\begin{figure}[H]
+	\includegraphics[width=0.2\textwidth]{logos.png}
+\centering
+\end{figure}
+
+\vspace*{1.5 in}
+
+
+
+\begin{flushright}                                
+\begin{tabular}{ll}
+\textbf{\textit{Equipo de proyecto:}} &:  Diego Navarro \\
+&\,\, Simón Bravo \\
+&\,\, Elizabeth Gutiérrez \\
+&\,\, Diego Martínez \\
+&\,\, Salomé Soto\\
+\textit{\textbf{Profesor}} &: Dino Araya \\
+\textbf{\textit{Fecha}} &: 15 de julio, 2014 \\
+\end{tabular}
+\end{flushright}
+\end{titlepage}
+
+
+\renewcommand{\tablename}{}
+\begin{center}
+\tableofcontents
+\newpage
+\renewcommand{\listtablename}{Índice de tablas}
+\listoffigures
+\listoftables
+\end{center}
+
+
+
+\newpage
+
+\section{CAPÍTULO 1. PRESENTACIÓN Y PLANIFICACIÓN DEL PROYECTO}
+\subsection{Introducción}
+Actualmente, los edificios y condominios no cuentan con un sistema que les permita mostrar con mayor transparencia y de forma más efectiva los gastos asociados a estos, dando información insuficiente a cada uno de los propietarios de la comunidad.\\
+
+El siguiente informe, describe la primera parte del desarrollo del proyecto del curso  Desarrollo de Software I: "Definición y planificación de un proyecto de software", la cuál expone la planificación para poder comenzar con el desarrollo del software, dando una solución al problema planteado. También se podrá encontrar en cada una de las especificaciones un análisis y desarrollo del proyecto, por ejemplo, las herramientas, metodología a usar, alcances y limitaciones  que se considerarán y planificación de entrevistas para el desarrollo, entre otros.\\
+\subsection{Objetivos del Proyecto}
+\subsubsection {\bf Objetivo General}\label{obj. general}
+Diseño e implementación de un sistema de administración y control de gastos comunes de conjunto residenciales.
+
+    \subsubsection {\bf Objetivos Específicos}\label{obj. especificos}
+    \begin{itemize}
+		\item Selección de recursos humanos.
+        \item Captura y análisis de requisitos.
+        \item Análisis de la solución.
+        \item Identificar restricciones del software.
+        \item Implementación de la solución.
+        \item Diseño de las bases de datos.
+        \item Plan de pruebas.*
+        \item Puesta en producción.
+    \end{itemize}
+
+\subsection {\bf Descripción de la Problemática}\label{descripcion problema}
+
+    \subsubsection {\bf Motivación}\label{motivacion}
+%Se ha visto frecuentemente% 
+
+En la actualidad, es frecuente observar que la administración de un departamento o condominio no tiene las herramientas necesarias para poder realizar una gestión transparente, respecto a los gastos comunes. Además, los residentes de estos lugares no tienen un acceso rápido a la información detallada de las razones y el costo de estos cobros, por lo que es necesario agilizar estos procesos.
+
+ \subsubsection {\bf Definición del Problema}\label{def. problema}
+La vida en comunidad siempre provoca conflictos y más cuando se trata de dinero. El pago de los gastos comunes la mayor parte del tiempo es un problema para las personas que viven departamentos o condominios.\\
+
+En los conjuntos residenciales es necesario el pago de gastos comunes, estos cobros se hacen llegar a los domicilios, los cuales deben ser cancelados en un lugar externo y luego llevar el comprobante de regreso a la administración. Además los residentes tienen poca claridad de cual es realmente el cobro que se realiza por los gastos comunes. Esto se debe a la burocracia y poca información que tienen los propietarios respecto al detalle de los gastos comunes.    
+
+
+    \subsubsection {\bf Estado del Arte}\label{estado del arte}
+A continuación se dan a conocer sistemas similares ya vigentes en el mercado.
+\begin{itemize}
+\item \textit{Adminnova}\cite{adminnova}\\ Este sistema cuenta con  los pagos y cuotas de los copropietarios, pero no señala si dentro de sus funcionalidades está el mostrar gráficos y estadísticas de los gastos hechos en la historia del edificio.\\
+\item \textit{Vivook}\cite{vivook} \\ Este sistema controla el estado de las cuentas de los usuarios y además muestra el historial de los gastos del edificio, sin embargo no muestran la asignación de los espacios comunes que lo requieran.\\
+
+\item \textit{Miconserje}\cite{miconserje}\\ Este sistema controla el estado de las cuentas de los usuarios y además muestra el historial de los gastos del edificio, sin embargo no muestran la asignación de los espacios comunes que lo requieran y tampoco es posible respaldar la información de los gastos realizados mediante las boletas.
+\end{itemize}    
+
+\subsection {\bf Descripción de la Solución Propuesta}\label{desc. de la sol. propuesta}
+
+	\subsubsection {\bf Características de la Solución}\label{caracteristicas de la sol.}
+\begin{itemize}
+	\item Interfaz web para el sistema.\\
+	\item Definir roles y privilegios por usuario.\\
+	\item Reportes de gastos comunes, tanto general como por residente.\\
+	\item Reserva de áreas comunes.\\
+	\item Generación de reportes estadísticos sobre los gastos comunes.\\
+\end{itemize}
+A continuación en la figura ~\ref{fig:sol}, se presenta el diagrama de la solución propuesta.
+\begin{figure}[H]
+	\includegraphics[width=0.6\textwidth]{dibujo.png}
+	\centering
+	\caption {Diagrama de la solución propuesta ``GCadmin''}
+	\label{fig:sol}
+\end{figure}
+    \subsubsection {\bf Propósitos de la Solución}\label{propositos de la sol.}
+El sistema pretende ser una solución para los residentes de un complejo residencial, a través de un sistema web, para que así tengan un lugar único donde ver los reportes de los gastos comunes.\\
+
+Los usuarios se dividirán en 2 roles la administración y los copropietarios, para que así cada uno tenga definido los privilegios en la página.\\
+
+Con un cuestionario se podrán reservar los espacios comunes, además de un calendario se podrá ver de manera gráfica que días han sido reservados por otros usuarios y que días están disponibles.\\
+
+Mediante gráficos y la implementación de métodos estadísticos se podrá ver con detalle y facilidad el historial de los gastos comunes del complejo residencial.\\
+
+    \subsubsection {\bf Alcances y Limitaciones de la Solución}\label{alcances y limites de la sol.}
+        \paragraph {Alcances}\label{alcances}
+\begin{itemize}
+    \item El sistema se implementa en edificios de departamentos y condominios. Se consideran tanto los departamentos o casas, como las áreas comunes que el conjunto residencial tenga.
+    \item Se debe tener la información de los gastos totales que realiza la administración en cada ámbito.
+\end{itemize}
+
+        \paragraph {Limitaciones}\label{limitaciones}
+\begin{itemize}
+    \item El sistema no contempla el pago de las cuentas vía Internet.
+    \item La información publicada es exclusiva responsabilidad del administrador.
+    \item El sistema no es responsable de la administración llevada en el edificio.
+    \item La administración es responsable de llenar la base de datos.
+\end{itemize}
+
+\subsection {\bf Metodología, herramientas y ambiente de desarrollo}\label{metodoligia}
+    \subsubsection {\bf Metodología a usar}\label{metodologia a usar}
+
+\paragraph {Método de gestión de proyecto}  \label{metodo de gestion}
+El modelo de ciclo de vida a utilizar sera el modelo en Cascada, también llamado Lineal Secuencial, el cual fue propuesto por Winston Royce a principios de los años 70's.\\
+
+Este modelo consiste en una serie de etapas ordenadas, cada una de las cuales debe ser realizada  completamente antes de comenzar la siguiente.\\
+
+Este modelo fue escogido por las siguientes razones:
+
+\begin{itemize}
+
+\item Permite un diseño ordenado del desarrollo de software.
+\item Es un modelo sencillo, fácil de gestionar y administrar. Se adecua con la implementación del desarrollo del presente proyecto.
+\item  Es un modelo fácil de gestionar ya que cada fase tiene entregables específicos y un proceso de revisión.
+\end{itemize}
+\paragraph {Metodología de desarrollo} \label{metodologia de desarrollo}
+Se usará método del Análisis y Diseño estructurado para así tener un mejor control del desarrollo del software, primero se abstrae el problema a formas modulares, esto hace mas lógico el programa y los módulos deben ser cohesionado, así cada modulo tendrá solo una función estado y el código sera más ordenado.
+
+  \subsubsection {\bf Herramientas de Desarrollo}\label{herramientas de desarrollo}
+        \subsubsection {Características de los equipos:}
+En la tabla 1 se muestra el listado de los equipos a utilizar y sus características.
+\begin{table}[h]
+    \caption{Equipos}
+    \label {listaequipos}
+    \begin {center}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+{\bf Equipo}& {\bf Procesador} & {\bf RAM }& {\bf SO} & {\bf Propósito}\\
+\hline
+{\bf Notebook 1}& Intel i5 2.53 GHz & 4Gb & Debian testing & Documentación y respaldo\\
+\hline
+{\bf Notebook 2}& Intel i3 2.40 Ghz& 4Gb & Ubuntu & Desarrollo de software y pruebas\\
+\hline
+{\bf Notebook 3}& Intel i2 2.20 GHz&2Gb&Ubuntu & Desarrollo de software y pruebas \\
+\hline
+{\bf Notebook 4}& AMD A10 2.80 GHz& 8Gb& Ubuntu & Documentación y respaldo\\
+\hline
+{\bf Notebook 5}& Intel i5 2.40 GHz & 4Gb& Ubuntu & Desarrollo de software y pruebas\\
+\hline
+{\bf Servidor}& Intel i5 2.40 GHz & 4Gb& Debian & Pruebas\\
+\hline    
+\end{tabular}
+\end{center}
+\end{table}
+
+        \paragraph {Herramientas de software:}\label{herramientas de software}
+En la tabla 2 muestra la información de las herramientas de software a utilizar.
+\begin{table}[h]
+    \caption{Software}
+    \label{HerrDeSoftware}
+    \begin{center}
+\begin{tabular}{|l|l|}
+\hline
+{\bf Uso de la Herramienta}& {\bf Nombre} \\
+\hline
+ \bf Documentación&Latex\\
+\hline
+ \bf Sistema Operativo&Linux-Ubuntu. Linux Debian\\
+\hline
+ \bf Lenguaje de Marcado&HTML-CSS\\
+\hline
+\bf Lenguaje de Programación& Php-JQuery(JavaScript)\\
+\hline
+\bf Motor de Plantillas&Smarty Php 2.6\\
+\hline
+\bf Motor de Base de Datos& PostgreSQL 9.1.13\\
+\hline 
+\bf Herramienta de diseño Base de Datos&MySQL Workbench v5.2\\
+\hline    
+\bf Editor de texto / IDE's&Sublime Text 2\\
+\hline 
+\bf Controlador de versiones&Git\\
+\hline 
+\end{tabular}
+\end{center}
+\end{table}
+
+\subsubsection {\bf Ambiente de Desarrollo}\label{abiente de dearrollo}
+
+Las reuniones, tanto para el desarrollo como de coordinación, se realizan en sectores de la Universidad tales como salas de estudio y bibliotecas. Además, las reuniones se pueden llevar a cabo en algún hogar de los integrantes del equipo.
+
+ \paragraph{Insumos:}\label{insumos}
+\begin{itemize}
+    \item 3 Pendrives 2 GBs c/u.
+    \item 1 Resma para impresiones. 
+    \item Plumones para pizarra.
+    \item Borradores de pizarra blanca.
+    \item Impresora para imprimir los informes de avance a presentar.
+\end{itemize}
+
+
+%Caracteristicas de la impresiora
+        \paragraph {Recursos humanos:}\label{recursos humanos}
+
+\begin{itemize}
+    \item Simón Bravo
+    \item Elizabeth Gutiérrez
+    \item Diego Martínez
+    \item Diego Navarro [ \textbf{Jefe de Proyecto} ]
+    \item Salomé Soto
+\end{itemize}
+Todos desarrolladores y analistas.
+
+        \paragraph {Dimensión de Datos Inicial:}\label{dimiension de datos}
+El llenado de la base de datos en el desarrollo es ficticio, por lo que depende de terceros.
+
+\subsection {\bf Plan de Trabajo}\label{plan de trabajo}
+    \subsubsection {\bf Planificación de Entrevistas}\label{planificacion de entrevistas }
+En la tabla \ref{listaentrevistas} se muestra el listado de las entrevistas planificadas ya sea con el cliente  y especialistas.\\ 
+
+\begin{table}[h]
+    \caption{Entrevistas}
+    \label{listaentrevistas}
+    \begin{center}
+    \begin{tabular}{|l|c|l|} \hline
+{\bf Fecha} & {\bf Tema} & {\bf Participantes} \\ \hline
+07-04-2014 & Reunión con cliente & Jefe de proyecto y Simón Bravo\\\hline
+09-04-2014 & Reunión con usuarios & Jefe de proyecto y Simón Bravo \\\hline
+%10-04-2014 & Reunión con equipo de trabajo & Equipo de Trabajo \\\hline
+21-04-2014 & Pre proyecto & Profesor Dino Araya y Equipo de Trabajo \\\hline
+22-04-2014 & Reunión con especialista en diseño web & Simón Bravo\\\hline
+23-04-2014 & Reunión con especialista en bases de datos & Elizabeth Gutiérrez\\\hline 
+23-04-2014 & Reunión con especialista en seguridad & Diego Martinez\\\hline
+%24-04-2014 & Reunión con equipo de trabajo & Equipo de Trabajo \\\hline
+28-04-2014 & Reunión con el Cliente & Jefe de proyecto y Simón Bravo\\\hline
+    \end{tabular}
+    \end{center}
+\end{table}
+\subsubsection {\bf Plan del Proyecto}\label{plan de proyecto}
+Para tener una idea mas clara de este punto se debe dirigir al apéndice B donde se encuentra la Carta Gantt.
+
+
+\subsection {\bf Conclusiones del capítulo}\label{conclusiones del capitulo}
+En esta etapa del primer avance para la presentación y planificación del proyecto, es muy importante y necesaria para desarrollar un software, ya que permite analizar y planificar el trabajo que se realizará durante el proyecto, permitiendo asegurar que lo implementado posteriormente sustentará lo requerido por el sistema.\\
+
+Esto se logrará gracias a la toma de requerimientos, tanto del cliente como del usuario, lo que permitirá que la aplicación sea eficaz y 100\% a la medida del usuario. Para lograr todo ésto, se debe seguir algún tipo de metodología de trabajo, para llevar de forma clara y ordenada lo que se realizará en cada una de las fases. En este caso, se utilizará el modelo "Lineal Secuencial", ya que es sencillo y muy fácil de gestionar y administrar. Permite también concentrar a todo el equipo a lo que se refiere a análisis del problema y posteriormente, subdividirlo en tareas para cada uno de los integrantes.\\
+
+A través del estado del arte, se logra percibir el comportamiento que tiene el mercado respecto al producto que se quiere desarrollar. Es por esto que se debe realizar un muestreo simple de los programas o aplicaciones símiles que existen en la actualidad para saber si lo que se realizó ya está hecho. Ademas permite optar a la innovación.\\
+
+Con esto, se ha establecido las bases de un buen anteproyecto ya que se ha logrado un estudio del problema acorde para poder dar comienzo con la etapa de análisis.\\
+
+\section{CAPÍTULO 2. ANÁLISIS Y DISEÑO DEL SOFTWARE}
+\subsection{Introducción}
+El presente informe está dedicado al análisis estructurado del proyecto {\bf \textit{GC}admin} el cual consta de administrar los gastos comunes de conjuntos residenciales.\\
+
+En el informe anterior se planteó la presentación y planificación del proyecto lo cual sirve como base para el análisis de los requisitos del cliente. \\
+
+Para el desarrollo del análisis del sistema {\bf \textit{GC}admin} se realiza el estudio de los requerimientos mediante el despliegue de la función de calidad (DFC) y la clasificación en requisitos funcionales y no funcionales. Una vez finalizada esta etapa, se realiza el diagrama de estructura de datos (DED), junto a la especificación de atributos del modelo y sus limitaciones y/o restricciones, esto para estructurar y modelar los datos. Finalmente se realiza el diagrama de flujo de datos (DFD) para organizar los procesos del sistema de forma estandarizada.\\
+\subsection{\bf Estudio de Requerimientos}
+A continuación se detallan los requerimientos asociados al proyecto clasificados en normales, esperados e innovadores. 
+
+\subsubsection{Especificación de requerimientos del sistema}
+\paragraph{Requerimientos normales:}
+\begin{itemize}
+\item Uso de credenciales de acceso (usuario/contraseña) para los roles de propietario, arrendatario y administrador.\\
+
+\item Registro de copropietario: N$^{\circ}$ de run, nombres, apellido paterno, apellido materno, teléfonos de contacto, dirección, correo electrónico, tipo (propietario/arrendatario), contraseña.\\
+
+\item El administrador podrá gestionar las cuentas de usuario (creación, dar de baja) del sistema.\\
+
+\item Cada usuario podrá modificar sus datos personales: teléfonos de contacto, dirección, correo electrónico y contraseña.\\
+
+\item Los propietarios podrán dar de baja (deshabilitar) las cuentas de sus arrendatarios.\\
+
+\item Registro de propiedades: Número de propiedad, metros cuadrados  ($m^2$) copropietario, alicuota y fecha de compra.\\
+
+\item Registro de los espacios comunes por parte del administrador que estén disponibles para ser reservados, lo cuales serán registrados por su nombre, descripción y conjunto residencial.\\
+
+\item Gestión de gastos por parte del administrador: ingreso de gastos realizados (nombre, descripción, fecha en que se efectuó el pago, fecha límite de pago y costo)\\
+
+\item Los copropietarios podrán acceder al detalle de los gastos comunes, realizados por el administrador, y el monto a pagar según porcentaje ($m^2$ de la propiedad).\\
+
+\item Los copropietarios podrán acceder a histórico de gastos comunes, por mes, año, ítem: tanto de sus propios gastos como los del total de la comunidad (conjunto residencial).\\
+
+\item El administrador gestiona el porcentaje del cobro de los gastos comunes para cada propiedad con respecto a los metros cuadrados correspondientes.\\
+
+\item El administrador podrá subir un archivo Excel con los totales de los gastos realizados por el conjunto residencial  y sus correspondientes archivos de imagen para mostrar las boletas pagadas. Estas boletas se subirán con formato imagen .png.\\
+
+\item El administrador podrá subir un archivo Excel con los gastos adicionales, realizados por propiedad.\\
+
+\item Registro de conjuntos residenciales. Cada uno de estos, contará con la información de su ubicación, fondo común en pesos (\$), teléfono, tipo de conjunto residencial, entre otro.\\
+
+\item Registro de pago de gastos de copropietarios. Se especificará los gastos cancelados y no cancelados mensualmente por propiedad, con el propósito de identificar los copropietarios morosos y los que están al día.\\
+
+\item Los gastos por concepto de servicios adicionales por propiedad, serán ingresados por el administrador. Por ejemplo: agua caliente, reserva de áreas comunes, arriendo de estacionamientos o calefacción.\\
+
+\item Los copropietarios que habiten la propiedad podrán reservar espacios comunes como salas de eventos, sala multiuso, quincho, entre otros. Este gasto será ingresado por el administrador acorde a la propiedad que realizo la reserva. Para solicitar la reserva se pedirán datos como: fecha de reserva y la actividad que realizará el propietario. \\
+
+\item Generar reportes estadísticos para el administrador relacionados con la reservas de espacios: días de la semana con más reservas, espacios más solicitados, etc.\\
+
+\item Generar reportes para el administrador relacionados con la nómina de copropietarios y sus propiedades, el detalle de los gastos comunes por propiedad, y los copropietarios morosos en el pago de sus respectivos gastos comunes. \\
+
+\item Generar deuda correspondiente a los gastos impagos por propiedad.\\
+
+\item La reserva de un espacio común realizada por un copropietario será confirmada por la administración por medio del sistema. Para esto, se enviará un mensaje vía mail al administrador  para confirmar la solicitud.\\
+
+\end{itemize}
+\paragraph{Requerimientos esperados}
+\begin{itemize}
+
+\item Manual de usuario: existirá una guía de uso dentro del sistema.\\
+
+\item Facilidad de uso: el sistema será intuitivo para facilitar su utilización. \\
+
+\item Interfaz clara, con una estructura ordenada de manera que todos los elementos de información y control sean abordables en la navegación de forma clara y simple, tanto en su compresión como en el acceso. \\
+
+\item Fiabilidad en los gastos, cobros, y pagos que se realizan en el sistema.\\
+
+\item Servicio operativo 24x7.\\
+
+\item Seguro: a través de credenciales acceso usuario podrá mantener segura su cuenta y evitar el uso inadecuado por terceros. \\
+
+\item El contenido del sistema se ajustará al tamaño de la interfaz de los dispositivos de visualización, ya sea smartphone, tablets  y computadoras.\\
+
+\item Un copropietario debe ser capaz de utilizar y entender todas las funciones entregadas por el sistema en un lapso de 4 días efectivos, tras lo cual no cometerá más de 3 errores diarios promedio. \\
+
+\item Cuando haya hasta 98 usuarios accediendo simultáneamente, el tiempo de respuesta no será en ningún momento superior a 6 segundos. \\
+
+\item La carga de los datos, por parte de la administración, no tardará a lo más 1 minuto y no requerirá más de 5 clics.\\
+\end{itemize}
+\paragraph{Requerimientos innovadores}
+\begin{itemize}
+\item Generar gráficos y cuadros comparativos respecto a los gastos comunes realizados por el administrador y los gastos adicionales realizados por propiedad.\\
+
+\item Enviar correo electrónico en forma anticipada (1 semana antes y el mismo día del evento) avisando el uso de los espacios comunes al copropietario que realiza la reserva. \\
+
+\item Enviar correo electrónico 1 semana antes de la fecha de vencimiento de los gastos comunes a los copropietarios.\\
+
+\end{itemize}
+\subsubsection{Identificación de requerimientos funcionales y no funcionales.}
+A continuación se detallan los requerimientos asociados al proyecto clasificados en funcionales y no funcionales. 
+\paragraph{Requerimientos funcionales:}
+\begin{itemize}
+\item Uso de credenciales de acceso.
+
+\item Registro de usuario.
+
+\item Gestión de cuentas de usuario .
+
+\item Gestión de propiedades.
+
+\item Gestión de los espacios comunes.
+
+\item Gestión de gastos.
+
+\item Archivos de gastos.
+
+\item Registro de conjuntos residenciales. 
+
+\item Generar reportes estadísticos.
+
+\item Gestión de deuda.
+
+\item Controlador de reserva de espacios comunes.
+ 
+\item Aviso de gastos.
+
+\end{itemize}
+\paragraph{Requerimientos no funcionales:}
+\begin{itemize}
+
+\item Facilidad de uso.
+
+\item Interfaz amigable e intuitiva.
+
+\item Fiabilidad  en el sistema.
+
+\item Seguridad en el sistema.
+
+\item Servicio operativo 24 x 7.
+
+\end{itemize}
+
+\subsection{Modelamiento de datos}
+
+\subsubsection{Diagrama de Estructura de Datos}
+A continuación en la figura ~\ref{fig:ded}, se presenta el diagrama de estructura de datos (DED) asociada el proyecto.
+%\begin{center}
+\begin{figure}[H]
+	\includegraphics[width=0.4\textwidth]{DER.png}
+	\centering
+	\caption {Diagrama de Estructura de Datos ``GCadmin''}
+	\label{fig:ded}
+\end{figure}
+%\end{center}
+
+\newpage
+\subsubsection{Especificación de atributos}
+A continuación, desde la tabla ~\ref{tab:ded:conjunto} a la ~\ref{tab:ded:AdiDeu}, se presenta las especificaciones de atributos asociados al proyecto, considerando el tipo de datos del motor de base de datos PostgreSQL.
+
+\begin{table}[H]
+\caption{Conjunto}
+\label{tab:ded:conjunto}
+\begin{center}
+	\begin{tabular}{| p{3 cm} | p{12 cm} |}
+		\hline
+		Tabla & CONJUNTO\\\hline
+		Descripción & Conjunto habitacional\\\hline
+	\end{tabular}
+ESPECIFICACIÓN DE ATRIBUTOS\centering\\
+	\begin{tabular}{| p{2.4 cm} | p{0.3 cm} | p{0.3 cm} | p{4.2 cm} | p{0.5 cm} | p{0.5 cm} | p{3.9 cm} | p{0.3 cm} |}
+		\hline 
+		\rowcolor[gray]{0.7}  \bf COLUMNA & \bf T & \bf L & \bf DESCRIPCIÓN & \bf PK & \bf FK & \bf Tabla Ref. &  \bf R \\\hline
+		con\_id & N & 5 & Identificador & X &  &  & x\\\hline
+		con\_nombre & V & 50 & Nombre & & & & x\\\hline 
+		con\_fono & N & 8 & Teléfono &  &  &  & x\\\hline
+		con\_fondo & N & 10 & Fondo común en pesos (\$) &  &  &  & x\\\hline
+		con\_direccion & V & 50 & Dirección &  &  &  & x\\\hline
+		con\_tcon\_id & V & 1 & Tipo conjunto &  & X & TIPO\_CONJUNTO & x\\\hline
+		con\_adm\_run & N & 8 & Administrador &  & X & ADMINISTRADOR & x\\\hline
+		con\_com\_id & N & 3 & Comuna &  & X & COMUNA & x\\\hline
+	\end{tabular}
+
+\end{center}
+Ejemplos de registros:\\\\
+	1 – ‘Los Alamos’ - 25355674 – 245666345 – ‘Los Cobres 1623’ – ‘D’  – 17795858 - 722 \\
+	2 – ‘El Copihue’ - 27777734 – 3255564457 -  ‘Los juncos 851’  – ‘C’ – 9287546 - 873 
+\end{table}	
+
+
+\begin{table}[H]
+\caption{Copropietario}
+\label{tab:ded:copropietario}
+\begin{center}
+	\begin{tabular}{| p{3 cm} | p{12 cm} |}
+		\hline
+		Tabla & COPROPIETARIO\\\hline
+		Descripción & Residentes\\\hline
+	\end{tabular}
+	ESPECIFICACIÓN DE ATRIBUTOS \centering\\
+	\begin{tabular}{| p{2.4 cm} | p{0.3 cm} | p{0.3 cm} | p{4.2 cm} | p{0.5 cm} | p{0.5 cm} | p{3.9 cm} | p{0.3 cm} |}
+		\hline 
+		\rowcolor[gray]{0.7} \bf COLUMNA & \bf T & \bf L & \bf DESCRIPCIÓN & \bf PK & \bf FK & \bf Tabla Ref. & \bf R \\\hline
+		cop\_rut & N & 8 &  N$^o$ de run & X &  &  & x\\\hline
+		cop\_nombres & V & 50 & Nombres &  &  &  & x\\\hline
+		cop\_ap\_paterno & V & 30 & Apellido paterno &  &  &  & x\\\hline
+		cop\_ap\_materno & V & 30 & Apellido materno &  &  &  & x\\\hline
+		cop\_fono & N & 8 & Teléfono &  &  &  & x\\\hline
+		cop\_direccion & V & 50 & Dirección &  &  &  & x\\\hline
+		cop\_mail & V & 50 & Correo electrónico &  &  &  & \\\hline
+		cop\_clave & V & 10 & Contraseña (encriptado) &  &  &  & x\\\hline
+		cop\_tcop\_id & V & 1 & Tipo &  & X & TIPO\_COPROPIETARIO & x\\\hline
+		cop\_com\_id & N & 3 & Comuna &  & X & COMUNA & x\\\hline
+		\end{tabular}
+
+\end{center}
+Ejemplos de registros:\\\\
+	67535758 – ‘Susana Rocío’ – ‘González’ – ‘López’ - 77547738 – ‘El manzano 512’ – ‘sgonzalez@mail.cl’ – ‘xxxxx’ – ‘P’ - 722\\
+	87546442 -  ‘Claudio Andrés’ – ‘Sepúlveda’ – ‘Vivanco’ – 77489504 – null – ‘ClaudioS@mail.cl’  – ‘xxxxxxx’ – ‘A’ – 873
+\end{table}
+
+\begin{table}[H]
+\caption{COP\_PRO}
+\label{tab:ded:coppro}
+\begin{center}
+	\begin{tabular}{| p{3 cm} | p{12 cm} |}
+		\hline
+		Tabla & COP\_PRO\\\hline
+		Descripción & Registro de propiedades por copropietario\\\hline
+	\end{tabular}
+	ESPECIFICACIÓN DE ATRIBUTOS\centering\\
+	\begin{tabular}{| p{2 cm} | p{0.3 cm} | p{0.3 cm} | p{4 cm} | p{0.5 cm} | p{0.5 cm} | p{4.5 cm} | p{0.3 cm} |}
+		\hline 
+		\rowcolor[gray]{0.7} \bf COLUMNA & \bf T & \bf L & \bf DESCRIPCIÓN & \bf PK & \bf FK & \bf Tabla Ref. & \bf R \\\hline
+		cpr\_cop\_id & N & 8 &  Copropietario & X & X & COPROPIETARIO & x\\\hline
+		cpr\_pro\_id & N & 5 & Propiedad & X & X & PROPIEDAD & x\\\hline
+		cpr\_fecha & D &  & Fecha de compra de la propiedad &  &  &  & x\\\hline
+		cpr\_eco\_id & V & 1 & Estado &  & X & ESTADO\_COPROPIETARIO & x\\\hline
+		
+	\end{tabular}
+\end{center}
+Ejemplos de registros:\\\\
+	 67535758 -  95348 – 28/07/1983 - ‘A’\\
+	 87546442 -  45455 – 11/09/1973 - ‘I’ 
+	\end{table}
+	
+
+\begin{table}
+\caption{Propiedad}
+\label{tab:ded:propiedad}
+\begin{center}
+	\begin{tabular}{| p{3 cm} | p{12 cm} |}
+		\hline
+		Tabla & PROPIEDAD\\\hline
+		Descripción & Propiedades\\\hline
+	\end{tabular}
+	ESPECIFICACIÓN DE ATRIBUTOS \centering\\
+	\begin{tabular}{| p{2.4 cm} | p{0.3 cm} | p{0.3 cm} | p{4.2 cm} | p{0.5 cm} | p{0.5 cm} | p{3.9 cm} | p{0.3 cm} |}
+		\hline 
+		\rowcolor[gray]{0.7} \bf COLUMNA & \bf T & \bf L & \bf DESCRIPCIÓN & \bf PK & \bf FK & \bf Tabla Ref. & \bf R \\\hline
+		pro\_id & N & 5 &  Identificador & X &  &  & x\\\hline
+		pro\_numero & V & 8 & Número de la propiedad &  &  &  & x\\\hline
+		pro\_m2 & N & 4 & Metros cuadrados de la propiedad &  &  &  & x\\\hline
+		pro\_alicuota & N & 6,3 & Porcentaje &  &  &  & x\\\hline
+		pro\_con\_id & N & 5 & Conjunto &  & X & CONJUNTO & x\\\hline
+	\end{tabular}
+\end{center}
+Ejemplos de registros:\\\\
+	95348 – ‘c023’– 89 – 0.25 – 1\\
+	45455 – ‘a065’ – 80 – 0.02 – 2
+	\end{table}
+
+\begin{table}
+\caption{Administrador}
+\label{tab:ded:Administrador}
+\begin{center}
+	\begin{tabular}{| p{3 cm} | p{12 cm} |}
+		\hline
+		Tabla & ADMINISTRADOR\\\hline
+		Descripción & Administrador\\\hline
+	\end{tabular}
+	ESPECIFICACIÓN DE ATRIBUTOS\centering \\
+	\begin{tabular}{| p{2.4 cm} | p{0.3 cm} | p{0.3 cm} | p{4.2 cm} | p{0.5 cm} | p{0.5 cm} | p{3.9 cm} | p{0.3 cm} |}
+		\hline 
+		\rowcolor[gray]{0.7} \bf COLUMNA & \bf T & \bf L & \bf DESCRIPCIÓN & \bf PK & \bf FK & \bf Tabla Ref. & \bf R \\\hline
+		adm\_run & N & 8 &  N$^o$ de run & X &  &  & x\\\hline
+		adm\_name & V & 50 & Nombres &  &  &  & x\\\hline
+		adm\_ap\_pat & V & 30 & Apellido paterno &  &  &  & x\\\hline
+		adm\_ap\_mat & V & 30 & Apellido materno &  &  &  & x\\\hline
+		adm\_password & V & 15 & Clave de acceso &  &  &  & x\\\hline
+		adm\_fono & N & 8 & Teléfono de contacto &  &  &  & x\\\hline
+		adm\_mail & V & 50 & Mail de contacto &  &  &  & x\\\hline
+	\end{tabular}
+\end{center}
+Ejemplos de registros:\\\\
+	17795858 – ‘Pedro Pablo’ – ‘Perez’ – ‘Pereira’ – ‘xxxxx’ –  45547738 – ‘PPPP\@mail.cl’\\ 
+	9287546 – ‘Luis’ – ‘Montiel’ – ‘Plaza’ – ‘xxxxxxx’ – 77454504 – ‘Admin435\@mail.cl’
+	\end{table}
+
+\begin{table}
+\caption{Adicional}
+\label{tab:ded:adicional}
+\begin{center}
+	\begin{tabular}{| p{3 cm} | p{12 cm} |}
+		\hline
+		Tabla & ADICIONAL\\\hline
+		Descripción & Gastos adicionales por propiedad\\\hline
+	\end{tabular}
+	ESPECIFICACIÓN DE ATRIBUTOS\centering\\
+	\begin{tabular}{| p{2.4 cm} | p{0.3 cm} | p{0.3 cm} | p{4.2 cm} | p{0.5 cm} | p{0.5 cm} | p{3.9 cm} | p{0.3 cm} |}
+		\hline 
+		\rowcolor[gray]{0.7} \bf COLUMNA & \bf T & \bf L & \bf DESCRIPCIÓN & \bf PK & \bf FK & \bf Tabla Ref. & \bf R \\\hline
+		adi\_id & N & 5 &  Identificador & X &  &  & x\\\hline
+		adi\_descripcion & V & 100 & Descripción &  &  &  & x\\\hline
+		adi\_costo & N & 6 & Costo del adicional en pesos (\$) &  &  &  & x\\\hline
+		adi\_fecha & D &  & Fecha emisión &  &  &  & x\\\hline
+		adi\_pro\_id & N & 5 & Propiedad &  & X & PROPIEDAD & x\\\hline
+		adi\_tad\_id & V & 1 & Tipo &  & X & TIPO\_ADICIONAL & x\\\hline
+	\end{tabular}
+\end{center}
+Ejemplos de registros:\\\\
+	12– ‘20 m3’ – 4000 – 26/02/2022 - 95348   - ‘C’ \\
+	32– ‘Sala de eventos’ - 3000 -  23/08/2015 - 45455 - ‘R’ 
+	\end{table}
+
+\begin{table}
+\caption{Tipo\_Adicional}
+\label{tab:ded:tipoadicional}
+\begin{center}
+	\begin{tabular}{| p{3 cm} | p{12 cm} |}
+		\hline
+		Tabla & TIPO\_ADICIONAL\\\hline
+		Descripción & Tipos de gastos adicionales\\\hline
+	\end{tabular}
+	ESPECIFICACIÓN DE ATRIBUTOS\centering\\
+	\begin{tabular}{| p{2.4 cm} | p{0.3 cm} | p{0.3 cm} | p{4.2 cm} | p{0.5 cm} | p{0.5 cm} | p{3.9 cm} | p{0.3 cm} |}
+		\hline 
+		\rowcolor[gray]{0.7} \bf COLUMNA & \bf T & \bf L & \bf DESCRIPCIÓN & \bf PK & \bf FK & \bf Tabla Ref. & \bf R \\\hline
+		tad\_id & V & 1 &  Identificador & X &  &  & x\\\hline
+		tad\_nombre & V & 15 & Nombre &  &  &  & x\\\hline
+	\end{tabular}
+\end{center}
+Ejemplos de registros:\\\\
+	‘C’ - ’Calefacción’\\
+	‘R’ - ‘Reserva’ 
+	\end{table}
+
+\begin{table}
+\caption{Gasto}
+\label{tab:ded:gasto}
+\begin{center}
+	\begin{tabular}{| p{3 cm} | p{12 cm} |}
+		\hline
+		Tabla & GASTO\\\hline
+		Descripción & Gastos comunes por conjunto habitacional\\\hline
+	\end{tabular}
+	ESPECIFICACIÓN DE ATRIBUTOS\centering \\
+	\begin{tabular}{| p{2.4 cm} | p{0.3 cm} | p{0.3 cm} | p{4.2 cm} | p{0.5 cm} | p{0.5 cm} | p{3.9 cm} | p{0.3 cm} |}
+		\hline 
+		\rowcolor[gray]{0.7} \bf COLUMNA & \bf T & \bf L & \bf DESCRIPCIÓN & \bf PK & \bf FK & \bf Tabla Ref. & \bf R \\\hline
+		gas\_id & N & 5 &  Identificador & X &  &  & x\\\hline
+		gas\_descripcion & V & 100 & Descripción del gasto común &  &  &  & x\\\hline
+		gas\_fecha & D &  & Fecha &  &  &  & x\\\hline
+		gas\_costo & N & 6 & Costo del gasto en pesos (\$) &  &  &  & x\\\hline
+		gas\_con\_id & N & 5 & Conjunto &  & X & CONJUNTO & x\\\hline
+		gas\_tga\_id & V & 1 & Tipo &  & X & TIPO\_GASTO & x\\\hline
+	\end{tabular}
+\end{center}
+ Ejemplos de registros:\\
+	23448 – ‘Pago de sueldos a conserjes al día’ – 26/02/2022 - 5187390 -  1 - ‘C’\\
+	3348 – ‘Pago del agua al día’ – 23/08/2015 - 7098241 - 2 - ‘A’
+		\end{table}
+		
+\begin{table}
+\caption{Tipo\_Gasto}
+\label{tab:ded:tipogasto}
+\begin{center}
+	\begin{tabular}{| p{3 cm} | p{12 cm} |}
+		\hline
+		Tabla & TIPO\_GASTO\\\hline
+		Descripción & Tipos de gastos comunes\\\hline
+	\end{tabular}
+	ESPECIFICACIÓN DE ATRIBUTOS \centering \\
+	\begin{tabular}{| p{2.4 cm} | p{0.3 cm} | p{0.3 cm} | p{4.2 cm} | p{0.5 cm} | p{0.5 cm} | p{3.9 cm} | p{0.3 cm} |}
+		\hline 
+		\rowcolor[gray]{0.7} \bf COLUMNA & \bf T & \bf L & \bf DESCRIPCIÓN & \bf PK & \bf FK & \bf Tabla Ref. & \bf R \\\hline
+		tga\_id & V & 1 &  Identificador & X &  &  & x\\\hline
+		tga\_nombre & V & 15 & Nombre &  &  &  & x\\\hline
+	\end{tabular}
+\end{center}
+Ejemplos de registros:\\\\
+	‘C’ - ‘Consumo’\\
+	‘A’ - ‘Administración’
+\end{table}
+\begin{table}
+\caption{Tipo\_conjunto}
+\label{tab:ded:TipoConjunto}
+\begin{center}
+	\begin{tabular}{| p{3 cm} | p{12 cm} |}
+		\hline
+		Tabla & TIPO\_CONJUNTO\\\hline
+		Descripción & Tipo de conjunto habitacional\\\hline
+	\end{tabular}
+	ESPECIFICACIÓN DE ATRIBUTOS\centering\\
+	\begin{tabular}{| p{2.4 cm} | p{0.3 cm} | p{0.3 cm} | p{4.2 cm} | p{0.5 cm} | p{0.5 cm} | p{3.9 cm} | p{0.3 cm} |}
+		\hline 
+		\rowcolor[gray]{0.7} \bf COLUMNA & \bf T & \bf L & \bf DESCRIPCIÓN & \bf PK & \bf FK & \bf Tabla Ref. & \bf R \\\hline
+		tcon\_id & V & 1 &  Identificador & X &  &  & x\\\hline
+		tcon\_descripcion & V & 50 & Descripción del tipo de conjunto habitacional &  &  &  & x\\\hline
+	\end{tabular}
+\end{center}
+Ejemplos de registros:\\\\
+‘D’ – ‘Edificio de departamentos’\\
+‘C’ - ‘Condominio’
+\end{table}
+
+\begin{table}
+\caption{Tipo\_Copropietario}
+\label{tab:ded:tipoCopropietario}
+\begin{center}
+	\begin{tabular}{| p{3 cm} | p{12 cm} |}
+		\hline
+		Tabla & TIPO\_COPROPIETARIO\\\hline
+		Descripción & Tipo de copropietario\\\hline
+	\end{tabular}
+	ESPECIFICACIÓN DE ATRIBUTOS\centering\\
+	\begin{tabular}{| p{2.4 cm} | p{0.3 cm} | p{0.3 cm} | p{4.2 cm} | p{0.5 cm} | p{0.5 cm} | p{3.9 cm} | p{0.3 cm} |}
+		\hline 
+		\rowcolor[gray]{0.7} \bf COLUMNA & \bf T & \bf L & \bf DESCRIPCIÓN & \bf PK & \bf FK & \bf Tabla Ref. & \bf R \\\hline
+		tcop\_id & V & 1 &  Identificador & X &  &  & x\\\hline
+		tcop\_nombre & V & 10 & Descripción del tipo de copropietario &  &  &  & x\\\hline
+	\end{tabular}
+\end{center}
+Ejemplos de registros:\\\\
+	‘A’ – ‘Arrendatario’\\
+	‘P’ - ‘Propietario’
+	\end{table}
+	
+	\begin{table}
+\caption{Estado\_Copropietario}
+\label{tab:ded:estadoCopropietario}
+\begin{center}
+	\begin{tabular}{| p{3 cm} | p{12 cm} |}
+		\hline
+		Tabla & ESTADO\_COPROPIETARIO\\\hline
+		Descripción & Estado de copropietario\\\hline
+	\end{tabular}
+	ESPECIFICACIÓN DE ATRIBUTOS\centering\\
+	\begin{tabular}{| p{2.4 cm} | p{0.3 cm} | p{0.3 cm} | p{4.2 cm} | p{0.5 cm} | p{0.5 cm} | p{3.9 cm} | p{0.3 cm} |}
+		\hline 
+		\rowcolor[gray]{0.7} \bf COLUMNA & \bf T & \bf L & \bf DESCRIPCIÓN & \bf PK & \bf FK & \bf Tabla Ref. & \bf R \\\hline
+		eco\_id & V & 1 &  Identificador & X &  &  & x\\\hline
+		eco\_descripcion & V & 15 & Descripción del estado de copropietario &  &  &  & x\\\hline
+	\end{tabular}
+\end{center}
+Ejemplos de registros:\\\\
+	‘A’ – ‘Activo’\\
+	‘I’ - ‘Inactivo’
+\end{table}
+
+\begin{table}
+\caption{Reserva}
+\label{tab:ded:Reserva}
+\begin{center}
+	\begin{tabular}{| p{3 cm} | p{12 cm} |}
+		\hline
+		Tabla & RESERVA\\\hline
+		Descripción & Reserva de áreas comunes\\\hline
+	\end{tabular}
+	ESPECIFICACIÓN DE ATRIBUTOS\centering\\
+	\begin{tabular}{| p{2.4 cm} | p{0.3 cm} | p{0.3 cm} | p{4.2 cm} | p{0.5 cm} | p{0.5 cm} | p{3.9 cm} | p{0.3 cm} |}
+		\hline 
+		\rowcolor[gray]{0.7} \bf COLUMNA & \bf T & \bf L & \bf DESCRIPCIÓN & \bf PK & \bf FK & \bf Tabla Ref. & \bf R \\\hline
+		res\_id & N & 5 &  Identificador & X &  &  & x\\\hline
+		res\_fecha & D &  & Fecha de la reserva &  &  &  & x\\\hline
+		res\_actividad & V & 100 & La actividad que se realizará &  &  &  & x\\\hline
+		res\_pro\_id & N & 5 & Propiedad &  & X & PROPIEDAD & x\\\hline
+		res\_esp\_id & N & 5 & Espacio &  & X & ESPACIO & x\\\hline
+		res\_ere\_id & V & 1 & Estado &  & X & ESTADO\_RESERVA & x\\\hline
+	\end{tabular}
+\end{center}
+Ejemplos de registros:\\\\
+	30528 - 03/04/2006 - ‘opera’ - 45455 - 43 - ‘R’\\
+4325 - 10/06/2015  -’cumpleaños’- 95348 - 55 - ‘A’
+\end{table}
+
+\begin{table}
+\caption{Estado\_Reserva}
+\label{tab:ded:EstadoReserva}
+\begin{center}
+	\begin{tabular}{| p{3 cm} | p{12 cm} |}
+		\hline
+		Tabla & ESTADO\_RESERVA\\\hline
+		Descripción & Estado de la reserva\\\hline
+	\end{tabular}
+	ESPECIFICACIÓN DE ATRIBUTOS\centering\\
+	\begin{tabular}{| p{2.4 cm} | p{0.3 cm} | p{0.3 cm} | p{4.2 cm} | p{0.5 cm} | p{0.5 cm} | p{3.9 cm} | p{0.3 cm} |}
+		\hline 
+		\rowcolor[gray]{0.7} \bf COLUMNA & \bf T & \bf L & \bf DESCRIPCIÓN & \bf PK & \bf FK & \bf Tabla Ref. & \bf R \\\hline
+		ere\_id & V & 1 &  Identificador & X &  &  & x\\\hline
+		ere\_descripcion & V & 10 & Descripción del estado &  &  &  & x\\\hline
+	\end{tabular}
+\end{center}
+Ejemplo de registro:\\\\
+	‘A’ - ‘Aceptada’\\
+	‘R’ - ‘Rechazado’
+\end{table}
+
+\begin{table}
+\caption{Espacio}
+\label{tab:ded:Espacio}
+\begin{center}
+	\begin{tabular}{| p{3 cm} | p{12 cm} |}
+		\hline
+		Tabla & ESPACIO\\\hline
+		Descripción & Información de los espacios comunes\\\hline
+	\end{tabular}
+	ESPECIFICACIÓN DE ATRIBUTOS\centering\\
+	\begin{tabular}{| p{2.4 cm} | p{0.3 cm} | p{0.3 cm} | p{4.2 cm} | p{0.5 cm} | p{0.5 cm} | p{3.9 cm} | p{0.3 cm} |}
+		\hline 
+		\rowcolor[gray]{0.7} \bf COLUMNA & \bf T & \bf L & \bf DESCRIPCIÓN & \bf PK & \bf FK & \bf Tabla Ref. & \bf R \\\hline
+		esp\_id & N & 5 &  Identificador & X &  &  & x\\\hline
+		esp\_lugar & V & 20 & Nombre del lugar &  &  &  & x\\\hline
+		esp\_descripcion & V & 100 & Descripción &  &  &  & \\\hline
+		esp\_con\_id & N & 5 & Conjunto habitacional &  & X & CONJUNTO & x\\\hline
+	\end{tabular}
+\end{center}
+Ejemplos de registros:\\\\
+	55 – ‘Quincho’– ‘Espacio común, preferentemente para la realización de asados’ - 1\\
+43 - ‘sala audiovisual’ - ‘Para ver películas o hacer presentaciones’- 2
+\end{table}
+
+\begin{table}
+\caption{Deuda}
+\label{tab:ded:deuda}
+\begin{center}
+	\begin{tabular}{| p{3 cm} | p{12 cm} |}
+		\hline
+		Tabla & DEUDA\\\hline
+		Descripción & Deudas por propiedad\\\hline
+	\end{tabular}
+	ESPECIFICACIÓN DE ATRIBUTOS\centering\\
+	\begin{tabular}{| p{2.4 cm} | p{0.3 cm} | p{0.3 cm} | p{4.2 cm} | p{0.5 cm} | p{0.5 cm} | p{3.9 cm} | p{0.3 cm} |}
+		\hline 
+		\rowcolor[gray]{0.7} \bf COLUMNA & \bf T & \bf L & \bf DESCRIPCIÓN & \bf PK & \bf FK & \bf Tabla Ref. & \bf R \\\hline
+		deu\_id & N & 8 &  Identificador & X &  &  & x\\\hline
+		deu\_fecha & D &  & Fecha de la deuda &  &  &  & x\\\hline
+		deu\_monto & N & 12 & Monto de la deuda en pesos (\$) &  &  &  & x\\\hline
+		deu\_fecha\_limite & D &  & Fecha  límite de pago &  &  &  & x\\\hline
+		deu\_fecha\_cancel & D &  & Fecha de cancelación  &  &  &  & \\\hline
+		deu\_pro\_id & N & 5 & Propiedad &  & X & PROPIEDAD & x\\\hline
+		deu\_ede\_id & V & 1 & Estado  &  & X & ESTADO\_DEUDA & x\\\hline
+	\end{tabular}
+\end{center}
+Ejemplos de registros: \\\\
+	8528 – 26/02/2022 – 144965 - 05/03/2022 - null - 45455 - ‘N’\\
+	12 – 23/08/2015 – 1300848 – 05/09/20015 - 04/09/2015  - 95348- ‘P’
+\end{table}
+
+\begin{table}
+\caption{Estado\_Deuda}
+\label{tab:ded:estadoDeuda}
+\begin{center}
+	\begin{tabular}{| p{3 cm} | p{12 cm} |}
+		\hline
+		Tabla & ESTADO\_DEUDA\\\hline
+		Descripción & Estado de la deuda.\\\hline
+	\end{tabular}
+	ESPECIFICACIÓN DE ATRIBUTOS \centering \\
+	\begin{tabular}{| p{2.4 cm} | p{0.3 cm} | p{0.3 cm} | p{4.2 cm} | p{0.5 cm} | p{0.5 cm} | p{3.9 cm} | p{0.3 cm} |}
+		\hline 
+		\rowcolor[gray]{0.7} \bf COLUMNA & \bf T & \bf L & \bf DESCRIPCIÓN & \bf PK & \bf FK & \bf Tabla Ref. & \bf R \\\hline
+		ede\_id & V & 1 &  Identificador & X &  &  & x\\\hline
+		ede\_descripcion & V & 10 & Estado &  &  &  & x\\\hline
+	\end{tabular}
+\end{center}
+Ejemplos de registros:\\\\
+‘P’-’Pagado’\\
+‘N’-’No Pagado’
+\end{table}
+
+\begin{table}
+\caption{Imagen}
+\label{tab:ded:Imagen}
+\begin{center}
+	\begin{tabular}{| p{3 cm} | p{12 cm} |}
+		\hline
+		Tabla & IMAGEN\\\hline
+		Descripción & Imágenes de las boletas de los gastos comunes\\\hline
+	\end{tabular}
+	ESPECIFICACIÓN DE ATRIBUTOS\centering\\
+	\begin{tabular}{| p{2.4 cm} | p{0.3 cm} | p{0.3 cm} | p{4.2 cm} | p{0.5 cm} | p{0.5 cm} | p{3.9 cm} | p{0.3 cm} |}
+		\hline 
+		\rowcolor[gray]{0.7} \bf COLUMNA & \bf T & \bf L & \bf DESCRIPCIÓN & \bf PK & \bf FK & \bf Tabla Ref. & \bf R \\\hline
+		ima\_id & N & 5 &  Identificador & X &  &  & x\\\hline
+		ima\_path & V & 50 & Dirección física de la imagen &  &  &  & x\\\hline
+		ima\_nombre & V & 15 & Nombre de la imagen &  &  &  & x\\\hline
+		ima\_decripcion & V & 100 & Descripción de la imagen &  &  &  & \\\hline
+		ima\_gas\_id & N & 5 & Gasto  &  & X & GASTO & x\\\hline
+	\end{tabular}
+\end{center}
+Ejemplos de registros:\\\\
+	46538 - ‘/var/www/proyecto/02443.png’ - ‘Boleta agua’ - ‘Cancelada al dia’ - 23448 \\
+	46888 - ‘/var/www/proyecto/0241.png’ - ‘Boleta electricidad’ - ‘Cancelada al dia’ - 3348
+	\end{table}
+\clearpage 
+\begin{table}
+\caption{Región}
+\label{tab:ded:Region}
+\begin{center}
+	\begin{tabular}{| p{3 cm} | p{12 cm} |}
+		\hline
+		Tabla & REGION\\\hline
+		Descripción & Regiones del país\\\hline
+	\end{tabular}
+	ESPECIFICACIÓN DE ATRIBUTOS\centering \\
+	\begin{tabular}{| p{2.4 cm} | p{0.3 cm} | p{0.3 cm} | p{4.2 cm} | p{0.5 cm} | p{0.5 cm} | p{3.9 cm} | p{0.3 cm} |}
+		\hline 
+		\rowcolor[gray]{0.7} \bf COLUMNA & \bf T & \bf L & \bf DESCRIPCIÓN & \bf PK & \bf FK & \bf Tabla Ref. & \bf R \\\hline
+		reg\_id & N & 2 &  Identificador & X &  &  & x\\\hline
+		reg\_nombre & V & 20 & Nombre &  &  &  & x\\\hline
+	\end{tabular}
+\end{center}
+Ejemplos de registros:\\\\
+	12  -  ‘Magallanes’ \\
+	15 - ‘Metropolitana’
+	\end{table}
+	
+\begin{table}
+\caption{Comuna}
+\label{tab:ded:Comuna}
+\begin{center}
+	\begin{tabular}{| p{3 cm} | p{12 cm} |}
+		\hline
+		Tabla & COMUNA\\\hline
+		Descripción & Registro de comunas\\\hline
+	\end{tabular}
+	ESPECIFICACIÓN DE ATRIBUTOS\centering\\
+	\begin{tabular}{| p{2.4 cm} | p{0.3 cm} | p{0.3 cm} | p{4.2 cm} | p{0.5 cm} | p{0.5 cm} | p{3.9 cm} | p{0.3 cm} |}
+		\hline 
+		\rowcolor[gray]{0.7} \bf COLUMNA & \bf T & \bf L & \bf DESCRIPCIÓN & \bf PK & \bf FK & \bf Tabla Ref. & \bf R \\\hline
+		com\_id & N & 3 &  Identificador & X &  &  & x\\\hline
+		com\_nombre & V & 20 & Nombre &  &  &  & x\\\hline
+		com\_reg\_id & N & 2 & Región &  & X & REGION & x\\\hline
+	\end{tabular}
+\end{center}
+Ejemplos de registros:\\\\
+	722 -  ‘San Pedro’ - 12\\
+	873 - ‘La Reina’ - 15
+	\end{table}
+
+\begin{table}
+\caption{Gas\_Deu}
+\label{tab:ded:GasDeu}
+\begin{center}
+	\begin{tabular}{| p{3 cm} | p{12 cm} |}
+		\hline
+		Tabla & GAS\_DEU\\\hline
+		Descripción & Registro de gasto común por deuda  \\\hline
+	\end{tabular}
+	ESPECIFICACIÓN DE ATRIBUTOS\centering \\
+	\begin{tabular}{| p{2.4 cm} | p{0.3 cm} | p{0.3 cm} | p{4.2 cm} | p{0.5 cm} | p{0.5 cm} | p{3.9 cm} | p{0.3 cm} |}
+		\hline 
+		\rowcolor[gray]{0.7} \bf COLUMNA & \bf T & \bf L & \bf DESCRIPCIÓN & \bf PK & \bf FK & \bf Tabla Ref. & \bf R \\\hline
+		gde\_gas\_id & N & 5 &  Identificador del gasto & X & X & GASTO & x\\\hline
+		gde\_deu\_id & N & 8 & Identificador  de la deuda  & X & X & DEUDA & x\\\hline
+	\end{tabular}
+\end{center}
+Ejemplos de registros:\\\\
+	23448  -  8528\\
+	3348 - 12
+\end{table}	
+\begin{table}
+\caption{Adi\_Deu}
+\label{tab:ded:AdiDeu}
+\begin{center}
+	\begin{tabular}{| p{3 cm} | p{12 cm} |}
+		\hline
+		Tabla & ADI\_DEU\\\hline
+		Descripción & Registro de gasto adicional  por deuda \\\hline
+	\end{tabular}
+	ESPECIFICACIÓN DE ATRIBUTOS\centering  \\
+	\begin{tabular}{| p{2.4 cm} | p{0.3 cm} | p{0.3 cm} | p{4.2 cm} | p{0.5 cm} | p{0.5 cm} | p{3.9 cm} | p{0.3 cm} |}
+		\hline 
+		\rowcolor[gray]{0.7} \bf COLUMNA & \bf T & \bf L & \bf DESCRIPCIÓN & \bf PK & \bf FK & \bf Tabla Ref. & \bf R \\\hline
+		gde\_adi\_id & N & 5 &  Identificador del gasto & X & X & 	ADICIONAL & x\\\hline
+		gde\_deu\_id & N & 8 & Identificador  de la deuda  & X & X & DEUDA & x\\\hline
+	\end{tabular}
+\end{center}
+Ejemplos de registros:\\\\
+	12  -  12\\
+	32  - 8528\\
+\end{table}
+\clearpage 
+
+%\begin{tabular*}[1\textwidth]{@{\extracolsep{\fill}} | c | c | c | r | }
+%  \hline
+%  label 1 & label 2 & label 3 & label 4 \\
+%  \hline 
+%  item 1  & item 2  & item 3  & item 4  \\
+%  \hline
+%\end{tabular*}
+
+\subsubsection{Restricciones y$/$o limitaciones del modelo de datos}
+\begin{itemize}
+\item Solo existe un administrador por conjunto habitacional.
+
+\item Los porcentajes deben estar expresados en decimales.
+
+\item Toda operación que implique cálculo, no será manejada por la base de datos. Por ejemplo 
+el total a pagar del copropietario por mes.
+
+\item El sistema no funcionará con cualquier archivo excel.
+
+\item La base de datos no valida la clave única asociada al usuario, solo la almacena. 
+
+\item La base de datos no genera los reportes por si sola, solo aporta los datos necesarios.
+
+\item La base de datos no se encarga de generar los datos de la deuda.
+
+\item No se genera el pago a los trabajadores.
+
+\end{itemize}
+\subsection{Modelamiento funcional}
+\subsubsection{Diagramas de flujo de datos}
+
+\paragraph{Nivel de contexto}
+En la figura~\ref{fig:nivel-contexto} se muestra el diagrama de flujo de datos del nivel de contexto del sistema.
+\begin{figure}[H]
+	\includegraphics[width=1\textwidth]{Contexto1.png}
+	\centering
+	\caption {Nivel de contexto~-~Proceso GCadmin.}
+	\label{fig:nivel-contexto}
+\end{figure}
+
+
+\paragraph{Nivel 1 - Descomposición del nivel de contexto}
+A continuación desde la figura~\ref{fig:areas-comunes} hasta la figura~\ref{fig:tablas-basicas} se muestra el diagrama de flujo de datos del nivel 1 del sistema el cual fue dividido para la mejor apreciación de lo que significa cada proceso.
+
+\begin{figure}[H]
+	\includegraphics[width=1\textwidth]{AreasComunesValidacion1.png}
+	\centering
+	\caption {DFD Nivel 1~-~Administración de áreas comunes y Validación login.}
+	\label{fig:areas-comunes}
+\end{figure}
+
+\begin{figure}[H]
+	\includegraphics[width=1\textwidth]{Deuda.png}
+	\centering
+	\caption {DFD Nivel 1~-~Administración de deudas.}
+	\label{fig:deuda}
+\end{figure}
+
+\begin{figure}[H]
+	\includegraphics[width=1\textwidth]{Gastos1.png}
+	\centering
+	\caption {DFD Nivel 1~-~Registro de gastos.}
+	\label{fig:gastos}
+\end{figure}
+
+\begin{figure}[H]
+	\includegraphics[width=1\textwidth]{generaciondegraficos1.png}
+	\centering
+	\caption {DFD Nivel 1~-~Generación de gráficos.}
+	\label{fig:graficos}
+\end{figure}
+
+\begin{figure}[H]
+	\includegraphics[width=0.9\textwidth]{registroadmncopro1.png}
+	\centering
+	\caption {DFD Nivel 1~-~Registro de administrador y Gestión de copropietario.}
+	\label{fig:registro-usuario}
+\end{figure}
+
+\begin{figure}[H]
+	\includegraphics[width=0.9\textwidth]{registroconjuntopropiedad.png}
+	\centering
+	\caption {DFD Nivel 1- Registro de conjunto y Registro de propiedad.}
+	\label{fig:registro-resinto}
+\end{figure}
+
+\begin{figure}[H]
+	\includegraphics[width=1.2\textwidth]{Reportes.png}
+	\centering
+	\caption {DFD Nivel 1- Generación de reportes.}
+	\label{fig:reportes}
+\end{figure}
+
+\begin{figure}[H]
+	\includegraphics[width=1.1\textwidth]{tablabasicas.png}
+	\centering
+	\caption {DFD Nivel 1- Mantenedor tablas básicas.}
+	\label{fig:tablas-basicas}
+\end{figure}
+
+\paragraph{Nivel 2 - Descomposición del proceso Registro de gastos}
+En la figura~\ref{fig:reg-gasto-2} se muestra el diagrama de flujo de datos correspondiente a las descomposición del proceso Registro de gastos:
+
+\begin{figure}[H]
+	\includegraphics[width=0.9\textwidth]{Registrogasto.png}
+	\centering
+	\caption {DFD Nivel 2~-~Descomposición del proceso Registro de gastos.}
+	\label{fig:reg-gasto-2}
+\end{figure}
+
+\paragraph{Nivel 2 - Descomposición del proceso Administración de deuda}
+En la figura~\ref{fig:admn-deuda-2} se muestra el diagrama de flujo de datos correspondiente a las descomposición del proceso Administración de deuda:
+
+\begin{figure}[H]
+	\includegraphics[width=0.9\textwidth]{deuda_nivel2.png}
+	\centering
+	\caption {DFD Nivel 2-~Descomposición del proceso Administración de deuda.}
+	\label{fig:admn-deuda-2}
+\end{figure}
+
+
+\subsubsection{Descripción de diagramas de flujos de datos}
+\paragraph{Nivel de contexto}
+\subparagraph{Descripción entidades externas}
+A continuación en las tablas \ref{tab:enti-cli} y \ref{tab:enti-adm}, se presenta la descripción de las entidades externas correspondientes al nivel de contexto. 
+
+\begin{center}
+\begin{table}[H]
+    \caption{Entidad Copropietario }
+    \label{tab:enti-cli}
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4 cm} | p{11 cm} |}
+		\hline
+		 ENTIDAD EXTERNA & Copropietario  \\\hline
+		DESCRIPCIÓN & Representa al propietario o arrendatario que ingresa al sistema.\\\hline
+	\end{tabular}
+\end{table}	
+
+
+\begin{table}[H]
+    \caption{Entidad Administrador}
+    \label{tab:enti-adm}
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4 cm} | p{11 cm} |}
+		\hline
+		 ENTIDAD EXTERNA & Administrador \\\hline
+		DESCRIPCIÓN & Representa a quien administra el conjunto habitacional. \\\hline
+	\end{tabular}
+\end{table}		
+\end{center}	
+
+
+\subparagraph{Descripción de flujos de datos}
+A continuación en las tablas de la ~\ref{tab:gastos-cop} a la ~\ref{tab:reporte-copropietario-propiedad}, se presenta la descripción de los flujos de datos correspondientes al nivel de contexto.\\
+ 
+
+
+\begin{center}
+\begin{table}[H]
+    \caption{Flujo de datos Reporte\_gasto\_copropietario}
+    \label{tab:gastos-cop}
+\begin{tabular}{ c | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} |}	\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}FLUJO DE DATOS} 
+&\multicolumn{3}{| p{11 cm} |} {Reporte\_gasto\_copropetario} \\\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}DESCRIPCIÓN} 
+&\multicolumn{3}{| p{11 cm} |} {Reporte de los gastos del copropietario.} \\\hline
+ \multicolumn{2}{| c |}{\cellcolor[gray]{0.7}ORIGEN}
+&\multicolumn{2}{| c |}{\cellcolor[gray]{0.7}DESTINO} \\\hline
+ \multicolumn{2}{| p{7.5 cm} |}{Proceso GCadmin}
+&\multicolumn{2}{| p{7.5 cm} |}{Entidad Copropietario} \\\hline 
+\end{tabular}
+\end{table}	
+
+\begin{table}[H]
+    \caption{Flujo de datos Reporte\_deuda\_copropietario}
+    \label{tab:deuda-cop}
+\begin{tabular}{ c | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} |}	\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}FLUJO DE DATOS} 
+&\multicolumn{3}{| p{11 cm} |} {Reporte\_deuda\_copropietario} \\\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}DESCRIPCIÓN} 
+&\multicolumn{3}{| p{11 cm} |} {Reporte de la deuda que tiene el copropietario con un cunjunto habitacional.} \\\hline
+ \multicolumn{2}{| c |}{\cellcolor[gray]{0.7}ORIGEN}
+&\multicolumn{2}{| c |}{\cellcolor[gray]{0.7}DESTINO} \\\hline
+ \multicolumn{2}{| p{7.5 cm} |}{Proceso GCadmin}
+&\multicolumn{2}{| p{7.5 cm} |}{Entidad Copropietario} \\\hline 
+\end{tabular}
+\end{table}	
+
+\begin{table}[H]
+    \caption{Flujo de datos Reporte\_histórico\_copropietario}
+    \label{tab:historico-cop}
+\begin{tabular}{ c | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} |}	\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}FLUJO DE DATOS} 
+&\multicolumn{3}{| p{11 cm} |} {Reporte\_histórico\_copropietario} \\\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}DESCRIPCIÓN} 
+&\multicolumn{3}{| p{11 cm} |} {Reporte de gastos históricos del copropietario.} \\\hline
+ \multicolumn{2}{| c |}{\cellcolor[gray]{0.7}ORIGEN}
+&\multicolumn{2}{| c |}{\cellcolor[gray]{0.7}DESTINO} \\\hline
+ \multicolumn{2}{| p{7.5 cm} |}{Proceso GCadmin}
+&\multicolumn{2}{| p{7.5 cm} |}{Entidad Copropietario} \\\hline 
+\end{tabular}
+\end{table}	
+
+\begin{table}[H]
+    \caption{Flujo de datos Gráfico\_estadístico\_copropietario}
+    \label{tab:g-estadistico-cop}
+\begin{tabular}{ c | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} |}	\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}FLUJO DE DATOS} 
+&\multicolumn{3}{| p{11 cm} |} {Gráfico\_estadístico\_copropietario} \\\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}DESCRIPCIÓN} 
+&\multicolumn{3}{| p{11 cm} |} {Gráficos estadísticos de los gastos realizados.} \\\hline
+ \multicolumn{2}{| c |}{\cellcolor[gray]{0.7}ORIGEN}
+&\multicolumn{2}{| c |}{\cellcolor[gray]{0.7}DESTINO} \\\hline
+ \multicolumn{2}{| p{7.5 cm} |}{Proceso GCadmin}
+&\multicolumn{2}{| p{7.5 cm} |}{Entidad Copropietario} \\\hline 
+\end{tabular}
+\end{table}	
+
+\begin{table}[H]
+    \caption{Flujo de datos Espacio\_disponible}
+    \label{tab:espacio-disponible}
+\begin{tabular}{ c | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} |}	\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}FLUJO DE DATOS} 
+&\multicolumn{3}{| p{11 cm} |} {Espacio\_disponible} \\\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}DESCRIPCIÓN} 
+&\multicolumn{3}{| p{11 cm} |} {Espacios comunes disponibles.} \\\hline
+ \multicolumn{2}{| c |}{\cellcolor[gray]{0.7}ORIGEN}
+&\multicolumn{2}{| c |}{\cellcolor[gray]{0.7}DESTINO} \\\hline
+ \multicolumn{2}{| p{7.5 cm} |}{Proceso GCadmin}
+&\multicolumn{2}{| p{7.5 cm} |}{Entidad Copropietario} \\\hline 
+\end{tabular}
+\end{table}
+	
+\begin{table}[H]
+    \caption{Flujo de datos Aviso\_pago}
+    \label{tab:aviso-pago}
+\begin{tabular}{ c | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} |}	\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}FLUJO DE DATOS} 
+&\multicolumn{3}{| p{11 cm} |} {Aviso\_pago} \\\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}DESCRIPCIÓN} 
+&\multicolumn{3}{| p{11 cm} |} {Aviso fecha de vencimiento de gastos comunes.} \\\hline
+ \multicolumn{2}{| c |}{\cellcolor[gray]{0.7}ORIGEN}
+&\multicolumn{2}{| c |}{\cellcolor[gray]{0.7}DESTINO} \\\hline
+ \multicolumn{2}{| p{7.5 cm} |}{Proceso GCadmin}
+&\multicolumn{2}{| p{7.5 cm} |}{Entidad Copropietario} \\\hline 
+\end{tabular}
+\end{table}	
+\begin{table}[H]
+    \caption{Flujo de datos Solicitud\_espacio}
+    \label{tab:solicitud-espacio}
+\begin{tabular}{ c | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} |}	\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}FLUJO DE DATOS} 
+&\multicolumn{3}{| p{11 cm} |} {Solicitud\_espacio} \\\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}DESCRIPCIÓN} 
+&\multicolumn{3}{| p{11 cm} |} {Solicitud de espacios comunes.} \\\hline
+ \multicolumn{2}{| c |}{\cellcolor[gray]{0.7}ORIGEN}
+&\multicolumn{2}{| c |}{\cellcolor[gray]{0.7}DESTINO} \\\hline
+ \multicolumn{2}{| p{7.5 cm} |}{Entidad Copropietario}
+&\multicolumn{2}{| p{7.5 cm} |}{Proceso GCadmin} \\\hline 
+\end{tabular}
+\end{table}
+
+
+\clearpage	
+\begin{table}[H]
+    \caption{Flujo de datos Aviso\_reserva}
+    \label{tab:av-reserva}
+\begin{tabular}{ c | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} |}	\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}FLUJO DE DATOS} 
+&\multicolumn{3}{| p{11 cm} |} {Aviso\_reserva} \\\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}DESCRIPCIÓN} 
+&\multicolumn{3}{| p{11 cm} |} {Aviso reserva de espacios comunes.} \\\hline
+ \multicolumn{2}{| c |}{\cellcolor[gray]{0.7}ORIGEN}
+&\multicolumn{2}{| c |}{\cellcolor[gray]{0.7}DESTINO} \\\hline
+ \multicolumn{2}{| p{7.5 cm} |}{Proceso GCadmin}
+&\multicolumn{2}{| p{7.5 cm} |}{Entidad Copropietario} \\\hline 
+\end{tabular}
+\end{table}
+\begin{table}[H]
+    \caption{Flujo de datos Credencial\_acceso\_copropietario }
+    \label{tab:credencial-cop}
+\begin{tabular}{ c | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} |}	\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}FLUJO DE DATOS} 
+&\multicolumn{3}{| p{11 cm} |} {Credencial\_acceso\_copropietario} \\\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}DESCRIPCIÓN} 
+&\multicolumn{3}{| p{11 cm} |} {Información para el ingreso al sistema del copropietario.} \\\hline
+ \multicolumn{2}{| c |}{\cellcolor[gray]{0.7}ORIGEN}
+&\multicolumn{2}{| c |}{\cellcolor[gray]{0.7}DESTINO} \\\hline
+ \multicolumn{2}{| p{7.5 cm} |}{Entidad Copropietario}
+&\multicolumn{2}{| p{7.5 cm} |}{Proceso GCadmin} \\\hline 
+\end{tabular}
+\end{table}	
+
+\begin{table}[H]
+    \caption{Flujo de datos Dato\_copropietario}
+    \label{tab:dato-cop}
+\begin{tabular}{ c | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} |}	\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}FLUJO DE DATOS} 
+&\multicolumn{3}{| p{11 cm} |} {Dato\_copropietario} \\\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}DESCRIPCIÓN} 
+&\multicolumn{3}{| p{11 cm} |} {Información del copropietario.} \\\hline
+ \multicolumn{2}{| c |}{\cellcolor[gray]{0.7}ORIGEN}
+&\multicolumn{2}{| c |}{\cellcolor[gray]{0.7}DESTINO} \\\hline
+ \multicolumn{2}{| p{7.5 cm} |}{Entidad Copropietario}
+&\multicolumn{2}{| p{7.5 cm} |}{Proceso GCadmin} \\\hline 
+\end{tabular}
+\end{table}	
+%%ADMIN
+\begin{table}[H]
+    \caption{Flujo de datos Reporte\_morosos\_administrador}
+    \label{tab:morosos-adm}
+\begin{tabular}{ c | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} |}	\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}FLUJO DE DATOS} 
+&\multicolumn{3}{| p{11 cm} |} {Reporte\_morosos\_administrador} \\\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}DESCRIPCIÓN} 
+&\multicolumn{3}{| p{11 cm} |} {Reportes de copropietarios morosos.} \\\hline
+ \multicolumn{2}{| c |}{\cellcolor[gray]{0.7}ORIGEN}
+&\multicolumn{2}{| c |}{\cellcolor[gray]{0.7}DESTINO} \\\hline
+ \multicolumn{2}{| p{7.5 cm} |}{Proceso GCadmin}
+&\multicolumn{2}{| p{7.5 cm} |}{Entidad Administrador} \\\hline 
+\end{tabular}
+\end{table}	
+\begin{table}[H]
+    \caption{Flujo de datos Reporte\_gastos\_administrador}
+    \label{tab:gastos-adm}
+\begin{tabular}{ c | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} |}	\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}FLUJO DE DATOS} 
+&\multicolumn{3}{| p{11 cm} |} {Reporte\_gastos\_administrador} \\\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}DESCRIPCIÓN} 
+&\multicolumn{3}{| p{11 cm} |} {Reporte de los gastos realizados en un conjunto habitacional.} \\\hline
+ \multicolumn{2}{| c |}{\cellcolor[gray]{0.7}ORIGEN}
+&\multicolumn{2}{| c |}{\cellcolor[gray]{0.7}DESTINO} \\\hline
+ \multicolumn{2}{| p{7.5 cm} |}{Proceso GCadmin}
+&\multicolumn{2}{| p{7.5 cm} |}{Entidad Administrador} \\\hline 
+\end{tabular}
+\end{table}	
+
+\begin{table}[H]
+    \caption{Flujo de datos Reporte\_estadístico\_administrador}
+    \label{tab:estadistico-adm}
+\begin{tabular}{ c | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} |}	\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}FLUJO DE DATOS} 
+&\multicolumn{3}{| p{11 cm} |} {Reporte\_estadístico\_administrador} \\\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}DESCRIPCIÓN} 
+&\multicolumn{3}{| p{11 cm} |} {Reportes estadísticos sobre reservas de espacios comunes.} \\\hline
+ \multicolumn{2}{| c |}{\cellcolor[gray]{0.7}ORIGEN}
+&\multicolumn{2}{| c |}{\cellcolor[gray]{0.7}DESTINO} \\\hline
+ \multicolumn{2}{| p{7.5 cm} |}{Proceso GCadmin}
+&\multicolumn{2}{| p{7.5 cm} |}{Entidad Administrador} \\\hline 
+\end{tabular}
+\end{table}	
+\begin{table}[H]
+    \caption{Flujo de datos Gráfico\_estadístico\_administrador}
+    \label{tab:g-estadistico-adm}
+\begin{tabular}{ c | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} |}	\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}FLUJO DE DATOS} 
+&\multicolumn{3}{| p{11 cm} |} {Gráfico\_estadístico\_administrador} \\\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}DESCRIPCIÓN} 
+&\multicolumn{3}{| p{11 cm} |} {Gráficos estadísticos de los gastos realizados.} \\\hline
+ \multicolumn{2}{| c |}{\cellcolor[gray]{0.7}ORIGEN}
+&\multicolumn{2}{| c |}{\cellcolor[gray]{0.7}DESTINO} \\\hline
+ \multicolumn{2}{| p{7.5 cm} |}{Proceso GCadmin}
+&\multicolumn{2}{| p{7.5 cm} |}{Entidad Administrador} \\\hline 
+\end{tabular}
+\end{table}	
+
+\clearpage
+\begin{table}[H]
+    \caption{Flujo de datos Archivo\_excel\_gasto}
+    \label{tab:excel-gastos}
+\begin{tabular}{ c | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} |}	\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}FLUJO DE DATOS} 
+&\multicolumn{3}{| p{11 cm} |} {Archivo\_excel\_gasto} \\\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}DESCRIPCIÓN} 
+&\multicolumn{3}{| p{11 cm} |} {Archivo excel para el ingreso de gastos comunes.} \\\hline
+ \multicolumn{2}{| c |}{\cellcolor[gray]{0.7}ORIGEN}
+&\multicolumn{2}{| c |}{\cellcolor[gray]{0.7}DESTINO} \\\hline
+ \multicolumn{2}{| p{7.5 cm} |}{Proceso GCadmin}
+&\multicolumn{2}{| p{7.5 cm} |}{Entidad Administrador} \\\hline  
+\end{tabular}
+\end{table}	
+\begin{table}[H]
+    \caption{Flujo de datos Archivo\_excel\_adicionales}
+    \label{tab:excel-adicionales}
+\begin{tabular}{ c | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} |}	\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}FLUJO DE DATOS} 
+&\multicolumn{3}{| p{11 cm} |} {Archivo\_excel\_adicionales} \\\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}DESCRIPCIÓN} 
+&\multicolumn{3}{| p{11 cm} |} {Archivo excel para el ingreso de gastos adicionales.} \\\hline
+ \multicolumn{2}{| c |}{\cellcolor[gray]{0.7}ORIGEN}
+&\multicolumn{2}{| c |}{\cellcolor[gray]{0.7}DESTINO} \\\hline
+ \multicolumn{2}{| p{7.5 cm} |}{Proceso GCadmin}
+&\multicolumn{2}{| p{7.5 cm} |}{Entidad Administrador} \\\hline  
+\end{tabular}
+\end{table}	
+
+\begin{table}[H]
+    \caption{Flujo de datos Aviso\_solicitud\_reserva}
+    \label{tab:aviso-solicitud-reserva}
+\begin{tabular}{ c | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} |}	\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}FLUJO DE DATOS} 
+&\multicolumn{3}{| p{11 cm} |} {Aviso\_solicitud\_reserva} \\\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}DESCRIPCIÓN} 
+&\multicolumn{3}{| p{11 cm} |} {Aviso de solicitud de reserva de espacios comunes.} \\\hline
+ \multicolumn{2}{| c |}{\cellcolor[gray]{0.7}ORIGEN}
+&\multicolumn{2}{| c |}{\cellcolor[gray]{0.7}DESTINO} \\\hline
+ \multicolumn{2}{| p{7.5 cm} |}{Proceso GCadmin}
+&\multicolumn{2}{| p{7.5 cm} |}{Entidad Administrador} \\\hline  
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \caption{Flujo de datos Reporte\_deuda\_administrador}
+    \label{tab:deuda-administrador}
+\begin{tabular}{ c | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} |}	\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}FLUJO DE DATOS} 
+&\multicolumn{3}{| p{11 cm} |} {Reporte\_deuda\_administrador} \\\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}DESCRIPCIÓN} 
+&\multicolumn{3}{| p{11 cm} |} {Reporte de deudas pendientes.} \\\hline
+ \multicolumn{2}{| c |}{\cellcolor[gray]{0.7}ORIGEN}
+&\multicolumn{2}{| c |}{\cellcolor[gray]{0.7}DESTINO} \\\hline
+ \multicolumn{2}{| p{7.5 cm} |}{Proceso GCadmin}
+&\multicolumn{2}{| p{7.5 cm} |}{Entidad Administrador} \\\hline   
+\end{tabular}
+\end{table}	
+\begin{table}[H]
+    \caption{Flujo de datos Ubicación\_imagen\_pago}
+    \label{tab:img-pago}
+\begin{tabular}{ c | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} |}	\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}FLUJO DE DATOS} 
+&\multicolumn{3}{| p{11 cm} |} {Ubicación\_imagen\_pago} \\\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}DESCRIPCIÓN} 
+&\multicolumn{3}{| p{11 cm} |} {Ubicación de imagen de comprobación de pago de gastos comunes.} \\\hline
+ \multicolumn{2}{| c |}{\cellcolor[gray]{0.7}ORIGEN}
+&\multicolumn{2}{| c |}{\cellcolor[gray]{0.7}DESTINO} \\\hline
+ \multicolumn{2}{| p{7.5 cm} |}{Entidad Administrador}
+&\multicolumn{2}{| p{7.5 cm} |}{Proceso GCadmin} \\\hline 
+\end{tabular}
+\end{table}	
+
+
+\begin{table}[H]
+    \caption{Flujo de datos Archivo\_excel\_gasto\_común}
+    \label{tab:gasto-comun}
+\begin{tabular}{ c | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} |}	\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}FLUJO DE DATOS} 
+&\multicolumn{3}{| p{11 cm} |} {Archivo\_excel\_gasto\_común} \\\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}DESCRIPCIÓN} 
+&\multicolumn{3}{| p{11 cm} |} {Archivo excel de gastos comunes.} \\\hline
+ \multicolumn{2}{| c |}{\cellcolor[gray]{0.7}ORIGEN}
+&\multicolumn{2}{| c |}{\cellcolor[gray]{0.7}DESTINO} \\\hline
+ \multicolumn{2}{| p{7.5 cm} |}{Entidad Administrador}
+&\multicolumn{2}{| p{7.5 cm} |}{Proceso GCadmin} \\\hline 
+\end{tabular}
+\end{table}	
+
+\begin{table}[H]
+    \caption{Flujo de datos Copropietario}
+    \label{tab:copropietario}
+\begin{tabular}{ c | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} |}	\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}FLUJO DE DATOS} 
+&\multicolumn{3}{| p{11 cm} |} {Copropietario} \\\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}DESCRIPCIÓN} 
+&\multicolumn{3}{| p{11 cm} |} {Información del copropietarios.} \\\hline
+ \multicolumn{2}{| c |}{\cellcolor[gray]{0.7}ORIGEN}
+&\multicolumn{2}{| c |}{\cellcolor[gray]{0.7}DESTINO} \\\hline
+ \multicolumn{2}{| p{7.5 cm} |}{Entidad Administrador}
+&\multicolumn{2}{| p{7.5 cm} |}{Proceso GCadmin} \\\hline 
+\end{tabular}
+\end{table}	
+
+\begin{table}[H]
+    \caption{Flujo de datos Espacio\_común}
+    \label{tab:espacio-comun}
+\begin{tabular}{ c | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} |}	\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}FLUJO DE DATOS} 
+&\multicolumn{3}{| p{11 cm} |} {Espacio\_común} \\\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}DESCRIPCIÓN} 
+&\multicolumn{3}{| p{11 cm} |} {Información de espacios comunes.} \\\hline
+ \multicolumn{2}{| c |}{\cellcolor[gray]{0.7}ORIGEN}
+&\multicolumn{2}{| c |}{\cellcolor[gray]{0.7}DESTINO} \\\hline
+ \multicolumn{2}{| p{7.5 cm} |}{Entidad Administrador}
+&\multicolumn{2}{| p{7.5 cm} |}{Proceso GCadmin} \\\hline 
+\end{tabular}
+\end{table}	
+\begin{table}[H]
+    \caption{Flujo de datos Datos\_personales}
+    \label{tab:datos-personales}
+\begin{tabular}{ c | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} |}	\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}FLUJO DE DATOS} 
+&\multicolumn{3}{| p{11 cm} |} {Datos\_personales} \\\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}DESCRIPCIÓN} 
+&\multicolumn{3}{| p{11 cm} |} {Datos personales del administrador.} \\\hline
+ \multicolumn{2}{| c |}{\cellcolor[gray]{0.7}ORIGEN}
+&\multicolumn{2}{| c |}{\cellcolor[gray]{0.7}DESTINO} \\\hline
+ \multicolumn{2}{| p{7.5 cm} |}{Entidad Administrador}
+&\multicolumn{2}{| p{7.5 cm} |}{Proceso GCadmin} \\\hline 
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \caption{ Flujo de datos Archivo\_excel\_gastos\_adicionales}
+    \label{tab:gastos-adicionales}
+\begin{tabular}{ c | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} |}	\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}FLUJO DE DATOS} 
+&\multicolumn{3}{| p{11 cm} |} {Archivo\_excel\_gastos\_adicionales} \\\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}DESCRIPCIÓN} 
+&\multicolumn{3}{| p{11 cm} |} {Archivo excel gastos adicionales.} \\\hline
+ \multicolumn{2}{| c |}{\cellcolor[gray]{0.7}ORIGEN}
+&\multicolumn{2}{| c |}{\cellcolor[gray]{0.7}DESTINO} \\\hline
+ \multicolumn{2}{| p{7.5 cm} |}{Entidad Administrador}
+&\multicolumn{2}{| p{7.5 cm} |}{Proceso GCadmin} \\\hline 
+\end{tabular}
+\end{table}	
+\begin{table}[H]
+    \caption{Flujo de datos Pago\_copropietario}
+    \label{tab:pago-copropietario}
+\begin{tabular}{ c | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} |}	\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}FLUJO DE DATOS} 
+&\multicolumn{3}{| p{11 cm} |} {Pago\_copropietario} \\\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}DESCRIPCIÓN} 
+&\multicolumn{3}{| p{11 cm} |} {Pago realizado por propiedad.} \\\hline
+ \multicolumn{2}{| c |}{\cellcolor[gray]{0.7}ORIGEN}
+&\multicolumn{2}{| c |}{\cellcolor[gray]{0.7}DESTINO} \\\hline
+ \multicolumn{2}{| p{7.5 cm} |}{Entidad Administrador}
+&\multicolumn{2}{| p{7.5 cm} |}{Proceso GCadmin} \\\hline 
+\end{tabular}
+\end{table}	
+
+\begin{table}[H]
+    \caption{Flujo de datos Conjunto\_residencial}
+    \label{tab:conjunto-residencial}
+\begin{tabular}{ c | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} |}	\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}FLUJO DE DATOS} 
+&\multicolumn{3}{| p{11 cm} |} {Conjunto\_residencial} \\\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}DESCRIPCIÓN} 
+&\multicolumn{3}{| p{11 cm} |} {Información del conjunto residencial.} \\\hline
+ \multicolumn{2}{| c |}{\cellcolor[gray]{0.7}ORIGEN}
+&\multicolumn{2}{| c |}{\cellcolor[gray]{0.7}DESTINO} \\\hline
+ \multicolumn{2}{| p{7.5 cm} |}{Entidad Administrador}
+&\multicolumn{2}{| p{7.5 cm} |}{Proceso GCadmin} \\\hline 
+\end{tabular}
+\end{table}	
+
+\begin{table}[H]
+    \caption{Flujo de datos Confirmación\_reserva}
+    \label{tab:confirmacion-reserva}
+\begin{tabular}{ c | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} |}	\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}FLUJO DE DATOS} 
+&\multicolumn{3}{| p{11 cm} |} {Confirmación\_reserva} \\\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}DESCRIPCIÓN} 
+&\multicolumn{3}{| p{11 cm} |} {Confirmación de reserva de áreas comunes.} \\\hline
+ \multicolumn{2}{| c |}{\cellcolor[gray]{0.7}ORIGEN}
+&\multicolumn{2}{| c |}{\cellcolor[gray]{0.7}DESTINO} \\\hline
+ \multicolumn{2}{| p{7.5 cm} |}{Entidad Administrador}
+&\multicolumn{2}{| p{7.5 cm} |}{Proceso GCadmin} \\\hline 
+\end{tabular}
+\end{table}	
+
+\begin{table}[H]
+    \caption{ Flujo de datos Credencial\_acceso\_administrador}
+    \label{tab:credencial-adm}
+\begin{tabular}{ c | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} |}	\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}FLUJO DE DATOS} 
+&\multicolumn{3}{| p{11 cm} |} {Credencial\_acceso\_administrador} \\\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}DESCRIPCIÓN} 
+&\multicolumn{3}{| p{11 cm} |} {Información para el ingreso al sistema del administrador.} \\\hline
+ \multicolumn{2}{| c |}{\cellcolor[gray]{0.7}ORIGEN}
+&\multicolumn{2}{| c |}{\cellcolor[gray]{0.7}DESTINO} \\\hline
+ \multicolumn{2}{| p{7.5 cm} |}{Entidad Administrador}
+&\multicolumn{2}{| p{7.5 cm} |}{Proceso GCadmin} \\\hline 
+\end{tabular}
+\end{table}	
+
+\begin{table}[H]
+    \caption{ Flujo de datos Tablas\_básicas}
+    \label{tab:tablas-basicas}
+\begin{tabular}{ c | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} |}	\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}FLUJO DE DATOS} 
+&\multicolumn{3}{| p{11 cm} |} {Tablas\_básicas} \\\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}DESCRIPCIÓN} 
+&\multicolumn{3}{| p{11 cm} |} {Información de tablas básicas.} \\\hline
+ \multicolumn{2}{| c |}{\cellcolor[gray]{0.7}ORIGEN}
+&\multicolumn{2}{| c |}{\cellcolor[gray]{0.7}DESTINO} \\\hline
+ \multicolumn{2}{| p{7.5 cm} |}{Entidad Administrador}
+&\multicolumn{2}{| p{7.5 cm} |}{Proceso GCadmin} \\\hline 
+\end{tabular}
+\end{table}	
+
+\begin{table}[H]
+    \caption{ Flujo de datos Propiedad}
+    \label{tab:propiedad}
+\begin{tabular}{ c | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} |}	\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}FLUJO DE DATOS} 
+&\multicolumn{3}{| p{11 cm} |} {Propiedad} \\\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}DESCRIPCIÓN} 
+&\multicolumn{3}{| p{11 cm} |} {Información de la propiedad.} \\\hline
+ \multicolumn{2}{| c |}{\cellcolor[gray]{0.7}ORIGEN}
+&\multicolumn{2}{| c |}{\cellcolor[gray]{0.7}DESTINO} \\\hline
+ \multicolumn{2}{| p{7.5 cm} |}{Entidad Administrador}
+&\multicolumn{2}{| p{7.5 cm} |}{Proceso GCadmin} \\\hline 
+\end{tabular}
+\end{table}	
+
+\begin{table}[H]
+    \caption{ Flujo de datos Reporte\_copropietario\_propiedad}
+    \label{tab:reporte-copropietario-propiedad}
+\begin{tabular}{ c | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} |}	\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}FLUJO DE DATOS} 
+&\multicolumn{3}{| p{11 cm} |} {Reporte\_copropietario\_propiedad} \\\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}DESCRIPCIÓN} 
+&\multicolumn{3}{| p{11 cm} |} {Reporte de nómina de copropietarios por propiedad.} \\\hline
+ \multicolumn{2}{| c |}{\cellcolor[gray]{0.7}ORIGEN}
+&\multicolumn{2}{| c |}{\cellcolor[gray]{0.7}DESTINO} \\\hline
+ \multicolumn{2}{| p{7.5 cm} |}{Proceso GCadmin}
+&\multicolumn{2}{| p{7.5 cm} |}{Entidad Administrador} \\\hline 
+\end{tabular}
+\end{table}	
+\end{center}
+
+\subparagraph{Descripción de procesos }
+A continuación, en la tabla~\ref{dfd:proGCadmin}, se presenta la descripción del proceso correspondiente al diagrama de contexto.
+
+\begin{center}
+\begin{table}[H]
+    \caption{Proceso GCadmin}
+    \label{dfd:proGCadmin}
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4 cm} | p{11 cm} |}		\hline
+		 PROCESO & Gcadmin  \\\hline
+		 NÚMERO & \\\hline
+		 DESCRIPCIÓN & Proceso principal en el que interactúan el administrador con el copropietario. \\\hline
+		 ENTRADAS &
+		\begin{itemize}
+		\item Propiedad
+		\item Solicitud\_espacio
+		\item Credencial\_acceso\_copropietario
+		\item Dato\_copropietario
+		\item Ubicación\_imagen\_pago
+		\item Archivo\_excel\_gasto\_común
+		\item Copropietario
+		\item Espacio\_común
+		\item Datos\_personales
+		\item Archivo\_excel\_gastos\_adicionales
+		\item Pago\_copropietario
+		\item Conjunto\_residencial
+		\item Confirmación\_reserva
+		\item Credencial\_acceso\_administrador
+		\item Tablas\_básicas
+		\end{itemize}				  
+		\\\hline
+		SALIDAS & 
+		\begin{itemize}
+		\item Reporte\_gasto\_copropietario
+		\item Reporte\_deuda\_copropietario
+		\item Reporte\_histórico\_copropietario
+		\item Gráfico\_estadístico\_copropietario
+		\item Espacio\_disponible
+		\item Aviso\_reserva
+		\item Aviso\_pago
+		\item Reporte\_morosos\_administrador
+		\item Reporte\_gastos\_administrador
+		\item Reporte\_estadístico\_administrador
+		\item Gráfico\_estadísticos\_administrador
+		\item Archivo\_excel\_gasto
+		\item Archivo\_excel\_adicionales
+		\item Aviso\_solicitud\_reserva
+		\item Reporte\_copropietario\_propiedad
+		\item Reporte\_deuda\_administrador
+		\end{itemize}		
+	\\\hline
+	\end{tabular}
+\end{table}	
+\end{center}
+\paragraph{Nivel 1 - Descomposición del nivel de contexto}
+\subparagraph{Descripción de almacenamientos}
+A continuación de la tabla ~\ref{al:conjunto} a la ~\ref{al:adi-deu}, se presenta la descripción de almacenamiento correspondientes al Nivel 1 - Descopmposición del nivel de contexto:
+\begin{center} 
+\begin{table}[H]
+\caption{Almacenamiento Conjunto} 
+\label{al:conjunto} 
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{5 cm} | p{10 cm} |}\hline 
+ALMACENAMIENTO & CONJUNTO \\\hline
+ DESCRIPCIÓN & Información de conjunto habitacional \\\hline 
+ PROCESOS ASOCIADOS & \begin{itemize}
+ \item 1 Registro de gastos.
+ \item 2 Administrador de áreas comunes.
+ \item 3 Generación de reportes.
+ \item 5 Registro de conjunto.
+ \item 8 Registro de propiedad.
+ \item 9 Aministración de deudas.
+ \item 10 Generación de gráficos.
+ \end{itemize} \\\hline 
+ \end{tabular} 
+\end{table} 
+\end{center}
+
+\begin{center} 
+\begin{table}[H]
+\caption{Almacenamiento Copropietario} 
+\label{al:copropietario} 
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{5 cm} | p{10 cm} |}\hline 
+ALMACENAMIENTO & COPROPIETARIO \\\hline
+ DESCRIPCIÓN & Información de residentes \\\hline 
+ PROCESOS ASOCIADOS & \begin{itemize}
+ \item 3 Generación de reportes.
+ \item 4 Validación de login.
+ \item 7 Gentión de copropietario.
+ \item 9 Aministración de deudas.
+ \item 10 Generación de gráficos.
+ \end{itemize} \\\hline 
+ \end{tabular} 
+\end{table} 
+\end{center}
+\begin{center} 
+\begin{table}[H]
+\caption{Almacenamiento Cop\_Pro} 
+\label{al:cop-pro} 
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{5 cm} | p{10 cm} |}\hline 
+ALMACENAMIENTO & COP\_PRO \\\hline
+ DESCRIPCIÓN & Registro de propiedades por copropietario \\\hline 
+ PROCESOS ASOCIADOS & \begin{itemize}
+ \item 3 Generación de reportes.
+ \item 4 Validación de login.
+ \item 7 Gestión de copropietario.
+ \item 9 Aministración de deudas.
+ \item 10 Generación gráficos.
+ \end{itemize} \\\hline 
+ \end{tabular} 
+\end{table} 
+\end{center}
+
+\clearpage
+\begin{center} 
+\begin{table}[H]
+\caption{Almacenamiento Propiedad} 
+\label{al:propiedad} 
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{5 cm} | p{10 cm} |}\hline 
+ALMACENAMIENTO &  PROPIEDAD\\\hline
+ DESCRIPCIÓN &  Información de propiedades\\\hline 
+ PROCESOS ASOCIADOS & \begin{itemize}
+ \item 1 Registro de gastos.
+ \item 2 Administración de áreas comunes.
+ \item 3 Generación de reportes.
+ \item 7 Gestión de copropietario.
+ \item 8 Registro propiedad.
+ \item 9 Aministración de deudas.
+ \item 10 Generación gráficos.
+ \end{itemize} \\\hline 
+ \end{tabular} 
+\end{table} 
+\end{center}
+
+\begin{center} 
+\begin{table}[H]
+\caption{Almacenamiento Administrador} 
+\label{al:administrador} 
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{5 cm} | p{10 cm} |}\hline 
+ALMACENAMIENTO & ADMINISTRADOR \\\hline
+ DESCRIPCIÓN & Información del administrador\\\hline 
+ PROCESOS ASOCIADOS & \begin{itemize}
+ \item 4 Validación de login.
+ \item 5 Registro conjunto.
+ \item 6 Registro administrador.
+ \end{itemize} \\\hline 
+ \end{tabular} 
+\end{table} 
+\end{center}
+
+\begin{center} 
+\begin{table}[H]
+\caption{Almacenamiento Adicional } 
+\label{al:adicional} 
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{5 cm} | p{10 cm} |}\hline 
+ALMACENAMIENTO & ADICIONAL \\\hline
+ DESCRIPCIÓN & Información de los gastos adicionales por propiedad \\\hline 
+ PROCESOS ASOCIADOS & \begin{itemize}
+ \item 1 Registro de gastos.
+ \item 3 Generación de reportes.
+ \item 9 Aministración de deudas.
+ \item 10 Generación gráficos.
+ \end{itemize} \\\hline 
+ \end{tabular} 
+\end{table} 
+\end{center}
+
+\begin{center} 
+\begin{table}[H]
+\caption{Almacenamiento Tipo\_Adicional} 
+\label{al:tipo-adicional} 
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{5 cm} | p{10 cm} |}\hline 
+ALMACENAMIENTO & TIPO\_ADICIONAL \\\hline
+ DESCRIPCIÓN & Tipos de gastos adicionales \\\hline 
+ PROCESOS ASOCIADOS & \begin{itemize}
+ \item 1 Registro de gastos.
+ \item 3 Generación de reportes.
+ \item 4 Validación de login.
+ \item 10 Generación gráficos.
+ \item 11 Mantenedor de tablas básicas.
+ \end{itemize} \\\hline 
+ \end{tabular} 
+\end{table} 
+\end{center}
+
+\begin{center} 
+\begin{table}[H]
+\caption{Almacenamiento Gasto} 
+\label{al:gasto} 
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{5 cm} | p{10 cm} |}\hline 
+ALMACENAMIENTO & GASTO \\\hline
+ DESCRIPCIÓN & Informacion de gastos los comunes por conjunto habitacional \\\hline 
+ PROCESOS ASOCIADOS & \begin{itemize}
+ \item 1 Registro de gastos.
+ \item 3 Generación de reportes.
+ \item 9 Aministración de deudas.
+ \item 10 Generación gráficos.
+ \end{itemize} \\\hline 
+ \end{tabular} 
+\end{table} 
+\end{center}
+
+\begin{center} 
+\begin{table}[H]
+\caption{Almacenamiento Tipo\_Gasto } 
+\label{al:tipo-gasto} 
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{5 cm} | p{10 cm} |}\hline 
+ALMACENAMIENTO & TIPO\_GASTO \\\hline
+ DESCRIPCIÓN & Tipos de gastos comunes \\\hline 
+ PROCESOS ASOCIADOS & \begin{itemize}
+ \item 1 Registro de gastos.
+ \item 3 Generación de reportes.
+ \item 10 Generación gráficos.
+ \item 11 Mantenedor de tablas básicas.
+ \end{itemize} \\\hline 
+ \end{tabular} 
+\end{table} 
+\end{center}
+
+\begin{center} 
+\begin{table}[H]
+\caption{Almacenamiento Tipo\_Conjunto } 
+\label{al:tipo-conjunto} 
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{5 cm} | p{10 cm} |}\hline 
+ALMACENAMIENTO & TIPO\_CONJUNTO \\\hline
+ DESCRIPCIÓN & Tipo de conjunto habitacional \\\hline 
+ PROCESOS ASOCIADOS & \begin{itemize}
+ \item 5 Registro conjunto.
+ \item 11 Mantenedor de tablas básicas.
+ \end{itemize} \\\hline 
+ \end{tabular} 
+\end{table} 
+\end{center}
+
+
+\begin{center} 
+\begin{table}[H]
+\caption{Almacenamiento Tipo\_Copropietario} 
+\label{al:tipo-copropietario} 
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{5 cm} | p{10 cm} |}\hline 
+ALMACENAMIENTO & TIPO\_COPROPIETARIO\\\hline
+ DESCRIPCIÓN & Tipo de copropietario \\\hline 
+ PROCESOS ASOCIADOS & \begin{itemize}
+ \item 7 Gestión de copropietario.
+ \item 11 Mantenedor de tablas básicas.
+ \end{itemize} \\\hline 
+ \end{tabular} 
+\end{table} 
+\end{center}
+
+
+\begin{center} 
+\begin{table}[H]
+\caption{Almacenamiento Estado\_Copropietario} 
+\label{al:estado-copropietario} 
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{5 cm} | p{10 cm} |}\hline 
+ALMACENAMIENTO & ESTADO\_COPROPIETARIO \\\hline
+ DESCRIPCIÓN & Estado de copropietario \\\hline 
+ PROCESOS ASOCIADOS & \begin{itemize}
+ \item 3 Generación de reportes.
+ \item 4 Validación de login.
+ \item 7 Gestión de copropietario.
+ \item 9 Aministración de deudas.
+ \item 11 Mantenedor de tablas básicas.
+ \end{itemize} \\\hline 
+ \end{tabular} 
+\end{table} 
+\end{center}
+\begin{center} 
+\begin{table}[H]
+\caption{Almacenamiento Reserva } 
+\label{al:reserva} 
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{5 cm} | p{10 cm} |}\hline 
+ALMACENAMIENTO & RESERVA \\\hline
+ DESCRIPCIÓN & Información de la reserva de áreas comunes \\\hline 
+ PROCESOS ASOCIADOS & \begin{itemize}
+ \item 2 Administración de áreas comunes.
+ \item 3 Generación de reportes.
+ \end{itemize} \\\hline 
+ \end{tabular} 
+\end{table} 
+\end{center}
+
+\begin{center} 
+\begin{table}[H]
+\caption{Almacenamiento Estado\_Reserva} 
+\label{al:estado-reserva} 
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{5 cm} | p{10 cm} |}\hline 
+ALMACENAMIENTO & ESTADO\_RESERVA \\\hline
+ DESCRIPCIÓN & Estado de la reserva \\\hline 
+ PROCESOS ASOCIADOS & \begin{itemize}
+ \item 2 Administración de áreas comunes.
+ \item 3 Generación de reportes.
+ \item 11 Mantenedor de tablas básicas.
+ \end{itemize} \\\hline 
+ \end{tabular} 
+\end{table} 
+\end{center}
+
+\begin{center} 
+\begin{table}[H]
+\caption{Almacenamiento Espacio} 
+\label{al:espacio} 
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{5 cm} | p{10 cm} |}\hline 
+ALMACENAMIENTO & ESPACIO \\\hline
+ DESCRIPCIÓN & Información de los espacios comunes. \\\hline 
+ PROCESOS ASOCIADOS & \begin{itemize}
+ \item 2 Administración de áreas comunes.
+ \item 3 Generación de reportes.
+ \end{itemize} \\\hline 
+ \end{tabular} 
+\end{table} 
+\end{center}
+
+\begin{center} 
+\begin{table}[H]
+\caption{Almacenamiento Deuda} 
+\label{al:deuda} 
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{5 cm} | p{10 cm} |}\hline 
+ALMACENAMIENTO & DEUDA \\\hline
+ DESCRIPCIÓN & Información de las deudas por propiedad \\\hline 
+ PROCESOS ASOCIADOS & \begin{itemize}
+ \item 3 Generación de reportes.
+ \item 9 Aministración de deudas.
+ \item 10 Generación gráficos.
+ \end{itemize} \\\hline 
+ \end{tabular} 
+\end{table} 
+\end{center}
+\begin{center} 
+\begin{table}[H]
+\caption{Almacenamiento Estado\_Deuda } 
+\label{al:estado-deuda} 
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{5 cm} | p{10 cm} |}\hline 
+ALMACENAMIENTO & ESTADO\_DEUDA \\\hline
+ DESCRIPCIÓN & Estado de la deuda \\\hline 
+ PROCESOS ASOCIADOS & \begin{itemize}
+ \item 3 Generación de reportes.
+ \item 9 Aministración de deudas.
+ \item 10 Generación gráficos.
+ \item 11 Mantenedor de tablas básicas.
+ \end{itemize} \\\hline 
+ \end{tabular} 
+\end{table} 
+\end{center}
+
+\begin{center} 
+\begin{table}[H]
+\caption{Almacenamiento imagen} 
+\label{al:imagen} 
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{5 cm} | p{10 cm} |}\hline 
+ALMACENAMIENTO & IMAGEN \\\hline
+ DESCRIPCIÓN & Im\'agenes de las boletas de los gastos comunes \\\hline 
+ PROCESOS ASOCIADOS & \begin{itemize}
+ \item 1 Registro de gastos.
+ \item 3 Generación de reportes.
+ \end{itemize} \\\hline 
+ \end{tabular} 
+\end{table} 
+\end{center}
+
+\begin{center} 
+\begin{table}[H]
+\caption{Almacenamiento Region} 
+\label{al:region} 
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{5 cm} | p{10 cm} |}\hline 
+ALMACENAMIENTO & REGION \\\hline
+ DESCRIPCIÓN & Registro de las regiones del país \\\hline 
+ PROCESOS ASOCIADOS & \begin{itemize}
+ \item 5 Registro conjunto.
+ \item 7 Gestión de copropietario.
+ \item 11 Mantenedor de tablas básicas.
+ \end{itemize} \\\hline 
+ \end{tabular} 
+\end{table} 
+\end{center}
+
+\begin{center} 
+\begin{table}[H]
+\caption{Almacenamiento Comuna} 
+\label{al:comuna} 
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{5 cm} | p{10 cm} |}\hline 
+ALMACENAMIENTO & COMUNA \\\hline
+ DESCRIPCIÓN & Registro de comunas \\\hline 
+ PROCESOS ASOCIADOS & \begin{itemize}
+ \item 5 Registro conjunto.
+ \item 7 Gestión de copropietario.
+ \item 11 Mantenedor de tablas básicas.
+ \end{itemize} \\\hline 
+ \end{tabular} 
+\end{table} 
+\end{center}
+
+\begin{center} 
+\begin{table}[H]
+\caption{Almacenamiento Gas\_Deu } 
+\label{al:gas-deu} 
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{5 cm} | p{10 cm} |}\hline 
+ALMACENAMIENTO & GAS\_DEU \\\hline
+ DESCRIPCIÓN & Registro de gasto com\'un por deuda \\\hline 
+ PROCESOS ASOCIADOS & \begin{itemize}
+ \item 3 Generación de reportes.
+ \item 9 Aministración de deudas.
+ \item 10 Generación gráficos.
+ \end{itemize} \\\hline 
+ \end{tabular} 
+\end{table} 
+\end{center}
+
+\begin{center} 
+\begin{table}[H]
+\caption{Almacenamiento Adi\_Deu} 
+\label{al:adi-deu} 
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{5 cm} | p{10 cm} |}\hline 
+ALMACENAMIENTO & ADI\_DEU \\\hline
+ DESCRIPCIÓN & Registro de gasto adicional por deuda \\\hline 
+ PROCESOS ASOCIADOS & \begin{itemize}
+ \item 3 Generación de reportes.
+ \item 9 Aministración de deudas.
+ \item 10 Generación gráficos.
+ \end{itemize} \\\hline 
+ \end{tabular} 
+\end{table} 
+\end{center}
+\paragraph{Descripción de flujo de datos}
+A continuación, en la tabla ~\ref{fd:itentificador-propiedad} se presenta la descripción del flujo de datos correspondiente al Nivel 1 - Descomposición del nivel de contexto.
+\begin{center}
+\begin{table}[H]
+    \caption{Flujo de datos identificador\_propiedad}
+    \label{fd:itentificador-propiedad}
+\begin{tabular}{ c | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} |}	\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}FLUJO DE DATOS} 
+&\multicolumn{3}{| p{11 cm} |} {Confirmación\_reserva} \\\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}DESCRIPCIÓN} 
+&\multicolumn{3}{| p{11 cm} |} {Identificador de propiedad.} \\\hline
+ \multicolumn{2}{| c |}{\cellcolor[gray]{0.7}ORIGEN}
+&\multicolumn{2}{| c |}{\cellcolor[gray]{0.7}DESTINO} \\\hline
+ \multicolumn{2}{| p{7.5 cm} |}{Proceso Validaci\'on login}
+&\multicolumn{2}{| p{7.5 cm} |}{Proceso Administrador de \'areas comunes} \\\hline 
+\end{tabular}
+\end{table}	
+\end{center}
+\paragraph{Descripción de procesos}
+A continuación, desde la tabla ~\ref{dfd1:proregistrodegastos} a la ~\ref{dfd1:mantablasbasicas}, se presenta la descripción de procesos correspondientes al Nivel 1 - Descomposición del nivel de contexto.
+\begin{center}
+\begin{table}[H]
+    \caption{Proceso Registro de gastos}
+    \label{dfd1:proregistrodegastos}
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4 cm} | p{11 cm} |}		\hline
+		 PROCESO & Registro de gastos  \\\hline
+		 NÚMERO & 1\\\hline
+		 DESCRIPCIÓN & Proceso en que permite al administrador ingresar los gastos comunes y adicionales realizados. \\\hline
+		 ENTRADAS &
+		\begin{itemize}
+		\item Ubicación\_imagen\_pago
+		\item Archivo\_excel\_gasto\_común
+		\item Archivo\_excel\_gastos\_adicionales
+		\item Registro de PROPIEDAD
+		\item Registro de CONJUNTO
+		\item Registro de TIPO\_GASTO
+		\item Registro de TIPO\_ADICIONAL	
+		\end{itemize}				  
+		  \\\hline
+		SALIDAS & 
+		\begin{itemize}
+		\item Archivo\_excel\_gastos
+		\item Archivo\_excel\_adicionales
+		\item Registro de GASTO
+		\item Registro de ADICIONAL
+		\item Registro de IMAGEN
+		\end{itemize}
+	\\\hline
+	\end{tabular}
+\end{table}	
+\end{center}
+ 
+\begin{center}
+\begin{table}[H]
+    \caption{Proceso Administrador de áreas comunes}
+    \label{dfd1:adminareascomunes}
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4 cm} | p{11 cm} |}		\hline
+		 PROCESO & Administrador de áreas comunes  \\\hline
+		 NÚMERO & 2\\\hline
+		 DESCRIPCIÓN & Proceso en que permite la actualización de la información de espacios comunes y su reserva. \\\hline
+		 ENTRADAS &
+		\begin{itemize}
+		\item Solicitud\_espacios
+		\item Confirmación\_reserva
+		\item Espacio\_común
+		\item Identificador\_propiedad
+		\item Registro de ESTADO\_RESERVA
+		\item Registro de RESERVA
+		\item Registro de ESPACIO
+		\item Registro de PROPIEDAD
+		\item Registro de CONJUNTO
+		\end{itemize}				  
+		  \\\hline
+		SALIDAS & 
+		\begin{itemize}
+		\item Aviso\_reserva
+		\item Espacio\_disponible
+		\item Aviso\_solicitud\_reserva
+		\item Registro de RESERVA
+		\item Registro de ESPACIO
+		\end{itemize}
+	\\\hline
+	\end{tabular}
+\end{table}	
+\end{center} 
+ 
+\begin{center}
+\begin{table}[H]
+    \caption{Proceso Generación de reportes}
+    \label{dfd1:genreportes}
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4 cm} | p{11 cm} |}		\hline
+		 PROCESO & Generación de reportes  \\\hline
+		 NÚMERO & 3\\\hline
+		 DESCRIPCIÓN & Proceso que crea reportes para permitir al administrador tomar decisiones. \\\hline
+		 ENTRADAS &
+		\begin{itemize}
+		\item Registro de PROPIEDAD
+		\item Registro de CONJUNTO
+		\item Registro de ESTADO\_COPROPIETARIO
+		\item Registro de COPROPIETARIO
+		\item Registro de COP\_PRO
+		\item Registro de GASTO
+		\item Registro de ADICIONAL
+		\item Registro de IMAGEN
+		\item Registro de DEUDA
+		\item Registro de ESTADO\_DEUDA
+		\item Registro de GAS\_DEU
+		\item Registro de ADI\_DEU
+		\item Registro de ESTADO\_RESERVA
+		\item Registro de RESERVA
+		\item Registro de ESPACIO
+		\end{itemize}				  
+		  \\\hline
+		SALIDAS & 
+		\begin{itemize}
+		\item Reporte\_morosos\_administrador
+		\item Reporte\_deuda\_administrador
+		\item Reporte\_gasto\_copropitario
+		\item Reporte\_historico\_copropietario
+		\item Reporte\_deuda\_copropietario
+		\item Reporte\_gastos\_administrador
+		\item Reporte\_estadístico\_administrador
+		\item Reporte\_copropietario\_propiedad
+		\end{itemize}
+	\\\hline
+	\end{tabular}
+\end{table}	
+\end{center} 
+
+\begin{center}
+\begin{table}[H]
+    \caption{Proceso Validación login}
+    \label{dfd1:valida-login}
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4 cm} | p{11 cm} |}		\hline
+		 PROCESO & Validación login  \\\hline
+		 NÚMERO & 4\\\hline
+		 DESCRIPCIÓN & Proceso que valida las credenciales de acceso ingresadas por los usuarios. \\\hline
+		 ENTRADAS &
+		\begin{itemize}
+		\item Credencial\_acceso\_copropietario
+		\item Credencial\_acceso\_administrador
+		\item Registro de ESTADO\_COPROPIETARIO
+		\item Registro de ADMINISTRADOR
+		\item Registro de COPPROPIETARIO
+		\item Registro de COP\_PRO
+		\end{itemize}				  
+		  \\\hline
+		SALIDAS & 
+		\begin{itemize}
+		\item Identificador\_propiedad
+		\end{itemize}
+	\\\hline
+	\end{tabular}
+\end{table}	
+\end{center}
+
+\begin{center}
+\begin{table}[H]
+    \caption{Proceso Registro conjunto}
+    \label{dfd1:regconjunto}
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4 cm} | p{11 cm} |}		\hline
+		 PROCESO & Registro conjunto \\\hline
+		 NÚMERO & 5\\\hline
+		 DESCRIPCIÓN & Proceso que permite el registro del conjunto habitacional. \\\hline
+		 ENTRADAS &
+		\begin{itemize}
+		\item Conjunto\_residencial
+		\item Registro de ADMINISTRADOR
+		\item Registro de TIPO\_CONJUNTO
+		\item Registro de CONJUNTO
+		\item Registro de COMUNA
+		\item Registro de REGION
+		\end{itemize}				  
+		  \\\hline
+		SALIDAS & 
+		\begin{itemize}
+		\item Registro de CONJUNTO
+		\end{itemize}
+	\\\hline
+	\end{tabular}
+\end{table}	
+\end{center}
+
+\begin{center}
+\begin{table}[H]
+    \caption{Proceso Registro de administrador}
+    \label{dfd1:regadministrador}
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4 cm} | p{11 cm} |}		\hline
+		 PROCESO & Registro administrador \\\hline
+		 NÚMERO & 6\\\hline
+		 DESCRIPCIÓN & Proceso que permite el registro del administrador. \\\hline
+		 ENTRADAS &
+		\begin{itemize}
+		\item Datos\_personales
+		\item Registro de ADMINISTRADOR
+		\end{itemize}				  
+		  \\\hline
+		SALIDAS & 
+		\begin{itemize}
+		\item Registro de ADMINISTRADOR
+		\end{itemize}
+	\\\hline
+	\end{tabular}
+\end{table}	
+\end{center}
+
+\begin{center}
+\begin{table}[H]
+    \caption{Proceso Gestión de copropietario}
+    \label{dfd1:gestcopropietario}
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4 cm} | p{11 cm} |}		\hline
+		 PROCESO & Gestión de copropietario \\\hline
+		 NÚMERO & 7\\\hline
+		 DESCRIPCIÓN & Proceso que permite la gastión de los datos del copropietario. \\\hline
+		 ENTRADAS &
+		\begin{itemize}
+		\item Dato\_copropietario
+		\item Copropietario
+		\item Registro de TIPO\_COPROPIETARIO
+		\item Registro de ESTADO\_COPROPIETARIO
+		\item Registro de PROPIEDAD
+		\item Registro de REGION
+		\item Registro de COMUNA
+		\end{itemize}				  
+		  \\\hline
+		SALIDAS & 
+		\begin{itemize}
+		\item Registro de COPROPIETARIO
+		\item Registro de COP\_PRO
+		\end{itemize}
+	\\\hline
+	\end{tabular}
+\end{table}	
+\end{center}
+
+\begin{center}
+\begin{table}[H]
+    \caption{Proceso Registro de propiedad}
+    \label{dfd1:regpropiedad}
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4 cm} | p{11 cm} |}		\hline
+		 PROCESO & Registro de propiedad \\\hline
+		 NÚMERO & 8\\\hline
+		 DESCRIPCIÓN & Proceso que permite el registro de propiedades. \\\hline
+		 ENTRADAS &
+		\begin{itemize}
+		\item Propiedad
+		\item Registro de PROPIEDAD
+		\item Registro de CONJUNTO
+		\end{itemize}				  
+		  \\\hline
+		SALIDAS & 
+		\begin{itemize}
+		\item Registro de PROPIEDAD
+		\end{itemize}
+	\\\hline
+	\end{tabular}
+\end{table}	
+\end{center}
+
+\begin{center}
+\begin{table}[H]
+    \caption{Proceso Administración de deudas}
+    \label{dfd1:admdeudas}
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4 cm} | p{11 cm} |}		\hline
+		 PROCESO & Administración de deudas \\\hline
+		 NÚMERO & 9\\\hline
+		 DESCRIPCIÓN & Proceso que permite al administrador generar las deudas por propiedad. \\\hline
+		 ENTRADAS &
+		\begin{itemize}
+		\item Pago\_copropietario
+		\item Registro de PROPIEDAD
+		\item Registro de COPROPIETARIO
+		\item Registro de GASTO
+		\item Registro de ADICIONAL
+		\item Registro de DEUDA
+		\item Registro de ESTADO\_DEUDA
+		\item Registro de CONJUNTO
+		\item Registro de ESTADO\_COPROPIETARIO
+		\item Registro de COP\_PRO
+		\end{itemize}				  
+		  \\\hline
+		SALIDAS & 
+		\begin{itemize}
+		\item Aviso\_pago
+		\item Registro de DEUDA
+		\item Registro de GAS\_DEU
+		\item Registro de ADI\_DEU
+		\end{itemize}
+	\\\hline
+	\end{tabular}
+\end{table}	
+\end{center}
+
+\begin{center}
+\begin{table}[H]
+    \caption{Proceso Generación de gráficos}
+    \label{dfd1:gengraficos}
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4 cm} | p{11 cm} |}		\hline
+		 PROCESO & Generación de gráficos\\\hline
+		 NÚMERO & 10\\\hline
+		 DESCRIPCIÓN & Proceso que permite la generación de gráficos estadísticos. \\\hline
+		 ENTRADAS &
+		\begin{itemize}
+		\item Registro de COP\_PRO
+		\item Registro de GASTO
+		\item Registro de ADICIONAL
+		\item Registro de COPROPIETARIO
+		\item Registro de CONJUNTO
+		\item Registro de TIPO\_GASTO
+		\item Registro de DEUDA
+		\item Registro de ESTADO\_DEUDA
+		\item Registro de GAS\_DEU
+		\item Registro de ADI\_DEU
+		\item Registro de TIPO\_ADICIONAL
+		\item Registro de PROPIEDAD
+		\end{itemize}				  
+		  \\\hline
+		SALIDAS & 
+		\begin{itemize}
+		\item Gráfico\_estadístico\_copropietario
+		\item Gráfico\_estadístico\_administrador
+		\end{itemize}
+	\\\hline
+	\end{tabular}
+\end{table}	
+\end{center}
+
+\begin{center}
+\begin{table}[H]
+    \caption{Proceso Mantenedor de tablas básicas}
+    \label{dfd1:mantablasbasicas}
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4 cm} | p{11 cm} |}		\hline
+		 PROCESO & Mantenedor de tablas básicas \\\hline
+		 NÚMERO & 11\\\hline
+		 DESCRIPCIÓN & Proceso que permite al administrador modificar las tablas básicas. \\\hline
+		 ENTRADAS &
+		\begin{itemize}
+		\item Tablas\_básicas
+		\item Registro de TIPO\_CONJUNTO
+		\item Registro de TIPO\_COPROPIETARIO
+		\item Registro de TIPO\_GASTO
+		\item Registro de TIPO\_ADICIONAL
+		\item Registro de ESTADO\_COPROPIETARIO
+		\item Registro de ESTADO\_DEUDA
+		\item Registro de ESTADO\_RESERVA
+		\item Registro de REGION
+		\item Registro de COMUNA
+		\end{itemize}				  
+		  \\\hline
+		SALIDAS & 
+		\begin{itemize}
+		\item Registro de TIPO\_CONJUNTO
+		\item Registro de TIPO\_COPROPIETARIO
+		\item Registro de TIPO\_GASTO
+		\item Registro de TIPO\_ADICIONAL
+		\item Registro de ESTADO\_COPROPIETARIO
+		\item Registro de ESTADO\_DEUDA
+		\item Registro de ESTADO\_RESERVA
+		\item Registro de REGION
+		\item Registro de COMUNA
+		\end{itemize}
+	\\\hline
+	\end{tabular}
+\end{table}	
+\end{center}
+\clearpage
+
+\paragraph{Nivel 2 - Descomposición del proceso Registro de gastos}
+%deberian describirse estas cosas pero ya están descritas arriva supongo
+%\paragraph{Descripción de almacenamientos}
+%\paragraph{Descripción de flujo de datos}
+\subparagraph{Descripción de procesos}
+A continuación, desde la tabla~\ref{pro:lvl2:gas1} hasta la tabla~\ref{pro:lvl2:gas2}, se presenta la descripción de procesos correspondientes al Nivel 2 - Descomposición del proceso Registro de gastos. 
+\begin{center}
+\begin{table}[H]
+    \caption{Proceso Registro de Gastos Adicionales  }
+    \label  {pro:lvl2:gas1}	
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4 cm} | p{11 cm} |}		\hline
+		 PROCESO & Registro de Gastos Adicionales  \\\hline
+		 NÚMERO &   1.1  \\\hline
+		 DESCRIPCIÓN &
+  		 \begin{enumerate}
+		 \item Inicio
+		 \item Obtener entradas 
+		 \item Verificar archivo\_excel\_gastos\_adicionales con tad\_id
+		 \item Sumar los adicionales de archivo\_excel\_gastos\_adicionales
+		 \item El total se almacena en ADICIONALES
+		 \item Genera archivo\_excel\_adicionales
+		 \end{enumerate}\\\hline
+		 ENTRADAS &
+		\begin{itemize}
+		\item Registro de TIPO\_ADICIONAL
+		\item Registro de PROPIEDAD
+		\item Archivo\_excel\_gastos\_adicionales
+		\end{itemize}\\\hline
+		SALIDAS & 
+		\begin{itemize}
+		\item Registro de ADICIONAL
+		\item Archivo\_excel\_adicionales
+		\end{itemize}\\\hline
+	\end{tabular}
+\end{table}	
+
+\begin{table}[H]
+    \caption{Proceso Registro de Gastos Comunes }
+    \label  {pro:lvl2:gas2}	
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4 cm} | p{11 cm} |}		\hline
+		 PROCESO &  Registro de Gastos Comunes \\\hline
+		 NÚMERO &   1.2  \\\hline
+		 DESCRIPCIÓN & 
+		 \begin{enumerate}
+		 \item Inicio
+		 \item Obtener entradas 
+		 \item Verificar archivo\_excel\_gasto\_común con tga\_id y el con\_id
+		 \item Almacenar las imágenes de pago
+		 \item Sumar los adicionales de archivo\_excel\_gasto\_común
+		  \item El total se almacena en GASTO
+		 \item Genera archivo\_excel\_gasto\_común
+		 \end{enumerate}\\\hline
+		 ENTRADAS &
+		\begin{itemize}
+		\item CONJUNTO
+		\item TIPO\_GASTO
+		\item Archivo\_excel\_gasto\_comun
+		\item Ubicación\_imagen\_pago
+		\end{itemize}\\\hline
+		SALIDAS & 
+		\begin{itemize}
+		\item Registro de IMAGEN 
+		\item Registro de GASTO
+		\item Archivo\_excel\_gastos
+		\end{itemize}\\\hline
+	\end{tabular}
+\end{table}	
+\end{center}
+
+\subparagraph{Nivel 2 - Descomposición del proceso Gestión de deuda}\paragraph{Descripción de flujos de datos}
+A continuación en la tabla de ~\ref{tab:lvl2:Estado-deuda}, se presenta la descripción de los flujos de datos correspondientes al Nivel 2  - Descomposición de del proceso de Gestión de deuda. 
+
+
+\begin{center}
+\begin{table}[H]
+    \caption{Flujo de datos Estado\_deuda}
+    \label{tab:lvl2:Estado-deuda}
+\begin{tabular}{ c | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} | p{3.75 cm} |}	\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}FLUJO DE DATOS} 
+&\multicolumn{3}{| p{11 cm} |} {Estado\_deuda} \\\hline
+ \multicolumn{1}{| p{4 cm} |}  {\cellcolor[gray]{0.7}DESCRIPCIÓN} 
+&\multicolumn{3}{| p{11 cm} |} {El estado actualizado de la deuda.} \\\hline
+ \multicolumn{2}{| c |}{\cellcolor[gray]{0.7}ORIGEN}
+&\multicolumn{2}{| c |}{\cellcolor[gray]{0.7}DESTINO} \\\hline
+ \multicolumn{2}{| p{7.5 cm} |}{Proceso Administración de pago}
+&\multicolumn{2}{| p{7.5 cm} |}{Almacenamiento DEUDA} \\\hline 
+\end{tabular}
+\end{table}	
+\end{center}
+\subparagraph{Descripción de proceso de nivel 2  }
+A continuación, desde la tabla~\ref{pro:lvl2:deu1} hasta la tabla~\ref{pro:lvl2:deu3}, se presenta la descripción del proceso correspondientes al Nivel 2 - Descomposición del proceso Gestión de deuda. 
+\begin{center}
+\begin{table}[H]
+    \caption{ Proceso Generador Deuda}
+    \label  {pro:lvl2:deu1}	
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4 cm} | p{11 cm} |}		\hline
+		 PROCESO &  Generador Deuda  \\\hline
+		 NÚMERO &   9.1  \\\hline
+		 DESCRIPCIÓN & 
+		\begin{enumerate}
+		\item  Inicio
+		\item  Obtener entradas 
+		\item  Suma gas\_costo con adi\_costo de pro\_id.
+		\item  Ingresa el total a DEUDA, ADI\_DEU y GAS\_DEU
+	 	\end{enumerate}\\\hline
+		ENTRADAS &
+		\begin{itemize}
+		\item Registro de PROPIEDAD
+		\item Registro de ESTADO\_DEUDA
+		\item Registro de ADICIONAL
+		\item Registro de GASTO
+		\item Registro de CONJUNTO
+		\end{itemize} \\\hline
+		SALIDAS & 
+		\begin{itemize}
+		\item Registro de DEUDA
+		\item Registro de GAS\_DEU
+		\item Registro de ADI\_DEU		
+		\end{itemize}\\\hline
+	\end{tabular}
+\end{table}	
+\clearpage
+\begin{table}[H]
+    \caption{Poceso Generador Aviso Deuda}
+    \label  {pro:lvl2:deu2}	
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4 cm} | p{11 cm} |}		\hline
+		 PROCESO & Generador Aviso Deuda  \\\hline
+		 NÚMERO &   9.2  \\\hline
+		 DESCRIPCIÓN & 
+		 \begin{enumerate}
+		 \item Inicio
+		 \item Obtener entradas 
+		 \item IF pro\_id $ = $ deu\_pro\_id \&\& deu\_ede\_id $ = $ 'N' \&\& cpr\_eco\_id $ = $ eco\_i \&\& cpr\_cop\_id $ = $ cop\_rut (verificar que la propiedad tenga deuda y que el copropietario avite la propiedad)
+		 \item Env\'ia Aviso\_pago
+		 \end{enumerate} \\\hline
+		 ENTRADAS &
+		\begin{itemize}
+		\item Registro de PROPIEDAD
+		\item Registro de DEUDA
+		\item Registro de ESTADO\_DEUDA
+		\item Registro de COPROPIETARIO
+		\item Registro de ESTADO\_COPROPIETARIO
+		\item Registro de COP\_PRO
+		\end{itemize} \\\hline
+		SALIDAS & \begin{itemize}
+				\item Aviso\_de\_pago
+		\end{itemize}\\\hline
+	\end{tabular}
+\end{table}	
+
+\begin{table}[H]
+    \caption{Proceso Administración de pago}
+    \label  {pro:lvl2:deu3}	
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4 cm} | p{11 cm} |}		\hline
+		 PROCESO &  Administración de pago \\\hline
+		 NÚMERO &   9.3  \\\hline
+		 DESCRIPCIÓN & 
+ 		 \begin{enumerate}
+		 \item Inicio
+		 \item Obtener entradas
+		 \item IF ede\_id='N' \&\& pago\_copropietario = 'pagado'
+		 \item Envía estado\_deuda a la deuda de pro\_id
+		 \end{enumerate}\\\hline
+		 ENTRADAS &
+		\begin{itemize}
+		\item Pago\_copropietario
+		\item Registro de PROPIEDAD	
+		\item Registro de ESTADO\_DEUDA
+		\end{itemize} \\\hline
+		SALIDAS & 
+		\begin{itemize}
+				\item Estado\_deuda
+		\end{itemize}\\\hline
+	\end{tabular}
+\end{table}	
+\end{center}
+
+\subsubsection{Diccionario de datos}
+		\begin{enumerate}
+			\item Rut = {[ 0 | 9 ]}
+			\item Contraseña = {[A|Z $|$ a|z $|$ 0|9 $|$ \_ $|$ | $|$ . $|$ @ ]}
+			\item Solicitud\_espacio = res\_fecha + res\_actividad + esp\_lugar.
+			\item Confirmación\_reserva = ere\_id.
+			\item Espacio\_común = esp\_lugar + esp\_descripcion + con\_nombre.
+			\item Credencial\_acceso\_copropietario = Rut + Contraseña.
+			\item Credencial\_acceso\_administrador = Rut + Contraseña.
+			\item Ubicación\_imagen\_pago = ima\_path.
+			\item Archivo\_excel\_gasto\_común =con\_nombre + tga\_nombre + gas\_descripcion + gas\_costo + gas\_fecha.
+			\item Archivo\_excel\_gastos\_adicionales = pro\_num + tad\_nombre + adi\_descripcion + adi\_costo + adi\_fecha.
+			\item Conjunto\_residencial = con\_nombre + con\_fono + con\_fondo + con\_direccion + tcon\_id + tcon\_descripcion.
+			\item Datos\_personales = adm\_fono, adm\_mail, adm\_password.
+			\item Dato\_copropietario = cop\_fono + cop\_direccion + cop\_mail + cop\_clave.
+			\item Copropietario = cop\_rut + cop\_nombres + cop\_ap\_pat + cop\_ap\_mat + cop\_fono + cop\_mail cop\_direccion + cop\_contraseña + cop\_tipo + cop\_comuna.
+			\item Propiedad = pro\_numero + pro\_m2 + pro\_alicuota + con\_id.
+			\item Pago\_copropietario = ede\_id.
+			\item Aviso\_reserva = res\_fecha + res\_actividad + ere\_id + esp\_id.
+			\item Espacio\_disponible = fesp\_lugar + esp\_descripcion.
+			\item Aviso\_solicitud\_reserva = res\_fecha + res\_actividad + pro\_numero + esp\_lugar + esp\_descripcion.
+			\item Archivo\_excel\_gasto = con\_nombre + tga\_nombre.
+			\item Archivo\_excel\_adicionales = pro\_num + tad\_nombre.
+			\item Aviso\_pago = deu\_fecha + deu\_monto + deu\_fecha\_limite.
+			\item Tablas\_básicas = Datos tablas (TIPO\_CONJUNTO, TIPO\_COPROPIETARIO, TIPO\_GASTO, TIPO\_ADICIONAL, ESTADO\_COPROPIETARIO, ESTADO\_DEUDA, ESTADO\_RESERVA, REGION, COMUNA)
+			\item Reporte\_gasto\_copropietario = gas\_costo + gas\_descripcion + gas\_fecha + tga\_id + adi\_descripcion + adi\_costo + adi\_fecha, tad\_id.
+			\item Reporte\_deuda\_copropietario = deu\_fecha + deu\_monto + deu\_fecha\_limite + deu\_ede\_id.
+			\item Reporte\_histórico\_copropietario = deu\_fecha + deu\_monto + deu\_fecha\_limite + deu\_fecha\_cancel + deu\_ede\_id.
+			\item Reporte\_morosos\_administrador = pro\_numero + ede\_id.
+			\item Reporte\_gastos\_administrador = deu\_fecha + deu\_monto + deu\_fecha\_limite + deu\_fecha\_cancel + deu\_ede\_id, pro\_numero.
+			\item Reporte\_estadístico\_administrador = Contador ere\_id + contador res\_fecha
+			\item Reporte\_copropietario\_propiedad = pro\_numero + cop\_rut + cop\_nombres + cop\_ap\_pat + cop\_ap\_mat.
+			\item Reporte\_deuda\_administrador = deu\_fecha + deu\_monto + deu\_fecha\_limite + deu\_ede\_id + pro\_numero.
+			\item Identificador\_propiedad = pro\_id.
+			\item Estado\_deuda = deu\_ede\_id.
+			\item Gráfico\_estadístico\_copropietario = cpr\_pro\_id + adi\_descripcion + adi\_costo + gas\_descripcion + gas\_costo.
+			\item Gráfico\_estadístico\_administrador = con\_nombre + cpr\_pro\_id + adi\_descripcion + adi\_costo + gas\_descripcion + gas\_costo.
+	\end{enumerate}		
+\subsection{Diseño arquitectónico.}			
+\subsubsection{Diagrama de estructura del sistema.}
+
+A continuación, en la figura~\ref{fig:des1}  y figura~\ref{fig:des2} se presenta el diagrama de estructura del sistema (DES) asociado al proyecto:
+
+\begin{figure}[H]
+	\includegraphics[width=1.15\textwidth]{DES1.png}
+	\centering
+	\caption {Diagrama de Estructura del Sistema (DES) - Parte 1 \textit{GCadmin.}}
+	\label{fig:des1}
+\end{figure}
+
+\begin{figure}[H]
+	\includegraphics[width=1.15\textwidth]{DES1.png}
+	\centering
+	\caption {Diagrama de Estructura del Sistema (DES) - Parte 2 \textit{GCadmin.}}
+	\label{fig:des2}
+\end{figure}
+
+
+
+\subsubsection{Especificación de módulos.}
+
+\paragraph{Módulo GCadmin}\par
+
+A continuación, en la tabla~\ref{pro:lvl2:gc}, se presenta la descripción del módulo GCadmin asociado al proyecto:
+
+\begin{table}[H]
+    \caption{Descripción del módulo GCadmin}
+    \label  {pro:lvl2:gc}	
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4.5 cm} | p{11 cm} |}		\hline
+		 MÓDULO &  GCadmin \\\hline
+		 DESCRIPCIÓN & Sistema principal\\\hline
+		 ENTRADAS &    \\\hline
+		 SALIDAS &     \\\hline
+		 MÓDULOS SUPERIORES &    \\\hline
+		 \end{tabular}
+\end{table}	
+
+\paragraph{Módulo Registro de gasto}	
+
+A continuación, en la tabla~\ref{pro:lvl2:rg}, se presenta la descripción del módulo Registro de gasto asociado al proyecto:
+
+\begin{table}[H]
+    \caption{Descripción del módulo GCadmin}
+    \label  {pro:lvl2:rg}	
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4.5 cm} | p{11 cm} |}		\hline
+		 MÓDULO &  Registro de gasto \\\hline
+		 DESCRIPCIÓN & Registra los gastos\\\hline
+		 ENTRADAS & 
+		 \begin{itemize}
+		 \item Conjunto
+		 \item propiedad
+		 \end{itemize} \\\hline
+		 SALIDAS &  Ok   \\\hline
+		 MÓDULOS SUPERIORES & GCadmin   \\\hline
+		 \end{tabular}
+\end{table}	
+
+\paragraph{Módulo Gestión de espacios}	
+A continuación, en la tabla~\ref{pro:lvl2:ge}, se presenta la descripción del módulo Gestión de espacios asociado al proyecto:
+
+\begin{table}[H]
+    \caption{Descripción del módulo Gestión de espacios}
+    \label  {pro:lvl2:ge}	
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4.5 cm} | p{11 cm} |}		\hline
+		 MÓDULO &  Gestión de espacios \\\hline
+		 DESCRIPCIÓN & Gestiona los espacios comunes\\\hline
+		 ENTRADAS & 
+		 \begin{itemize}
+		 \item Espacio
+		 \item conjunto 
+		 \end{itemize}\\\hline
+		 SALIDAS &  Ok   \\\hline
+		 MÓDULOS SUPERIORES & GCadmin   \\\hline
+		 \end{tabular}
+\end{table}	
+
+\paragraph{Módulo Validación de login}	
+A continuación, en la tabla~\ref{pro:lvl2:vl}, se presenta la descripción del módulo Validación de login asociado al proyecto:
+
+\begin{table}[H]
+    \caption{Descripción del módulo Validación de login}
+    \label  {pro:lvl2:vl}	
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4.5 cm} | p{11 cm} |}		\hline
+		 MÓDULO &  Validación de login \\\hline
+		 DESCRIPCIÓN & Valida tipo de usuario\\\hline
+		 ENTRADAS & Credencial acceso \\\hline
+		 SALIDAS &  Ok   \\\hline
+		 MÓDULOS SUPERIORES & GCadmin   \\\hline
+		 \end{tabular}
+\end{table}	
+
+\paragraph{Módulo Registro de conjunto}	
+A continuación, en la tabla~\ref{pro:lvl2:rc}, se presenta la descripción del módulo Registro de conjunto asociado al proyecto:
+
+\begin{table}[H]
+    \caption{Descripción del módulo Registro de conjunto}
+    \label  {pro:lvl2:rc}	
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4.5 cm} | p{11 cm} |}		\hline
+		 MÓDULO &  Registro de conjunto \\\hline
+		 DESCRIPCIÓN & Registra los conjuntos\\\hline
+		 ENTRADAS & Conjunto \\\hline
+		 SALIDAS &  Ok   \\\hline
+		 MÓDULOS SUPERIORES & GCadmin   \\\hline
+		 \end{tabular}
+\end{table}	
+
+\paragraph{Módulo Administración de deuda}	
+A continuación, en la tabla~\ref{pro:lvl2:ad}, se presenta la descripción del módulo Administración de deuda asociado al proyecto:
+
+\begin{table}[H]
+    \caption{Descripción del módulo Administración de deuda}
+    \label  {pro:lvl2:ad}	
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4.5 cm} | p{11 cm} |}		\hline
+		 MÓDULO &  Administración de deuda \\\hline
+		 DESCRIPCIÓN & Administración de las deudas\\\hline
+		 ENTRADAS & Propiedad \\\hline
+		 SALIDAS &  Ok   \\\hline
+		 MÓDULOS SUPERIORES & GCadmin   \\\hline
+		 \end{tabular}
+\end{table}
+
+\paragraph{Módulo Registro de administrador}	
+A continuación, en la tabla~\ref{pro:lvl2:rea}, se presenta la descripción del módulo Registro de administrador asociado al proyecto:
+
+\begin{table}[H]
+    \caption{Descripción del Registro de administrador}
+    \label  {pro:lvl2:rea}	
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4.5 cm} | p{11 cm} |}		\hline
+		 MÓDULO &  Registro de administrador \\\hline
+		 DESCRIPCIÓN & Registra al administrador\\\hline
+		 ENTRADAS & Administrador \\\hline
+		 SALIDAS &  Ok   \\\hline
+		 MÓDULOS SUPERIORES & GCadmin   \\\hline
+		 \end{tabular}
+\end{table}
+
+\paragraph{Módulo Registro de propiedad}	
+A continuación, en la tabla~\ref{pro:lvl2:rp}, se presenta la descripción del módulo Registro de propiedad asociado al proyecto:
+
+\begin{table}[H]
+    \caption{Descripción del Registro de propiedad}
+    \label  {pro:lvl2:rp}	
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4.5 cm} | p{11 cm} |}		\hline
+		 MÓDULO &  Registro de propiedad \\\hline
+		 DESCRIPCIÓN & Registra las propiedades\\\hline
+		 ENTRADAS & Propiedad \\\hline
+		 SALIDAS &  Ok   \\\hline
+		 MÓDULOS SUPERIORES & GCadmin   \\\hline
+		 \end{tabular}
+\end{table}
+
+\paragraph{Módulo Gestión de copropietario}	
+A continuación, en la tabla~\ref{pro:lvl2:gco}, se presenta la descripción del módulo Gestión de copropietario asociado al proyecto:
+
+\begin{table}[H]
+    \caption{Descripcón de Gestión de copropietario}
+    \label  {pro:lvl2:gco}	
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4.5 cm} | p{11 cm} |}		\hline
+		 MÓDULO &  Gestión de copropietario \\\hline
+		 DESCRIPCIÓN & Gestiona los copropietarios\\\hline
+		 ENTRADAS & Copropietario \\\hline
+		 SALIDAS &  Ok   \\\hline
+		 MÓDULOS SUPERIORES & GCadmin   \\\hline
+		 \end{tabular}
+\end{table}
+
+\paragraph{Módulo Generación de reportes}	
+A continuación, en la tabla~\ref{pro:lvl2:Gr}, se presenta la descripción del módulo Generación de reportes asociado al proyecto:
+
+\begin{table}[H]
+    \caption{Descripción de Generación de reportes}
+    \label  {pro:lvl2:Gr}	
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4.5 cm} | p{11 cm} |}		\hline
+		 MÓDULO &  Generación de reportes \\\hline
+		 DESCRIPCIÓN & Genera reportes\\\hline
+		 ENTRADAS & 
+		 \begin{itemize}
+		 \item Tipo reporte
+		 \item conjunto
+		 \end{itemize} \\\hline
+		 SALIDAS &  Ok   \\\hline
+		 MÓDULOS SUPERIORES & GCadmin   \\\hline
+		 \end{tabular}
+\end{table}
+
+\paragraph{Módulo Generación de gráficos}	
+A continuación, en la tabla~\ref{pro:lvl2:Gg}, se presenta la descripción del módulo Generación de gráficos asociado al proyecto:
+
+\begin{table}[H]
+    \caption{Descripción de Generación de gráficos}
+    \label  {pro:lvl2:Gg}	
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4.5 cm} | p{11 cm} |}		\hline
+		 MÓDULO &  Generación de gráficos\\\hline
+		 DESCRIPCIÓN & Genera gráficos\\\hline
+		 ENTRADAS & \begin{itemize}
+		 \item Tipo gráfico
+		 \item conjunto
+		 \end{itemize} \\\hline
+		 SALIDAS &  Ok   \\\hline
+		 MÓDULOS SUPERIORES & GCadmin   \\\hline
+		 \end{tabular}
+\end{table}
+
+\paragraph{Módulo Mantenedor de tablas básicas}	
+A continuación, en la tabla~\ref{pro:lvl2:mt}, se presenta la descripción del módulo Mantenedor de tablas básicas asociado al proyecto:
+
+\begin{table}[H]
+    \caption{Descripción de Mantenedor de tablas básicas}
+    \label  {pro:lvl2:mt}	
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4.5 cm} | p{11 cm} |}		\hline
+		 MÓDULO &  Mantenedor de tablas básicas\\\hline
+		 DESCRIPCIÓN & Elimina, inserta o modifica los datos de las distintas tablas básicas\\\hline
+		 ENTRADAS & 
+\begin{itemize}
+\item registro\_mantener
+\item tablas
+\item operacion 
+\end{itemize}\\\hline
+		 SALIDAS &  Ok   \\\hline
+		 MÓDULOS SUPERIORES & GCadmin   \\\hline
+		 \end{tabular}
+\end{table}
+
+\paragraph{Módulo Registro gastos comunes}	
+A continuación, en la tabla~\ref{pro:lvl2:gastosco}, se presenta la descripción del módulo Registro gastos comunes asociado al proyecto:
+
+\begin{table}[H]
+    \caption{Descripción de Registro gastos comunes}
+    \label  {pro:lvl2:gastosco}	
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4.5 cm} | p{11 cm} |}		\hline
+		 MÓDULO &  Registro gastos comunes\\\hline
+		 DESCRIPCIÓN & Registra los gastos comunes\\\hline
+		 ENTRADAS &
+\begin{itemize}
+	\item Gastos comunes
+	\item Conjunto		 
+\end{itemize}		  \\\hline
+		 SALIDAS &  Ok   \\\hline
+		 MÓDULOS SUPERIORES & Registro de gasto   \\\hline
+		 \end{tabular}
+\end{table}
+
+\paragraph{Módulo Registro gastos adicionales}	
+A continuación, en la tabla~\ref{pro:lvl2:gastosad}, se presenta la descripción del módulo Registro gastos adicionales asociado al proyecto:
+
+\begin{table}[H]
+    \caption{Descripción de Registro gastos adicionales}
+    \label  {pro:lvl2:gastosad}	
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4.5 cm} | p{11 cm} |}		\hline
+		 MÓDULO &  Registro gastos adicionales\\\hline
+		 DESCRIPCIÓN & Registra los gastos adicionales\\\hline
+		 ENTRADAS &
+\begin{itemize}
+	\item Propiedad
+	\item Gastos adicionales 
+\end{itemize}		  \\\hline
+		 SALIDAS &  Ok   \\\hline
+		 MÓDULOS SUPERIORES & Registro de gasto   \\\hline
+		 \end{tabular}
+\end{table}
+
+
+\paragraph{Módulo Registro de espacios}	
+A continuación, en la tabla~\ref{pro:lvl2:regesp}, se presenta la descripción del módulo Registro de espacios asociado al proyecto:
+
+\begin{table}[H]
+    \caption{Descripción de Registro de espacios}
+    \label  {pro:lvl2:regesp}	
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4.5 cm} | p{11 cm} |}		\hline
+		 MÓDULO &  Registro de espacios\\\hline
+		 DESCRIPCIÓN & Registra el espacio\\\hline
+		 ENTRADAS &
+\begin{itemize}
+	\item Espacio
+	\item Conjunto 
+\end{itemize}		  \\\hline
+		 SALIDAS &  Ok   \\\hline
+		 MÓDULOS SUPERIORES & Gestión de espacios \\\hline
+		 \end{tabular}
+\end{table}
+
+\paragraph{Módulo Gestión de reserva}	
+A continuación, en la tabla~\ref{pro:lvl2:gestr}, se presenta la descripción del módulo Gestión de reserva asociado al proyecto:
+
+\begin{table}[H]
+    \caption{Descripción de Gestión de reserva}
+    \label  {pro:lvl2:gestr}	
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4.5 cm} | p{11 cm} |}		\hline
+		 MÓDULO &  Gestión de reserva\\\hline
+		 DESCRIPCIÓN & Gestiona la reserva\\\hline
+		 ENTRADAS &
+\begin{itemize}
+	\item Propiedad
+	\item Espacio
+\end{itemize}		  \\\hline
+		 SALIDAS &  Ok   \\\hline
+		 MÓDULOS SUPERIORES & Gestión de espacios \\\hline
+		 \end{tabular}
+\end{table}
+
+\paragraph{Módulo Validación administrador}	
+A continuación, en la tabla~\ref{pro:lvl2:val}, se presenta la descripción del módulo Validación administrador asociado al proyecto:
+
+\begin{table}[H]
+    \caption{Descripción de Validación administrador}
+    \label  {pro:lvl2:val}	
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4.5 cm} | p{11 cm} |}		\hline
+		 MÓDULO &  Validación administrador\\\hline
+		 DESCRIPCIÓN & Valida al usuario con respecto a su RUT y clave única
+\\\hline
+		 ENTRADAS &Credencial acceso\\\hline
+		 SALIDAS &  Ok   \\\hline
+		 MÓDULOS SUPERIORES & Validación de login \\\hline
+		 \end{tabular}
+\end{table}
+
+\paragraph{Módulo Validación copropietario}	
+A continuación, en la tabla~\ref{pro:lvl2:valco}, se presenta la descripción del módulo Validación copropietario asociado al proyecto:
+
+\begin{table}[H]
+    \caption{Descripción de Validación copropietario}
+    \label  {pro:lvl2:valco}	
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4.5 cm} | p{11 cm} |}		\hline
+		 MÓDULO &  Validación copropietario\\\hline
+		 DESCRIPCIÓN & Valida al usuario con respecto a su RUT y clave única
+\\\hline
+		 ENTRADAS &Credencial acceso\\\hline
+		 SALIDAS &  Ok   \\\hline
+		 MÓDULOS SUPERIORES & Validación de login \\\hline
+		 \end{tabular}
+\end{table}
+
+
+\paragraph{Módulo Generador aviso deuda}	
+A continuación, en la tabla~\ref{pro:lvl2:gena}, se presenta la descripción del módulo Generador aviso deuda asociado al proyecto:
+
+\begin{table}[H]
+    \caption{Descripción de Generador aviso deuda}
+    \label  {pro:lvl2:gena}	
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4.5 cm} | p{11 cm} |}		\hline
+		 MÓDULO &  Generador aviso deuda\\\hline
+		 DESCRIPCIÓN & Genera un aviso deuda
+\\\hline
+		 ENTRADAS & 
+		 \begin{itemize}
+		 \item Deuda 
+		 \item Propiedad
+		 \end{itemize}\\\hline
+		 SALIDAS &  Aviso  \\\hline
+		 MÓDULOS SUPERIORES & Administración de deuda \\\hline
+		 \end{tabular}
+\end{table}
+
+\paragraph{Módulo Generador deuda}	
+A continuación, en la tabla~\ref{pro:lvl2:gend}, se presenta la descripción del módulo Generador deuda asociado al proyecto:
+
+\begin{table}[H]
+    \caption{Descripción de Generador deuda}
+    \label  {pro:lvl2:gend}	
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4.5 cm} | p{11 cm} |}		\hline
+		 MÓDULO &  Generador deuda\\\hline
+		 DESCRIPCIÓN & Genera deuda\\\hline
+		 ENTRADAS & 
+		 \begin{itemize}
+		 \item Gastos adicionales
+		 \item Gastos comunes
+		 \item Propiedad
+		 \end{itemize}\\\hline
+		 SALIDAS &  Ok \\\hline
+		 MÓDULOS SUPERIORES & Administración de deuda \\\hline
+		 \end{tabular}
+\end{table}
+
+\paragraph{Módulo Administrador de pago}	
+A continuación, en la tabla~\ref{pro:lvl2:gena}, se presenta la descripción del módulo Administrador de pago asociado al proyecto:
+
+\begin{table}[H]
+    \caption{Descripción de Administrador de pago}
+    \label  {pro:lvl2:gena}	
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4.5 cm} | p{11 cm} |}		\hline
+		 MÓDULO &  Administrador de pago\\\hline
+		 DESCRIPCIÓN & Registra el pago de deudas pendientes
+\\\hline
+		 ENTRADAS & Deuda\\\hline
+		 SALIDAS &  Ok \\\hline
+		 MÓDULOS SUPERIORES & Administración de deuda \\\hline
+		 \end{tabular}
+\end{table}
+
+\paragraph{Módulo Generación reporte de copropietario morosos}	
+A continuación, en la tabla~\ref{pro:lvl2:morosos}, se presenta la descripción del módulo Generación reporte de copropietario morosos asociado al proyecto:
+
+\begin{table}[H]
+    \caption{Descripción de Generación reporte de copropietario morosos}
+    \label  {pro:lvl2:morosos}	
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4.5 cm} | p{11 cm} |}		\hline
+		 MÓDULO &  Generación reporte de copropietario morosos\\\hline
+		 DESCRIPCIÓN & Genera el reporte de los copropietarios morosos\\\hline
+		 ENTRADAS & Datos cop morosos\\\hline
+		 SALIDAS & Reporte \\\hline
+		 MÓDULOS SUPERIORES & Generación de reportes\\\hline
+		 \end{tabular}
+\end{table}
+
+
+\paragraph{Módulo Generación reporte de deuda}	
+A continuación, en la tabla~\ref{pro:lvl2:reportedeu}, se presenta la descripción del módulo Generación reporte de deuda asociado al proyecto:
+
+\begin{table}[H]
+    \caption{Descripicón de Generación reporte de deuda}
+    \label  {pro:lvl2:reportedeu}
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4.5 cm} | p{11 cm} |}		\hline
+		 MÓDULO &  Generación reporte de deuda\\\hline
+		 DESCRIPCIÓN & Genera el reporte de las deudas\\\hline
+		 ENTRADAS & datos reporte deuda\\\hline
+		 SALIDAS & Reporte \\\hline
+		 MÓDULOS SUPERIORES & Generación de reportes\\\hline
+		 \end{tabular}
+\end{table}
+
+\paragraph{Módulo Generación reporte de gastos históricos}	
+A continuación, en la tabla~\ref{pro:lvl2:reportehis}, se presenta la descripción del módulo Generación reporte de gastos históricos asociado al proyecto:
+
+\begin{table}[H]
+    \caption{Descripción de Generación reporte de gastos históricos}
+    \label  {pro:lvl2:reportehis}
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4.5 cm} | p{11 cm} |}		\hline
+		 MÓDULO &  Generación reporte de gastos históricos\\\hline
+		 DESCRIPCIÓN & Genera el reporte de los gastos históricos\\\hline
+		 ENTRADAS & \begin{itemize}
+		 \item conjunto
+		 \item propiedad
+		 \end{itemize}\\\hline
+		 SALIDAS & Reporte \\\hline
+		 MÓDULOS SUPERIORES & Generación de reportes\\\hline
+		 \end{tabular}
+\end{table}
+
+\paragraph{Módulo Generación reporte estadístico}	
+A continuación, en la tabla~\ref{pro:lvl2:reportesta}, se presenta la descripción del módulo Generación reporte estadístico asociado al proyecto:
+
+\begin{table}[H]
+    \caption{Descripción de Generación reporte estadístico}
+    \label  {pro:lvl2:reportesta}
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4.5 cm} | p{11 cm} |}		\hline
+		 MÓDULO &  Generación reporte estadístico\\\hline
+		 DESCRIPCIÓN & Genera el reporte estadístico\\\hline
+		 ENTRADAS & \begin{itemize}
+		 \item conjunto
+		 \item propiedad
+		 \end{itemize}\\\hline
+		 SALIDAS & Reporte \\\hline
+		 MÓDULOS SUPERIORES & Generación de reportes\\\hline
+		 \end{tabular}
+\end{table}
+
+\paragraph{Módulo Generación reporte de gastos comunes}	
+A continuación, en la tabla~\ref{pro:lvl2:reportesgastoscomunes}, se presenta la descripción del módulo Generación reporte de gastos comunes asociado al proyecto:
+
+\begin{table}[H]
+    \caption{Descripción de Generación reporte de gastos comunes}
+    \label  {pro:lvl2:reportesgastoscomunes}
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4.5 cm} | p{11 cm} |}		\hline
+		 MÓDULO &  Generación reporte de gastos comunes\\\hline
+		 DESCRIPCIÓN & Genera reportes de los gastos comunes\\\hline
+		 ENTRADAS & conjunto\\\hline
+		 SALIDAS & Reporte \\\hline
+		 MÓDULOS SUPERIORES & Generación de reportes\\\hline
+		 \end{tabular}
+\end{table}
+
+
+\paragraph{Módulo Generación reporte nómina copropietario y propiedades}	
+A continuación, en la tabla~\ref{pro:lvl2:reportenomina}, se presenta la descripción del módulo Generación reporte nómina copropietario y propiedades asociado al proyecto:
+
+\begin{table}[H]
+    \caption{Descripción de Generación reporte nómina copropietario y propiedades}
+    \label  {pro:lvl2:reportenomina}
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4.5 cm} | p{11 cm} |}		\hline
+		 MÓDULO & Generación reporte nómina copropietario y propiedades \\\hline
+		 DESCRIPCIÓN & Genera reporte de la nómina de copropietario y propiedades\\\hline
+		 ENTRADAS & 
+		 \begin{itemize}
+		 \item propiedades
+		 \item copropietarios
+		 \end{itemize}\\\hline
+		 SALIDAS & Reporte \\\hline
+		 MÓDULOS SUPERIORES & Generación de reportes\\\hline
+		 \end{tabular}
+\end{table}
+
+\paragraph{Módulo Generación de gráfico gastos comunes}	
+A continuación, en la tabla~\ref{pro:lvl2:graficogas}, se presenta la descripción del módulo Generación de gráfico gastos comunes asociado al proyecto:
+
+\begin{table}[H]
+    \caption{Descripción de Generación de gráfico gastos comunes}
+    \label  {pro:lvl2:graficogas}
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4.5 cm} | p{11 cm} |}		\hline
+		 MÓDULO & Generación de gráfico gastos comunes \\\hline
+		 DESCRIPCIÓN & Genera gráfico de gastos comunes\\\hline
+		 ENTRADAS & datos gastos comunes
+		\\\hline
+		 SALIDAS & Gráfico \\\hline
+		 MÓDULOS SUPERIORES & Generación de gráficos\\\hline
+		 \end{tabular}
+\end{table}
+
+
+\paragraph{Módulo Generación de gráfico gastos adicionales}	
+A continuación, en la tabla~\ref{pro:lvl2:graficogasad}, se presenta la descripción del módulo Generación de gráfico gastos adicionales asociado al proyecto:
+
+\begin{table}[H]
+    \caption{Descripción de Generación de gráfico gastos adicionales}
+    \label  {pro:lvl2:graficogasad}
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4.5 cm} | p{11 cm} |}		\hline
+		 MÓDULO & Generación de gráfico gastos adicionales \\\hline
+		 DESCRIPCIÓN & Genera gráfico de gastos adicionales\\\hline
+		 ENTRADAS & datos gastos adicionales
+		\\\hline
+		 SALIDAS & Gráfico \\\hline
+		 MÓDULOS SUPERIORES & Generación de gráficos\\\hline
+		 \end{tabular}
+\end{table}
+
+\paragraph{Módulo Mantenedor tipo\_conjunto}	
+A continuación, en la tabla~\ref{pro:lvl2:mtipocon}, se presenta la descripción del módulo Mantenedor tipo\_conjunto asociado al proyecto:
+
+\begin{table}[H]
+    \caption{Descripción de Mantenedor tipo\_conjunto}
+    \label  {pro:lvl2:mtipocon}
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4.5 cm} | p{11 cm} |}		\hline
+		 MÓDULO & Mantenedor tipo\_conjunto \\\hline
+		 DESCRIPCIÓN & Elimina, inserta o modifica los datos de tipo\_conjunto\\\hline
+		 ENTRADAS & 
+		 \begin{itemize}
+		 \item operacion
+		 \item r\_tipo\_conjunto
+		 \end{itemize}
+		\\\hline
+		 SALIDAS & Ok \\\hline
+		 MÓDULOS SUPERIORES & Mantenedor de tablas básicas\\\hline
+		 \end{tabular}
+\end{table}
+
+
+\paragraph{Módulo Mantenedor estado\_deuda}	
+A continuación, en la tabla~\ref{pro:lvl2:mestadodeu}, se presenta la descripción del módulo Mantenedor estado\_deuda asociado al proyecto:
+
+\begin{table}[H]
+    \caption{Descripción de Mantenedor estado\_deuda}
+    \label  {pro:lvl2:mestadodeu}
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4.5 cm} | p{11 cm} |}		\hline
+		 MÓDULO & Mantenedor estado\_deuda \\\hline
+		 DESCRIPCIÓN & Elimina, inserta o modifica los datos de estado\_deuda\\\hline
+		 ENTRADAS & 
+		 \begin{itemize}
+		 \item operacion
+		 \item r\_estado\_deuda
+		 \end{itemize}
+		\\\hline
+		 SALIDAS & Ok \\\hline
+		 MÓDULOS SUPERIORES & Mantenedor de tablas básicas\\\hline
+		 \end{tabular}
+\end{table}
+
+
+\paragraph{Módulo Mantenedor region}	
+A continuación, en la tabla~\ref{pro:lvl2:mregion}, se presenta la descripción del módulo Mantenedor region asociado al proyecto:
+
+\begin{table}[H]
+    \caption{Descripción de Mantenedor region}
+    \label  {pro:lvl2:mregion}
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4.5 cm} | p{11 cm} |}		\hline
+		 MÓDULO & Mantenedor region\\\hline
+		 DESCRIPCIÓN & Elimina, inserta o modifica los datos de la region \\\hline
+		 ENTRADAS & 
+		 \begin{itemize}
+		 \item operacion
+		 \item r\_region
+		 \end{itemize}
+		\\\hline
+		 SALIDAS & Ok \\\hline
+		 MÓDULOS SUPERIORES & Mantenedor de tablas básicas\\\hline
+		 \end{tabular}
+\end{table}
+
+\paragraph{Módulo Mantenedor comuna}	
+A continuación, en la tabla~\ref{pro:lvl2:mcomuna}, se presenta la descripción del módulo Mantenedor comuna asociado al proyecto:
+
+\begin{table}[H]
+    \caption{Descripción de Mantenedor comuna}
+    \label  {pro:lvl2:mcomuna}
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4.5 cm} | p{11 cm} |}		\hline
+		 MÓDULO & Mantenedor comuna\\\hline
+		 DESCRIPCIÓN & Elimina, inserta o modifica los datos de la comuna\\\hline
+		 ENTRADAS & 
+		 \begin{itemize}
+		 \item operacion
+		 \item r\_comuna
+		 \end{itemize}
+		\\\hline
+		 SALIDAS & Ok \\\hline
+		 MÓDULOS SUPERIORES & Mantenedor de tablas básicas\\\hline
+		 \end{tabular}
+\end{table}
+
+\paragraph{Módulo Mantenedor tipo\_copropietario}	
+A continuación, en la tabla~\ref{pro:lvl2:mtipoco}, se presenta la descripción del módulo Mantenedor tipo\_copropietario asociado al proyecto:
+
+\begin{table}[H]
+    \caption{Descripción de Mantenedor tipo\_copropietario}
+    \label  {pro:lvl2:mtipoco}
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4.5 cm} | p{11 cm} |}		\hline
+		 MÓDULO & Mantenedor tipo\_copropietario \\\hline
+		 DESCRIPCIÓN & Elimina, inserta o modifica los datos de tipo\_copropietario\\\hline
+		 ENTRADAS & 
+		 \begin{itemize}
+		 \item operacion
+		 \item r\_tipo\_copropietario
+		 \end{itemize}
+		\\\hline
+		 SALIDAS & Ok \\\hline
+		 MÓDULOS SUPERIORES & Mantenedor de tablas básicas\\\hline
+		 \end{tabular}
+\end{table}
+
+\paragraph{Módulo Mantenedor estado\_copropietario}	
+A continuación, en la tabla~\ref{pro:lvl2:mestadoco}, se presenta la descripción del módulo Mantenedor estado\_copropietario asociado al proyecto:
+
+\begin{table}[H]
+    \caption{Descripción de Mantenedor estado\_copropietario}
+    \label  {pro:lvl2:mestadoco}
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4.5 cm} | p{11 cm} |}		\hline
+		 MÓDULO & Mantenedor estado\_copropietario\\\hline
+		 DESCRIPCIÓN & Elimina, inserta o modifica los datos de estado\_copropietario\\\hline
+		 ENTRADAS & 
+		 \begin{itemize}
+		 \item operacion
+		 \item r\_estado\_copropietario
+		 \end{itemize}
+		\\\hline
+		 SALIDAS & Ok \\\hline
+		 MÓDULOS SUPERIORES & Mantenedor de tablas básicas\\\hline
+		 \end{tabular}
+\end{table}
+
+\paragraph{Módulo Mantenedor tipo\_adicional}	
+A continuación, en la tabla~\ref{pro:lvl2:mtipoad}, se presenta la descripción del módulo Mantenedor tipo\_adicional asociado al proyecto:
+
+\begin{table}[H]
+    \caption{Descripción de Mantenedor tipo\_adicional}
+    \label  {pro:lvl2:mtipoad}
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4.5 cm} | p{11 cm} |}		\hline
+		 MÓDULO & Mantenedor tipo\_adicional\\\hline
+		 DESCRIPCIÓN & Elimina, inserta o modifica los datos de tipo\_adicional\\\hline
+		 ENTRADAS & 
+		 \begin{itemize}
+		 \item operacion
+		 \item r\_tipo\_adicional
+		 \end{itemize}
+		\\\hline
+		 SALIDAS & Ok \\\hline
+		 MÓDULOS SUPERIORES & Mantenedor de tablas básicas\\\hline
+		 \end{tabular}
+\end{table}
+
+\paragraph{Módulo Mantenedor estado\_reserva}	
+A continuación, en la tabla~\ref{pro:lvl2:mestador}, se presenta la descripción del módulo Mantenedor estado\_reserva asociado al proyecto:
+
+\begin{table}[H]
+    \caption{Descripción de Mantenedor estado\_reserva}
+    \label  {pro:lvl2:mestador}
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4.5 cm} | p{11 cm} |}		\hline
+		 MÓDULO & Mantenedor estado\_reserva\\\hline
+		 DESCRIPCIÓN & Elimina, inserta o modifica los datos de estado\_reserva\\\hline
+		 ENTRADAS & 
+		 \begin{itemize}
+		 \item operacion
+		 \item r\_estado\_reserva
+		 \end{itemize}
+		\\\hline
+		 SALIDAS & Ok \\\hline
+		 MÓDULOS SUPERIORES & Mantenedor de tablas básicas\\\hline
+		 \end{tabular}
+\end{table}
+
+\paragraph{Módulo Mantenedor tipo\_gasto}	
+A continuación, en la tabla~\ref{pro:lvl2:mtipogasto}, se presenta la descripción del módulo Mantenedor tipo\_gasto asociado al proyecto:
+
+\begin{table}[H]
+    \caption{Descripción de Mantenedor tipo\_gasto}
+    \label  {pro:lvl2:mtipogasto}
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4.5 cm} | p{11 cm} |}		\hline
+		 MÓDULO & Mantenedor tipo\_gasto\\\hline
+		 DESCRIPCIÓN & Elimina, inserta o modifica los datos de tipo\_gasto\\\hline
+		 ENTRADAS & 
+		 \begin{itemize}
+		 \item operacion
+		 \item r\_tipo\_registro
+		 \end{itemize}
+		\\\hline
+		 SALIDAS & Ok \\\hline
+		 MÓDULOS SUPERIORES & Mantenedor de tablas básicas\\\hline
+		 \end{tabular}
+\end{table}
+
+
+\subsection{Diseño de interfaz hombre/máquina (H/M).}
+Se describen el diseño de las interfaces del sistema, las cuales permiten la interacción con el usuario
+\subsubsection{Diseño de interfaces H/M.}
+A continuación se presentan las interfaces principales para el sistema GCadmin:
+\subsubsection{Descripción de componentes de interfaz H/M.}
+\subsubsection{Diseño de reportes.}
+\subsection{Roles y funciones.}
+
+\begin{table}[H]
+    \caption{Descripción de administrador y sus funciones.}
+    \label  {pro:lvl2:deu2}	
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4 cm} | p{11 cm} |}		\hline
+		 ROL & Administrador  \\\hline
+		 DESCRIPCIÓN &   Es el encargado de administrar y gestionar \textit{GCadmin} \\\hline
+		 FUNCIONES & 
+		 \begin{enumerate}
+		 \item Administrar y gestionar la información que provee el sistema (información de los gastos y reserva).
+		 \item Gestionar los copropietarios
+		 \item Gestionar propiedades por conjuntos????
+		 \item Gestionar reservas
+		 \end{enumerate} \\\hline
+	\end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \caption{Descripción de copropietario y sus funciones.}
+    \label  {pro:lvl2:deu2}	
+\begin{tabular}{|>{\columncolor[gray]{0.7}} p{4 cm} | p{11 cm} |}		\hline
+		 ROL & Copropietario  \\\hline
+		 DESCRIPCIÓN &   Es el usuario que utilizará el sistema para  \textit{GCadmin} \\\hline
+		 FUNCIONES & 
+		 \begin{enumerate}
+		 \item Consultar por gastos comunes
+		 \item Consultar por gastos adicionales
+		 \item Realizar reserva del espacio común
+		 \end{enumerate} \\\hline
+	\end{tabular}
+\end{table}	
+
+\subsection{Conclusiones del capítulo}
+En la segunda parte del proyecto presentado, se ha expuesto el proceso del Análisis del software, del proyecto denominado "GCadmin".\\
+
+Para esta segunda parte de la entrega, se realizó un detallado análisis de los requerimientos para posteriormente realizar el modelamiento de datos y el modelamiento funcional.\\
+
+Se plantea que en esta parte del desarrollo del software, como grupo de trabajo se ha mejorado en comparación a la primera entrega, evaluando positivamente la metodología de gestión de proyectos elegida por el jefe de proyecto (Descentralizado democrático).\\
+
+Para esta parte del proyecto, hacemos énfasis en que el tiempo efectuado ha sido largo, pero ha tenido un gran refinamiento del software para el posterior diseño e implementación de este.	\\
+
+Finalmente, para el siguiente informe se han generado grandes expectativas, ya que para el diseño e implemetación del software se requiere el desarrollo de un grupo más cohesionado y productivo que los anteriores.
+
+
+\section{CAPÍTULO 3. CONCLUSIONES}
+En la tercera parte del proyecto presentado, se ha expuesto el proceso de implementación del software, del proyecto denominado \textit{"GCadmin"}.\\
+
+Para esta etapa final, luego de realizar un proceso detallado de análisis y diseño, se ha llegado a la  parte en práctica de todos los conocimientos recibidos durante este desarrollo del proyecto, la implementación. El equipo de trabajo evalua de forma positiva esta parte del proyecto, ya que permitió que el equipo se desarrollara de una forma más cohesionada, adquiriendo un real compromiso con el proyecto. Bajo esta misma línea hacemos énfasis en que la metodología de gestión de proyectos elegida por el jefe de proyecto (Descentralizado democrático), permitió una mejor comunicación como equipo, ayudando en las decisiones sobre el proyecto.\\
+
+Se plantea también que todo lo logrado hasta ahora, además del conocimiento adquirido ayudaron a mejorar la calidad del desarrollo del proyecto final. Las etapas realizadas con aterioridad influyeron en el proceso de esta última, ya que sin un buen análisis de requerimientos y diseño del software, no se podría generar la administración y gestión de los gastos comunes, sin anticiparse a posibles errores, concluyendo con esta parte que durante el transcurso del proyecto, las herramientas entregadas han aportado a que el software sea de buena calidad.\\
+
+Para la planificación de este proyecto, se establecieron ciertos objetivos, los cuáles se han cumplido satisfactoriamente. Comenzando con la metodología a utilizar, la cuál nos proporcionó el análisis de los requerimientos, el diseño mediante el modelamiento de datos, y posteriormente la implementación del diseño realizado. \\
+
+La solución propuesta de este proyecto entrega a los residentes de un complejo residencial, a través del software un lugar donde recibir avisos de los pagos, ver los reportes de los gastos comunes, reservar espacios comunes y obtener detalles del historial de los gastos comunes del complejo residencial.\\
+
+
+\section {\bf Referencias bibliográficas} \label{Referencias bibliograficas}
+\begin{thebibliography}{5}
+%si se agrega bibliografía, hay que aumentar el número 11 a la cantidad total de datos.
+\bibitem {Ingenieria de Software} Metodologías y ciclos de vida. 2009. España. Referencia a las metodologías de software.
+\bibitem {vivook}Página web referenciada. Fecha de la consulta:15-04-2014{\url{http://vivook.com/}}
+\bibitem {miconserje}Página web referenciada. Fecha de la consulta:15-04-2014{\url{http://www.micinserje.com/}}
+\bibitem {adminnova}Página web referenciada. Fecha de la consulta:15-04-2014{\url{http://www.adminnova.com/}}
+\end{thebibliography}
+\newpage
+
+\end{document}
