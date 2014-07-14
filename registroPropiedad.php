@@ -45,7 +45,7 @@ if (count($_SESSION) != 0 && $_SESSION['tipo'] == false ) {
 		$con = $conexion_bd->prepare("SELECT * FROM conjunto");
 		$con -> execute();
 		$consult_propiedad = $con -> fetchAll(PDO::FETCH_ASSOC); //Saca el todas las propiedades asociadas a un conjunto
-		render('Rpropiedad/new.html.twig', array('conjunto' => $consult_propiedad, 'valido' => $_SESSION['valido']));
+		render('Rpropiedad/new.html.twig', array('conjunto' => $consult_propiedad, 'valido' => $_SESSION['valido'], 'conjuntoAdm' => $_SESSION['datos']));
 	}
 	$conexion_bd = NULL; // se cierra la conexión a la BD.
 } else {

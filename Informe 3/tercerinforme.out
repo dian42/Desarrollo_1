@@ -1,0 +1,46 @@
+\BOOKMARK [1][-]{section.1}{CAP\315TULO 1. PRESENTACI\323N Y PLANIFICACI\323N DEL PROYECTO}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Introducci\363n}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{Objetivos del Proyecto}{section.1}% 3
+\BOOKMARK [3][-]{subsubsection.1.2.1}{Objetivo General}{subsection.1.2}% 4
+\BOOKMARK [3][-]{subsubsection.1.2.2}{Objetivos Espec\355ficos}{subsection.1.2}% 5
+\BOOKMARK [2][-]{subsection.1.3}{Descripci\363n de la Problem\341tica}{section.1}% 6
+\BOOKMARK [3][-]{subsubsection.1.3.1}{Motivaci\363n}{subsection.1.3}% 7
+\BOOKMARK [3][-]{subsubsection.1.3.2}{Definici\363n del Problema}{subsection.1.3}% 8
+\BOOKMARK [3][-]{subsubsection.1.3.3}{Estado del Arte}{subsection.1.3}% 9
+\BOOKMARK [2][-]{subsection.1.4}{Descripci\363n de la Soluci\363n Propuesta}{section.1}% 10
+\BOOKMARK [3][-]{subsubsection.1.4.1}{Caracter\355sticas de la Soluci\363n}{subsection.1.4}% 11
+\BOOKMARK [3][-]{subsubsection.1.4.2}{Prop\363sitos de la Soluci\363n}{subsection.1.4}% 12
+\BOOKMARK [3][-]{subsubsection.1.4.3}{Alcances y Limitaciones de la Soluci\363n}{subsection.1.4}% 13
+\BOOKMARK [2][-]{subsection.1.5}{Metodolog\355a, herramientas y ambiente de desarrollo}{section.1}% 14
+\BOOKMARK [3][-]{subsubsection.1.5.1}{Metodolog\355a a usar}{subsection.1.5}% 15
+\BOOKMARK [3][-]{subsubsection.1.5.2}{Herramientas de Desarrollo}{subsection.1.5}% 16
+\BOOKMARK [3][-]{subsubsection.1.5.3}{Caracter\355sticas de los equipos:}{subsection.1.5}% 17
+\BOOKMARK [3][-]{subsubsection.1.5.4}{Ambiente de Desarrollo}{subsection.1.5}% 18
+\BOOKMARK [2][-]{subsection.1.6}{Plan de Trabajo}{section.1}% 19
+\BOOKMARK [3][-]{subsubsection.1.6.1}{Planificaci\363n de Entrevistas}{subsection.1.6}% 20
+\BOOKMARK [3][-]{subsubsection.1.6.2}{Plan del Proyecto}{subsection.1.6}% 21
+\BOOKMARK [2][-]{subsection.1.7}{Conclusiones del cap\355tulo}{section.1}% 22
+\BOOKMARK [1][-]{section.2}{CAP\315TULO 2. AN\301LISIS Y DISE\321O DEL SOFTWARE}{}% 23
+\BOOKMARK [2][-]{subsection.2.1}{Introducci\363n}{section.2}% 24
+\BOOKMARK [2][-]{subsection.2.2}{Estudio de Requerimientos}{section.2}% 25
+\BOOKMARK [3][-]{subsubsection.2.2.1}{Especificaci\363n de requerimientos del sistema}{subsection.2.2}% 26
+\BOOKMARK [3][-]{subsubsection.2.2.2}{Identificaci\363n de requerimientos funcionales y no funcionales.}{subsection.2.2}% 27
+\BOOKMARK [2][-]{subsection.2.3}{Modelamiento de datos}{section.2}% 28
+\BOOKMARK [3][-]{subsubsection.2.3.1}{Diagrama de Estructura de Datos}{subsection.2.3}% 29
+\BOOKMARK [3][-]{subsubsection.2.3.2}{Especificaci\363n de atributos}{subsection.2.3}% 30
+\BOOKMARK [3][-]{subsubsection.2.3.3}{Restricciones y/o limitaciones del modelo de datos}{subsection.2.3}% 31
+\BOOKMARK [2][-]{subsection.2.4}{Modelamiento funcional}{section.2}% 32
+\BOOKMARK [3][-]{subsubsection.2.4.1}{Diagramas de flujo de datos}{subsection.2.4}% 33
+\BOOKMARK [3][-]{subsubsection.2.4.2}{Descripci\363n de diagramas de flujos de datos}{subsection.2.4}% 34
+\BOOKMARK [3][-]{subsubsection.2.4.3}{Diccionario de datos}{subsection.2.4}% 35
+\BOOKMARK [2][-]{subsection.2.5}{Dise\361o arquitect\363nico.}{section.2}% 36
+\BOOKMARK [3][-]{subsubsection.2.5.1}{Diagrama de estructura del sistema.}{subsection.2.5}% 37
+\BOOKMARK [3][-]{subsubsection.2.5.2}{Especificaci\363n de m\363dulos.}{subsection.2.5}% 38
+\BOOKMARK [2][-]{subsection.2.6}{Dise\361o de interfaz hombre/m\341quina \(H/M\).}{section.2}% 39
+\BOOKMARK [3][-]{subsubsection.2.6.1}{Dise\361o de interfaces H/M.}{subsection.2.6}% 40
+\BOOKMARK [3][-]{subsubsection.2.6.2}{Descripci\363n de componentes de interfaz H/M.}{subsection.2.6}% 41
+\BOOKMARK [3][-]{subsubsection.2.6.3}{Dise\361o de reportes.}{subsection.2.6}% 42
+\BOOKMARK [2][-]{subsection.2.7}{Roles y funciones.}{section.2}% 43
+\BOOKMARK [2][-]{subsection.2.8}{Conclusiones del cap\355tulo}{section.2}% 44
+\BOOKMARK [1][-]{section.3}{CAP\315TULO 3. CONCLUSIONES}{}% 45
+\BOOKMARK [1][-]{section.4}{Referencias bibliogr\341ficas}{}% 46

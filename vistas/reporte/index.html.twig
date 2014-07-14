@@ -9,7 +9,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
             <section class="widget">
                 <header>
                 </header>
@@ -20,8 +20,8 @@
 	                        <label class="control-label" for="default-select">Seleccione el conjunto </label>
 	                        <div class="controls form-group">
 	                            <select name="conjunto"
-	                                    class="chzn-select select-block-level" id="default-select">
-	                                {% for conjuntos in conjunto %}
+	                                    class="chzn-select col-md-4" id="default-select">
+	                                {% for conjuntos in conjuntoAdm %}
 					                    <option value={{conjuntos['con_id']}}>{{conjuntos['con_nombre']}}</option>
 						            {% endfor %}	                          	
 	                            </select>
