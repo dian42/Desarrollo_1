@@ -1,40 +1,44 @@
 {% extends "base.html.twig" %}
 
+{% block title %}Reportes - {% endblock title %}
+
 {% block content %}
 
-<div class="content container">
-    <div class="row">
-        <div class="col-md-12">
-            <h2 class="page-title">Reportes de <strong>Copropietarios por Propiedad</strong></h2>
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="page-title">Reportes de <strong>Copropietarios por Propiedad</strong></h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <section class="widget">
+                    <header>
+                    </header>
+                    <div class="body">
+                        <form class="form-horizontal" action="reporteCopPro.php" method="POST">
+                            <fieldset>
+                            <div class="control-group">
+    	                        <label class="control-label" for="default-select">Seleccione el conjunto </label>
+    	                        <div class="controls form-group">
+    	                            <select name="conjunto"
+    	                                    class="chzn-select col-md-4" id="default-select">
+    	                                {% for conjuntos in conjuntoAdm %}
+    					                    <option value={{conjuntos['con_id']}}>{{conjuntos['con_nombre']}}</option>
+    						            {% endfor %}	                          	
+    	                            </select>
+    						    	<button type="submit" name="subit" class="btn btn-primary" value="Aceptar" >Ver</button>
+    	                        </div>
+    	                    </div>
+    				    
+                            </fieldset>
+                        </form>
+                    </div>
+                </section>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-12">
-            <section class="widget">
-                <header>
-                </header>
-                <div class="body">
-                    <form class="form-horizontal" action="reporteCopPro.php" method="POST">
-                        <fieldset>
-                        <div class="control-group">
-	                        <label class="control-label" for="default-select">Seleccione el conjunto </label>
-	                        <div class="controls form-group">
-	                            <select name="conjunto"
-	                                    class="chzn-select col-md-4" id="default-select">
-	                                {% for conjuntos in conjuntoAdm %}
-					                    <option value={{conjuntos['con_id']}}>{{conjuntos['con_nombre']}}</option>
-						            {% endfor %}	                          	
-	                            </select>
-						    	<button type="submit" name="subit" class="btn btn-primary" value="Aceptar" >Ver</button>
-	                        </div>
-	                    </div>
-				    
-                        </fieldset>
-                    </form>
-                </div>
-            </section>
-        </div>
-    </div>
-</div>
-
+{{ parent() }}
 {% endblock %}
+
+{% block footer %}{% endblock %}
