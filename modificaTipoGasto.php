@@ -16,29 +16,44 @@ if (count($_SESSION) != 0  && $_SESSION['tipo'] == false  ) {
 				$tGasto = $consulta->fetchALL(PDO::FETCH_ASSOC); //Ejecutamos la consulta
 				$conexion_bd = NULL; // se cierra la conexión a la BD
 				render('basicos/index.html.twig', array('tGasto' => $tGasto, 'valido' => $_SESSION['valido']));
-			}else{
+			}
+			else{
 
-			$consulta_bd = $conexion_bd->prepare("SELECT * FROM tipo_gasto");
-			$consulta_bd -> execute();
-			/* Se obtiene el primer registro del conjunto de resultados
-			 * como un arreglo asociativo */
-			$tGasto = $consulta_bd->fetchAll(PDO::FETCH_ASSOC);
-			// Se cierra la conexión con la BD.
-			$conexion_bd = NULL;
-			render('basicos/error2.html.twig', array('tGasto' => $tGasto, 'valido' => $_SESSION['valido'],'error'=>"Valores ingresados no válidos"));
+				$consulta_bd = $conexion_bd->prepare("SELECT * FROM tipo_gasto");
+				$consulta_bd -> execute();
+				/* Se obtiene el primer registro del conjunto de resultados
+				 * como un arreglo asociativo */
+				$tGasto = $consulta_bd->fetchAll(PDO::FETCH_ASSOC);
+				// Se cierra la conexión con la BD.
+				$conexion_bd = NULL;
+				render('basicos/error2.html.twig', array('tGasto' => $tGasto, 'valido' => $_SESSION['valido'],'error'=>"Valores ingresados no válidos"));
 			}
 		}
 	}elseif ($_SERVER['REQUEST_METHOD'] == 'GET') {
 	    if(isset($_GET['button2'])) {
-			$tga_id = $_GET['button2'];	
-			$consulta = $conexion_bd->prepare("SELECT * FROM tipo_gasto WHERE tga_id = '$tga_id'"); //Definimos la consulta a la base de datos.
+	    	$bool = false;
+	    	$consulta = $conexion_bd->prepare("SELECT * FROM tipo_gasto"); //Definimos la consulta a la base de datos.
 			$consulta->execute();
-			$tGasto = $consulta->fetch(PDO::FETCH_ASSOC); //Ejecutamos la consulta
+			$tGasto = $consulta->fetchALL(PDO::FETCH_ASSOC); //Ejecutamos la consulta
+			foreach ($tGasto as $value) 
+				if ($value['tga_id'] === $_GET['button2']) 
+					$bool = true;
+			if ($bool){
+				$tga_id = $_GET['button2'];	
+				$consulta = $conexion_bd->prepare("SELECT * FROM tipo_gasto WHERE tga_id = '$tga_id'"); //Definimos la consulta a la base de datos.
+				$consulta->execute();
+				$tGasto = $consulta->fetch(PDO::FETCH_ASSOC); //Ejecutamos la consulta
 
-			$conexion_bd = NULL; // se cierra la conexión a la BD
-			//render('basicos/update.html.twig', array('tGasto' => $tGasto ));
-			render('basicos/update.html.twig', array('tGasto' => $tGasto, 'valido' => $_SESSION['valido']));
-		}else{
+				$conexion_bd = NULL; // se cierra la conexión a la BD
+				//render('basicos/update.html.twig', array('tGasto' => $tGasto ));
+				render('basicos/update.html.twig', array('tGasto' => $tGasto, 'valido' => $_SESSION['valido']));
+			}
+			else{
+				render('basicos/error2.html.twig', array('tGasto' => $tGasto,'valido' => $_SESSION['valido'],'error'=>"La operación no se pudo realizar debido a que el identificador del tipo de gasto ingresado no existe"));
+			 
+			}
+		}
+		else{
 			$consulta = $conexion_bd->prepare("SELECT * FROM tipo_gasto"); //Definimos la consulta a la base de datos.
 			$consulta->execute();
 			$tGasto = $consulta->fetchALL(PDO::FETCH_ASSOC); //Ejecutamos la consulta
