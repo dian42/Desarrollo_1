@@ -1,6 +1,6 @@
 <?php 
 include_once 'lib/conexion_bd.php';
-
+ date_default_timezone_set('UTC');
 function Vcon ($conjunto, $conexion_bd){
 	$tipos 	= $conexion_bd -> prepare("SELECT con_id FROM conjunto WHERE con_id = $conjunto");
 	$tipos -> execute();		

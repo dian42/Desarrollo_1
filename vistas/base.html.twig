@@ -116,7 +116,7 @@
                                             <a class="accordion-toggle collapsed" data-toggle="collapse"
                                                data-parent="#menu-levels-collapse" href="#sub-menu-2-1-collapse-{{condominio['con_id']}}">Gastos Realizados</a>
                                             <ul id="sub-menu-2-1-collapse-{{condominio['con_id']}}" class="panel-collapse collapse">
-                                                        <li><a href="graficoAdiciona.php?condominio={{condominio['con_id']}}">  Adicional</a></li>
+                                                        <li><a href="graficoAdicional.php?condominio={{condominio['con_id']}}">  Adicional</a></li>
                                                         <li><a href="graficoComun.php?condominio={{condominio['con_id']}}">  Común </a></li>
                                             </ul>
                                         </li>
@@ -231,13 +231,13 @@
             {% endblock content %}
         </div>
         {% endblock contenido %}
-    {% block footer %}
+    {#% block footer %}
         <div id="footer">
             &copy; Copyright 2011 by <a href="http://dominio.invalido/">
                                                  tú
                                              </a>.
         </div>
-    {% endblock %}
+    {% endblock %#}
     </body>
     {% block scriptis %}
 

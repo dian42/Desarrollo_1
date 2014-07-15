@@ -17,11 +17,11 @@ if (count($_SESSION) != 0 && $_SESSION['tipo'] == false ) {
 
 			if(VtipoAdi($tad,$conexion_bd) && VfechaA($fIni,$conexion_bd) && VfechaA($fFin,$conexion_bd)&&VdifFechas($fIni,$fFin)){
 				if (count(DatosAdicionales1($conexion_bd, $fIni, $fFin, $pro_id, $tad))>0)
-					 grafico_adicional ($fIni, $fFin, $pro_id, $tad,$conexion_bd );
+					grafico_adicional ($fIni, $fFin, $pro_id, $tad,$conexion_bd );
 				else 
-					echo "error";
+					echo "No hay valores de retorno para esa consulta";
 
-				 grafico_adicional ($fIni, $fFin, $pro_id, $tad,$conexion_bd );
+				 // grafico_adicional ($fIni, $fFin, $pro_id, $tad,$conexion_bd );
 				// echo $fIni." ". $fFin." ". $id." ". $tga;
 			}
 		}
