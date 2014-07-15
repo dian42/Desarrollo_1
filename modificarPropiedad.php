@@ -1,6 +1,6 @@
 <?php
 require_once 'lib/twigLoad.php';
-include_once 'lib/conexion_bd.php';
+//include_once 'lib/conexion_bd.php';
 include_once 'lib/validacion_propiedad.php';
 session_start(); //Iniciamos una posible sesión
 

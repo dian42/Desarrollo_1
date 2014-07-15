@@ -1,9 +1,9 @@
 <?php
 require_once 'lib/twigLoad.php';
-include_once 'lib/conexion_bd.php';
 
 session_start();
 if (count($_SESSION) != 0  && $_SESSION['tipo'] == false  ) {
+	include_once 'lib/conexion_bd.php';
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		if(isset($_POST['conjunto'])) {
 			$seleccion = $_POST['conjunto'];
