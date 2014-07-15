@@ -30,7 +30,7 @@
 	                        	<div class="control-group">
 			                        <label class="control-label" for="default-select">Tipo Gasto </label>
 			                        <div class="controls form-group">
-			                            <select name="conjunto"
+			                            <select name="tga"
 			                                    class="chzn-select col-md-4" id="default-select">
 			                                {% for tgasto in tgasto %}
 							                    <option value={{tgasto['tga_id']}}>{{tgasto['tga_nombre']}}</option>
@@ -40,7 +40,7 @@
 
 		                        <label class="control-label" for="default-select">Fecha inicial </label>
 		                        <div class="controls form-group">
-		                            <select name="conjunto"
+		                            <select name="fIni"
 		                                    class="chzn-select col-md-4" id="default-select">
 		                                {% for fechas_ini in fechas_ini %}
 						                    <option value={{fechas_ini['gas_fecha']}}>{{fechas_ini['gas_fecha']}}</option>
@@ -50,13 +50,13 @@
 
 		                        <label class="control-label" for="default-select">Fecha final </label>
 		                        <div class="controls form-group">
-		                            <select name="conjunto"
+		                            <select name="fFin"
 		                                    class="chzn-select col-md-4" id="default-select">
 		                                {% for fechas_ter in fechas_ter %}
 						                    <option value={{fechas_ter['gas_fecha']}}>{{fechas_ter['gas_fecha']}}</option>
 							            {% endfor %}	                          	
 		                            </select> <br/><br/><br/>
-		                            <button type="submit" name="subit" class="btn btn-primary" value="Ver" >Ver Gráfico</button>
+		                            <button type="submit" name="submit" class="btn btn-primary" value="Ver" >Ver Gráfico</button>
 							    </div>
 
 		                    </div>

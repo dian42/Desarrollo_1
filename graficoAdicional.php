@@ -33,7 +33,16 @@
 				else
 					render('default/errorGET.html.twig');
 			}
-			
+
+			else{
+
+
+					$tadicional=$conexion_bd -> prepare(" SELECT *
+			    								  		 FROM tipo_adicional");
+				    $tadicional->execute();
+					$tadicional = $tadicional -> fetchAll(PDO::FETCH_ASSOC);
+				render('grafico/graficoAdicional.html.twig',array('valido' => $_SESSION['valido']));
+			}
 		}
 	}
 

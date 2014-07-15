@@ -1,9 +1,10 @@
 <?php   
 	/* CAT:Bar Chart */
 	/* pChart library inclusions */
-	grafico();
+	grafico_comun('2001-04-12', '2017-04-12', 2, 'C',$conexion_bd);//'2000-11-01', '2022-02-26', 1, 'C');
 
-	function grafico ($fecha_inicial, $fecha_final, $gasto_a_graficar, $conjunto, $propiedad ,$tipo_adicional, $tipo_gasto ){
+
+	function grafico_comun ($fecha_inicial, $fecha_final, $conjunto, $tipo_gasto,$conexion_bd ){
 	include_once 'lib/conexion_bd.php';
 	include_once 'lib/graficos/class/pData.class.php';
 	include_once 'lib/graficos/class/pDraw.class.php';
@@ -11,17 +12,11 @@
 	/* Create and populate the pData object */
 	// $comunes = DatosGastos();
 	$MyData = new pData();  
-	if ($gasto_a_graficar=="comun"){
-		$MyData->addPoints(DatosGastos($conexion_bd, $fecha_inicial, $fecha_final, $conjunto, $tipo_gasto),"Gastos Comunes"); //array(150,220,300,1000,420,200,300,200,100),"Server A");
-		$MyData->addPoints(DatosGastosfecha($conexion_bd, $fecha_inicial, $fecha_final, $conjunto, $tipo_gasto),"Months");
-	}
-	if ($gasto_a_graficar=="adicional"){
-		$MyData->addPoints(DatosAdicionales($conexion_bd, $fecha_inicial, $fecha_final, $propiedad, $tipo_adicional),"Gastos Adicionaes");//array(140,0,340,300,320,300,200,10 0,50),"Server B"); //9 datos
-		$MyData->addPoints(DatosGastosfecha($conexion_bd, $fecha_inicial, $fecha_final, $propiedad, $tipo_adicional),"Months");
-	}
+	$MyData->addPoints(DatosGastos($conexion_bd, $fecha_inicial, $fecha_final, $conjunto, $tipo_gasto),"Gastos Comunes");
+	$MyData->addPoints(DatosGastosfecha($conexion_bd, $fecha_inicial, $fecha_final, $conjunto, $tipo_gasto),"Meses");
 	$MyData->setAxisName(0,"Pesos");
-	$MyData->setSerieDescription("Months","Month");
-	$MyData->setAbscissa("Months");
+	$MyData->setSerieDescription("Meses","Mes");
+	$MyData->setAbscissa("Meses");
 
 	/* Create the pChart object */
 	 $myPicture = new pImage(700,230,$MyData);
@@ -77,25 +72,11 @@ function DatosGastos($conexion_bd, $fecha_inicial, $fecha_final, $conjunto, $tip
 	 				$total[$i]=$total[$i]+$gastos['gas_costo'];
 	 		
 	 	}
-	 		$i++;
+	 	$i++;
 	}
-
-
-function DatosAdicionales($conexion_bd, $fecha_inicial, $fecha_final, $propiedad, $tipo_adicional){	
-	$i=0;
-	$datos = array();
-	$tipos = $conexion_bd -> prepare("SELECT adi_costo FROM adicional WHERE gas_tad_id = '$tipo_adicional' AND adi_pro_id = $propiedad AND adi_fecha BETWEEN '$fecha_inicia' AND '$fecha_final' "); 
-	$tipos -> execute();
-	$tipos = $tipos->fetchAll(PDO::FETCH_ASSOC);
-	$conexion_bd =NULL;
-	foreach ($tipos as $gastos ) 
-		foreach ($gastos as $gasto ) {
-			if($i<10)
-				$datos[++$i]=$gasto;
-		}
-
-	return $datos;
+	return $total;
 }
+
 
 function DatosGastosfecha($conexion_bd, $fecha_inicial, $fecha_final, $conjunto, $tipo_gasto){	
 	$i=0;
@@ -106,24 +87,9 @@ function DatosGastosfecha($conexion_bd, $fecha_inicial, $fecha_final, $conjunto,
 	$conexion_bd =NULL;
 	foreach ($tipos as $gastos ) 
 		foreach ($gastos as $gasto ) 
-				$datos[++$i]=$gasto;
+				$datos[$i++]=$gasto;
 	return $datos;	
 }
-
-function DatosAdicionalesfecha($conexion_bd, $fecha_inicial, $fecha_final, $propiedad, $tipo_adicional){	
-	$i=0;
-	$datos = array();
-	$tipos = $conexion_bd -> prepare("SELECT distinct(adi_costo) FROM adicional WHERE adi_tad_id = '$tipo_adicional' AND adi_pro_id = $propiedad AND adi_fecha BETWEEN '$fecha_inicia' AND '$fecha_final' "); 
-	$tipos -> execute();
-	$tipos = $tipos->fetchAll(PDO::FETCH_ASSOC);
-	$conexion_bd =NULL;
-	foreach ($tipos as $gastos ) 
-		foreach ($gastos as $gasto ) 
-			$datos[++$i]=$gasto;
-	return $datos;
-}
-
-
 
 
 ?>
