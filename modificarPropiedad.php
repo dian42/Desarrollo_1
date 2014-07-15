@@ -34,7 +34,6 @@ if (count($_SESSION) != 0 && $_SESSION['tipo'] == false ) {
 				$consulta = $conexion_bd->prepare("SELECT pro_id, pro_numero, pro_m2, pro_alicuota, pro_con_id, con_nombre FROM propiedad, conjunto WHERE pro_con_id=con_id"); //Definimos la consulta a la base de datos.
 				$consulta->execute();
 				$propiedad = $consulta->fetch(PDO::FETCH_ASSOC); //Ejecutamos la consulta
-				print_r($propiedad);
 				$conexion_bd = NULL; // se cierra la conexión a la BD
 				render('Rpropiedad/errorModificaPropiedad.html.twig',array('propiedad' => $propiedad, 'valido' => $_SESSION['valido'], 'error'=>"Datos no válidos"));	
 			}
