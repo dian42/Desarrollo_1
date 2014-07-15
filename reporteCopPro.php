@@ -1,9 +1,9 @@
 <?php
 require_once 'lib/twigLoad.php';
-include_once 'lib/conexion_bd.php';
 
 session_start();
 if (count($_SESSION) != 0  && $_SESSION['tipo'] == false  ) {
+	include_once 'lib/conexion_bd.php';
 	if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 		if(isset($_GET['condominio'])) {
 			$bool = false;
@@ -15,7 +15,7 @@ if (count($_SESSION) != 0  && $_SESSION['tipo'] == false  ) {
 				$usr = $_SESSION['usuario'];
 				$reporte = $conexion_bd -> prepare(" SELECT cop_run, cop_nombres, cop_ap_paterno, cop_ap_materno, pro_numero
 													 FROM cop_pro, propiedad, copropietario, conjunto
-													 WHERE pro_con_id = 1 AND
+													 WHERE pro_con_id = $seleccion AND
 													 	cpr_pro_id = pro_id AND
 													 	cpr_eco_id = 'A' AND
 													 	cpr_cop_id = cop_run AND

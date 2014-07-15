@@ -1,0 +1,346 @@
+DEFAULT;Arica;15
+DEFAULT;Camarones;15
+DEFAULT;Putre;15
+DEFAULT;General Lagos;15
+DEFAULT;Iquique;01
+DEFAULT;Alto Hospicio;01
+DEFAULT;Pozo Almonte;01
+DEFAULT;Camiña;01
+DEFAULT;Colchane;01
+DEFAULT;Huara;01
+DEFAULT;Pica;01
+DEFAULT;Antofagasta;02
+DEFAULT;Mejillones;02
+DEFAULT;Sierra Gorda;02
+DEFAULT;Taltal;02
+DEFAULT;Calama;02
+DEFAULT;Ollagüe;02
+DEFAULT;San Pedro de Atacama;02
+DEFAULT;Tocopilla;02
+DEFAULT;María Elena;02
+DEFAULT;Copiapó;03
+DEFAULT;Caldera;03
+DEFAULT;Tierra Amarilla;03
+DEFAULT;Chañaral;03
+DEFAULT;Diego de Almagro;03
+DEFAULT;Vallenar;03
+DEFAULT;Alto del Carmen;03
+DEFAULT;Freirina;03
+DEFAULT;Huasco;03
+DEFAULT;La Serena;04
+DEFAULT;Coquimbo;04
+DEFAULT;Andacollo;04
+DEFAULT;La Higuera;04
+DEFAULT;Paiguano;04
+DEFAULT;Vicuña;04
+DEFAULT;Illapel;04
+DEFAULT;Canela;04
+DEFAULT;Los Vilos;04
+DEFAULT;Salamanca;04
+DEFAULT;Ovalle;04
+DEFAULT;Combarbalá;04
+DEFAULT;Monte Patria;04
+DEFAULT;Punitaqui;04
+DEFAULT;Río Hurtado;04
+DEFAULT;Valparaíso;05
+DEFAULT;Casablanca;05
+DEFAULT;Concón;05
+DEFAULT;Juan Fernández;05
+DEFAULT;Puchuncaví;05
+DEFAULT;Quintero;05
+DEFAULT;Viña del Mar;05
+DEFAULT;Isla de Pascua;05
+DEFAULT;Los Andes;05
+DEFAULT;Calle Larga;05
+DEFAULT;Rinconada;05
+DEFAULT;San Esteban;05
+DEFAULT;La Ligua;05
+DEFAULT;Cabildo;05
+DEFAULT;Papudo;05
+DEFAULT;Petorca;05
+DEFAULT;Zapallar;05
+DEFAULT;Quillota;05
+DEFAULT;Calera;05
+DEFAULT;Hijuelas;05
+DEFAULT;La Cruz;05
+DEFAULT;Nogales;05
+DEFAULT;San Antonio;05
+DEFAULT;Algarrobo;05
+DEFAULT;Cartagena;05
+DEFAULT;El Quisco;05
+DEFAULT;El Tabo;05
+DEFAULT;Santo Domingo;05
+DEFAULT;San Felipe;05
+DEFAULT;Catemu;05
+DEFAULT;Llaillay;05
+DEFAULT;Panquehue;05
+DEFAULT;Putaendo;05
+DEFAULT;Santa María;05
+DEFAULT;Quilpué;05
+DEFAULT;Limache;05
+DEFAULT;Olmué;05
+DEFAULT;Villa Alemana;05
+DEFAULT;Rancagua;06
+DEFAULT;Codegua;06
+DEFAULT;Coinco;06
+DEFAULT;Coltauco;06
+DEFAULT;Doñihue;06
+DEFAULT;Graneros;06
+DEFAULT;Las Cabras;06
+DEFAULT;Machalí;06
+DEFAULT;Malloa;06
+DEFAULT;Mostazal;06
+DEFAULT;Olivar;06
+DEFAULT;Peumo;06
+DEFAULT;Pichidegua;06
+DEFAULT;Quinta de Tilcoco;06
+DEFAULT;Rengo;06
+DEFAULT;Requínoa;06
+DEFAULT;San Vicente;06
+DEFAULT;Pichilemu;06
+DEFAULT;La Estrella;06
+DEFAULT;Litueche;06
+DEFAULT;Marchihue;06
+DEFAULT;Navidad;06
+DEFAULT;Paredones;06
+DEFAULT;San Fernando;06
+DEFAULT;Chépica;06
+DEFAULT;Chimbarongo;06
+DEFAULT;Lolol;06
+DEFAULT;Nancagua;06
+DEFAULT;Palmilla;06
+DEFAULT;Peralillo;06
+DEFAULT;Placilla;06
+DEFAULT;Pumanque;06
+DEFAULT;Santa Cruz;06
+DEFAULT;Talca;07
+DEFAULT;Constitución;07
+DEFAULT;Curepto;07
+DEFAULT;Empedrado;07
+DEFAULT;Maule;07
+DEFAULT;Pelarco;07
+DEFAULT;Pencahue;07
+DEFAULT;Río Claro;07
+DEFAULT;San Clemente;07
+DEFAULT;San Rafael;07
+DEFAULT;Cauquenes;07
+DEFAULT;Chanco;07
+DEFAULT;Pelluhue;07
+DEFAULT;Curicó;07
+DEFAULT;Hualañé;07
+DEFAULT;Licantén;07
+DEFAULT;Molina;07
+DEFAULT;Rauco;07
+DEFAULT;Romeral;07
+DEFAULT;Sagrada Familia;07
+DEFAULT;Teno;07
+DEFAULT;Vichuquén;07
+DEFAULT;Linares;07
+DEFAULT;Colbún;07
+DEFAULT;Longaví;07
+DEFAULT;Parral;07
+DEFAULT;Retiro;07
+DEFAULT;San Javier;07
+DEFAULT;Villa Alegre;07
+DEFAULT;Yerbas Buenas;07
+DEFAULT;Concepción;08
+DEFAULT;Coronel;08
+DEFAULT;Chiguayante;08
+DEFAULT;Florida;08
+DEFAULT;Hualqui;08
+DEFAULT;Lota;08
+DEFAULT;Penco;08
+DEFAULT;San Pedro de la Paz;08
+DEFAULT;Santa Juana;08
+DEFAULT;Talcahuano;08
+DEFAULT;Tomé;08
+DEFAULT;Hualpén;08
+DEFAULT;Lebu;08
+DEFAULT;Arauco;08
+DEFAULT;Cañete;08
+DEFAULT;Contulmo;08
+DEFAULT;Curanilahue;08
+DEFAULT;Los Álamos;08
+DEFAULT;Tirúa;08
+DEFAULT;Los Ángeles;08
+DEFAULT;Antuco;08
+DEFAULT;Cabrero;08
+DEFAULT;Laja;08
+DEFAULT;Mulchén;08
+DEFAULT;Nacimiento;08
+DEFAULT;Negrete;08
+DEFAULT;Quilaco;08
+DEFAULT;Quilleco;08
+DEFAULT;San Rosendo;08
+DEFAULT;Santa Bárbara;08
+DEFAULT;Tucapel;08
+DEFAULT;Yumbel;08
+DEFAULT;Alto Biobío;08
+DEFAULT;Chillán;08
+DEFAULT;Bulnes;08
+DEFAULT;Cobquecura;08
+DEFAULT;Coelemu;08
+DEFAULT;Coihueco;08
+DEFAULT;Chillán Viejo;08
+DEFAULT;El Carmen;08
+DEFAULT;Ninhue;08
+DEFAULT;Ñiquén;08
+DEFAULT;Pemuco;08
+DEFAULT;Pinto;08
+DEFAULT;Portezuelo;08
+DEFAULT;Quillón;08
+DEFAULT;Quirihue;08
+DEFAULT;Ránquil;08
+DEFAULT;San Carlos;08
+DEFAULT;San Fabián;08
+DEFAULT;San Ignacio;08
+DEFAULT;San Nicolás;08
+DEFAULT;Treguaco;08
+DEFAULT;Yungay;08
+DEFAULT;Temuco;09
+DEFAULT;Carahue;09
+DEFAULT;Cunco;09
+DEFAULT;Curarrehue;09
+DEFAULT;Freire;09
+DEFAULT;Galvarino;09
+DEFAULT;Gorbea;09
+DEFAULT;Lautaro;09
+DEFAULT;Loncoche;09
+DEFAULT;Melipeuco;09
+DEFAULT;Nueva Imperial;09
+DEFAULT;Padre las Casas;09
+DEFAULT;Perquenco;09
+DEFAULT;Pitrufquén;09
+DEFAULT;Pucón;09
+DEFAULT;Saavedra;09
+DEFAULT;Teodoro Schmidt;09
+DEFAULT;Toltén;09
+DEFAULT;Vilcún;09
+DEFAULT;Villarrica;09
+DEFAULT;Cholchol;09
+DEFAULT;Angol;09
+DEFAULT;Collipulli;09
+DEFAULT;Curacautín;09
+DEFAULT;Ercilla;09
+DEFAULT;Lonquimay;09
+DEFAULT;Los Sauces;09
+DEFAULT;Lumaco;09
+DEFAULT;Purén;09
+DEFAULT;Renaico;09
+DEFAULT;Traiguén;09
+DEFAULT;Victoria;09
+DEFAULT;Valdivia;14
+DEFAULT;Corral;14
+DEFAULT;Lanco;14
+DEFAULT;Los Lagos;14
+DEFAULT;Máfil;14
+DEFAULT;Mariquina;14
+DEFAULT;Paillaco;14
+DEFAULT;Panguipulli;14
+DEFAULT;La Unión;14
+DEFAULT;Futrono;14
+DEFAULT;Lago Ranco;14
+DEFAULT;Río Bueno;14
+DEFAULT;Puerto Montt;10
+DEFAULT;Calbuco;10
+DEFAULT;Cochamó;10
+DEFAULT;Fresia;10
+DEFAULT;Frutillar;10
+DEFAULT;Los Muermos;10
+DEFAULT;Llanquihue;10
+DEFAULT;Maullín;10
+DEFAULT;Puerto Varas;10
+DEFAULT;Castro;10
+DEFAULT;Ancud;10
+DEFAULT;Chonchi;10
+DEFAULT;Curaco de Vélez;10
+DEFAULT;Dalcahue;10
+DEFAULT;Puqueldón;10
+DEFAULT;Queilén;10
+DEFAULT;Quellón;10
+DEFAULT;Quemchi;10
+DEFAULT;Quinchao;10
+DEFAULT;Osorno;10
+DEFAULT;Puerto Octay;10
+DEFAULT;Purranque;10
+DEFAULT;Puyehue;10
+DEFAULT;Río Negro;10
+DEFAULT;San Juan de la Costa;10
+DEFAULT;San Pablo;10
+DEFAULT;Chaitén;10
+DEFAULT;Futaleufú;10
+DEFAULT;Hualaihué;10
+DEFAULT;Palena;10
+DEFAULT;Coihaique;11
+DEFAULT;Lago Verde;11
+DEFAULT;Aisén;11
+DEFAULT;Cisnes;11
+DEFAULT;Guaitecas;11
+DEFAULT;Cochrane;11
+DEFAULT;O’Higgins;11
+DEFAULT;Tortel;11
+DEFAULT;Chile Chico;11
+DEFAULT;Río Ibáñez;11
+DEFAULT;Punta Arenas;12
+DEFAULT;Laguna Blanca;12
+DEFAULT;Río Verde;12
+DEFAULT;San Gregorio;12
+DEFAULT;Cabo de Hornos (Ex Navarino);12
+DEFAULT;Antártica;12
+DEFAULT;Porvenir;12
+DEFAULT;Primavera;12
+DEFAULT;Timaukel;12
+DEFAULT;Natales;12
+DEFAULT;Torres del Paine;12
+DEFAULT;Santiago;13
+DEFAULT;Cerrillos;13
+DEFAULT;Cerro Navia;13
+DEFAULT;Conchalí;13
+DEFAULT;El Bosque;13
+DEFAULT;Estación Central;13
+DEFAULT;Huechuraba;13
+DEFAULT;Independencia;13
+DEFAULT;La Cisterna;13
+DEFAULT;La Florida;13
+DEFAULT;La Granja;13
+DEFAULT;La Pintana;13
+DEFAULT;La Reina;13
+DEFAULT;Las Condes;13
+DEFAULT;Lo Barnechea;13
+DEFAULT;Lo Espejo;13
+DEFAULT;Lo Prado;13
+DEFAULT;Macul;13
+DEFAULT;Maipú;13
+DEFAULT;Ñuñoa;13
+DEFAULT;Pedro Aguirre Cerda;13
+DEFAULT;Peñalolén;13
+DEFAULT;Providencia;13
+DEFAULT;Pudahuel;13
+DEFAULT;Quilicura;13
+DEFAULT;Quinta Normal;13
+DEFAULT;Recoleta;13
+DEFAULT;Renca;13
+DEFAULT;San Joaquín;13
+DEFAULT;San Miguel;13
+DEFAULT;San Ramón;13
+DEFAULT;Vitacura;13
+DEFAULT;Puente Alto;13
+DEFAULT;Pirque;13
+DEFAULT;San José de Maipo;13
+DEFAULT;Colina;13
+DEFAULT;Lampa;13
+DEFAULT;Tiltil;13
+DEFAULT;San Bernardo;13
+DEFAULT;Buin;13
+DEFAULT;Calera de Tango;13
+DEFAULT;Paine;13
+DEFAULT;Melipilla;13
+DEFAULT;Alhué;13
+DEFAULT;Curacaví;13
+DEFAULT;María Pinto;13
+DEFAULT;San Pedro;13
+DEFAULT;Talagante;13
+DEFAULT;El Monte;13
+DEFAULT;Isla de Maipo;13
+DEFAULT;Padre Hurtado;13
+DEFAULT;Peñaflor;13
