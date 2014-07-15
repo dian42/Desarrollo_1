@@ -3,6 +3,17 @@ require_once 'lib/twigLoad.php';
 include_once 'lib/conexion_bd.php';
 include_once 'lib/validacion_xls.php';
 include_once 'lib/leerxls/reader.php'; 
+session_start(); //Iniciamos una posible sesión
+
+if ($_SESSION) {
+echo "holi";
+	if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+
+		if(isset($_GET['condominio'])){
+			$conjunto = $_GET['condominio'];
+		}
+	}
+}
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	if($_FILES["archivo"]["type"] == "application/vnd.ms-excel" && $_FILES["archivo"]["size"] < 20000000){
@@ -26,7 +37,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	}
 }
 else
-	render('/subida_xls/upload_xls_adicional.html.twig', array());
+	render('/subida_xls/upload_xls_adicional.html.twig', array('valido' => $_SESSION['valido']));
 if(isset($nombre)){
 	$datos = new Spreadsheet_Excel_Reader();  
 	/* Le decimos al objeto que "lea" el archivo cargado. Esto extraerá toda la información correspondiente al archivo y la almacenará en el objeto */  
@@ -35,11 +46,11 @@ if(isset($nombre)){
 	$celdas = $datos->sheets[0]['cells'];
 	/* Luego, mediante un ciclo, seguiremos armando nuestra tabla y concatenamos con el contenido de las celdas. Estos valores se almacenan en la variable en una forma de array de 2 dimensiones. La primera corresponde a la fila y la segunda a la columna, siempre empezando de 1 , poniendo como condición que cuando lea una celda vacía se detenga */  
 	$flag = 2;
-	$flag = datos_xls($flag,$celdas,$conexion_bd); //verifica q los datos esten bien 
+	$flag = datos_xls($flag,$celdas,$conexion_bd,$conjunto ); //verifica q los datos esten bien 
 	if($flag==1)// guarda los datos en la base de datos 
-		$flag = datos_xls($flag,$celdas,$conexion_bd);
+		$flag = datos_xls($flag,$celdas,$conexion_bd,$conjunto );
 	if($flag==1){
-		$exito = "El archivo" . $nombre . "fue subido exitosamente.";
+		$exito = "El archivo" . $nombre . " fue subido exitosamente.";
 		render('subida_xls/errorFormatoAdicional.html.twig', array('error' => $exito));
 		//echo "Archivo subido con exito. <br>";
 		unlink("xls/".$nombre);
@@ -54,7 +65,7 @@ if(isset($nombre)){
 
 }
 
-function datos_xls($flag,$celdas,$conexion_bd){
+function datos_xls($flag,$celdas,$conexion_bd,$conjunto ){
 	$filas=3 ;
 	$letra= array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','X','Y','Z');
 	$columnas=1;
@@ -108,7 +119,7 @@ function datos_xls($flag,$celdas,$conexion_bd){
 			$columnas++;
 		}while(isset($celdas[$filas][$columnas]));
 		if($flag ==1 && isset($fecha,$costo,$tipo,$descripcion,$propiedad)){
-			$tipos  = $conexion_bd -> prepare("SELECT pro_id FROM  propiedad WHERE pro_numero='$propiedad' AND pro_con_id =1");
+			$tipos  = $conexion_bd -> prepare("SELECT pro_id FROM  propiedad WHERE pro_numero='$propiedad' AND pro_con_id =$conjunto ");
 			$tipos -> execute();
 			$tipos = $tipos->fetchAll(PDO::FETCH_ASSOC);
 			foreach ($tipos as $ids) 
@@ -120,11 +131,12 @@ function datos_xls($flag,$celdas,$conexion_bd){
 	}while(isset($celdas[$filas][$columnas]));
 	$conexion_bd = NULL;
 	$errortotal=$errorcosto.". ".$errordesc.". ".$errortipo.". ".$errorfecha.". ".$errorprop.". Celdas del archivo ingresadas incorrectamente, intente nuevamente.";
-	render('subida_xls/errorFormatoAdicional.html.twig', array('error' => $errortotal));
 	if ($flag == 2 || $flag == 1) 
 		return 1;
-	if($flag == 0) 
+	if($flag == 0) {
+		render('subida_xls/errorFormatoAdicional.html.twig', array('error' => $errortotal, 'valido' => $_SESSION['valido']));
 		return 0;
+	}
 	
 }
 

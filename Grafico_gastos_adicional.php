@@ -1,10 +1,10 @@
 <?php   
-	/* CAT:Bar Chart */
-	/* pChart library inclusions */
-	grafico_adicional('2000-11-01', '2022-02-26', 1, 'C');
-
-	function grafico_adicional ($fecha_inicial, $fecha_final,  $propiedad ,$tipo_adicional ){
 	include_once 'lib/conexion_bd.php';
+	// grafico_adicional('2000-11-01', '2022-02-26', 2, 'C');
+	// grafico_adicional('2000-11-01','2008-11-11',2, 'C');
+	 // echo $_POST['fIni']." ". $_POST['fFin']." ".$_POST['pro_id']." ". $_POST['tad'];
+	function grafico_adicional ($fecha_inicial, $fecha_final,  $propiedad ,$tipo_adicional,$conexion_bd){
+	
 	include_once 'lib/graficos/class/pData.class.php';
 	include_once 'lib/graficos/class/pDraw.class.php';
 	include_once 'lib/graficos/class/pImage.class.php';	
@@ -57,7 +57,7 @@
 
 function DatosAdicionales($conexion_bd, $fecha_inicial, $fecha_final, $propiedad, $tipo_adicional){	
 	$i=0;
-	$datos = array();
+	$datos = array( );
 	$tipos = $conexion_bd -> prepare("SELECT adi_costo, adi_fecha FROM adicional WHERE adi_tad_id = '$tipo_adicional' AND adi_pro_id = $propiedad AND adi_fecha BETWEEN '$fecha_inicial' AND '$fecha_final' "); 
 	$tipos -> execute();
 	$tipos = $tipos->fetchAll(PDO::FETCH_ASSOC);

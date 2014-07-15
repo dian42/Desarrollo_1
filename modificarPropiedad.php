@@ -15,11 +15,8 @@ if (count($_SESSION) != 0 && $_SESSION['tipo'] == false ) {
 			$pro_m2 = $_POST['m2'];
 		    $pro_alicuota = $_POST['alicuota'];
 	    	$pro_con_id = $_POST['conjunto'];
-	    	if(Vpropiedad($pro_numero) && Vm2($pro_m2) && Valicuota($pro_alicuota) && Vconjunto($pro_id)) {
-		    	$repeat=$conexion_bd -> prepare(" SELECT pro_id 
-			    								  FROM propiedad
-			    								  WHERE pro_numero='$pro_numero' and
-			    								  		pro_con_id = $pro_con_id");
+	    	if(Vpropiedad($pro_numero) && Vm2($pro_m2) && Valicuota($pro_alicuota) && Vconjunto($pro_con_id, $conexion_bd)) {
+		    	$repeat=$conexion_bd -> prepare(" SELECT pro_id FROM propiedad WHERE pro_numero ='$pro_numero' and pro_con_id = $pro_con_id");
 			    $repeat->execute();
 				$insert = $repeat -> fetchAll(PDO::FETCH_ASSOC);
 				$largo = count($insert);
@@ -29,6 +26,13 @@ if (count($_SESSION) != 0 && $_SESSION['tipo'] == false ) {
 					$propiedad = $consulta->fetchALL(PDO::FETCH_ASSOC); //Ejecutamos la consulta
 					$conexion_bd = NULL; // se cierra la conexión a la BD
 					render('Rpropiedad/errorModificaPropiedad.html.twig',array('propiedad' => $propiedad, 'valido' => $_SESSION['valido'], 'error'=>"Número de propiedad duplicada."));
+				}else{
+					$consulta = $conexion_bd-> exec("UPDATE propiedad SET pro_numero = '$pro_numero', pro_m2 = $pro_m2, pro_alicuota = $pro_alicuota, pro_con_id = $pro_con_id WHERE pro_id = $pro_id "); //Definimos la consulta a la base de datos.
+					$consulta = $conexion_bd->prepare("SELECT pro_id, pro_numero, pro_m2, pro_alicuota, pro_con_id, con_nombre FROM propiedad, conjunto WHERE pro_con_id=con_id"); //Definimos la consulta a la base de datos.
+					$consulta->execute();
+					$propiedad = $consulta->fetchALL(PDO::FETCH_ASSOC); 
+					$conexion_bd = NULL;
+					render('Rpropiedad/index.html.twig',array('propiedad' => $propiedad, 'valido' => $_SESSION['valido']));
 				}
 			}else{
 				$consulta = $conexion_bd->prepare("SELECT pro_id, pro_numero, pro_m2, pro_alicuota, pro_con_id, con_nombre FROM propiedad, conjunto WHERE pro_con_id=con_id"); //Definimos la consulta a la base de datos.

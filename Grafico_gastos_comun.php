@@ -1,9 +1,10 @@
 <?php   
 	/* CAT:Bar Chart */
 	/* pChart library inclusions */
-	grafico_comun('2000-11-01', '2022-02-26', 1, 'C');
+	grafico_comun('2001-04-12', '2017-04-12', 2, 'C',$conexion_bd);//'2000-11-01', '2022-02-26', 1, 'C');
 
-	function grafico_comun ($fecha_inicial, $fecha_final, $conjunto, $tipo_gasto ){
+
+	function grafico_comun ($fecha_inicial, $fecha_final, $conjunto, $tipo_gasto,$conexion_bd ){
 	include_once 'lib/conexion_bd.php';
 	include_once 'lib/graficos/class/pData.class.php';
 	include_once 'lib/graficos/class/pDraw.class.php';
