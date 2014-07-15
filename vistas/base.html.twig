@@ -79,20 +79,9 @@
                             <a class="accordion-toggle collapsed" data-toggle="collapse"
                                data-parent="#menu-levels-collapse" href="#sub-menu-2-collapse-{{condominio['con_id']}}">{{condominio['con_nombre']}}</a>
                             <ul id="sub-menu-2-collapse-{{condominio['con_id']}}" class="panel-collapse collapse">
-                                        <li><a href="generarGasto.php?condominio={{condominio['con_id']}}">Propiedades por Copropietario</a></li>
+                                        <li><a href="reporteCopPro.php?condominio={{condominio['con_id']}}">Copropietario por Propiedades</a></li>
                             </ul>
                         </li>
-                    {% endfor %}
-                </ul>
-            </li>
-            <li class="panel">
-                <a class="accordion-toggle collapsed" data-toggle="collapse"
-                   data-parent="#side-nav" href="#Reportes"><i class="fa fa-edit"></i> <span class="name">Reportes</span></a>
-                <ul id="Reportes" class="panel-collapse collapse">
-                        {% set foo = -1 %}
-                    {% for key,condominio in valido.datos if key != foo %}
-                        {% set foo = key %}
-                        <li><a href="reporteCopPro.php?condomino={{condominio['con_id']}}">copropietarios por propiedad</a></li>
                     {% endfor %}
                 </ul>
             </li>
@@ -107,8 +96,8 @@
                         <a class="accordion-toggle collapsed" data-toggle="collapse"
                            data-parent="#menu-levels-collapse" href="#sub-menu-2-collapse">{{condominio['con_nombre']}}</a>
                         <ul id="sub-menu-2-collapse" class="panel-collapse collapse">
-                                    <li><a href="generarGasto.php?condominio={{condominio['con_id']}}">Gasto Adicional</a></li>
-                                    <li><a href="generarGasto.php?condominio={{condominio['con_id']}}">Gasto Común</a></li>
+                                    <li><a href="graficoAdicional.php?condominio={{condominio['con_id']}}">Gasto Adicional</a></li>
+                                    <li><a href="graficoComun.php?condominio={{condominio['con_id']}}">Gasto Común</a></li>
                         </ul>
                     </li>
                     {% endfor %}
@@ -270,7 +259,7 @@
 
     <!-- page specific -->
     <script src="vistas/bootstrap/js/forms-elemets.js"></script>
-
+    {% block wololo %}
     <script type="text/template" id="settings-template">
         <div class="setting clearfix">
             <div>Background</div>
@@ -319,5 +308,6 @@
                         class="btn btn-transparent btn-sm">Auto</button>
             <% } %>
     </script>
+    {% endblock wololo %}
     {% endblock scriptis %}
 </html>
