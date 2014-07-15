@@ -3,7 +3,65 @@
 {% block title %}Ingresar Tipo Gasto - {% endblock title %}
 
 {% block content %}
+<div class="content container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="page-title">Mantenedor de Tablas Básicas <small> Mantenedor de tipo de gasto común </small></h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <section class="widget">
+                <header>
+                    <h4>
+                        <i class="fa fa-align-left"></i>
+                        Crear nuevo tipo de gasto común
+                    </h4>
+                </header>
+                <div class="body">
+                    <form class="form-horizontal" action="ingresarTipoGasto.php" method="POST">
+                        <fieldset>
+                            <legend class="section">Nuevo gasto común</legend>
 
+                        <div class="control-group">
+                            <label class="control-label " for="tooltip-enabled"> Identificador </label>
+                            <div class="controls form-group">
+                                <div class="col-sm-8">
+                                	<input type="text" id="tooltip-enabled" name="id" class="form-control"
+                                   		data-original-title="Identificador del tipo de gasto común (máximo 1 caracter)" value="{{tGasto['tga_id']}}" pattern = "[A-Z]" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+
+                       	<div class="control-group">
+                            <label class="control-label " for="tooltip-enabled"> Nombre </label>
+                            <div class="controls form-group">
+                                <div class="col-sm-8">
+                                    <input type="text" id="tooltip-enabled" name="descripcion" class="form-control"
+                                       data-original-title="Nombre del tipo de gasto común (máximo 15 caracteres)"
+                                       value="{{tGasto['tga_nombre']}}" pattern = "[a-zA-ZñÑáéíóúÁÉÍÓÚ]*" maxlenght = "15" required></div>
+                            </div>
+                        </div>
+
+                        </fieldset>
+						<div class="form-actions">
+                            <div>
+                                <button type="submit" name="subit" class="btn btn-primary" value="Aceptar" >Aceptar</button>
+                                <button type="button" class="btn btn-default" onClick='location.href="MantenedorTablasBasicas.php"'>Cancelar</button>
+                            </div>
+                        </div>
+                        
+                    </form>
+                </div>
+            </section>
+        </div>
+
+    </div>
+    
+    
+    
+</div>
     
 {{ parent() }}
 {% endblock content %}
