@@ -1,13 +1,11 @@
 <?php
 require_once 'lib/twigLoad.php';
-include_once 'lib/conexion_bd.php';
 include_once 'lib/validacion_xls.php';
 include_once 'lib/leerxls/reader.php'; 
 
 session_start();
-print_r($_SESSION['valido']);
-
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
+	include_once 'lib/conexion_bd.php';
 	if($_FILES["archivo"]["type"] == "application/vnd.ms-excel" && $_FILES["archivo"]["size"] < 20000000){
 		if($_FILES["archivo"]["error"] > 0){
 			render('subida_xls/errorFormatoAdicional.html.twig', array('error' => $_FILES["archivo"]["error"]));
@@ -42,7 +40,7 @@ if(isset($nombre)){
 	if($flag==1)// guarda los datos en la base de datos 
 		$flag = datos_xls($flag,$celdas,$conexion_bd);
 	if($flag==1){
-		$exito = "El archivo" . $nombre . "fue subido exitosamente.";
+		$exito = "El archivo" . $nombre . " fue subido exitosamente.";
 		render('subida_xls/errorFormatoAdicional.html.twig', array('error' => $exito,  'valido' => $_SESSION['valido']));
 		//echo "Archivo subido con exito. <br>";
 		unlink("xls/".$nombre);
