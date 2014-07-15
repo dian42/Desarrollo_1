@@ -24,7 +24,7 @@
             <nav id="sidebar" class="sidebar nav-collapse collapse">
                 <ul id="side-nav" class="side-nav">
                     <li class="active">
-                        <a href="inde.php"><i class="fa fa-home"></i> <span class="name">Inicio</span></a>
+                        <a href="home.php"><i class="fa fa-home"></i> <span class="name">Inicio</span></a>
                     </li>
                     {% block varOption %}
     {% if valido is defined %}
@@ -99,7 +99,7 @@
             </li>
             <li class="panel">
                 <a class="accordion-toggle collapsed" data-toggle="collapse"
-                 data-parent="#side-nav" href="#Subir-gastos"><i class="fa fa-bar-chart-o"></i> <span class="name">Subir Gastos</span></a>
+                 data-parent="#side-nav" href="#Subir-gastos"><i class="fa fa-bar-chart-o"></i> <span class="name">Gastos</span></a>
                 <ul id="Subir-gastos" class="panel-collapse collapse">
                         {% set foo = -1 %}
                     {% for key,condominio in valido.datos if key != foo %}
@@ -129,9 +129,9 @@
             </li>
             <li class="panel">
                 <a class="accordion-toggle collapsed" data-toggle="collapse"
-                   data-parent="#side-nav" href="#Mantenedor-Tablas"><i class="fa fa-bookmark-o"></i> <span class="name">Mantenedor Tablas</span></a>
+                   data-parent="#side-nav" href="#Mantenedor-Tablas"><i class="fa fa-bookmark-o"></i> <span class="name">Mantenedor</span></a>
                 <ul id="Mantenedor-Tablas" class="panel-collapse collapse">
-                    <li><a href="MantenedorTablasBasicas.html">Tipo Gasto</a></li>
+                    <li><a href="MantenedorTablasBasicas.php">Tipo Gasto</a></li>
                 </ul>
             </li>
         {% endif %}
