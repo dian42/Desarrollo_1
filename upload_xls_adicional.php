@@ -46,7 +46,7 @@ if(isset($nombre)){
 	}
 	if($flag==0){ //borra el archivo si es que los datos no estaban bien definidos
 		unlink("xls/".$nombre);
-		render('subida_xls/errorFormatoAdicional.html.twig', array('error' => "Celdas del archivo ingresadas incorrectamente, intente nuevamente."));
+		// render('subida_xls/errorFormatoAdicional.html.twig', array('error' => "Celdas del archivo ingresadas incorrectamente, intente nuevamente."));
 		//echo "Archivo el archivo no esta bien rellenado.";
 	}
 	/* Cerramos la tabla */  
@@ -58,45 +58,50 @@ function datos_xls($flag,$celdas,$conexion_bd){
 	$filas=3 ;
 	$letra= array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','X','Y','Z');
 	$columnas=1;
+	$errorprop = "La propiedad esta mal redactada en la posición"; 
+	$errorfecha = "La fecha esta mal redactada en la posición";
+	$errorcosto = "El costo esta mal redactado en la posición"; 
+	$errortipo = "El tipo del gasto es invalido en la posición"; 
+	$errordesc = "La descripcion esta mal redactada en la posición"; 
 	do{
 		do{
 			if($columnas==1){
 				$propiedad = $celdas[$filas][$columnas];
 				if(!vpropiedad($propiedad) && ($flag == 2 ||$flag == 0)){
-					$redaccion = "La propiedad esta mal redactada en la posición ".$letra[$columnas-1]."".$filas.".";
-					render('subida_xls/errorFormatoAdicional.html.twig', array('error' => $redaccion));
+					$errorprop =$errorprop.", ".$letra[$columnas-1]."".$filas."";
+					// render('subida_xls/errorFormatoAdicional.html.twig', array('error' => $redaccion));
 					$flag=0;
 				}
 			}
 			if($columnas==2){
 				$fecha = $celdas[$filas][$columnas];
 				if(!vfecha($fecha) && ($flag == 2 || $flag == 0)){
-					$date = "La fecha esta mal redactada en la posición ".$letra[$columnas-1]."".$filas . ".";
-					render('subida_xls/errorFormatoAdicional.html.twig', array('error' => $date));
+					$errorfecha =$errorfecha.", ".$letra[$columnas-1]."".$filas . "";
+					// render('subida_xls/errorFormatoAdicional.html.twig', array('error' => $date));
 					$flag=0;
 				}
 			}
 			if($columnas==3){
 				$costo = $celdas[$filas][$columnas];
 				if(!vcosto($costo) && ($flag == 2 || $flag == 0)){
-					$costo_error = "El costo esta mal redactado en la posición ".$letra[$columnas-1]."".$filas. ".";
-					render('subida_xls/errorFormatoAdicional.html.twig', array('error' => $costp_error));
+					$errorcosto = $errorcosto.", ".$letra[$columnas-1]."".$filas. "";
+					// render('subida_xls/errorFormatoAdicional.html.twig', array('error' => $costo_error));
 					$flag=0;
 				}
 			}
 			if($columnas==4){
 				$tipo = $celdas[$filas][$columnas];
 				if(!vtipoA($tipo, $conexion_bd) &&($flag == 2 || $flag == 0)){
-					$tipoA = "El tipo del gasto es invalido en la posición ".$letra[$columnas-1]."".$filas.".";
-					render('subida_xls/errorFormatoAdicional.html.twig', array('error' => $tipoA));
+					$errortipo = $errortipo.", ".$letra[$columnas-1]."".$filas."";
+					// render('subida_xls/errorFormatoAdicional.html.twig', array('error' => $tipoA));
 					$flag=0;
 				}
 			}
 			if($columnas==5){
 				$descripcion = $celdas[$filas][$columnas];
 				if(!vdecripcion($descripcion) && ($flag == 2 || $flag == 0)){
-					$descripcion = "La descripcion esta mal redactada en la posición ".$letra[$columnas-1]."".$filas.".";
-					render('subida_xls/errorFormatoAdicional.html.twig', array('error' => $descripcion));
+					$errordesc = $errordesc.", ".$letra[$columnas-1]."".$filas."";
+					// render('subida_xls/errorFormatoAdicional.html.twig', array('error' => $descripcion));
 					$flag=0;
 				}
 			}
@@ -114,6 +119,8 @@ function datos_xls($flag,$celdas,$conexion_bd){
 		$columnas=1;
 	}while(isset($celdas[$filas][$columnas]));
 	$conexion_bd = NULL;
+	$errortotal=$errorcosto.". ".$errordesc.". ".$errortipo.". ".$errorfecha.". ".$errorprop.". Celdas del archivo ingresadas incorrectamente, intente nuevamente.";
+	render('subida_xls/errorFormatoAdicional.html.twig', array('error' => $errortotal));
 	if ($flag == 2 || $flag == 1) 
 		return 1;
 	if($flag == 0) 
