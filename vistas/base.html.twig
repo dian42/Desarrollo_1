@@ -75,7 +75,7 @@
                         {% set foo = -1 %}
                     {% for key,condominio in valido.datos if key != foo %}
                         {% set foo = key %}
-                        <li><a href="reporteCopPro.php?condomino={{condominio['con_id']}}">{{condominio['con_nombre']}}</a></li>
+                        <li><a href="reporteCopPro.php?condominio={{condominio['con_id']}}">{{condominio['con_nombre']}}</a></li>
                     {% endfor %}
                 </ul>
             </li>
@@ -253,7 +253,7 @@
 
     <!-- page specific -->
     <script src="vistas/bootstrap/js/forms-elemets.js"></script>
-
+    {% block wololo %}
     <script type="text/template" id="settings-template">
         <div class="setting clearfix">
             <div>Background</div>
@@ -302,5 +302,6 @@
                         class="btn btn-transparent btn-sm">Auto</button>
             <% } %>
     </script>
+    {% endblock wololo %}
     {% endblock scriptis %}
 </html>

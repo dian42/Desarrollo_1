@@ -4,6 +4,9 @@ include_once 'lib/conexion_bd.php';
 include_once 'lib/validacion_xls.php';
 include_once 'lib/leerxls/reader.php'; 
 
+session_start();
+print_r($_SESSION['valido']);
+
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	if($_FILES["archivo"]["type"] == "application/vnd.ms-excel" && $_FILES["archivo"]["size"] < 20000000){
 		if($_FILES["archivo"]["error"] > 0){
@@ -22,11 +25,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	}
 	else{
 		$error = "El archivo" . $_FILES["archivo"]["error"] . " es de un formato no soportado. Intente nuevamente";
-		render('subida_xls/errorFormatoAdicional.html.twig', array('error' => "Formato no soportado, intente con un formato válido"));
+		render('subida_xls/errorFormatoAdicional.html.twig', array('error' => "Formato no soportado, intente con un formato válido", 'valido' => $_SESSION['valido']));
 	}
 }
 else
-	render('/subida_xls/upload_xls_adicional.html.twig', array());
+	render('subida_xls/upload_xls_adicional.html.twig', array( 'valido' => $_SESSION['valido']));
 if(isset($nombre)){
 	$datos = new Spreadsheet_Excel_Reader();  
 	/* Le decimos al objeto que "lea" el archivo cargado. Esto extraerá toda la información correspondiente al archivo y la almacenará en el objeto */  
@@ -40,13 +43,13 @@ if(isset($nombre)){
 		$flag = datos_xls($flag,$celdas,$conexion_bd);
 	if($flag==1){
 		$exito = "El archivo" . $nombre . "fue subido exitosamente.";
-		render('subida_xls/errorFormatoAdicional.html.twig', array('error' => $exito));
+		render('subida_xls/errorFormatoAdicional.html.twig', array('error' => $exito,  'valido' => $_SESSION['valido']));
 		//echo "Archivo subido con exito. <br>";
 		unlink("xls/".$nombre);
 	}
 	if($flag==0){ //borra el archivo si es que los datos no estaban bien definidos
 		unlink("xls/".$nombre);
-		render('subida_xls/errorFormatoAdicional.html.twig', array('error' => "Celdas del archivo ingresadas incorrectamente, intente nuevamente."));
+		render('subida_xls/errorFormatoAdicional.html.twig', array('error' => "Celdas del archivo ingresadas incorrectamente, intente nuevamente.",  'valido' => $_SESSION['valido']));
 		//echo "Archivo el archivo no esta bien rellenado.";
 	}
 	/* Cerramos la tabla */  
@@ -64,7 +67,7 @@ function datos_xls($flag,$celdas,$conexion_bd){
 				$propiedad = $celdas[$filas][$columnas];
 				if(!vpropiedad($propiedad) && ($flag == 2 ||$flag == 0)){
 					$redaccion = "La propiedad esta mal redactada en la posición ".$letra[$columnas-1]."".$filas.".";
-					render('subida_xls/errorFormatoAdicional.html.twig', array('error' => $redaccion));
+					render('subida_xls/errorFormatoAdicional.html.twig', array('error' => $redaccion,  'valido' => $_SESSION['valido']));
 					$flag=0;
 				}
 			}
@@ -72,7 +75,7 @@ function datos_xls($flag,$celdas,$conexion_bd){
 				$fecha = $celdas[$filas][$columnas];
 				if(!vfecha($fecha) && ($flag == 2 || $flag == 0)){
 					$date = "La fecha esta mal redactada en la posición ".$letra[$columnas-1]."".$filas . ".";
-					render('subida_xls/errorFormatoAdicional.html.twig', array('error' => $date));
+					render('subida_xls/errorFormatoAdicional.html.twig', array('error' => $date,  'valido' => $_SESSION['valido']));
 					$flag=0;
 				}
 			}
@@ -80,7 +83,7 @@ function datos_xls($flag,$celdas,$conexion_bd){
 				$costo = $celdas[$filas][$columnas];
 				if(!vcosto($costo) && ($flag == 2 || $flag == 0)){
 					$costo_error = "El costo esta mal redactado en la posición ".$letra[$columnas-1]."".$filas. ".";
-					render('subida_xls/errorFormatoAdicional.html.twig', array('error' => $costp_error));
+					render('subida_xls/errorFormatoAdicional.html.twig', array('error' => $costp_error,  'valido' => $_SESSION['valido']));
 					$flag=0;
 				}
 			}
@@ -88,7 +91,7 @@ function datos_xls($flag,$celdas,$conexion_bd){
 				$tipo = $celdas[$filas][$columnas];
 				if(!vtipoA($tipo, $conexion_bd) &&($flag == 2 || $flag == 0)){
 					$tipoA = "El tipo del gasto es invalido en la posición ".$letra[$columnas-1]."".$filas.".";
-					render('subida_xls/errorFormatoAdicional.html.twig', array('error' => $tipoA));
+					render('subida_xls/errorFormatoAdicional.html.twig', array('error' => $tipoA, 'valido' => $_SESSION['valido']));
 					$flag=0;
 				}
 			}
@@ -96,7 +99,7 @@ function datos_xls($flag,$celdas,$conexion_bd){
 				$descripcion = $celdas[$filas][$columnas];
 				if(!vdecripcion($descripcion) && ($flag == 2 || $flag == 0)){
 					$descripcion = "La descripcion esta mal redactada en la posición ".$letra[$columnas-1]."".$filas.".";
-					render('subida_xls/errorFormatoAdicional.html.twig', array('error' => $descripcion));
+					render('subida_xls/errorFormatoAdicional.html.twig', array('error' => $descripcion, 'valido' => $_SESSION['valido']));
 					$flag=0;
 				}
 			}

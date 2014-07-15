@@ -1,0 +1,122 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+<div class="content container">
+    <div class="row hidden-print">
+        <div class="col-md-12">
+            <h2 class="page-title">Copropietarios por Propiedad<small> - Reporte</small></h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <section class="widget">
+                <div class="body no-margin">
+                    <section class="invoice-info well">
+                        <div class="row">
+                            <div class="col-sm-6 col-print-6">
+                                <h3 class="company-name">
+                                    Conjunto Residencial
+                                </h3>
+                                <address>
+                                    <strong>{{conjunto['con_nombre']}}</strong><br>
+                                    {{conjunto['con_direccion']}}<br>
+                                    <br>
+                                    <abbr title="Work Phone">fono:</abbr> {{conjunto['con_fono']}}<br>
+                                    <abbr title="Work email">fondo común:</abbr> {{conjunto['con_fondo']}}<br>
+                                </address>
+                            </div>
+                            
+                            <div class="col-sm-6 col-print-6 client-details">
+                                <h4 class="details-title">Información Copropietario</h4>
+                                    {% set foo = '1' %}
+                                {% for reporte1 in reporte if foo == '1' %}
+                                    <h3 class="client-name">
+                                        {{reporte1['cop_nombres']}} {{reporte1['cop_ap_paterno']}} {{reporte1['cop_ap_materno']}}
+                                    </h3>
+                                    <address>
+                                        <abbr title="Work email">e-mail:</abbr> <a href="mailto:#">{{reporte1['cop_mail']}}</a><br>
+                                        <abbr title="Work Phone">fono:</abbr> {{reporte1['cop_fono']}}<br>
+                                    </address>
+                                        {% set foo = '2' %}
+                                    {% endfor %}
+                                
+                            </div>
+                        </div>
+                    </section>
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>m2</th>
+                            <th>Alicuota</th>
+                            <th>Condominio</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {% for dato in reporte %}
+                                <tr>
+                                    <td>{{dato['pro_numero']}}</td>
+                                    <td>{{dato['pro_m2']}}</td>
+                                    <td>{{dato['pro_alicuota']}}</td>
+                                    <td>{{dato['con_nombre']}}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <div class="invoice-actions text-align-right hidden-print">
+                        <button id="print" class="btn btn-inverse ">
+                            <i class="fa fa-print"></i>
+                            &nbsp;&nbsp;
+                            Print
+                        </button>
+                    </div>
+                </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+    <div class="loader-wrap hiding hide">
+        <i class="fa fa-spinner fa-spin"></i>
+    </div>
+</div>
+
+{% endblock content %}
+
+{% block scriptis %}
+<!-- jquery and friends -->
+<script src="vistas/bootstrap/lib/jquery/jquery-2.0.3.min.js"> </script>
+<script src="vistas/bootstrap/lib/jquery-pjax/jquery.pjax.js"></script>
+
+
+<!-- jquery plugins -->
+<script src="vistas/bootstrap/lib/jquery-maskedinput/jquery.maskedinput.js"></script>
+<script src="vistas/bootstrap/lib/parsley/parsley.js"> </script>
+<script src="vistas/bootstrap/lib/icheck.js/jquery.icheck.js"></script>
+<script src="vistas/bootstrap/lib/select2.js"></script>
+
+<!--backbone and friends -->
+<script src="vistas/bootstrap/lib/backbone/underscore-min.js"></script>
+
+<!-- bootstrap default plugins -->
+<script src="vistas/bootstrap/lib/bootstrap/transition.js"></script>
+<script src="vistas/bootstrap/lib/bootstrap/collapse.js"></script>
+<script src="vistas/bootstrap/lib/bootstrap/alert.js"></script>
+<script src="vistas/bootstrap/lib/bootstrap/tooltip.js"></script>
+<script src="vistas/bootstrap/lib/bootstrap/popover.js"></script>
+<script src="vistas/bootstrap/lib/bootstrap/button.js"></script>
+<script src="vistas/bootstrap/lib/bootstrap/dropdown.js"></script>
+<script src="vistas/bootstrap/lib/bootstrap/modal.js"></script>
+<script src="vistas/bootstrap/lib/bootstrap/tab.js"> </script>
+
+<!-- basic application js-->
+<script src="vistas/bootstrap/js/app.js"></script>
+<script src="vistas/bootstrap/js/settings.js"></script>
+
+<!-- page-specific -->
+<script type="text/javascript" src="vistas/bootstrap/js/print.js"></script>
+{% block wololo %}
+{{parent()}}
+{% endblock wololo %}
+{% endblock scriptis %}

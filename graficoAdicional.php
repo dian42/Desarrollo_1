@@ -4,7 +4,6 @@
 
 	session_start(); //Iniciamos una posible sesión
 	if (count($_SESSION) != 0 && $_SESSION['tipo'] == false ) {
-		include_once 'lib/conexion_bd.php';
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			if(isset($_GET['condominio'])){
 				$bool = false;
@@ -31,9 +30,10 @@
 					$tadicional = $tadicional -> fetchAll(PDO::FETCH_ASSOC);
 					render('grafico/graficoAdicional.html.twig', array('conjunto' => $conjunto, 'propiedad' => $propiedad, 'fechas_ini' => $fechas,'fechas_ter' => $fechas, 'tadicional' => $tadicional, 'valido' => $_SESSION['valido']));
 				}
+				else
+					render('default/errorGET.html.twig');
 			}
-			else
-				render('default/errorGET.html.twig');
+			
 		}
 	}
 
