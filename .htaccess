@@ -1,0 +1,12 @@
+RewriteBase /
+RewriteEngine on
+Options +FollowSymLinks
+RewriteRule /eliminar/tipo/gasto/(.*)$ eliminarTipoGasto.php?button1=$1 [L]
+
+#deny all access
+#deny from all
+
+# Make PHP code look like unknown types
+#AddType application/x-httpd-php .php
+
+#DirectoryIndex inicio.html inde.htm inde.html inde.php
