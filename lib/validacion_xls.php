@@ -1,5 +1,6 @@
 <?php
 include_once 'conexion_bd.php';
+date_default_timezone_set("America/Santiago");
 
 function vfecha($date){
 	if(preg_match('/^\d{1,2}\/\d{1,2}\/\d{4}$/',$date)) 

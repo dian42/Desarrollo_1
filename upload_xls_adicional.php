@@ -3,17 +3,15 @@ require_once 'lib/twigLoad.php';
 include_once 'lib/validacion_xls.php';
 include_once 'lib/leerxls/reader.php'; 
 session_start(); //Iniciamos una posible sesión
-
+date_default_timezone_set("America/Santiago");
 if (count($_SESSION) != 0  ) {
 	if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 		if(isset($_GET['condominio'])){
 			$conjunto = $_GET['condominio'];
-			echo "holi";
 		}
 	}
 }
 
-session_start();
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	include_once 'lib/conexion_bd.php';
 	if($_FILES["archivo"]["type"] == "application/vnd.ms-excel" && $_FILES["archivo"]["size"] < 20000000){

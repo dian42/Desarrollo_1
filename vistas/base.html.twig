@@ -134,8 +134,8 @@
                         {% set foo = key %}
                     <li class="panel">
                         <a class="accordion-toggle collapsed" data-toggle="collapse"
-                           data-parent="#menu-levels-collapse" href="#sub-menu-3-collapse">{{condominio['con_nombre']}}</a>
-                        <ul id="sub-menu-3-collapse" class="panel-collapse collapse">
+                           data-parent="#menu-levels-collapse" href="#sub-menu-3-collapse-{{condominio['con_id']}}">{{condominio['con_nombre']}}</a>
+                        <ul id="sub-menu-3-collapse-{{condominio['con_id']}}" class="panel-collapse collapse">
                                     <li><a href="upload_xls_adicional.php?condominio={{condominio['con_id']}}">Gasto Adicional</a></li>
                                     <li><a href="upload_xls_gasto.php?condominio={{condominio['con_id']}}">Gasto Común</a></li>
                         </ul>
