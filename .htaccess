@@ -1,7 +1,7 @@
-RewriteBase /
-RewriteEngine on
-Options +FollowSymLinks
-RewriteRule /eliminar/tipo/gasto/(.*)$ eliminarTipoGasto.php?button1=$1 [L]
+#RewriteBase /
+#RewriteEngine on
+#Options +FollowSymLinks
+#RewriteRule /eliminar/tipo/gasto/(.*)$ eliminarTipoGasto.php?button1=$1 [L]
 
 #deny all access
 #deny from all
@@ -10,3 +10,13 @@ RewriteRule /eliminar/tipo/gasto/(.*)$ eliminarTipoGasto.php?button1=$1 [L]
 #AddType application/x-httpd-php .php
 
 #DirectoryIndex inicio.html inde.htm inde.html inde.php
+
+
+# Activar RewriteEngine
+#RewriteEngine on
+ 
+# Reescribir la URL solicitada por el usuario
+#   Entrada:  clientes/NOMBRE/
+#   Salida: clientes.php?id=NOMBRE
+#   RewriteRule ^clientes/(\w+)/?$ clientes.php?id=$1
+#RewriteRule ^tipo/gasto/?$ inde.php

@@ -1,0 +1,15 @@
+15;Arica y Parinacota
+1;Tarapacá
+2;Antofagasta
+3;Atacama
+4;Coquimbo
+5;Valparaíso
+6;Bernardo O'Higgins
+7;Maule
+8;Biobío
+9;Araucanía
+14;Los Ríos
+10;Los Lagos
+11;Aisén
+12;Magallanes
+13;Metropolitana
